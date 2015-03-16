@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="hub_music">#ff9800</color>
+    <color name="hub_music_darker">#804d00</color>
+
+    <color name="hub_contacts">#00abe2</color>
+    <color name="hub_contacts_darker">#00455c</color>
+
+    <color name="hub_messaging">#2ae600</color>
+    <color name="hub_messaging_darker">#115c00</color>
+
+    <color name="hub_help">#e6e6e6</color>
+    <color name="hub_help_darker">#5c5c5c</color>
+</resources>
