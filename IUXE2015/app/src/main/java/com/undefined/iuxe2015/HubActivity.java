@@ -46,10 +46,8 @@ public class HubActivity extends ActionBarActivity {
     }
 
     private void toast(String message) {
-        if (t == null) {
-            t = new Toast(this);
-            t.setDuration(Toast.LENGTH_SHORT);
-        }
+        if (t == null)
+            t = Toast.makeText(this, message, Toast.LENGTH_SHORT);
         t.setText(message);
         t.show();
     }
