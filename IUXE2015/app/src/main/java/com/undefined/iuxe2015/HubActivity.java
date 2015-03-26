@@ -26,17 +26,13 @@ public class HubActivity extends ActionBarActivity {
 
     public void onButtonClick(View button) {
         switch (button.getId()) {
-            case R.id.hub_btn_music:
+            case R.id.hub_btn_library:
                 toast("TODO: Start Music Activity");
                 //TODO start Music Activity
                 break;
-            case R.id.hub_btn_contacts:
+            case R.id.hub_btn_search:
                 toast("TODO: Start Contacts Activity");
-                //TODO start Contacts Activity
-                break;
-            case R.id.hub_btn_messaging:
-                toast("TODO: Start Messaging Activity");
-                //TODO start Messaging Activity
+                //TODO start Search Activity
                 break;
             case R.id.hub_btn_help:
                 toast("TODO: Start Help Overlay");
