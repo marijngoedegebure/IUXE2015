@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">IUXE2015</string>
     <string name="action_settings">Intellingen</string>
-    <string name="hub_contacts">Contacten</string>
+    <string name="hub_search">Zoeken</string>
     <string name="hub_help">Help</string>
-    <string name="hub_messaging">Berichten</string>
-    <string name="hub_music">Muziek</string>
+    <string name="hub_library">Muziek</string>
 </resources>
