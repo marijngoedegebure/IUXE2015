@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/hub_contacts_darker" />
+    <solid android:color="@color/hub_search_darker" />
     <padding
         android:bottom="4dp"
         android:left="4dp"
@@ -8,6 +8,6 @@
         android:top="4dp" />
     <stroke
         android:width="4dp"
-        android:color="@color/hub_contacts_darker" />
+        android:color="@color/hub_search_darker" />
     <corners android:radius="4dp" />
 </shape>
