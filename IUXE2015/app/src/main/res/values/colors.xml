@@ -6,11 +6,14 @@
     <color name="accent">#9E9E9E</color>
 
     <color name="hub_library">#ff9800</color>
+    <color name="hub_library_pressed">#F57C00</color>
     <color name="hub_library_darker">#804d00</color>
 
-    <color name="hub_search">#00abe2</color>
+    <color name="hub_search">#03A9F4</color>
+    <color name="hub_search_pressed">#0288D1</color>
     <color name="hub_search_darker">#00455c</color>
 
-    <color name="hub_help">#e6e6e6</color>
+    <color name="hub_help">#EEEEEE</color>
+    <color name="hub_help_pressed">#BDBDBD</color>
     <color name="hub_help_darker">#5c5c5c</color>
 </resources>
