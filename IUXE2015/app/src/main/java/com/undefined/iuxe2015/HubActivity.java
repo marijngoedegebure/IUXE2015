@@ -27,16 +27,15 @@ public class HubActivity extends ActionBarActivity {
     }
 
     public void onButtonClick(View button) {
+        Intent intent;
         switch (button.getId()) {
             case R.id.hub_btn_library:
-                Intent intent = new Intent(this, LibraryActivity.class);
+                intent = new Intent(this, LibraryActivity.class);
                 startActivity(intent);
                 break;
             case R.id.hub_btn_search:
-                toast("TODO: Start Contacts Activity");
-                Intent intent = new Intent(this, SearchActivity.class);
+                intent = new Intent(this, SearchActivity.class);
                 startActivity(intent);
-                //TODO start SearchActivity Activity
                 break;
             case R.id.hub_btn_help:
                 toast("TODO: Start Help Overlay");
