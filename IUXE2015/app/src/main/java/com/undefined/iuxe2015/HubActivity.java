@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import android.content.Intent;
 
 
 public class HubActivity extends ActionBarActivity {
@@ -33,7 +34,9 @@ public class HubActivity extends ActionBarActivity {
                 break;
             case R.id.hub_btn_search:
                 toast("TODO: Start Contacts Activity");
-                //TODO start Search Activity
+                Intent intent = new Intent(this, SearchActivity.class);
+                startActivity(intent);
+                //TODO start SearchActivity Activity
                 break;
             case R.id.hub_btn_help:
                 toast("TODO: Start Help Overlay");
