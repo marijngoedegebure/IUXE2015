@@ -1,5 +1,6 @@
 package com.undefined.iuxe2015;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -27,8 +28,8 @@ public class HubActivity extends ActionBarActivity {
     public void onButtonClick(View button) {
         switch (button.getId()) {
             case R.id.hub_btn_library:
-                toast("TODO: Start Music Activity");
-                //TODO start Music Activity
+                Intent intent = new Intent(this, LibraryActivity.class);
+                startActivity(intent);
                 break;
             case R.id.hub_btn_search:
                 toast("TODO: Start Contacts Activity");
