@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">IUXE2015</string>s
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Mumo</string>
     <string name="hub_library">Music</string>
     <string name="hub_search">Search</string>
     <string name="hub_help">Help</string>
