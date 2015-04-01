@@ -118,6 +118,7 @@ public class SearchActivity extends ActionBarActivity implements
 
     @Override
     protected void onDestroy() {
+        Spotify.destroyPlayer(this);
         super.onDestroy();
     }
 
