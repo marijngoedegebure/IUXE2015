@@ -4,4 +4,7 @@
     <string name="hub_search">Zoeken</string>
     <string name="hub_help">Help</string>
     <string name="hub_library">Muziek</string>
+    <string name="title_activity_search">Zoeken</string>
+    <string name="edit_message">Zoeken</string>
+    <string name="button_send">Zoek</string>
 </resources>
