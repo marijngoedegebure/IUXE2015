@@ -22,6 +22,7 @@ import com.spotify.sdk.android.player.ConnectionStateCallback;
 import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
+import com.undefined.iuxe2015.fragments.SearchFragment;
 
 
 public class SearchActivity extends ActionBarActivity implements
@@ -43,7 +44,7 @@ public class SearchActivity extends ActionBarActivity implements
         setContentView(R.layout.activity_search);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new SearchFragment())
                     .commit();
         }
         AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID,
@@ -120,21 +121,5 @@ public class SearchActivity extends ActionBarActivity implements
     protected void onDestroy() {
         Spotify.destroyPlayer(this);
         super.onDestroy();
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_search, container, false);
-            return rootView;
-        }
     }
 }
