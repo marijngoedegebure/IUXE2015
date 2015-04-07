@@ -9,4 +9,14 @@ public class Song {
     private String artist;
     private String uri;
     private int duration;
+    private int name;
+
+    //TODO remove constructor or reove with more advanced one?
+    public Song(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
 }
