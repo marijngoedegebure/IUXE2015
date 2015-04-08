@@ -41,7 +41,7 @@ public class MumoDataSource {
         return ListAll.ratingsForSong(database, song);
     }
 
-    public Rating addRating(int songId, int rating, String note) {
+    public Rating addRating(String songId, int rating, String note) {
         return Create.rating(database, songId, rating, note);
     }
 

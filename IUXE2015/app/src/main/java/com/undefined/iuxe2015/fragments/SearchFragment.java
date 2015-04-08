@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.adapters.SongSearchAdapter;
 import com.undefined.iuxe2015.model.Song;
+import com.undefined.iuxe2015.model.json.QueryResult;
+import com.undefined.iuxe2015.tools.ConnectionTool;
 
 import java.util.ArrayList;
 
@@ -77,6 +80,21 @@ public class SearchFragment extends MumoFragment {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO, only if query is different and non-empty?
+                ConnectionTool.getSongsForQuery(getActivity(), input.getText().toString(), new ConnectionTool.ConnectionListener() {
+                    @Override
+                    public void onConnectionSuccess(QueryResult result) {
+                        //TODO stop loading UI, if visible
+                        Log.d("SearchFragment", "onConnectionSuccess");
+
+                    }
+
+                    @Override
+                    public void onConnectionFailed(Exception e) {
+                        //TODO give ui feedback about what went wrong
+                        Log.d("SearchFragment", "onConnectionFailed");
+                    }
+                });
                 //TODO search, also maybe listen to text changes in input? And maybe a loading spinner?
             }
         });

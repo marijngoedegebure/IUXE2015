@@ -13,6 +13,4 @@ public class QueryTracks {
     public String href;
     @SerializedName("items")
     public ArrayList<Song> items;
-
-
 }

@@ -21,14 +21,6 @@ import com.undefined.iuxe2015.fragments.SearchFragment;
 public class SearchActivity extends MumoActivity implements
         PlayerNotificationCallback, ConnectionStateCallback {
 
-    // Spotify client id
-    private static final String CLIENT_ID = "b62cce1d0d804fbfa1db66540a8018e4";
-    // Spotify call back url
-    private static final String REDIRECT_URI = "yourcustomprotocol://callback";
-
-    // Spotify static Access Token
-    String SPOTIFY_ACCESS_TOKEN = "BQB0cVMHxoWSDZrFoXfxgnRlTpMEQJJFw2f-OqATyPH4uQfKbc9tFRvqD6MwFqeF316qpWTEqlWos0WsSvQ5R2O_QTQhmw1_OXPbaCMy8tyVHrAaw7LjnjkIH-M1V1pbKx-jkW9DNJmdFOq3rowSvDYIGDpD-vKrpgA9YYU";
-
     // Request code that will be used to verify if the result comes from correct activity
     // Can be any integer
     private static final int REQUEST_CODE = 1337;
@@ -44,7 +36,10 @@ public class SearchActivity extends MumoActivity implements
                     .commit();
         }
 
-        Config playerConfig = new Config(this, SPOTIFY_ACCESS_TOKEN, CLIENT_ID);
+        String accessToken = getString(R.string.access_token);
+        String clientId = getString(R.string.client_id);
+
+        Config playerConfig = new Config(this, accessToken, clientId);
         mPlayer = Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
             @Override
             public void onInitialized(Player player) {

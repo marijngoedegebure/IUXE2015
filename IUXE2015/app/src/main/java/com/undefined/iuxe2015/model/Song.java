@@ -1,24 +1,40 @@
 package com.undefined.iuxe2015.model;
 
+import com.google.gson.annotations.SerializedName;
+import com.undefined.iuxe2015.model.json.QueryAlbum;
+import com.undefined.iuxe2015.model.json.QueryArtist;
+
+import java.util.ArrayList;
+
 /**
  * Created by Jan-Willem on 1-4-2015.
  */
 public class Song {
+    @SerializedName("id")
     private String id;
-    private String genre;
-    private String title;
-    private String artist;
+
+    @SerializedName("name")
+    private String name;
+
+    @SerializedName("uri")
     private String uri;
-    private int duration;
-    private int name;
+
+    @SerializedName("duration_ms")
+    private long duration_ms;
+
+    @SerializedName("album")
+    private ArrayList<QueryAlbum> album;
+
+    @SerializedName("artist")
+    private ArrayList<QueryArtist> artist;
 
     //TODO remove constructor or reove with more advanced one?
-    public Song(String title) {
-        this.title = title;
+    public Song(String name) {
+        this.name = name;
     }
 
     public String getTitle() {
-        return title;
+        return name;
     }
 
     public String getId() {
