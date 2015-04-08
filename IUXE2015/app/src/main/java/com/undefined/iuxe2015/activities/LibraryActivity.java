@@ -1,14 +1,16 @@
-package com.undefined.iuxe2015;
+package com.undefined.iuxe2015.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.undefined.iuxe2015.MumoActivity;
+import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.fragments.LibraryFragment;
 
 
-public class LibraryActivity extends ActionBarActivity {
+public class LibraryActivity extends MumoActivity {
 
     private Toast t;
 

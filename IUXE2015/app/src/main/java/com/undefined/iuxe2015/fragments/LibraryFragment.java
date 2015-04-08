@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.List;
 /**
  * Created by Jan-Willem on 1-4-2015.
  */
-public class LibraryFragment extends Fragment {
+public class LibraryFragment extends MumoFragment {
 
     public LibraryFragment() {
     }

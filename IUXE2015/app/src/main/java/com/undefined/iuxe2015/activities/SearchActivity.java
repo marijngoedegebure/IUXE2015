@@ -1,16 +1,7 @@
-package com.undefined.iuxe2015;
+package com.undefined.iuxe2015.activities;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 import android.content.Intent;
 
 import com.spotify.sdk.android.authentication.AuthenticationClient;
@@ -22,10 +13,12 @@ import com.spotify.sdk.android.player.ConnectionStateCallback;
 import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
+import com.undefined.iuxe2015.MumoActivity;
+import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.fragments.SearchFragment;
 
 
-public class SearchActivity extends ActionBarActivity implements
+public class SearchActivity extends MumoActivity implements
         PlayerNotificationCallback, ConnectionStateCallback {
 
     // Spotify client id
