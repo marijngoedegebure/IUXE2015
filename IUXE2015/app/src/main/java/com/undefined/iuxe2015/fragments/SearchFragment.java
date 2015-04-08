@@ -14,8 +14,10 @@ import android.widget.ListView;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.adapters.SongSearchAdapter;
 import com.undefined.iuxe2015.model.Song;
+import com.undefined.iuxe2015.utils.SearchFetcher;
 
 import java.util.ArrayList;
+
 
 /**
  * Created by Jan-Willem on 1-4-2015.
@@ -27,6 +29,8 @@ public class SearchFragment extends Fragment {
 
     private ListView searchList;
     private SongSearchAdapter adapter;
+
+    private String currentInput = "";
 
     public SearchFragment() {
     }
@@ -64,7 +68,7 @@ public class SearchFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                currentInput = s.toString();
             }
 
             @Override
@@ -77,6 +81,8 @@ public class SearchFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //TODO search, also maybe listen to text changes in input? And maybe a loading spinner?
+                SearchFetcher fetcher = new SearchFetcher();
+                fetcher.execute();
             }
         });
 
@@ -84,5 +90,4 @@ public class SearchFragment extends Fragment {
 
         return rootView;
     }
-
 }

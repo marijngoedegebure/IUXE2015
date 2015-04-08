@@ -34,4 +34,5 @@ dependencies {
 
     // This library handles music playback
     compile 'com.spotify.sdk:spotify-player:1.0.0-beta9@aar'
+    compile 'com.google.code.gson:gson:2.2.4'
 }
