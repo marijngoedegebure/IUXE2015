@@ -11,7 +11,7 @@ import android.util.Log;
 public class MumoDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "mumo.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     public static final String TABLE_RATINGS = "ratings";
     public static final String RATINGS_COLUMN_ID = "_id_rating";
@@ -28,7 +28,7 @@ public class MumoDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE_RATINGS = "create table "
             + TABLE_RATINGS + "( "
             + RATINGS_COLUMN_ID + " integer primary key autoincrement, "
-            + RATINGS_COLUMN_ID_SONG + " integer, "
+            + RATINGS_COLUMN_ID_SONG + " text not null, "
             + RATINGS_COLUMN_RATING + " integer, "
             + RATINGS_COLUMN_NOTE + " text not null);";
 

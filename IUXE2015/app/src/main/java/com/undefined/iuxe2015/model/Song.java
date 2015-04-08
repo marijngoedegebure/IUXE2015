@@ -4,7 +4,7 @@ package com.undefined.iuxe2015.model;
  * Created by Jan-Willem on 1-4-2015.
  */
 public class Song {
-    private int id;
+    private String id;
     private String genre;
     private String title;
     private String artist;
@@ -21,7 +21,7 @@ public class Song {
         return title;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 }

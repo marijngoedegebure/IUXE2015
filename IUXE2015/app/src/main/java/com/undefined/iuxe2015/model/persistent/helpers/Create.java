@@ -12,7 +12,7 @@ import com.undefined.iuxe2015.model.Rating;
  */
 public class Create {
 
-    public static Rating rating(SQLiteDatabase database, long songId, int rating, String note) {
+    public static Rating rating(SQLiteDatabase database, String songId, int rating, String note) {
         ContentValues values = new ContentValues();
         values.put(MumoDbHelper.RATINGS_COLUMN_ID_SONG, songId);
         values.put(MumoDbHelper.RATINGS_COLUMN_RATING, rating);

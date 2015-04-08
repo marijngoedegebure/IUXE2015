@@ -5,7 +5,7 @@ package com.undefined.iuxe2015.model;
  */
 public class Rating {
     private int id;
-    private int songId;
+    private String songId;
     private int rating;
     private String note;
 
@@ -13,7 +13,7 @@ public class Rating {
         this.id = id;
     }
 
-    public void setSongId(int songId) {
+    public void setSongId(String songId) {
         this.songId = songId;
     }
 
@@ -29,7 +29,7 @@ public class Rating {
         return id;
     }
 
-    public int getSongId() {
+    public String getSongId() {
         return songId;
     }
 
