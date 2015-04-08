@@ -1,17 +1,18 @@
-package com.undefined.iuxe2015;
+package com.undefined.iuxe2015.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import android.content.Intent;
+
+import com.undefined.iuxe2015.MumoActivity;
+import com.undefined.iuxe2015.R;
 
 
-public class HubActivity extends ActionBarActivity {
+public class HubActivity extends MumoActivity {
 
     private Toast t;
 

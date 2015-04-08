@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.adapters.SongSearchAdapter;
 import com.undefined.iuxe2015.model.Song;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 /**
  * Created by Jan-Willem on 1-4-2015.
  */
-public class SearchFragment extends Fragment {
+public class SearchFragment extends MumoFragment {
 
     private EditText input;
     private Button searchBtn;

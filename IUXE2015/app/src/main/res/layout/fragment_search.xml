@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.undefined.iuxe2015.SearchActivity$PlaceholderFragment">
+    tools:context="com.undefined.iuxe2015.activities.SearchActivity$PlaceholderFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
