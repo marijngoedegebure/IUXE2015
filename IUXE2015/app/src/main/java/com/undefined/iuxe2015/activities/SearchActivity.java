@@ -21,10 +21,13 @@ import com.undefined.iuxe2015.fragments.SearchFragment;
 public class SearchActivity extends MumoActivity implements
         PlayerNotificationCallback, ConnectionStateCallback {
 
-    // TODO: Replace with your client ID
+    // Spotify client id
     private static final String CLIENT_ID = "b62cce1d0d804fbfa1db66540a8018e4";
-    // TODO: Replace with your redirect URI
+    // Spotify call back url
     private static final String REDIRECT_URI = "yourcustomprotocol://callback";
+
+    // Spotify static Access Token
+    String SPOTIFY_ACCESS_TOKEN = "BQB0cVMHxoWSDZrFoXfxgnRlTpMEQJJFw2f-OqATyPH4uQfKbc9tFRvqD6MwFqeF316qpWTEqlWos0WsSvQ5R2O_QTQhmw1_OXPbaCMy8tyVHrAaw7LjnjkIH-M1V1pbKx-jkW9DNJmdFOq3rowSvDYIGDpD-vKrpgA9YYU";
 
     // Request code that will be used to verify if the result comes from correct activity
     // Can be any integer
@@ -40,39 +43,21 @@ public class SearchActivity extends MumoActivity implements
                     .add(R.id.container, new SearchFragment())
                     .commit();
         }
-        AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID,
-                AuthenticationResponse.Type.TOKEN,
-                REDIRECT_URI);
-        builder.setScopes(new String[]{"user-read-private", "streaming"});
-        AuthenticationRequest request = builder.build();
 
-        AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-
-        // Check if result comes from the correct activity
-        if (requestCode == REQUEST_CODE) {
-            AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
-            if (response.getType() == AuthenticationResponse.Type.TOKEN) {
-                Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
-                mPlayer = Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
-                    @Override
-                    public void onInitialized(Player player) {
-                        mPlayer.addConnectionStateCallback(SearchActivity.this);
-                        mPlayer.addPlayerNotificationCallback(SearchActivity.this);
-                        mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
-                    }
-
-                    @Override
-                    public void onError(Throwable throwable) {
-                        Log.e("SearchActivity", "Could not initialize player: " + throwable.getMessage());
-                    }
-                });
+        Config playerConfig = new Config(this, SPOTIFY_ACCESS_TOKEN, CLIENT_ID);
+        mPlayer = Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
+            @Override
+            public void onInitialized(Player player) {
+                mPlayer.addConnectionStateCallback(SearchActivity.this);
+                mPlayer.addPlayerNotificationCallback(SearchActivity.this);
+                mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
             }
-        }
+
+            @Override
+            public void onError(Throwable throwable) {
+                Log.e("SearchActivity", "Could not initialize player: " + throwable.getMessage());
+            }
+        });
     }
 
     @Override
