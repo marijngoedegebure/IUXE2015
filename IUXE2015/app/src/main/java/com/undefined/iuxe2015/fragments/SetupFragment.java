@@ -2,6 +2,7 @@ package com.undefined.iuxe2015.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,11 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.spotify.sdk.android.authentication.AuthenticationClient;
+import com.spotify.sdk.android.authentication.AuthenticationResponse;
+import com.spotify.sdk.android.player.Config;
+import com.spotify.sdk.android.player.Player;
+import com.spotify.sdk.android.player.Spotify;
 import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.HubActivity;
@@ -55,12 +61,16 @@ public class SetupFragment extends MumoFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //TODO let the enablement of the continue button be dependant on Spotify being enabled, logged in and ready to go.
+
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startHub();
             }
         });
+
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,7 +1,11 @@
 package com.undefined.iuxe2015;
 
 import android.app.Application;
+import android.util.Log;
 
+import com.spotify.sdk.android.player.Config;
+import com.spotify.sdk.android.player.Player;
+import com.spotify.sdk.android.player.Spotify;
 import com.undefined.iuxe2015.model.persistent.MumoDataSource;
 
 /**
@@ -9,7 +13,7 @@ import com.undefined.iuxe2015.model.persistent.MumoDataSource;
  */
 public class MumoApplication extends Application {
 
-    MumoDataSource data;
+    private MumoDataSource data;
 
     @Override
     public void onCreate() {
