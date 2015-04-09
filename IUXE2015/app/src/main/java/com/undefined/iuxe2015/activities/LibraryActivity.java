@@ -12,8 +12,6 @@ import com.undefined.iuxe2015.fragments.LibraryFragment;
 
 public class LibraryActivity extends MumoActivity {
 
-    private Toast t;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +30,6 @@ public class LibraryActivity extends MumoActivity {
                 //TODO start Help Overlay
                 break;
         }
-    }
-
-    private void toast(String message) {
-        if (t == null)
-            t = Toast.makeText(this, message, Toast.LENGTH_SHORT);
-        t.setText(message);
-        t.show();
     }
 }
 

@@ -23,4 +23,8 @@ public enum RatingType {
         //TODO: parse to rating system of  'this'
         return rating;
     }
+
+    public static RatingType getDefault(){
+        return BINARY;
+    }
 }

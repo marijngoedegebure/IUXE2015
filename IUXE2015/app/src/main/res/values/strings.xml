@@ -1,9 +1,3 @@
 <resources>
-    <string name="app_name">Mumo</string>
-    <string name="hub_library">Music</string>
-    <string name="hub_search">Search</string>
-    <string name="hub_help">Help</string>
-    <string name="title_activity_search">Search</string>
-    <string name="edit_message">Search</string>
-    <string name="button_send">Search</string>
+    <string name="app_name" translatable="false">Mumo</string>
 </resources>

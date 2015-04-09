@@ -1,0 +1,5 @@
+<resources>
+    <string name="title_activity_search">Search music</string>
+    <string name="edit_message">Search</string>
+    <string name="button_send">Search</string>
+</resources>

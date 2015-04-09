@@ -21,24 +21,30 @@ public class MumoApplication extends Application {
     public void onLowMemory() {
         super.onLowMemory();
 
-        data.close();
-        data = null;
+        if (data != null) {
+            data.close();
+            data = null;
+        }
     }
 
     @Override
     public void onTrimMemory(int level) {
         super.onTrimMemory(level);
 
-        data.close();
-        data = null;
+        if (data != null) {
+            data.close();
+            data = null;
+        }
     }
 
     @Override
     public void onTerminate() {
         super.onTerminate();
 
-        data.close();
-        data = null;
+        if (data != null) {
+            data.close();
+            data = null;
+        }
     }
 
     public MumoDataSource getData() {
