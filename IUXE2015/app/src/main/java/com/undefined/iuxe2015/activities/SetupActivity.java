@@ -59,7 +59,7 @@ public class SetupActivity extends MumoActivity implements
                             mPlayer.addConnectionStateCallback(SetupActivity.this);
                             mPlayer.addPlayerNotificationCallback(SetupActivity.this);
                             mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
-                            Log.e("SetupActivity", "initialized player: ");
+                            Log.e("SetupActivity", "initialized player");
                         }
 
                         @Override
@@ -95,17 +95,15 @@ public class SetupActivity extends MumoActivity implements
     public void onLoginFailed(Throwable error) {
         if(error ==null || error.getLocalizedMessage() == null){
             Log.d("SetupActivity", "Login failed: unknown reason");
-        }else{
+        }else {
             String message = error.getLocalizedMessage();
-            Log.d("SetupActivity", "Login failed: " +  message);
-            if(message.equals("Login to Spotify failed because of invalid credentials")){
+            Log.d("SetupActivity", "Login failed: " + message);
+            if (message.equals("Login to Spotify failed because of invalid credentials")) {
                 Log.d("SetupActivity", "- Of course those credentials don't match stupid -.-");
-            }else if(message.equals("The operation requires a Spotify Premium account")){
+            } else if (message.equals("The operation requires a Spotify Premium account")) {
                 Log.d("SetupActivity", "- Hmm, no premium eh?");
             }
         }
-
-
     }
 
     @Override
