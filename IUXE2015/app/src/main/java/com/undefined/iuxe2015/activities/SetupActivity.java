@@ -2,6 +2,7 @@ package com.undefined.iuxe2015.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 
 import com.spotify.sdk.android.authentication.AuthenticationClient;
@@ -14,10 +15,11 @@ import com.spotify.sdk.android.player.PlayerState;
 import com.spotify.sdk.android.player.Spotify;
 import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.R;
+import com.undefined.iuxe2015.fragments.SetupFragment;
 import com.undefined.iuxe2015.tools.SpotifyTool;
 
 public class SetupActivity extends MumoActivity implements
-        PlayerNotificationCallback, ConnectionStateCallback {
+        PlayerNotificationCallback {
 
     // Request code that will be used to verify if the result comes from correct activity
     // Can be any integer
@@ -25,6 +27,8 @@ public class SetupActivity extends MumoActivity implements
 
     //TODO remove
     private Player mPlayer;
+
+    private SetupFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class SetupActivity extends MumoActivity implements
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        fragment = (SetupFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_setup);
     }
 
     @Override
@@ -56,21 +61,23 @@ public class SetupActivity extends MumoActivity implements
                     mPlayer = Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
                         @Override
                         public void onInitialized(Player player) {
-                            mPlayer.addConnectionStateCallback(SetupActivity.this);
+                            mPlayer.addConnectionStateCallback(fragment);
                             mPlayer.addPlayerNotificationCallback(SetupActivity.this);
-                            mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
-                            Log.e("SetupActivity", "initialized player");
+                            //mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
+                            Log.d("SetupActivity", "initialized player");
                         }
 
                         @Override
                         public void onError(Throwable throwable) {
                             Log.e("SetupActivity", "Could not initialize player: " + throwable.getMessage());
+                            fragment.onLoginFailed(throwable);
                         }
                     });
                     break;
 
                 // Auth flow returned an error
                 case ERROR:
+                    fragment.onLoginFailed(null);
                     // Handle error response
                     break;
 
@@ -79,41 +86,6 @@ public class SetupActivity extends MumoActivity implements
                     // Handle other cases
             }
         }
-    }
-
-    @Override
-    public void onLoggedIn() {
-        Log.d("SetupActivity", "User logged in");
-    }
-
-    @Override
-    public void onLoggedOut() {
-        Log.d("SetupActivity", "User logged out");
-    }
-
-    @Override
-    public void onLoginFailed(Throwable error) {
-        if(error ==null || error.getLocalizedMessage() == null){
-            Log.d("SetupActivity", "Login failed: unknown reason");
-        }else {
-            String message = error.getLocalizedMessage();
-            Log.d("SetupActivity", "Login failed: " + message);
-            if (message.equals("Login to Spotify failed because of invalid credentials")) {
-                Log.d("SetupActivity", "- Of course those credentials don't match stupid -.-");
-            } else if (message.equals("The operation requires a Spotify Premium account")) {
-                Log.d("SetupActivity", "- Hmm, no premium eh?");
-            }
-        }
-    }
-
-    @Override
-    public void onTemporaryError() {
-        Log.d("SetupActivity", "Temporary error occurred");
-    }
-
-    @Override
-    public void onConnectionMessage(String message) {
-        Log.d("SetupActivity", "Received connection message: " + message);
     }
 
     @Override

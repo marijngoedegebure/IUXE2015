@@ -10,11 +10,7 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.spotify.sdk.android.authentication.AuthenticationClient;
-import com.spotify.sdk.android.authentication.AuthenticationResponse;
-import com.spotify.sdk.android.player.Config;
-import com.spotify.sdk.android.player.Player;
-import com.spotify.sdk.android.player.Spotify;
+import com.spotify.sdk.android.player.ConnectionStateCallback;
 import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.HubActivity;
@@ -28,7 +24,7 @@ import butterknife.InjectView;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class SetupFragment extends MumoFragment {
+public class SetupFragment extends MumoFragment implements ConnectionStateCallback {
 
     @InjectView(R.id.setup_btn_continue)
     Button btnContinue;
@@ -143,5 +139,49 @@ public class SetupFragment extends MumoFragment {
 
     private void startHub() {
         startActivity(new Intent(getActivity(), HubActivity.class));
+    }
+
+    @Override
+    public void onLoggedIn() {
+        toast("onLoggedIn");
+        Log.d("Setup", "onLoggedIn");
+        //TODO enable continue button and adjust UI
+    }
+
+    @Override
+    public void onLoggedOut() {
+        toast("onLoggedOut");
+        Log.d("Setup", "onLoggedOut");
+        //TODO disable continue button and adjust UI
+    }
+
+    @Override
+    public void onLoginFailed(Throwable throwable) {
+        String message = throwable == null || throwable.getLocalizedMessage() == null ? "null" : throwable.getLocalizedMessage();
+        toast("onLoginFailed: " + message);
+        Log.d("Setup", "onLoginFailed: " + message);
+
+        if (message.equals("Login to Spotify failed because of invalid credentials")) {
+            Log.d("Setup", "- Of course those credentials don't match stupid -.-");
+        } else if (message.equals("The operation requires a Spotify Premium account")) {
+            Log.d("Setup", "- Hmm, no premium eh?");
+        }
+
+        //TODO disable continue button and adjust UI
+
+    }
+
+    @Override
+    public void onTemporaryError() {
+        toast("onTemporaryError");
+        Log.d("Setup", "onTemporaryError");
+        //TODO disable continue button? and adjust UI
+    }
+
+    @Override
+    public void onConnectionMessage(String s) {
+        toast("onConnectionMessage: " + s);
+        Log.d("Setup", "onConnectionMessage: " + s);
+        //TODO adjust UI?
     }
 }
