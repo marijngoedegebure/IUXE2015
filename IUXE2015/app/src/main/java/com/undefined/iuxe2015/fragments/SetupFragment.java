@@ -152,7 +152,7 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
     public void onLoggedOut() {
         toast("onLoggedOut");
         Log.d("Setup", "onLoggedOut");
-        //TODO disable continue button and adjust UI
+        //TODO disable continue button and adjust UI 'please hand the device to one of the developers'
     }
 
     @Override
@@ -167,7 +167,7 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
             Log.d("Setup", "- Hmm, no premium eh?");
         }
 
-        //TODO disable continue button and adjust UI
+        //TODO disable continue button and adjust UI 'please hand the device to one of the developers'
 
     }
 
@@ -175,7 +175,7 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
     public void onTemporaryError() {
         toast("onTemporaryError");
         Log.d("Setup", "onTemporaryError");
-        //TODO disable continue button? and adjust UI
+        //TODO disable continue button? and adjust UI 'please hand the device to one of the developers'
     }
 
     @Override
