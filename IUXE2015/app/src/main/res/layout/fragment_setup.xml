@@ -8,7 +8,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/setup_wrapper_settings"
+        android:animateLayoutChanges="true"
         android:orientation="vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
@@ -32,31 +34,114 @@
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/setup_btn_continue"
+        <TextView
+            android:id="@+id/setup_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/setup_btn_continue" />
+            android:text="@string/setup_message_loading"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
+        <ScrollView
+            android:id="@+id/setup_list_btns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/setup_btn_continue_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="startHub"
+                    android:text="@string/setup_btn_continue"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/setup_btn_continue_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="startHub"
+                    android:text="@string/setup_btn_continue"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/setup_btn_continue_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="startHub"
+                    android:text="@string/setup_btn_continue"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/setup_btn_continue_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="startHub"
+                    android:text="@string/setup_btn_continue"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/setup_btn_continue_22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="startHub"
+                    android:text="@string/setup_btn_continue"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:id="@+id/setup_btn_continue_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="startHub"
+                    android:text="@string/setup_btn_continue"
+                    android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/setup_btn_continue_26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="startHub"
+                    android:text="@string/setup_btn_continue"
+                    android:textSize="26sp" />
+
+                <Button
+                    android:id="@+id/setup_btn_continue_28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="startHub"
+                    android:text="@string/setup_btn_continue"
+                    android:textSize="28sp" />
+
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/setup_wrapper_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/theme2"
         android:animateLayoutChanges="true"
+        android:background="@color/theme2"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/setup_btn_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"
             android:gravity="center"
             android:minHeight="48dp"
             android:text=""
+            android:textAllCaps="true"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <LinearLayout
@@ -64,79 +149,122 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:baselineAligned="false"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:visibility="gone">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/setup_scale"
-                    android:textStyle="bold"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@android:color/white" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                <RadioGroup
-                    android:id="@+id/setup_scale"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:checkedButton="@+id/setup_scale_big">
-
-                    <RadioButton
-                        android:id="@+id/setup_scale_big"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/setup_scale_big" />
+                        android:text="@string/setup_scale"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
 
-                    <RadioButton
-                        android:id="@+id/setup_scale_compact"
+                    <RadioGroup
+                        android:id="@+id/setup_scale"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:checkedButton="@+id/setup_scale_big">
+
+                        <RadioButton
+                            android:id="@+id/setup_scale_big"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/setup_scale_big" />
+
+                        <RadioButton
+                            android:id="@+id/setup_scale_compact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/setup_scale_compact" />
+
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/setup_scale_compact" />
+                        android:text="@string/setup_rating"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
 
-                </RadioGroup>
+                    <RadioGroup
+                        android:id="@+id/setup_rating"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:checkedButton="@+id/setup_rating_binary">
+
+                        <RadioButton
+                            android:id="@+id/setup_rating_binary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/setup_rating_binary" />
+
+                        <RadioButton
+                            android:id="@+id/setup_rating_likert"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/setup_rating_likert" />
+                    </RadioGroup>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:text="@string/setup_rating"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@android:color/white" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                <RadioGroup
-                    android:id="@+id/setup_rating"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:checkedButton="@+id/setup_rating_binary">
-
-                    <RadioButton
-                        android:id="@+id/setup_rating_binary"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/setup_rating_binary" />
+                        android:text="@string/setup_spotify"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
 
-                    <RadioButton
-                        android:id="@+id/setup_rating_likert"
+                    <Button
+                        android:id="@+id/setup_login"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/setup_rating_likert" />
-                </RadioGroup>
+                        android:text="@string/setup_login" />
+
+                    <Button
+                        android:id="@+id/setup_logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setup_logout"
+                        android:visibility="gone" />
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

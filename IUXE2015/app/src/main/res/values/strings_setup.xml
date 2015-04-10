@@ -1,7 +1,10 @@
 <resources>
     <string name="setup_header">Welcome to Mumo</string>
     <string name="setup_message">Mumo is an application designed at the TUDelft for the Course \'Intelligent User Experience Engineering\' and aims to assist individuals suffering from dementia.</string>
-    <string name="setup_btn_continue">Click here to start Mumo</string>
+    <string name="setup_message_loading">The application is currently being initialised.</string>
+    <string name="setup_message_error">Whoops!\nThe app is currently not set up correctly.\nPlease hand it to one of the creators.</string>
+    <string name="setup_help_continue">Start Mumo by clicking the button below with the smallest text you can comfortably read.</string>
+    <string name="setup_btn_continue">Start</string>
 
     <string name="setup_btn_settings">Developer Settings</string>
     <string name="setup_scale">UI scale</string>
@@ -10,4 +13,7 @@
     <string name="setup_rating">Rating System</string>
     <string name="setup_rating_binary">Binary ( - / + )</string>
     <string name="setup_rating_likert">Likert ( 1 &#8211; 7 )</string>
+    <string name="setup_spotify">Spotify</string>
+    <string name="setup_login">Login</string>
+    <string name="setup_logout">Logout</string>
 </resources>

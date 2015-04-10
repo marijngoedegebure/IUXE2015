@@ -8,15 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.spotify.sdk.android.player.ConnectionStateCallback;
 import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.HubActivity;
+import com.undefined.iuxe2015.activities.SetupActivity;
 import com.undefined.iuxe2015.model.types.RatingType;
 import com.undefined.iuxe2015.model.types.ScaleType;
 import com.undefined.iuxe2015.tools.PreferenceTool;
+import com.undefined.iuxe2015.tools.SpotifyTool;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -26,8 +29,10 @@ import butterknife.InjectView;
  */
 public class SetupFragment extends MumoFragment implements ConnectionStateCallback {
 
-    @InjectView(R.id.setup_btn_continue)
-    Button btnContinue;
+    @InjectView(R.id.setup_list_btns)
+    ScrollView listBtns;
+    @InjectView(R.id.setup_error)
+    TextView error;
     @InjectView(R.id.setup_btn_settings)
     TextView btnSettings;
     @InjectView(R.id.setup_box_settings)
@@ -36,6 +41,10 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
     RadioGroup radioScale;
     @InjectView(R.id.setup_rating)
     RadioGroup radioRating;
+    @InjectView(R.id.setup_login)
+    Button spotifyLogin;
+    @InjectView(R.id.setup_logout)
+    Button spotifyLogout;
 
     public SetupFragment() {
     }
@@ -57,15 +66,6 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        //TODO let the enablement of the continue button be dependant on Spotify being enabled, logged in and ready to go.
-
-        btnContinue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startHub();
-            }
-        });
 
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,34 +125,34 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
                 }
             }
         });
-    }
 
-    private void showSetup(boolean show) {
-        if (show) {
-            boxSettings.setVisibility(View.VISIBLE);
-            btnSettings.setText(R.string.setup_btn_settings);
-        } else {
-            boxSettings.setVisibility(View.GONE);
-            btnSettings.setText("");
-        }
-    }
-
-    private void startHub() {
-        startActivity(new Intent(getActivity(), HubActivity.class));
+        spotifyLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SpotifyTool.startLogin(getActivity(), ((SetupActivity)getActivity()).REQUEST_CODE);
+            }
+        });
+        spotifyLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SpotifyTool.logout(getActivity());
+                setUiLoggedIn(false);
+            }
+        });
     }
 
     @Override
     public void onLoggedIn() {
         toast("onLoggedIn");
         Log.d("Setup", "onLoggedIn");
-        //TODO enable continue button and adjust UI
+        setUiLoggedIn(true);
     }
 
     @Override
     public void onLoggedOut() {
         toast("onLoggedOut");
         Log.d("Setup", "onLoggedOut");
-        //TODO disable continue button and adjust UI 'please hand the device to one of the developers'
+        setUiLoggedIn(false);
     }
 
     @Override
@@ -167,15 +167,17 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
             Log.d("Setup", "- Hmm, no premium eh?");
         }
 
-        //TODO disable continue button and adjust UI 'please hand the device to one of the developers'
-
+        //SpotifyTool.logout(getActivity()); //TODO re-enable and change to false DEV_BYPASS
+        setUiLoggedIn(true);
+        //TODO let the ui know which error specifically has happened
     }
 
     @Override
     public void onTemporaryError() {
         toast("onTemporaryError");
         Log.d("Setup", "onTemporaryError");
-        //TODO disable continue button? and adjust UI 'please hand the device to one of the developers'
+
+        setUiLoggedIn(false);
     }
 
     @Override
@@ -183,5 +185,30 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
         toast("onConnectionMessage: " + s);
         Log.d("Setup", "onConnectionMessage: " + s);
         //TODO adjust UI?
+    }
+
+    private void setUiLoggedIn(boolean loggedIn){
+        if(loggedIn){
+            error.setText(R.string.setup_help_continue);
+            listBtns.setVisibility(View.VISIBLE);
+            spotifyLogin.setVisibility(View.GONE);
+            spotifyLogout.setVisibility(View.VISIBLE);
+        }else{
+            error.setText(R.string.setup_message_error);
+            error.setVisibility(View.VISIBLE);
+            listBtns.setVisibility(View.GONE);
+            spotifyLogin.setVisibility(View.VISIBLE);
+            spotifyLogout.setVisibility(View.GONE);
+        }
+    }
+
+    private void showSetup(boolean show) {
+        if (show) {
+            boxSettings.setVisibility(View.VISIBLE);
+            btnSettings.setText(R.string.setup_btn_settings);
+        } else {
+            boxSettings.setVisibility(View.GONE);
+            btnSettings.setText("");
+        }
     }
 }

@@ -2,13 +2,12 @@ package com.undefined.iuxe2015.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
+import android.view.View;
 
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
 import com.spotify.sdk.android.player.Config;
-import com.spotify.sdk.android.player.ConnectionStateCallback;
 import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
@@ -16,6 +15,7 @@ import com.spotify.sdk.android.player.Spotify;
 import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.fragments.SetupFragment;
+import com.undefined.iuxe2015.tools.PreferenceTool;
 import com.undefined.iuxe2015.tools.SpotifyTool;
 
 public class SetupActivity extends MumoActivity implements
@@ -23,7 +23,7 @@ public class SetupActivity extends MumoActivity implements
 
     // Request code that will be used to verify if the result comes from correct activity
     // Can be any integer
-    private static final int REQUEST_CODE = 1337;
+    public static final int REQUEST_CODE = 1337;
 
     //TODO remove
     private Player mPlayer;
@@ -35,14 +35,33 @@ public class SetupActivity extends MumoActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
 
-        //TODO setup Spotify ONLY if needed.
-        SpotifyTool.startLogin(this, getString(R.string.client_id), getString(R.string.redirect_uri), REQUEST_CODE);
+        SpotifyTool.startLogin(this, REQUEST_CODE);
     }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         fragment = (SetupFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_setup);
+    }
+
+    public void startHub(View button) {
+        int buttonId = button.getId();
+        if (buttonId == R.id.setup_btn_continue_14) {
+            PreferenceTool.setMinimumFontSize(this, 14);
+        } else if (buttonId == R.id.setup_btn_continue_16) {
+            PreferenceTool.setMinimumFontSize(this, 16);
+        } else if (buttonId == R.id.setup_btn_continue_18) {
+            PreferenceTool.setMinimumFontSize(this, 18);
+        } else if (buttonId == R.id.setup_btn_continue_20) {
+            PreferenceTool.setMinimumFontSize(this, 20);
+        } else if (buttonId == R.id.setup_btn_continue_22) {
+            PreferenceTool.setMinimumFontSize(this, 22);
+        } else if (buttonId == R.id.setup_btn_continue_24) {
+            PreferenceTool.setMinimumFontSize(this, 24);
+        } else {
+            PreferenceTool.setMinimumFontSize(this, PreferenceTool.DEFAULT_FONTSIZE);
+        }
+        startActivity(new Intent(this, HubActivity.class));
     }
 
     @Override
