@@ -26,7 +26,7 @@ public class SetupActivity extends MumoActivity implements
     public static final int REQUEST_CODE = 1337;
 
     //TODO remove
-    private Player mPlayer;
+    public static Player mPlayer;
 
     private SetupFragment fragment;
 

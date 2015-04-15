@@ -74,8 +74,6 @@ public class SongSearchAdapter extends BaseAdapter {
         Song s = getItem(position);
         h.name.setText(s.getTitle());
 
-        Log.d("Adapter", "getView: " + s.getTitle());
-
         return convertView;
     }
 }
