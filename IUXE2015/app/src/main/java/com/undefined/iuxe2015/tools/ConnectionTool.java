@@ -23,7 +23,7 @@ public class ConnectionTool {
 
     public static void getSongsForQuery(Context c, String query, final ConnectionListener UiCallback) {
         String url = c.getString(R.string.query_url, query);
-
+        Log.d("ConnectionTool", url);
         Ion.with(c).load(url).as(QueryResult.class).setCallback(new FutureCallback<QueryResult>() {
             @Override
             public void onCompleted(Exception e, QueryResult result) {

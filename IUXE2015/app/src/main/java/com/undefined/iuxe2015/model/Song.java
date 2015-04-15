@@ -23,7 +23,7 @@ public class Song {
     private long duration_ms;
 
     @SerializedName("album")
-    private ArrayList<QueryAlbum> album;
+    private QueryAlbum album;
 
     @SerializedName("artist")
     private ArrayList<QueryArtist> artist;

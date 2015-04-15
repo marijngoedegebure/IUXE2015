@@ -13,5 +13,5 @@ public class QueryImage {
     public int width;
 
     @SerializedName("url")
-    public int url;
+    public String url;
 }

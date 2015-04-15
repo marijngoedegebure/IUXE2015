@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="query_url">"https://api.spotify.com/v1/search?%1$s&amp;type=track";</string>
+    <string name="query_url">"https://api.spotify.com/v1/search?q=%1$s&amp;type=track"</string>
 
     <string name="client_id">b62cce1d0d804fbfa1db66540a8018e4</string>
     <string name="redirect_uri">yourcustomprotocol://callback</string>
