@@ -74,12 +74,12 @@ public class Song {
         this.uri = uri;
     }
 
-    public long getDuration_ms() {
+    public long getDurationMs() {
         return duration_ms;
     }
 
-    public void setDuration_ms(long duration_ms) {
-        this.duration_ms = duration_ms;
+    public void setDurationMs(long durationMs) {
+        this.duration_ms = durationMs;
     }
 
     public Album getAlbum() {
