@@ -6,7 +6,7 @@ import android.util.Log;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.undefined.iuxe2015.R;
-import com.undefined.iuxe2015.model.json.QueryResult;
+import com.undefined.iuxe2015.model.QueryResult;
 
 /**
  * Created by Jan-Willem on 8-4-2015.

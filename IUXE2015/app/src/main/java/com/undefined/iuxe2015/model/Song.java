@@ -1,8 +1,6 @@
 package com.undefined.iuxe2015.model;
 
 import com.google.gson.annotations.SerializedName;
-import com.undefined.iuxe2015.model.json.QueryAlbum;
-import com.undefined.iuxe2015.model.json.QueryArtist;
 
 import java.util.ArrayList;
 
@@ -11,7 +9,8 @@ import java.util.ArrayList;
  */
 public class Song {
 
-    private int dbId;
+    private int _id;
+    private int _id_album;
 
     @SerializedName("id")
     private String id;
@@ -26,21 +25,78 @@ public class Song {
     private long duration_ms;
 
     @SerializedName("album")
-    private QueryAlbum album;
+    private Album album;
 
-    @SerializedName("artist")
-    private ArrayList<QueryArtist> artist;
+    @SerializedName("artists")
+    private ArrayList<Artist> artists;
 
-    //TODO remove constructor or reove with more advanced one?
-    public Song(String name) {
-        this.name = name;
+    public int get_id() {
+        return _id;
     }
 
-    public String getTitle() {
-        return name;
+    public void set_id(int id) {
+        this._id = id;
+    }
+
+    public int get_id_album() {
+        return _id_album;
+    }
+
+    public void set_id_album(int albumId) {
+        this._id_album = albumId;
     }
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        if(name == null)
+            name = "";
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUri() {
+        if(uri == null)
+            uri = "";
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public long getDuration_ms() {
+        return duration_ms;
+    }
+
+    public void setDuration_ms(long duration_ms) {
+        this.duration_ms = duration_ms;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+
+    public ArrayList<Artist> getArtists() {
+        if(artists == null)
+            artists = new ArrayList<>();
+        return artists;
+    }
+
+    public void setArtists(ArrayList<Artist> artists) {
+        this.artists = artists;
     }
 }

@@ -5,12 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.google.gson.annotations.SerializedName;
-import com.undefined.iuxe2015.model.json.QueryAlbum;
-import com.undefined.iuxe2015.model.json.QueryArtist;
-
-import java.util.ArrayList;
-
 /**
  * Created by Jan-Willem on 8-4-2015.
  */
@@ -55,11 +49,13 @@ public class MumoDbHelper extends SQLiteOpenHelper {
             MumoDbHelper.ARTISTS_COLUMN_NAME};
 
     public static final String TABLE_ALBUMS = "albums";
-    public static final String ALBUMS_COLUMN_ID = "_id_album";
+    public static final String ALBUMS_COLUMN_ID = "_id";
+    public static final String ALBUMS_COLUMN_ID_ALBUM = "_id_album";
     public static final String ALBUMS_COLUMN_ID_SONG = "_id_song";
     public static final String ALBUMS_COLUMN_NAME = "name";
     public static final String[] allAlbumColumns = {
             MumoDbHelper.ALBUMS_COLUMN_ID,
+            MumoDbHelper.ALBUMS_COLUMN_ID_ALBUM,
             MumoDbHelper.ALBUMS_COLUMN_ID_SONG,
             MumoDbHelper.ALBUMS_COLUMN_NAME};
 
@@ -93,6 +89,27 @@ public class MumoDbHelper extends SQLiteOpenHelper {
             + SONGS_COLUMN_URI + " text not null, "
             + SONGS_COLUMN_DURATION_MS + " integer);";
 
+    private static final String DATABASE_CREATE_ARTISTS = "create table "
+            + TABLE_ARTISTS + "( "
+            + ARTISTS_COLUMN_ID + " integer primary key autoincrement, "
+            + ARTISTS_COLUMN_ID_SONG + " integer, "
+            + ARTISTS_COLUMN_NAME + " text not null);";
+
+    private static final String DATABASE_CREATE_ALBUMS = "create table "
+            + TABLE_ALBUMS + "( "
+            + ALBUMS_COLUMN_ID + " integer primary key autoincrement, "
+            + ALBUMS_COLUMN_ID_ALBUM + " integer, "
+            + ALBUMS_COLUMN_ID_SONG + " integer, "
+            + ALBUMS_COLUMN_NAME + " text not null);";
+
+    private static final String DATABASE_CREATE_IMAGES = "create table "
+            + TABLE_IMAGES + "( "
+            + IMAGES_COLUMN_ID + " integer primary key autoincrement, "
+            + IMAGES_COLUMN_ID_ALBUM + " text not null, "
+            + IMAGES_COLUMN_WIDTH + " integer, "
+            + IMAGES_COLUMN_HEIGHT + " integer, "
+            + IMAGES_COLUMN_URL + " text not null);";
+
     public MumoDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -101,11 +118,17 @@ public class MumoDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase database) {
         database.execSQL(DATABASE_CREATE_RATINGS);
         database.execSQL(DATABASE_CREATE_SONGS);
+        database.execSQL(DATABASE_CREATE_ARTISTS);
+        database.execSQL(DATABASE_CREATE_ALBUMS);
+        database.execSQL(DATABASE_CREATE_IMAGES);
     }
 
     public void clear(SQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RATINGS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SONGS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ARTISTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ALBUMS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_IMAGES);
         onCreate(db);
     }
 

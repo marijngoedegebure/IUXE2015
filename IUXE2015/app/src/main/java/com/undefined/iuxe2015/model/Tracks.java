@@ -1,4 +1,4 @@
-package com.undefined.iuxe2015.model.json;
+package com.undefined.iuxe2015.model;
 
 import com.google.gson.annotations.SerializedName;
 import com.undefined.iuxe2015.model.Song;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Jan-Willem on 8-4-2015.
  */
-public class QueryTracks {
+public class Tracks {
     @SerializedName("href")
     public String href;
     @SerializedName("items")

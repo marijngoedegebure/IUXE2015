@@ -32,12 +32,12 @@
             android:layout_height="wrap_content"
             android:text="@string/button_send" />
 
-
     </LinearLayout>
 
     <ListView
         android:id="@+id/search_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/listitem_search" />
 
 </LinearLayout>

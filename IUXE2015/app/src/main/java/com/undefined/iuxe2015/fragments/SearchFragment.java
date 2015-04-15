@@ -1,7 +1,6 @@
 package com.undefined.iuxe2015.fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -16,7 +15,7 @@ import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.adapters.SongSearchAdapter;
 import com.undefined.iuxe2015.model.Song;
-import com.undefined.iuxe2015.model.json.QueryResult;
+import com.undefined.iuxe2015.model.QueryResult;
 import com.undefined.iuxe2015.tools.ConnectionTool;
 
 import java.util.ArrayList;
