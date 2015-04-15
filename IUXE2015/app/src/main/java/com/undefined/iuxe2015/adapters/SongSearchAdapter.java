@@ -1,6 +1,7 @@
 package com.undefined.iuxe2015.adapters;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +23,13 @@ public class SongSearchAdapter extends BaseAdapter {
 
     public SongSearchAdapter(Activity a, ArrayList<Song> initSongs) {
         inflater = a.getLayoutInflater();
-        songs = new ArrayList<Song>();
+        songs = new ArrayList<>();
         refresh(initSongs);
     }
 
     public void refresh(ArrayList<Song> _songs) {
         if (_songs == null)
-            _songs = new ArrayList<Song>();
+            _songs = new ArrayList<>();
 
         songs.clear();
         songs.addAll(_songs);
@@ -36,6 +37,7 @@ public class SongSearchAdapter extends BaseAdapter {
         //TODO sort?
 
         notifyDataSetChanged();
+        Log.d("Adapter", "new Size: " + songs.size());
         //Or, when the list position should be set to 0:
         //notifyDataSetInvalidated();
     }
@@ -71,6 +73,8 @@ public class SongSearchAdapter extends BaseAdapter {
         ViewHolder h = (ViewHolder) convertView.getTag();
         Song s = getItem(position);
         h.name.setText(s.getTitle());
+
+        Log.d("Adapter", "getView: " + s.getTitle());
 
         return convertView;
     }
