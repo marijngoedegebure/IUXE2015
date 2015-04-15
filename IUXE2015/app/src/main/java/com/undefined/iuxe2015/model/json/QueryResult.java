@@ -8,4 +8,8 @@ import com.google.gson.annotations.SerializedName;
 public class QueryResult {
     @SerializedName("tracks")
     public QueryTracks tracks;
+
+    public boolean hasTracks(){
+        return tracks !=null && tracks.hasSongs();
+    }
 }

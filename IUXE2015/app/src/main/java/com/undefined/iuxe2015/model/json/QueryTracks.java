@@ -13,4 +13,8 @@ public class QueryTracks {
     public String href;
     @SerializedName("items")
     public ArrayList<Song> items;
+
+    public boolean hasSongs() {
+        return items != null && items.size() > 0;
+    }
 }
