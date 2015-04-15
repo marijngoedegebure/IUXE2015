@@ -11,7 +11,7 @@ import android.util.Log;
 public class MumoDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "mumo.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     public static final String TABLE_RATINGS = "ratings";
     public static final String RATINGS_COLUMN_ID = "_id";
@@ -74,6 +74,17 @@ public class MumoDbHelper extends SQLiteOpenHelper {
             MumoDbHelper.IMAGES_COLUMN_WIDTH,
             MumoDbHelper.IMAGES_COLUMN_URL};
 
+    public static final String TABLE_STAKEHOLDERS = "stakeholders";
+    public static final String STAKEHOLDERS_COLUMN_ID = "_id";
+    public static final String STAKEHOLDERS_COLUMN_NAME = "name";
+    public static final String STAKEHOLDERS_COLUMN_AGE = "age";
+    public static final String STAKEHOLDERS_COLUMN_PREF_FONT_SIZE = "pref_font_size";
+    public static final String[] allStakeholderColumns = {
+            MumoDbHelper.STAKEHOLDERS_COLUMN_ID,
+            MumoDbHelper.STAKEHOLDERS_COLUMN_NAME,
+            MumoDbHelper.STAKEHOLDERS_COLUMN_AGE,
+            MumoDbHelper.STAKEHOLDERS_COLUMN_PREF_FONT_SIZE};
+
     // Database creation sql statement
     private static final String DATABASE_CREATE_RATINGS = "create table "
             + TABLE_RATINGS + "( "
@@ -113,6 +124,13 @@ public class MumoDbHelper extends SQLiteOpenHelper {
             + IMAGES_COLUMN_WIDTH + " integer, "
             + IMAGES_COLUMN_URL + " text not null);";
 
+    private static final String DATABASE_CREATE_STAKEHOLDERS = "create table "
+            + TABLE_STAKEHOLDERS + "( "
+            + STAKEHOLDERS_COLUMN_ID + " integer primary key autoincrement, "
+            + STAKEHOLDERS_COLUMN_NAME + " text not null, "
+            + STAKEHOLDERS_COLUMN_AGE + " integer, "
+            + STAKEHOLDERS_COLUMN_PREF_FONT_SIZE + " integer);";
+
     public MumoDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -124,6 +142,7 @@ public class MumoDbHelper extends SQLiteOpenHelper {
         database.execSQL(DATABASE_CREATE_ARTISTS);
         database.execSQL(DATABASE_CREATE_ALBUMS);
         database.execSQL(DATABASE_CREATE_IMAGES);
+        database.execSQL(DATABASE_CREATE_STAKEHOLDERS);
     }
 
     public void clear(SQLiteDatabase db) {
@@ -132,6 +151,7 @@ public class MumoDbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ARTISTS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ALBUMS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_IMAGES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_STAKEHOLDERS);
         onCreate(db);
     }
 

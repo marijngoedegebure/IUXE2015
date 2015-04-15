@@ -8,6 +8,7 @@ import com.undefined.iuxe2015.model.Artist;
 import com.undefined.iuxe2015.model.Image;
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
+import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.model.persistent.MumoDbHelper;
 
 import java.util.ArrayList;
@@ -124,5 +125,22 @@ public class ListAll {
             cursor.close();
         }
         return images;
+    }
+
+    public static ArrayList<Stakeholder> stakeholders(SQLiteDatabase database) {
+        ArrayList<Stakeholder> stakeholders = new ArrayList<>();
+        if (database.isOpen()) {
+            Cursor cursor = database.query(MumoDbHelper.TABLE_STAKEHOLDERS, MumoDbHelper.allStakeholderColumns,
+                    null, null, null, null, null);
+
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                stakeholders.add(CursorTo.stakeholder(cursor, false));
+                cursor.moveToNext();
+            }
+            // make sure to close the cursor
+            cursor.close();
+        }
+        return stakeholders;
     }
 }

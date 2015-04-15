@@ -4,6 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.undefined.iuxe2015.model.Artist;
 import com.undefined.iuxe2015.model.Song;
+import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.model.persistent.MumoDbHelper;
 import com.undefined.iuxe2015.model.Rating;
 
@@ -37,6 +38,11 @@ public class Delete {
 
     public static int imagesOfAlbumOfSong(SQLiteDatabase database, Song song) {
         return delete(database, MumoDbHelper.TABLE_IMAGES, MumoDbHelper.IMAGES_COLUMN_ID_ALBUM, song.get_id_album());
+    }
+
+    public static int stakeholder(SQLiteDatabase database, Stakeholder stakeholder) {
+        //TODO remove all references to stakeholder: songs, albums, artists, images, etc
+        return delete(database, MumoDbHelper.TABLE_STAKEHOLDERS, MumoDbHelper.STAKEHOLDERS_COLUMN_ID, stakeholder.get_id());
     }
 
 }

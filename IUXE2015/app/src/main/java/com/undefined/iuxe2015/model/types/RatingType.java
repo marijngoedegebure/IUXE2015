@@ -18,13 +18,20 @@ public enum RatingType {
         return options;
     }
 
-    public int parseRating(int rating){
-        //ratings is in <0, 100>
-        //TODO: parse to rating system of  'this'
-        return rating;
+    public int parseRating(int rating) {
+        //ratings is in <1, 100>
+
+        switch (this) {
+            case BINARY:
+                return rating > 50 ? 100 : 1;
+            case LIKERT:
+                return rating; //TODO: parse to rating system of  'likert'
+            default:
+                return rating;
+        }
     }
 
-    public static RatingType getDefault(){
+    public static RatingType getDefault() {
         return BINARY;
     }
 }

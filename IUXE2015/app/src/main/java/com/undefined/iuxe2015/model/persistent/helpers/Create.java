@@ -9,6 +9,7 @@ import com.undefined.iuxe2015.model.Artist;
 import com.undefined.iuxe2015.model.Image;
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
+import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.model.persistent.MumoDbHelper;
 
 /**
@@ -87,5 +88,18 @@ public class Create {
                 null, null, null, null);
         cursor.moveToFirst();
         return CursorTo.image(cursor, true);
+    }
+
+    public static Stakeholder stakeholder(SQLiteDatabase database, String name, int age) {
+        ContentValues values = new ContentValues();
+        values.put(MumoDbHelper.STAKEHOLDERS_COLUMN_NAME, name);
+        values.put(MumoDbHelper.STAKEHOLDERS_COLUMN_AGE, age);
+        long insertId = database.insert(MumoDbHelper.TABLE_STAKEHOLDERS, null, values);
+
+        Cursor cursor = database.query(MumoDbHelper.TABLE_STAKEHOLDERS,
+                MumoDbHelper.allStakeholderColumns, MumoDbHelper.STAKEHOLDERS_COLUMN_ID + " = " + insertId,
+                null, null, null, null);
+        cursor.moveToFirst();
+        return CursorTo.stakeholder(cursor, true);
     }
 }

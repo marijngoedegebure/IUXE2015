@@ -34,12 +34,7 @@ public class SongSearchAdapter extends BaseAdapter {
         songs.clear();
         songs.addAll(_songs);
 
-        //TODO sort?
-
-        notifyDataSetChanged();
-        Log.d("Adapter", "new Size: " + songs.size());
-        //Or, when the list position should be set to 0:
-        //notifyDataSetInvalidated();
+        notifyDataSetInvalidated();
     }
 
     @Override

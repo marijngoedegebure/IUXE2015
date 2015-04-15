@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.undefined.iuxe2015.model.Rating;
+import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.model.persistent.MumoDbHelper;
 
 /**
@@ -22,5 +23,18 @@ public class Update {
                 null);
 
         return rating;
+    }
+
+    public static Stakeholder stakeholder(SQLiteDatabase database, Stakeholder stakeholder) {
+        ContentValues values = new ContentValues();
+        values.put(MumoDbHelper.STAKEHOLDERS_COLUMN_NAME, stakeholder.getName());
+        values.put(MumoDbHelper.STAKEHOLDERS_COLUMN_AGE, stakeholder.getAge());
+        values.put(MumoDbHelper.STAKEHOLDERS_COLUMN_PREF_FONT_SIZE, stakeholder.getPrefFontSize());
+
+        database.update(MumoDbHelper.TABLE_STAKEHOLDERS, values,
+                MumoDbHelper.STAKEHOLDERS_COLUMN_ID + " = " + stakeholder.get_id(),
+                null);
+
+        return stakeholder;
     }
 }

@@ -6,11 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
+import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.model.persistent.helpers.Create;
 import com.undefined.iuxe2015.model.persistent.helpers.Delete;
 import com.undefined.iuxe2015.model.persistent.helpers.ListAll;
 import com.undefined.iuxe2015.model.persistent.helpers.Update;
 
+import java.io.DataOutputStream;
 import java.security.acl.Group;
 import java.util.ArrayList;
 
@@ -51,5 +53,9 @@ public class MumoDataSource {
 
     public boolean removeRating(Rating rating) {
         return Delete.rating(database, rating) > 0;
+    }
+
+    public ArrayList<Stakeholder> getStakeholders() {
+        return ListAll.stakeholders(database);
     }
 }

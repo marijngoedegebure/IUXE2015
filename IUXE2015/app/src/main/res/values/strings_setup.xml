@@ -16,4 +16,9 @@
     <string name="setup_spotify">Spotify</string>
     <string name="setup_login">Login</string>
     <string name="setup_logout">Logout</string>
+    <string name="setup_stakeholder">Stakeholder</string>
+    <string name="setup_stakeholder_new">New Stakeholder</string>
+    <string name="setup_stakeholder_name">Name</string>
+    <string name="setup_stakeholder_age">Age</string>
+
 </resources>

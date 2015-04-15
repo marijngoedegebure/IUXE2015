@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:background="@color/theme3"
     android:orientation="vertical"
-    tools:context="com.undefined.iuxe2015.fragments.SetupFragment">
+    tools:context="com.undefined.iuxe2015.fragments.SetupFragment"
+    tools:showIn="@layout/activity_setup">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -153,7 +154,7 @@
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -265,6 +266,44 @@
                         android:visibility="gone" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setup_stakeholder"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/setup_stakeholder_btn_delete"
+                            style="?android:attr/buttonStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/min" />
+
+                        <Spinner
+                            android:id="@+id/setup_stakeholder_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@id/setup_stakeholder_btn_delete"
+                            android:layout_toStartOf="@id/setup_stakeholder_btn_delete" />
+
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

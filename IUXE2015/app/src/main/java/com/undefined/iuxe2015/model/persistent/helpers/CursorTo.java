@@ -7,6 +7,7 @@ import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.Album;
 import com.undefined.iuxe2015.model.Artist;
+import com.undefined.iuxe2015.model.Stakeholder;
 
 /**
  * Created by Jan-Willem on 22-2-2015.
@@ -79,5 +80,18 @@ public class CursorTo {
             cursor.close();
 
         return image;
+    }
+
+    public static Stakeholder stakeholder(Cursor cursor, boolean closeCursor) {
+        Stakeholder stakeholder = new Stakeholder();
+        stakeholder.set_id(cursor.getInt(0));
+        stakeholder.setName(cursor.getString(1));
+        stakeholder.setAge(cursor.getInt(2));
+        stakeholder.setPrefFontSize(cursor.getInt(3));
+
+        if(closeCursor)
+            cursor.close();
+
+        return stakeholder;
     }
 }

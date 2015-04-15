@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name" translatable="false">Mumo</string>
+    <string name="min" translatable="false">-</string>
 </resources>

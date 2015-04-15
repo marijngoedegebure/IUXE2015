@@ -6,9 +6,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.spotify.sdk.android.player.ConnectionStateCallback;
@@ -16,6 +18,8 @@ import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.HubActivity;
 import com.undefined.iuxe2015.activities.SetupActivity;
+import com.undefined.iuxe2015.adapters.StakeholderAdapter;
+import com.undefined.iuxe2015.dialogs.StakeholderDialog;
 import com.undefined.iuxe2015.model.types.RatingType;
 import com.undefined.iuxe2015.model.types.ScaleType;
 import com.undefined.iuxe2015.tools.PreferenceTool;
@@ -45,8 +49,20 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
     Button spotifyLogin;
     @InjectView(R.id.setup_logout)
     Button spotifyLogout;
+    @InjectView(R.id.setup_stakeholder_spinner)
+    Spinner stakeholderSpinner;
+    @InjectView(R.id.setup_stakeholder_btn_delete)
+    Button stakeholderDelete;
+
+    private StakeholderAdapter adapter;
 
     public SetupFragment() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        adapter = new StakeholderAdapter(getActivity(), getData());
     }
 
     @Override
@@ -139,6 +155,32 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
                 setUiLoggedIn(false);
             }
         });
+
+        stakeholderSpinner.setAdapter(adapter);
+        stakeholderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position == adapter.getCount()-1){
+                    //TODO add stakeholder dialog
+                }else{
+                    StakeholderDialog newFragment = new StakeholderDialog(); //TODO open correct stakeholder dialog
+                    newFragment.show(getActivity().getSupportFragmentManager(), "stakeholder");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        stakeholderDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(adapter.getCount() > 1){ //1 because of the bottom part
+                    //TODO show warning and delete everything stakeholder-related
+                }
+            }
+        });
+
     }
 
     @Override
