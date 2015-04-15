@@ -66,12 +66,29 @@ public class SearchFragment extends MumoFragment {
         input.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                //TODO maybe use this?
             }
 
+            // On text change the app does a search query.
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                ConnectionTool.getSongsForQuery(getActivity(), s.toString(), new ConnectionTool.ConnectionListener() {
+                    @Override
+                    public void onConnectionSuccess(QueryResult result) {
+                        //TODO stop loading UI, if visible
+                        if(result.hasTracks()){
+                            Log.d("SearchFragment", "onConnectionSuccess:" + result.tracks.items.size());
+                            adapter.refresh(result.tracks.items);
+                        }else{
+                            Log.d("SearchFragment", "onConnectionSuccess: but no results");
+                        }
+                    }
 
+                    @Override
+                    public void onConnectionFailed(Exception e) {
+                        //TODO give ui feedback about what went wrong
+                        Log.d("SearchFragment", "onConnectionFailed");
+                    }
+                });
             }
 
             @Override
