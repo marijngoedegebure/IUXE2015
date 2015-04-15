@@ -11,18 +11,20 @@ import android.util.Log;
 public class MumoDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "mumo.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     public static final String TABLE_RATINGS = "ratings";
     public static final String RATINGS_COLUMN_ID = "_id_rating";
     public static final String RATINGS_COLUMN_ID_SONG = "_id_song";
     public static final String RATINGS_COLUMN_RATING = "rating";
     public static final String RATINGS_COLUMN_NOTE = "note";
+    public static final String RATINGS_COLUMN_TIMESTAMP = "timestamp";
     public static final String[] allRatingColumns = {
             MumoDbHelper.RATINGS_COLUMN_ID,
             MumoDbHelper.RATINGS_COLUMN_ID_SONG,
             MumoDbHelper.RATINGS_COLUMN_RATING,
-            MumoDbHelper.RATINGS_COLUMN_NOTE};
+            MumoDbHelper.RATINGS_COLUMN_NOTE,
+            MumoDbHelper.RATINGS_COLUMN_TIMESTAMP};
 
     // Database creation sql statement
     private static final String DATABASE_CREATE_RATINGS = "create table "
@@ -30,7 +32,8 @@ public class MumoDbHelper extends SQLiteOpenHelper {
             + RATINGS_COLUMN_ID + " integer primary key autoincrement, "
             + RATINGS_COLUMN_ID_SONG + " text not null, "
             + RATINGS_COLUMN_RATING + " integer, "
-            + RATINGS_COLUMN_NOTE + " text not null);";
+            + RATINGS_COLUMN_NOTE + " text not null, "
+            + RATINGS_COLUMN_TIMESTAMP + " integer);";
 
     public MumoDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
