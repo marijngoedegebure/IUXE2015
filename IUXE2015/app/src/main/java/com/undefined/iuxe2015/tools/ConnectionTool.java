@@ -3,8 +3,6 @@ package com.undefined.iuxe2015.tools;
 import android.content.Context;
 import android.util.Log;
 
-import com.koushikdutta.async.future.ConvertFuture;
-import com.koushikdutta.async.future.Future;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.undefined.iuxe2015.R;
