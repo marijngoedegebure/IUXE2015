@@ -8,12 +8,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.spotify.sdk.android.player.Spotify;
 import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
+import com.undefined.iuxe2015.activities.SetupActivity;
 import com.undefined.iuxe2015.adapters.SongSearchAdapter;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.json.QueryResult;
@@ -75,6 +78,19 @@ public class SearchFragment extends MumoFragment {
             public void afterTextChanged(Editable s) {
 
             }
+        });
+
+        searchList.setAdapter(adapter);
+
+        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view,
+                                    int position, long id) {
+                final Song item = adapter.getItem(position);
+                SetupActivity.mPlayer.play(item.getUri());
+            }
+
         });
 
         searchBtn.setOnClickListener(new View.OnClickListener() {

@@ -43,4 +43,6 @@ public class Song {
     public String getId() {
         return id;
     }
+
+    public String getUri() { return uri; }
 }
