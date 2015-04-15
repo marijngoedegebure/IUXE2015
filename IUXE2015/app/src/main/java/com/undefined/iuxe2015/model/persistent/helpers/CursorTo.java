@@ -15,6 +15,7 @@ public class CursorTo {
         stamp.setSongId(cursor.getString(1));
         stamp.setRating(cursor.getInt(2));
         stamp.setNote(cursor.getString(3));
+        stamp.setTimestamp(cursor.getLong(4));
 
         if(closeCursor)
             cursor.close();

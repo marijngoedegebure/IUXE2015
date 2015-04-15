@@ -17,6 +17,7 @@ public class Create {
         values.put(MumoDbHelper.RATINGS_COLUMN_ID_SONG, songId);
         values.put(MumoDbHelper.RATINGS_COLUMN_RATING, rating);
         values.put(MumoDbHelper.RATINGS_COLUMN_NOTE, note);
+        values.put(MumoDbHelper.RATINGS_COLUMN_TIMESTAMP, System.currentTimeMillis());
         long insertId = database.insert(MumoDbHelper.TABLE_RATINGS, null, values);
 
         Cursor cursor = database.query(MumoDbHelper.TABLE_RATINGS,

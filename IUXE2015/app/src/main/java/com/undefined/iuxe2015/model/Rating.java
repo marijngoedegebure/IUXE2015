@@ -8,6 +8,7 @@ public class Rating {
     private String songId;
     private int rating;
     private String note;
+    private long timestamp;
 
     public void setId(int id) {
         this.id = id;
@@ -25,6 +26,10 @@ public class Rating {
         this.note = note;
     }
 
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public int getId() {
         return id;
     }
@@ -39,5 +44,9 @@ public class Rating {
 
     public String getNote() {
         return note;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
     }
 }
