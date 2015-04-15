@@ -86,7 +86,7 @@ public class SearchFragment extends MumoFragment {
                     public void onConnectionSuccess(QueryResult result) {
                         //TODO stop loading UI, if visible
                         Log.d("SearchFragment", "onConnectionSuccess");
-
+                        adapter.refresh(result.tracks.items);
                     }
 
                     @Override
