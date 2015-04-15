@@ -7,6 +7,8 @@ import com.google.gson.annotations.SerializedName;
  */
 public class QueryArtist {
 
+    private int id;
+
     @SerializedName("name")
     public String name;
 

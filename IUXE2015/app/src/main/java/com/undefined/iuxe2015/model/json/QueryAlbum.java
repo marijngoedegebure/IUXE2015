@@ -9,6 +9,8 @@ import java.util.ArrayList;
  */
 public class QueryAlbum {
 
+    private int id;
+
     @SerializedName("images")
     public ArrayList<QueryImage> images;
 

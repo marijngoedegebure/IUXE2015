@@ -10,6 +10,9 @@ import java.util.ArrayList;
  * Created by Jan-Willem on 1-4-2015.
  */
 public class Song {
+
+    private int dbId;
+
     @SerializedName("id")
     private String id;
 
