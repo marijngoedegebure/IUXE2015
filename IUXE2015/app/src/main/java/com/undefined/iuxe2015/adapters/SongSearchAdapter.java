@@ -72,7 +72,7 @@ public class SongSearchAdapter extends BaseAdapter {
 
         ViewHolder h = (ViewHolder) convertView.getTag();
         Song s = getItem(position);
-        h.name.setText(s.getTitle());
+        h.name.setText(s.getName());
 
         return convertView;
     }

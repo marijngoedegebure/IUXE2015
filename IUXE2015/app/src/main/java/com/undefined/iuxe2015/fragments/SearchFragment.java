@@ -40,17 +40,7 @@ public class SearchFragment extends MumoFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO get actual Songs?
-
-        ArrayList<Song> tempSongs = new ArrayList<Song>();
-        tempSongs.add(new Song("Song1"));
-        tempSongs.add(new Song("Song2"));
-        tempSongs.add(new Song("Song3"));
-        tempSongs.add(new Song("Song4"));
-        tempSongs.add(new Song("Song5"));
-        tempSongs.add(new Song("Song6"));
-
-        adapter = new SongSearchAdapter(getActivity(), tempSongs);
+        adapter = new SongSearchAdapter(getActivity(), null);
     }
 
     @Override
@@ -69,7 +59,7 @@ public class SearchFragment extends MumoFragment {
 
             // On text change the app does a search query.
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void onTextChanged(final CharSequence s, int start, int before, int count) {
                 ConnectionTool.getSongsForQuery(getActivity(), s.toString(), new ConnectionTool.ConnectionListener() {
                     @Override
                     public void onConnectionSuccess(QueryResult result) {
@@ -79,6 +69,13 @@ public class SearchFragment extends MumoFragment {
                             adapter.refresh(result.tracks.items);
                         }else{
                             Log.d("SearchFragment", "onConnectionSuccess: but no results");
+                            if(s.length() == 0){
+                                //TODO ui back to init.
+                            }else{
+                                //TODO let user know
+                            }
+
+                            adapter.refresh(null);
                         }
                     }
 
