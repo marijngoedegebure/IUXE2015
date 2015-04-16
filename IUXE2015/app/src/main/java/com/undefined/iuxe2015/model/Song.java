@@ -45,4 +45,6 @@ public class Song {
     }
 
     public String getUri() { return uri; }
+
+    public long getDuration_ms() { return duration_ms; }
 }

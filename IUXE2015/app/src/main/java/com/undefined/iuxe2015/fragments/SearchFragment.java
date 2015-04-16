@@ -1,5 +1,6 @@
 package com.undefined.iuxe2015.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -16,6 +17,8 @@ import android.widget.ListView;
 import com.spotify.sdk.android.player.Spotify;
 import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
+import com.undefined.iuxe2015.activities.MusicControllerActivity;
+import com.undefined.iuxe2015.activities.SearchActivity;
 import com.undefined.iuxe2015.activities.SetupActivity;
 import com.undefined.iuxe2015.adapters.SongSearchAdapter;
 import com.undefined.iuxe2015.model.Song;
@@ -33,7 +36,9 @@ public class SearchFragment extends MumoFragment {
     private Button searchBtn;
 
     private ListView searchList;
-    private SongSearchAdapter adapter;
+    public static SongSearchAdapter adapter;
+
+    public static int currentPosition;
 
     public SearchFragment() {
     }
@@ -104,8 +109,11 @@ public class SearchFragment extends MumoFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view,
                                     int position, long id) {
+                currentPosition = position;
                 final Song item = adapter.getItem(position);
                 SetupActivity.mPlayer.play(item.getUri());
+                Intent intent = new Intent(parent.getContext(), MusicControllerActivity.class);
+                startActivity(intent);
             }
 
         });
