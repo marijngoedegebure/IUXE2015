@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name" translatable="false">Mumo</string>
     <string name="min" translatable="false">-</string>
+    <string name="title_activity_music_controller">MusicControllerActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="Now_playing">Now playing</string>
 </resources>

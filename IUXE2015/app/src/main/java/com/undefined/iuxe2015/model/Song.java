@@ -99,4 +99,6 @@ public class Song {
     public void setArtists(ArrayList<Artist> artists) {
         this.artists = artists;
     }
+
+    public long getDuration_ms() { return duration_ms; }
 }

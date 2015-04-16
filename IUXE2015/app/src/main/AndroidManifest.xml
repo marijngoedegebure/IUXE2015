@@ -40,6 +40,10 @@
             android:name="com.spotify.sdk.android.authentication.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".activities.MusicControllerActivity"
+            android:label="@string/title_activity_music_controller" >
+        </activity>
     </application>
 
 </manifest>
