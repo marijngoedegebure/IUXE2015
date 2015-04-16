@@ -27,7 +27,7 @@ public class MusicControllerActivity extends MumoActivity {
         pauseButton = (ImageButton)findViewById(R.id.imageButton2);
         pauseButton.setEnabled(true);
         playButton.setEnabled(false);
-        songName.setText(SearchFragment.adapter.getItem(SearchFragment.currentPosition).getTitle());
+        songName.setText(SearchFragment.adapter.getItem(SearchFragment.currentPosition).getName());
 
     }
 
