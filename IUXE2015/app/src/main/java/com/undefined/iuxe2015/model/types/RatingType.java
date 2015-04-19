@@ -19,16 +19,22 @@ public enum RatingType {
     }
 
     public int parseRating(int rating) {
-        //ratings is in <1, 100>
+        //ratings is in <0, 100>
 
-        switch (this) {
-            case BINARY:
-                return rating > 50 ? 100 : 1;
-            case LIKERT:
-                return rating; //TODO: parse to rating system of  'likert'
-            default:
-                return rating;
-        }
+        double rationfraction = rating / 101.0;
+
+        return (int) Math.round(
+                Math.round(rationfraction * (getOptions() - 1)) * 101.0
+                        / (getOptions() - 1));
+//
+//        switch (this) {
+//            case BINARY:
+//                return rating > 50 ? 100 : 1;
+//            case LIKERT:
+//                return rating; //TODO: parse to rating system of  'likert'
+//            default:
+//                return rating;
+//        }
     }
 
     public static RatingType getDefault() {
