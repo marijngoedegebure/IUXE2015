@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
 public class Artist {
 
     private int _id;
+    private int _id_stakeholder;
     private int _id_song;
 
     @SerializedName("id")
@@ -22,6 +23,14 @@ public class Artist {
 
     public void set_id(int id) {
         this._id = id;
+    }
+
+    public int get_id_stakeholder() {
+        return _id_stakeholder;
+    }
+
+    public void set_id_stakeholder(int id_stakeholder) {
+        this._id_stakeholder = id_stakeholder;
     }
 
     public int get_id_song() {
@@ -49,4 +58,5 @@ public class Artist {
     public void setName(String name) {
         this.name = name;
     }
+
 }

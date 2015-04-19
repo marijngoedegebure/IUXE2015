@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.spotify.sdk.android.player.ConnectionStateCallback;
@@ -23,6 +22,7 @@ import com.undefined.iuxe2015.model.types.RatingType;
 import com.undefined.iuxe2015.model.types.ScaleType;
 import com.undefined.iuxe2015.tools.PreferenceTool;
 import com.undefined.iuxe2015.tools.SpotifyTool;
+import com.undefined.iuxe2015.views.MumoSpinner;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -49,7 +49,9 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
     @InjectView(R.id.setup_logout)
     Button spotifyLogout;
     @InjectView(R.id.setup_stakeholder_spinner)
-    Spinner stakeholderSpinner;
+    MumoSpinner stakeholderSpinner;
+    @InjectView(R.id.setup_stakeholder_add)
+    Button stakeholderBtnAdd;
 
     private StakeholderAdapter adapter;
 
@@ -154,12 +156,17 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
         });
 
         stakeholderSpinner.setAdapter(adapter);
-        stakeholderSpinner.setSelection(0, false);
-        //TODO set according to preference Stakeholder
+        int currentStakeholder = PreferenceTool.getCurrentStakeholderId(getActivity());
+        if (currentStakeholder == PreferenceTool.DEFAULT_STAKEHOLDER_ID)
+            stakeholderSpinner.setSelection(0, false);
+        else {
+            stakeholderSpinner.setSelection(adapter.getIndex(currentStakeholder), false);
+        }
         stakeholderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                setUiStakeHolderSelected(position != adapter.getCount() - 1);
+                PreferenceTool.setCurrentStakeholderId(getActivity(), adapter.getIntegerId(position));
+                setUiStakeHolderSelected(adapter.getCount() > 0);
 
                 if (preventDialogFromPoppingUpOnce) {
                     preventDialogFromPoppingUpOnce = false;
@@ -171,7 +178,13 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Log.d("SPINNER", "NOTGNH SELECTED");
+            }
+        });
+        stakeholderBtnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StakeholderDialog newFragment = StakeholderDialog.getInstance(-1);
+                newFragment.show(getActivity().getSupportFragmentManager(), StakeholderDialog.TAG);
             }
         });
     }
@@ -235,6 +248,7 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
             spotifyLogin.setVisibility(View.VISIBLE);
             spotifyLogout.setVisibility(View.GONE);
         }
+        setUiStakeHolderSelected(adapter.getCount() > 0);
     }
 
     private void setUiStakeHolderSelected(boolean stakeholderSelected) {
@@ -264,14 +278,18 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
         adapter = new StakeholderAdapter(getActivity(), getData());
         stakeholderSpinner.setAdapter(adapter);
         preventDialogFromPoppingUpOnce = true;
-        if (stakeholder == null)
+        if (stakeholder == null) {
+            PreferenceTool.setCurrentStakeholderId(getActivity(), PreferenceTool.DEFAULT_STAKEHOLDER_ID);
             stakeholderSpinner.setSelection(0, false);
-        else {
+        } else {
             int index = adapter.getIndex(stakeholder);
-            if (index == -1)
+            if (index == -1) {
+                PreferenceTool.setCurrentStakeholderId(getActivity(), PreferenceTool.DEFAULT_STAKEHOLDER_ID);
                 stakeholderSpinner.setSelection(0, false);
-            else
+            } else {
+                PreferenceTool.setCurrentStakeholderId(getActivity(), stakeholder.get_id());
                 stakeholderSpinner.setSelection(index, false);
+            }
         }
     }
 }

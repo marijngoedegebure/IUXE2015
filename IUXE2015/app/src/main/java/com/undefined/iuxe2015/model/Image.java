@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
 public class Image {
 
     private int _id;
+    private int _id_stakeholder;
     private int _id_album;
 
     @SerializedName("height")
@@ -25,6 +26,14 @@ public class Image {
 
     public void set_id(int id) {
         this._id = id;
+    }
+
+    public void set_id_stakeholder(int _id_stakeholder) {
+        this._id_stakeholder = _id_stakeholder;
+    }
+
+    public int get_id_stakeholder() {
+        return _id_stakeholder;
     }
 
     public int get_id_album() {
@@ -60,4 +69,5 @@ public class Image {
     public void setUrl(String url) {
         this.url = url;
     }
+
 }

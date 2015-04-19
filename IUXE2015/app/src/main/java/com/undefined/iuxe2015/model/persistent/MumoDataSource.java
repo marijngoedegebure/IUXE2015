@@ -12,8 +12,6 @@ import com.undefined.iuxe2015.model.persistent.helpers.Delete;
 import com.undefined.iuxe2015.model.persistent.helpers.ListAll;
 import com.undefined.iuxe2015.model.persistent.helpers.Update;
 
-import java.io.DataOutputStream;
-import java.security.acl.Group;
 import java.util.ArrayList;
 
 /**
@@ -43,12 +41,12 @@ public class MumoDataSource {
         return ListAll.ratingsForSong(database, song);
     }
 
-    public Rating addRating(String songId, int rating, String note) {
-        return Create.rating(database, songId, rating, note);
+    public Rating addRating(int stakeholderId, String songId, int rating, String note) {
+        return Create.rating(database, stakeholderId, songId, rating, note);
     }
 
-    public void updateRating(Rating rating) {
-        Update.rating(database, rating);
+    public void updateRating(int stakeholderId, Rating rating) {
+        Update.rating(database, stakeholderId, rating);
     }
 
     public boolean removeRating(Rating rating) {
@@ -74,6 +72,5 @@ public class MumoDataSource {
 
     public int deleteStakeholder(Stakeholder stakeholder) {
         return Delete.stakeholder(database, stakeholder);
-        //TODO Clear entire database of this stakeholder. The user has already been notified.
     }
 }

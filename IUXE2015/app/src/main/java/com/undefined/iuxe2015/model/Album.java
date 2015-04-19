@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Album {
 
     private int _id;
+    private int _id_stakeholder;
 
     @SerializedName("id")
     private String id;
@@ -26,6 +27,14 @@ public class Album {
 
     public void set_id(int id) {
         this._id = id;
+    }
+
+    public void set_id_stakeholder(int _id_stakeholder) {
+        this._id_stakeholder = _id_stakeholder;
+    }
+
+    public int get_id_stakeholder() {
+        return _id_stakeholder;
     }
 
     public String getId() {

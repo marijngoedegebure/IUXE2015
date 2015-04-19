@@ -279,10 +279,30 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@android:color/white"
                         android:textStyle="bold" />
-                    <Spinner
-                        android:id="@+id/setup_stakeholder_spinner"
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/setup_stakeholder_add"
+                            style="?android:attr/buttonStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:text="@string/plus" />
+
+                        <com.undefined.iuxe2015.views.MumoSpinner
+                            android:id="@+id/setup_stakeholder_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@id/setup_stakeholder_add"
+                            android:layout_toStartOf="@id/setup_stakeholder_add" />
+
+                    </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

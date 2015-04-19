@@ -17,8 +17,9 @@ import com.undefined.iuxe2015.model.persistent.MumoDbHelper;
  */
 public class Create {
 
-    public static Rating rating(SQLiteDatabase database, String songId, int rating, String note) {
+    public static Rating rating(SQLiteDatabase database, int stakeholderId, String songId, int rating, String note) {
         ContentValues values = new ContentValues();
+        values.put(MumoDbHelper.RATINGS_COLUMN_ID_STAKEHOLDER, stakeholderId);
         values.put(MumoDbHelper.RATINGS_COLUMN_ID_SONG, songId);
         values.put(MumoDbHelper.RATINGS_COLUMN_RATING, rating);
         values.put(MumoDbHelper.RATINGS_COLUMN_NOTE, note);
@@ -32,8 +33,9 @@ public class Create {
         return CursorTo.rating(cursor, true);
     }
 
-    public static Song song(SQLiteDatabase database, Song song) {
+    public static Song song(SQLiteDatabase database, int stakeholderId, Song song) {
         ContentValues values = new ContentValues();
+        values.put(MumoDbHelper.SONGS_COLUMN_ID_STAKEHOLDER, stakeholderId);
         values.put(MumoDbHelper.SONGS_COLUMN_ID_ALBUM, song.get_id_album());
         values.put(MumoDbHelper.SONGS_COLUMN_ID_SONG, song.getId());
         values.put(MumoDbHelper.SONGS_COLUMN_NAME, song.getName());
@@ -48,8 +50,9 @@ public class Create {
         return CursorTo.song(cursor, true);
     }
 
-    public static Artist artist(SQLiteDatabase database, Artist artist) {
+    public static Artist artist(SQLiteDatabase database, int stakeholderId, Artist artist) {
         ContentValues values = new ContentValues();
+        values.put(MumoDbHelper.ARTISTS_COLUMN_ID_STAKEHOLDER, stakeholderId);
         values.put(MumoDbHelper.ARTISTS_COLUMN_ID_SONG, artist.get_id_song());
         values.put(MumoDbHelper.ARTISTS_COLUMN_ID_ARTIST, artist.getId());
         values.put(MumoDbHelper.ARTISTS_COLUMN_NAME, artist.getName());
@@ -62,8 +65,9 @@ public class Create {
         return CursorTo.artist(cursor, true);
     }
 
-    public static Album album(SQLiteDatabase database, Album album) {
+    public static Album album(SQLiteDatabase database, int stakeholderId, Album album) {
         ContentValues values = new ContentValues();
+        values.put(MumoDbHelper.ALBUMS_COLUMN_ID_STAKEHOLDER, stakeholderId);
         values.put(MumoDbHelper.ALBUMS_COLUMN_ID_ALBUM, album.getId());
         values.put(MumoDbHelper.ALBUMS_COLUMN_NAME, album.getName());
         long insertId = database.insert(MumoDbHelper.TABLE_ALBUMS, null, values);
@@ -75,8 +79,9 @@ public class Create {
         return CursorTo.album(cursor, true);
     }
 
-    public static Image image(SQLiteDatabase database, Image image) {
+    public static Image image(SQLiteDatabase database, int stakeholderId, Image image) {
         ContentValues values = new ContentValues();
+        values.put(MumoDbHelper.IMAGES_COLUMN_ID_STAKEHOLDER, stakeholderId);
         values.put(MumoDbHelper.IMAGES_COLUMN_ID_ALBUM, image.get_id_album());
         values.put(MumoDbHelper.IMAGES_COLUMN_HEIGHT, image.getHeight());
         values.put(MumoDbHelper.IMAGES_COLUMN_WIDTH, image.getWidth());

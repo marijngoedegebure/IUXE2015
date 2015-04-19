@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Song {
 
     private int _id;
+    private int _id_stakeholder;
     private int _id_album;
 
     @SerializedName("id")
@@ -36,6 +37,14 @@ public class Song {
 
     public void set_id(int id) {
         this._id = id;
+    }
+
+    public int get_id_stakeholder() {
+        return _id_stakeholder;
+    }
+
+    public void set_id_stakeholder(int id_stakeholder) {
+        this._id_stakeholder = id_stakeholder;
     }
 
     public int get_id_album() {

@@ -5,6 +5,7 @@ package com.undefined.iuxe2015.model;
  */
 public class Rating {
     private int _id;
+    private int _id_stakeholder;
     private int _id_song;
     private int rating;
     private String note;
@@ -16,6 +17,14 @@ public class Rating {
 
     public void set_id(int id) {
         this._id = id;
+    }
+
+    public int get_id_stakeholder() {
+        return _id_stakeholder;
+    }
+
+    public void set_id_stakeholder(int id_stakeholder) {
+        this._id_stakeholder = id_stakeholder;
     }
 
     public int get_id_song() {
@@ -51,4 +60,6 @@ public class Rating {
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
+
+
 }

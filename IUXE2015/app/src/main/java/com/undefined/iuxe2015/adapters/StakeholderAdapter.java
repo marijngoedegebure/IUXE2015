@@ -5,7 +5,6 @@ import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
@@ -59,29 +58,26 @@ public class StakeholderAdapter implements SpinnerAdapter {
 
     @Override
     public int getCount() {
-        return data.getStakeholders().size() + 1;
+        return data.getStakeholders().size();
     }
 
     @Override
     public Stakeholder getItem(int position) {
-        if (position == getCount() - 1)
-            return null;
-        else
+        try {
             return data.getStakeholders().get(position);
+        }catch(IndexOutOfBoundsException e){
+            return null;
+        }
     }
 
     @Override
     public long getItemId(int position) {
-        Stakeholder s = getItem(position);
-        return s == null ? 0 : s.get_id();
+        return getIntegerId(position);
     }
 
     public int getIntegerId(int position) {
         Stakeholder s = getItem(position);
         return s == null ? -1 : s.get_id();
-    }
-
-    public void refreshData() {
     }
 
     class ViewHolder {
@@ -100,12 +96,8 @@ public class StakeholderAdapter implements SpinnerAdapter {
             convertView.setTag(new ViewHolder(convertView));
         }
         ViewHolder h = (ViewHolder) convertView.getTag();
-        if (position == getCount() - 1) {
-            h.name.setText(R.string.setup_stakeholder_new);
-        } else {
-            Stakeholder s = getItem(position);
-            h.name.setText(s.getName() + " (" + s.getAge() + ")");
-        }
+        Stakeholder s = getItem(position);
+        h.name.setText(s.getName() + " (" + s.getAge() + ")");
         return convertView;
     }
 
@@ -116,18 +108,18 @@ public class StakeholderAdapter implements SpinnerAdapter {
             convertView.setTag(new ViewHolder(convertView));
         }
         ViewHolder h = (ViewHolder) convertView.getTag();
-        if (position == getCount() - 1) {
-            h.name.setText(R.string.setup_stakeholder_new);
-        } else {
-            Stakeholder s = getItem(position);
-            h.name.setText(s.getName() + " (" + s.getAge() + ")");
-        }
+        Stakeholder s = getItem(position);
+        h.name.setText(s.getName() + " (" + s.getAge() + ")");
         return convertView;
     }
 
     public int getIndex(Stakeholder stakeholder) {
+        return stakeholder == null ? -1 : getIndex(stakeholder.get_id());
+    }
+
+    public int getIndex(int stakeholderId) {
         for (int i = 0; i < getCount(); i++) {
-            if (getIntegerId(i) == stakeholder.get_id())
+            if (getIntegerId(i) == stakeholderId)
                 return i;
         }
         return -1;
