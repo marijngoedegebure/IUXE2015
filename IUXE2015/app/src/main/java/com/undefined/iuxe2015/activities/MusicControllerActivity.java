@@ -32,8 +32,7 @@ public class MusicControllerActivity extends MumoActivity {
     }
 
     public void play(View view){
-        Toast.makeText(getApplicationContext(), "Playing sound",
-                Toast.LENGTH_SHORT).show();
+        toast("Playing sound");
         player.resume();
         if(oneTimeOnly == 0){
             oneTimeOnly = 1;
@@ -44,9 +43,7 @@ public class MusicControllerActivity extends MumoActivity {
     }
 
     public void pause(View view){
-        Toast.makeText(getApplicationContext(), "Pausing sound",
-                Toast.LENGTH_SHORT).show();
-
+        toast("Pausing sound");
         player.pause();
         pauseButton.setEnabled(false);
         playButton.setEnabled(true);
