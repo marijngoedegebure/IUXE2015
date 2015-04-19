@@ -58,7 +58,7 @@ public class PreferenceTool {
     }
 
     public static void setMinimumFontSize(Activity a, int fontSize) {
-        getEditor(a).putInt(KEY_TYPE_FONTSIZE, fontSize);
+        getEditor(a).putInt(KEY_TYPE_FONTSIZE, fontSize).apply();
     }
 
     public static int getMinimumFontSize(Activity a) {
@@ -66,7 +66,7 @@ public class PreferenceTool {
     }
 
     public static void setCurrentStakeholderId(Activity a, int stakeholderId) {
-        getEditor(a).putInt(KEY_CURRENT_STAKEHOLDER_ID, stakeholderId);
+        getEditor(a).putInt(KEY_CURRENT_STAKEHOLDER_ID, stakeholderId).apply();
     }
 
     public static int getCurrentStakeholderId(Activity a) {

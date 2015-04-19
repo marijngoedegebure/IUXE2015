@@ -301,7 +301,6 @@
                             android:layout_centerVertical="true"
                             android:layout_toLeftOf="@id/setup_stakeholder_add"
                             android:layout_toStartOf="@id/setup_stakeholder_add" />
-
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>

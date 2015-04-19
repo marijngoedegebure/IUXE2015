@@ -15,6 +15,7 @@ import com.spotify.sdk.android.player.Spotify;
 import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.fragments.SetupFragment;
+import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.tools.PreferenceTool;
 import com.undefined.iuxe2015.tools.SpotifyTool;
 
@@ -46,21 +47,25 @@ public class SetupActivity extends MumoActivity implements
 
     public void startHub(View button) {
         int buttonId = button.getId();
+        int fontMinSize = PreferenceTool.DEFAULT_FONTSIZE;
         if (buttonId == R.id.setup_btn_continue_14) {
-            PreferenceTool.setMinimumFontSize(this, 14);
+            fontMinSize =  14;
         } else if (buttonId == R.id.setup_btn_continue_16) {
-            PreferenceTool.setMinimumFontSize(this, 16);
+            fontMinSize =  16;
         } else if (buttonId == R.id.setup_btn_continue_18) {
-            PreferenceTool.setMinimumFontSize(this, 18);
+            fontMinSize =  18;
         } else if (buttonId == R.id.setup_btn_continue_20) {
-            PreferenceTool.setMinimumFontSize(this, 20);
+            fontMinSize =  20;
         } else if (buttonId == R.id.setup_btn_continue_22) {
-            PreferenceTool.setMinimumFontSize(this, 22);
+            fontMinSize =  22;
         } else if (buttonId == R.id.setup_btn_continue_24) {
-            PreferenceTool.setMinimumFontSize(this, 24);
-        } else {
-            PreferenceTool.setMinimumFontSize(this, PreferenceTool.DEFAULT_FONTSIZE);
+            fontMinSize =  24;
         }
+
+        Stakeholder s = getData().getStakeholderWithId(PreferenceTool.getCurrentStakeholderId(this));
+        s.setPrefFontSize(fontMinSize);
+        getData().updateStakeholder(s);
+
         startActivity(new Intent(this, HubActivity.class));
     }
 

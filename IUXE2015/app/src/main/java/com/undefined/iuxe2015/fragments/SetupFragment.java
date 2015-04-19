@@ -59,12 +59,6 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        adapter = new StakeholderAdapter(getActivity(), getData());
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_setup, container, false);
@@ -155,6 +149,8 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
             }
         });
 
+        adapter = new StakeholderAdapter(getActivity(), getData());
+        Log.d("STARTUP", "Preference Stakeholder: " + PreferenceTool.getCurrentStakeholderId(getActivity()));
         stakeholderSpinner.setAdapter(adapter);
         int currentStakeholder = PreferenceTool.getCurrentStakeholderId(getActivity());
         if (currentStakeholder == PreferenceTool.DEFAULT_STAKEHOLDER_ID)
@@ -165,7 +161,9 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
         stakeholderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("STARTUP", "onItemSelected: " + PreferenceTool.getCurrentStakeholderId(getActivity()) + " -> " + position + " -> " + adapter.getIntegerId(position));
                 PreferenceTool.setCurrentStakeholderId(getActivity(), adapter.getIntegerId(position));
+                Log.d("STARTUP", "onItemSelected: " + PreferenceTool.getCurrentStakeholderId(getActivity()));
                 setUiStakeHolderSelected(adapter.getCount() > 0);
 
                 if (preventDialogFromPoppingUpOnce) {

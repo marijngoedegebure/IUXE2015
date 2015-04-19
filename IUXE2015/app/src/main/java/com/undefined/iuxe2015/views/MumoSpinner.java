@@ -22,8 +22,7 @@ public class MumoSpinner extends Spinner {
     }
 
     @Override
-    public void
-    setSelection(int position, boolean animate) {
+    public void setSelection(int position, boolean animate) {
         boolean sameSelected = position == getSelectedItemPosition();
         super.setSelection(position, animate);
         if (sameSelected && listener != null) {
@@ -44,7 +43,9 @@ public class MumoSpinner extends Spinner {
         }
     }
 
+    @Override
     public void setOnItemSelectedListener(OnItemSelectedListener listener) {
+        super.setOnItemSelectedListener(listener);
         this.listener = listener;
     }
 }
