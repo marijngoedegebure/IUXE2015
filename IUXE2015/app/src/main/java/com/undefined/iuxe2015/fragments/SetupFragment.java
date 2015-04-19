@@ -1,6 +1,5 @@
 package com.undefined.iuxe2015.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,10 +15,10 @@ import android.widget.TextView;
 import com.spotify.sdk.android.player.ConnectionStateCallback;
 import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
-import com.undefined.iuxe2015.activities.HubActivity;
 import com.undefined.iuxe2015.activities.SetupActivity;
 import com.undefined.iuxe2015.adapters.StakeholderAdapter;
 import com.undefined.iuxe2015.dialogs.StakeholderDialog;
+import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.model.types.RatingType;
 import com.undefined.iuxe2015.model.types.ScaleType;
 import com.undefined.iuxe2015.tools.PreferenceTool;
@@ -51,8 +50,6 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
     Button spotifyLogout;
     @InjectView(R.id.setup_stakeholder_spinner)
     Spinner stakeholderSpinner;
-    @InjectView(R.id.setup_stakeholder_btn_delete)
-    Button stakeholderDelete;
 
     private StakeholderAdapter adapter;
 
@@ -145,7 +142,7 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
         spotifyLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SpotifyTool.startLogin(getActivity(), ((SetupActivity)getActivity()).REQUEST_CODE);
+                SpotifyTool.startLogin(getActivity(), SetupActivity.REQUEST_CODE);
             }
         });
         spotifyLogout.setOnClickListener(new View.OnClickListener() {
@@ -157,30 +154,26 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
         });
 
         stakeholderSpinner.setAdapter(adapter);
+        stakeholderSpinner.setSelection(0, false);
+        //TODO set according to preference Stakeholder
         stakeholderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position == adapter.getCount()-1){
-                    //TODO add stakeholder dialog
-                }else{
-                    StakeholderDialog newFragment = new StakeholderDialog(); //TODO open correct stakeholder dialog
-                    newFragment.show(getActivity().getSupportFragmentManager(), "stakeholder");
+                setUiStakeHolderSelected(position != adapter.getCount() - 1);
+
+                if (preventDialogFromPoppingUpOnce) {
+                    preventDialogFromPoppingUpOnce = false;
+                } else {
+                    StakeholderDialog newFragment = StakeholderDialog.getInstance(adapter.getIntegerId(position));
+                    newFragment.show(getActivity().getSupportFragmentManager(), StakeholderDialog.TAG);
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+                Log.d("SPINNER", "NOTGNH SELECTED");
             }
         });
-        stakeholderDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(adapter.getCount() > 1){ //1 because of the bottom part
-                    //TODO show warning and delete everything stakeholder-related
-                }
-            }
-        });
-
     }
 
     @Override
@@ -209,7 +202,7 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
             Log.d("Setup", "- Hmm, no premium eh?");
         }
 
-        //SpotifyTool.logout(getActivity()); //TODO re-enable and change to false DEV_BYPASS
+        //SpotifyTool.logout(getActivity()); //TODO re-enable and change below to false (DEV_BYPASS)
         setUiLoggedIn(true);
         //TODO let the ui know which error specifically has happened
     }
@@ -229,18 +222,29 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
         //TODO adjust UI?
     }
 
-    private void setUiLoggedIn(boolean loggedIn){
-        if(loggedIn){
+    private void setUiLoggedIn(boolean loggedIn) {
+        if (loggedIn) {
             error.setText(R.string.setup_help_continue);
             listBtns.setVisibility(View.VISIBLE);
             spotifyLogin.setVisibility(View.GONE);
             spotifyLogout.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             error.setText(R.string.setup_message_error);
             error.setVisibility(View.VISIBLE);
             listBtns.setVisibility(View.GONE);
             spotifyLogin.setVisibility(View.VISIBLE);
             spotifyLogout.setVisibility(View.GONE);
+        }
+    }
+
+    private void setUiStakeHolderSelected(boolean stakeholderSelected) {
+        if (stakeholderSelected) {
+            error.setText(R.string.setup_help_continue);
+            listBtns.setVisibility(View.VISIBLE);
+        } else {
+            error.setText(R.string.setup_message_error);
+            error.setVisibility(View.VISIBLE);
+            listBtns.setVisibility(View.GONE);
         }
     }
 
@@ -251,6 +255,23 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
         } else {
             boxSettings.setVisibility(View.GONE);
             btnSettings.setText("");
+        }
+    }
+
+    private boolean preventDialogFromPoppingUpOnce = false;
+
+    public void refreshStakeholderSpinnerAndSelectStakeholder(Stakeholder stakeholder) {
+        adapter = new StakeholderAdapter(getActivity(), getData());
+        stakeholderSpinner.setAdapter(adapter);
+        preventDialogFromPoppingUpOnce = true;
+        if (stakeholder == null)
+            stakeholderSpinner.setSelection(0, false);
+        else {
+            int index = adapter.getIndex(stakeholder);
+            if (index == -1)
+                stakeholderSpinner.setSelection(0, false);
+            else
+                stakeholderSpinner.setSelection(index, false);
         }
     }
 }

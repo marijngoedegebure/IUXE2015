@@ -143,4 +143,17 @@ public class ListAll {
         }
         return stakeholders;
     }
+
+    public static Stakeholder stakeholder(SQLiteDatabase database, int stakeholderId) {
+        if (database.isOpen()) {
+            Cursor cursor = database.query(MumoDbHelper.TABLE_STAKEHOLDERS, MumoDbHelper.allStakeholderColumns,
+                    MumoDbHelper.STAKEHOLDERS_COLUMN_ID + " = " + stakeholderId,
+                    null, null, null, null);
+
+            cursor.moveToFirst();
+            if (!cursor.isAfterLast())
+                return CursorTo.stakeholder(cursor, true);
+        }
+        return null;
+    }
 }

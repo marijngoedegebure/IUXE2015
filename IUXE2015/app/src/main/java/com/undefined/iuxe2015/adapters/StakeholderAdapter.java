@@ -5,6 +5,7 @@ import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
@@ -75,6 +76,14 @@ public class StakeholderAdapter implements SpinnerAdapter {
         return s == null ? 0 : s.get_id();
     }
 
+    public int getIntegerId(int position) {
+        Stakeholder s = getItem(position);
+        return s == null ? -1 : s.get_id();
+    }
+
+    public void refreshData() {
+    }
+
     class ViewHolder {
         @InjectView(R.id.setup_stakeholder_name)
         TextView name;
@@ -95,7 +104,7 @@ public class StakeholderAdapter implements SpinnerAdapter {
             h.name.setText(R.string.setup_stakeholder_new);
         } else {
             Stakeholder s = getItem(position);
-            h.name.setText(s.getName() + "(" + s.getAge() + ")");
+            h.name.setText(s.getName() + " (" + s.getAge() + ")");
         }
         return convertView;
     }
@@ -111,8 +120,16 @@ public class StakeholderAdapter implements SpinnerAdapter {
             h.name.setText(R.string.setup_stakeholder_new);
         } else {
             Stakeholder s = getItem(position);
-            h.name.setText(s.getName() + "(" + s.getAge() + ")");
+            h.name.setText(s.getName() + " (" + s.getAge() + ")");
         }
         return convertView;
+    }
+
+    public int getIndex(Stakeholder stakeholder) {
+        for (int i = 0; i < getCount(); i++) {
+            if (getIntegerId(i) == stakeholder.get_id())
+                return i;
+        }
+        return -1;
     }
 }

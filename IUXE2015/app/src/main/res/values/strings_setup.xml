@@ -21,4 +21,9 @@
     <string name="setup_stakeholder_name">Name</string>
     <string name="setup_stakeholder_age">Age</string>
 
+    <string name="setup_stakeholder_header_new">New Stakeholder</string>
+    <string name="setup_stakeholder_header_edit">Edit Stakeholder</string>
+    <string name="setup_stakeholder_delete_warning">Are you sure you want to delete this stakeholder? All data will be removed and this can not be undone!</string>
+    <string name="setup_stakeholder_delete_continue">Yes, I am sure. Continue.</string>
+
 </resources>

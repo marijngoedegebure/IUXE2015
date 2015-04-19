@@ -58,4 +58,22 @@ public class MumoDataSource {
     public ArrayList<Stakeholder> getStakeholders() {
         return ListAll.stakeholders(database);
     }
+
+
+    public Stakeholder getStakeholderWithId(int stakeholderId) {
+        return ListAll.stakeholder(database, stakeholderId);
+    }
+
+    public Stakeholder updateStakeholder(Stakeholder stakeholder) {
+        return Update.stakeholder(database, stakeholder);
+    }
+
+    public Stakeholder newStakeholder(String name, int age) {
+        return Create.stakeholder(database, name, age);
+    }
+
+    public int deleteStakeholder(Stakeholder stakeholder) {
+        return Delete.stakeholder(database, stakeholder);
+        //TODO Clear entire database of this stakeholder. The user has already been notified.
+    }
 }
