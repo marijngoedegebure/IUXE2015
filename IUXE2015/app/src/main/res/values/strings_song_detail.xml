@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="song_detail_play">Play this song</string>
+    <string name="song_detail_song_name">Name:</string>
+    <string name="song_detail_song_artist">Artist:</string>
+    <string name="song_detail_song_album">Album:</string>
+</resources>

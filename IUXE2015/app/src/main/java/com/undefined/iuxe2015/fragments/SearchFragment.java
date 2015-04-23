@@ -19,6 +19,7 @@ import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.MusicControllerActivity;
 import com.undefined.iuxe2015.activities.SearchActivity;
 import com.undefined.iuxe2015.activities.SetupActivity;
+import com.undefined.iuxe2015.activities.SongDetailActivity;
 import com.undefined.iuxe2015.adapters.SongSearchAdapter;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.QueryResult;
@@ -107,8 +108,7 @@ public class SearchFragment extends MumoFragment {
                                     int position, long id) {
                 currentPosition = position;
                 final Song item = adapter.getItem(position);
-                SetupActivity.mPlayer.play(item.getUri());
-                Intent intent = new Intent(parent.getContext(), MusicControllerActivity.class);
+                Intent intent = new Intent(parent.getContext(), SongDetailActivity.class);
                 startActivity(intent);
             }
 
