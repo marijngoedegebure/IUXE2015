@@ -16,6 +16,7 @@ import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.fragments.SetupFragment;
 import com.undefined.iuxe2015.model.Stakeholder;
+import com.undefined.iuxe2015.model.types.ScaleType;
 import com.undefined.iuxe2015.tools.PreferenceTool;
 import com.undefined.iuxe2015.tools.SpotifyTool;
 
@@ -47,23 +48,19 @@ public class SetupActivity extends MumoActivity implements
 
     public void startHub(View button) {
         int buttonId = button.getId();
-        int fontMinSize = PreferenceTool.DEFAULT_FONTSIZE;
-        if (buttonId == R.id.setup_btn_continue_14) {
-            fontMinSize =  14;
-        } else if (buttonId == R.id.setup_btn_continue_16) {
-            fontMinSize =  16;
-        } else if (buttonId == R.id.setup_btn_continue_18) {
-            fontMinSize =  18;
-        } else if (buttonId == R.id.setup_btn_continue_20) {
-            fontMinSize =  20;
-        } else if (buttonId == R.id.setup_btn_continue_22) {
-            fontMinSize =  22;
-        } else if (buttonId == R.id.setup_btn_continue_24) {
-            fontMinSize =  24;
+        ScaleType scale = ScaleType.getDefault();
+        if (buttonId == R.id.setup_btn_scale_normal) {
+            scale = ScaleType.NORMAL;
+        } else if (buttonId == R.id.setup_btn_scale_large) {
+            scale = ScaleType.LARGE;
+        } else if (buttonId == R.id.setup_btn_scale_huge) {
+            scale = ScaleType.HUGE;
         }
 
-        Stakeholder s = getData().getStakeholderWithId(PreferenceTool.getCurrentStakeholderId(this));
-        s.setPrefFontSize(fontMinSize);
+        int stakeholderId = PreferenceTool.getCurrentStakeholderId(this);
+        Log.i("SetupActivity", "stakeholderid " + stakeholderId);
+        Stakeholder s = getData().getStakeholderWithId(stakeholderId);
+        s.setScaleType(scale);
         getData().updateStakeholder(s);
 
         startActivity(new Intent(this, HubActivity.class));

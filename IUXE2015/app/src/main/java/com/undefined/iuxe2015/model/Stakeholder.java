@@ -1,6 +1,8 @@
 package com.undefined.iuxe2015.model;
 
-import com.undefined.iuxe2015.tools.PreferenceTool;
+import android.util.Log;
+
+import com.undefined.iuxe2015.model.types.ScaleType;
 
 /**
  * Created by Jan-Willem on 1-4-2015.
@@ -10,7 +12,7 @@ public class Stakeholder extends Actor {
     private int _id;
     private String name;
     private int age;
-    private int prefFontSize;
+    private ScaleType scaleType;
 
     public int get_id() {
         return _id;
@@ -38,13 +40,22 @@ public class Stakeholder extends Actor {
         this.age = age;
     }
 
-    public int getPrefFontSize() {
-        if (prefFontSize == 0)
-            prefFontSize = PreferenceTool.DEFAULT_FONTSIZE;
-        return prefFontSize;
+    public ScaleType getScaleType() {
+        if (scaleType == null)
+            scaleType = ScaleType.getDefault();
+        return scaleType;
     }
 
-    public void setPrefFontSize(int prefFontSize) {
-        this.prefFontSize = prefFontSize;
+    public void setScaleType(String scaleType) {
+        try{
+            setScaleType(ScaleType.valueOf(scaleType));
+        }catch(IllegalArgumentException e){
+            Log.w("Stakeholder", "setScaleType Warning: " + e.getLocalizedMessage());
+            setScaleType(ScaleType.getDefault());
+        }
+    }
+
+    public void setScaleType(ScaleType scaleType) {
+        this.scaleType = scaleType;
     }
 }

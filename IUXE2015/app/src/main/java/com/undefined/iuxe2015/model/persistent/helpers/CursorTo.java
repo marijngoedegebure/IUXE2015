@@ -92,7 +92,7 @@ public class CursorTo {
         stakeholder.set_id(cursor.getInt(0));
         stakeholder.setName(cursor.getString(1));
         stakeholder.setAge(cursor.getInt(2));
-        stakeholder.setPrefFontSize(cursor.getInt(3));
+        stakeholder.setScaleType(cursor.getString(3));
 
         if(closeCursor)
             cursor.close();

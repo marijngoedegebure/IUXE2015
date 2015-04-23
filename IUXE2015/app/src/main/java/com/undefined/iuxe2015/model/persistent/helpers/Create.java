@@ -11,6 +11,7 @@ import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.model.persistent.MumoDbHelper;
+import com.undefined.iuxe2015.model.types.ScaleType;
 
 /**
  * Created by Jan-Willem on 22-2-2015.
@@ -99,6 +100,7 @@ public class Create {
         ContentValues values = new ContentValues();
         values.put(MumoDbHelper.STAKEHOLDERS_COLUMN_NAME, name);
         values.put(MumoDbHelper.STAKEHOLDERS_COLUMN_AGE, age);
+        values.put(MumoDbHelper.STAKEHOLDERS_COLUMN_UI_SCALE, ScaleType.getDefault().name());
         long insertId = database.insert(MumoDbHelper.TABLE_STAKEHOLDERS, null, values);
 
         Cursor cursor = database.query(MumoDbHelper.TABLE_STAKEHOLDERS,

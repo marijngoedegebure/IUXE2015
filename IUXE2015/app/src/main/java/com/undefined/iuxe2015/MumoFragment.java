@@ -25,14 +25,6 @@ public abstract class MumoFragment extends Fragment {
             ((MumoActivity) getActivity()).toast(message);
     }
 
-    protected ScaleType getScaleType() {
-        if (getActivity() == null || isDetached()) {
-            Log.w("MumoFragment", "Fragment wanted scaleType after detachment!");
-            return ScaleType.getDefault();
-        } else
-            return ((MumoActivity) getActivity()).getScaleType();
-    }
-
     protected RatingType getRatingType() {
         if (getActivity() == null || isDetached()) {
             Log.w("MumoFragment", "Fragment wanted ratingType after detachment!");

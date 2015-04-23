@@ -40,8 +40,6 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
     TextView btnSettings;
     @InjectView(R.id.setup_box_settings)
     View boxSettings;
-    @InjectView(R.id.setup_scale)
-    RadioGroup radioScale;
     @InjectView(R.id.setup_rating)
     RadioGroup radioRating;
     @InjectView(R.id.setup_login)
@@ -83,19 +81,6 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
             }
         });
 
-        switch (getScaleType()) {
-            case BIG:
-                radioScale.check(R.id.setup_scale_big);
-                break;
-            case COMPACT:
-                radioScale.check(R.id.setup_scale_compact);
-                break;
-            default:
-                toast("Unknown scaleType in preferences: " + getScaleType());
-                radioScale.check(R.id.setup_scale_big);
-                break;
-        }
-
         switch (getRatingType()) {
             case BINARY:
                 radioRating.check(R.id.setup_rating_binary);
@@ -109,18 +94,6 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
                 break;
         }
 
-        radioScale.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.setup_scale_big) {
-                    PreferenceTool.setScaleType(getActivity(), ScaleType.BIG);
-                } else if (checkedId == R.id.setup_scale_compact) {
-                    PreferenceTool.setScaleType(getActivity(), ScaleType.COMPACT);
-                } else {
-                    toast("Unknown radiobutton pressed");
-                }
-            }
-        });
         radioRating.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -161,9 +134,7 @@ public class SetupFragment extends MumoFragment implements ConnectionStateCallba
         stakeholderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("STARTUP", "onItemSelected: " + PreferenceTool.getCurrentStakeholderId(getActivity()) + " -> " + position + " -> " + adapter.getIntegerId(position));
                 PreferenceTool.setCurrentStakeholderId(getActivity(), adapter.getIntegerId(position));
-                Log.d("STARTUP", "onItemSelected: " + PreferenceTool.getCurrentStakeholderId(getActivity()));
                 setUiStakeHolderSelected(adapter.getCount() > 0);
 
                 if (preventDialogFromPoppingUpOnce) {

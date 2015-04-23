@@ -14,7 +14,6 @@ import com.undefined.iuxe2015.model.persistent.MumoDataSource;
 public class MumoApplication extends Application {
 
     private MumoDataSource data;
-    private int currentStakeholderId;
 
     @Override
     public void onCreate() {

@@ -30,7 +30,7 @@ public class Update {
         ContentValues values = new ContentValues();
         values.put(MumoDbHelper.STAKEHOLDERS_COLUMN_NAME, stakeholder.getName());
         values.put(MumoDbHelper.STAKEHOLDERS_COLUMN_AGE, stakeholder.getAge());
-        values.put(MumoDbHelper.STAKEHOLDERS_COLUMN_PREF_FONT_SIZE, stakeholder.getPrefFontSize());
+        values.put(MumoDbHelper.STAKEHOLDERS_COLUMN_UI_SCALE, stakeholder.getScaleType().name());
 
         database.update(MumoDbHelper.TABLE_STAKEHOLDERS, values,
                 MumoDbHelper.STAKEHOLDERS_COLUMN_ID + " = " + stakeholder.get_id(),

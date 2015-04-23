@@ -1,17 +1,20 @@
 package com.undefined.iuxe2015;
 
-import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.undefined.iuxe2015.activities.SetupActivity;
+import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.model.persistent.MumoDataSource;
 import com.undefined.iuxe2015.model.types.RatingType;
-import com.undefined.iuxe2015.model.types.ScaleType;
 import com.undefined.iuxe2015.tools.PreferenceTool;
 
 /**
  * Created by Jan-Willem on 8-4-2015.
  */
-public abstract class MumoActivity extends ActionBarActivity {
+public abstract class MumoActivity extends AppCompatActivity {
 
     private Toast t;
 
@@ -26,11 +29,20 @@ public abstract class MumoActivity extends ActionBarActivity {
         t.show();
     }
 
-    protected ScaleType getScaleType(){
-        return PreferenceTool.getScaleType(this);
+    protected RatingType getRatingType() {
+        return PreferenceTool.getRatingType(this);
     }
 
-    protected RatingType getRatingType(){
-        return PreferenceTool.getRatingType(this);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (!(this instanceof SetupActivity)) {
+            int stakeholderId = PreferenceTool.getCurrentStakeholderId(this);
+            Stakeholder s = getData().getStakeholderWithId(stakeholderId);
+            if (s == null)
+                Log.e("MumoActivity", "stakeholder " + stakeholderId + " == null!!1!!!");
+            else
+                super.setTheme(s.getScaleType().getTheme());
+        }
     }
 }

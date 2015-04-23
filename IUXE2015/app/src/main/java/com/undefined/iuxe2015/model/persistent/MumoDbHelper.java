@@ -11,7 +11,7 @@ import android.util.Log;
 public class MumoDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "mumo.db";
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 7;
 
     public static final String TABLE_RATINGS = "ratings";
     public static final String RATINGS_COLUMN_ID = "_id";
@@ -88,12 +88,12 @@ public class MumoDbHelper extends SQLiteOpenHelper {
     public static final String STAKEHOLDERS_COLUMN_ID = "_id";
     public static final String STAKEHOLDERS_COLUMN_NAME = "name";
     public static final String STAKEHOLDERS_COLUMN_AGE = "age";
-    public static final String STAKEHOLDERS_COLUMN_PREF_FONT_SIZE = "pref_font_size";
+    public static final String STAKEHOLDERS_COLUMN_UI_SCALE = "ui_scale";
     public static final String[] allStakeholderColumns = {
             MumoDbHelper.STAKEHOLDERS_COLUMN_ID,
             MumoDbHelper.STAKEHOLDERS_COLUMN_NAME,
             MumoDbHelper.STAKEHOLDERS_COLUMN_AGE,
-            MumoDbHelper.STAKEHOLDERS_COLUMN_PREF_FONT_SIZE};
+            MumoDbHelper.STAKEHOLDERS_COLUMN_UI_SCALE};
 
     // Database creation sql statement
     private static final String DATABASE_CREATE_RATINGS = "create table "
@@ -144,7 +144,7 @@ public class MumoDbHelper extends SQLiteOpenHelper {
             + STAKEHOLDERS_COLUMN_ID + " integer primary key autoincrement, "
             + STAKEHOLDERS_COLUMN_NAME + " text not null, "
             + STAKEHOLDERS_COLUMN_AGE + " integer, "
-            + STAKEHOLDERS_COLUMN_PREF_FONT_SIZE + " integer);";
+            + STAKEHOLDERS_COLUMN_UI_SCALE + " text not null);";
 
     public MumoDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

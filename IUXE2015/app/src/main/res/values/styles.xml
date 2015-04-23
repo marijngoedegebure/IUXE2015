@@ -22,4 +22,29 @@
         <item name="colorAccent">@color/accent</item>
     </style>
 
+    <style name="AppTheme.Normal" parent="AppTheme">
+        <item name="android:buttonStyle">@style/ButtonNormal</item>
+    </style>
+    <style name="AppTheme.Large" parent="AppTheme">
+        <item name="android:buttonStyle">@style/ButtonLarge</item>
+    </style>
+    <style name="AppTheme.Huge" parent="AppTheme">
+        <item name="android:buttonStyle">@style/ButtonHuge</item>
+    </style>
+
+    <style name="ButtonNormal" parent="android:style/Widget.Button">
+    </style>
+
+    <style name="ButtonLarge" parent="android:style/Widget.Button">
+        <item name="android:textSize">24sp</item>
+        <item name="android:layout_margin">20dp</item>
+    </style>
+
+    <style name="ButtonHuge" parent="android:style/Widget.Button">
+        <item name="android:textSize">32sp</item>
+        <item name="android:layout_margin">30dp</item>
+    </style>
+
+
+
 </resources>
