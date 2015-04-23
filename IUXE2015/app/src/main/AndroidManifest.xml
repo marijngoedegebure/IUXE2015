@@ -44,6 +44,10 @@
             android:name=".activities.MusicControllerActivity"
             android:label="@string/title_activity_music_controller" >
         </activity>
+        <activity
+            android:name=".activities.SongDetailActivity"
+            android:label="@string/title_activity_song_detail" >
+        </activity>
     </application>
 
 </manifest>

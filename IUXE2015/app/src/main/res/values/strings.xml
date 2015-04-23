@@ -10,4 +10,6 @@
 
     <string name="title_activity_music_controller">MusicControllerActivity</string>
     <string name="Now_playing">Now playing</string>
+    <string name="title_activity_song_detail">SongDetailActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>
