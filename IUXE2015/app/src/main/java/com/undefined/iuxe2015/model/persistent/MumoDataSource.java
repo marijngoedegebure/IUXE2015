@@ -53,6 +53,24 @@ public class MumoDataSource {
         return Delete.rating(database, rating) > 0;
     }
 
+
+    public ArrayList<Song> getRatedSongs() {
+        ArrayList<Song> songs = new ArrayList<>();
+
+        for(Rating r : getRatings()) {
+            songs.add(getSong(r.get_id_song()));
+        }
+        return songs;
+    }
+
+    public Song getSong(int songId) {
+        return ListAll.getSong(database, songId);
+    }
+
+    public Song getSongById(String id) {
+        return ListAll.getSongById(database, id);
+    }
+
     public ArrayList<Stakeholder> getStakeholders() {
         return ListAll.stakeholders(database);
     }

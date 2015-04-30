@@ -1,6 +1,7 @@
 package com.undefined.iuxe2015.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +13,10 @@ import android.widget.ListView;
 
 import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
+import com.undefined.iuxe2015.activities.SongDetailActivity;
+import com.undefined.iuxe2015.adapters.LibraryAdapter;
+import com.undefined.iuxe2015.model.Song;
+import com.undefined.iuxe2015.model.persistent.MumoDataSource;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +27,17 @@ import java.util.List;
  */
 public class LibraryFragment extends MumoFragment {
 
+    LibraryAdapter adapter;
+
+    ListView listView;
+
     public LibraryFragment() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        adapter = new LibraryAdapter(getActivity(), null);
     }
 
     @Override
@@ -30,64 +45,26 @@ public class LibraryFragment extends MumoFragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_library, container, false);
 
-        final ListView listview = (ListView) rootView.findViewById(R.id.listview);
-        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
-                "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
-                "Android", "iPhone", "WindowsMobile" };
+        ArrayList<Song> songs = getData().getRatedSongs();
 
-        final ArrayList<String> list = new ArrayList<>();
-        for (int i = 0; i < values.length; ++i) {
-            list.add(values[i]);
-        }
-        final StableArrayAdapter adapter = new StableArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, list);
-        listview.setAdapter(adapter);
+        listView = (ListView) rootView.findViewById(R.id.library_rated_songs_listview);
 
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setAdapter(adapter);
+
+        adapter.refresh(songs);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, final View view,
                                     int position, long id) {
-                final String item = (String) parent.getItemAtPosition(position);
-//                view.animate().setDuration(2000).alpha(0)
-//                        .withEndAction(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                list.remove(item);
-//                                adapter.notifyDataSetChanged();
-//                                view.setAlpha(1);
-//                            }
-//                        });
+                final Song item = adapter.getItem(position);
+                Intent intent = new Intent(parent.getContext(), SongDetailActivity.class);
+                startActivity(intent);
             }
 
         });
 
         return rootView;
-    }
-
-    private class StableArrayAdapter extends ArrayAdapter<String> {
-
-        HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
-        public StableArrayAdapter(Context context, int textViewResourceId,
-                                  List<String> objects) {
-            super(context, textViewResourceId, objects);
-            for (int i = 0; i < objects.size(); ++i) {
-                mIdMap.put(objects.get(i), i);
-            }
-        }
-
-        @Override
-        public long getItemId(int position) {
-            String item = getItem(position);
-            return mIdMap.get(item);
-        }
-
-        @Override
-        public boolean hasStableIds() {
-            return true;
-        }
-
     }
 }

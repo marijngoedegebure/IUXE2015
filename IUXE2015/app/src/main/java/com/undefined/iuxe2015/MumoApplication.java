@@ -6,6 +6,7 @@ import android.util.Log;
 import com.spotify.sdk.android.player.Config;
 import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.Spotify;
+import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.persistent.MumoDataSource;
 
 /**
@@ -15,6 +16,8 @@ public class MumoApplication extends Application {
 
     private MumoDataSource data;
     private int currentStakeholderId;
+
+    public static Song currentlyPlayedSong;
 
     @Override
     public void onCreate() {
