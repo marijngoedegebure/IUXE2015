@@ -9,6 +9,9 @@ import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.model.QueryResult;
 import com.undefined.iuxe2015.model.Song;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 /**
  * Created by Jan-Willem on 8-4-2015.
  */
@@ -27,7 +30,13 @@ public class ConnectionTool {
     }
 
     public static void getSongsForQuery(Context c, String query, final ConnectionQueryResultListener UiCallback) {
-        String url = c.getString(R.string.query_url, query);
+
+        String url;
+        try {
+            url = c.getString(R.string.query_url, URLEncoder.encode(query, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            url = "";
+        }
         Log.d("ConnectionTool", url);
 
         Ion.with(c).load(url).as(QueryResult.class).setCallback(new FutureCallback<QueryResult>() {

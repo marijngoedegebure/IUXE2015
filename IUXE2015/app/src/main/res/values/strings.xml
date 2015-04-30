@@ -6,8 +6,6 @@
     <string name="cancel" translatable="false">Cancel</string>
     <string name="delete" translatable="false">Delete</string>
 
-
-
     <string name="title_activity_music_controller">MusicControllerActivity</string>
     <string name="Now_playing">Now playing</string>
     <string name="title_activity_song_detail">SongDetailActivity</string>
