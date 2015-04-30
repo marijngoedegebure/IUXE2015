@@ -7,7 +7,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.spotify.sdk.android.player.Player;
+import com.spotify.sdk.android.player.PlayerStateCallback;
 import com.undefined.iuxe2015.MumoActivity;
+import com.undefined.iuxe2015.MumoApplication;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.fragments.SearchFragment;
 
@@ -27,7 +29,7 @@ public class MusicControllerActivity extends MumoActivity {
         pauseButton = (ImageButton)findViewById(R.id.imageButton2);
         pauseButton.setEnabled(true);
         playButton.setEnabled(false);
-        songName.setText(SearchFragment.adapter.getItem(SearchFragment.currentPosition).getName());
+        songName.setText(MumoApplication.currentlyPlayedSong.getName());
 
     }
 
