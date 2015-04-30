@@ -16,6 +16,9 @@
     <color name="hub_help">#EEEEEE</color>
     <color name="hub_help_pressed">#BDBDBD</color>
     <color name="hub_help_darker">#5c5c5c</color>
+
+    <color name="ripple">#99ffffff</color>
+
     
     <color name="theme1">#d718a2</color>
     <color name="theme2">#20578e</color>

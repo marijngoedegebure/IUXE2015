@@ -11,8 +11,22 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:weightSum="3"
         tools:context=".HubActivity$PlaceholderFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Test Button" />
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/hub_btn_library"
@@ -20,8 +34,8 @@
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_weight="1"
-            android:onClick="onButtonClick"
             android:background="@drawable/bg_hub_library"
+            android:onClick="onButtonClick"
             android:text="@string/hub_library"
             android:textAllCaps="true"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -35,8 +49,8 @@
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_weight="1"
-            android:onClick="onButtonClick"
             android:background="@drawable/bg_hub_search"
+            android:onClick="onButtonClick"
             android:text="@string/hub_search"
             android:textAllCaps="true"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -49,14 +63,38 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:onClick="onButtonClick"
             android:background="@drawable/bg_hub_help"
+            android:onClick="onButtonClick"
             android:text="@string/hub_help"
             android:textAllCaps="true"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/hub_help_darker"
             android:textSize="32sp"
             android:textStyle="bold" />
-
     </LinearLayout>
+
+    <com.github.clans.fab.FloatingActionButton
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fab"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@mipmap/ic_launcher"
+        app:fab_colorNormal="@color/hub_help"
+        app:fab_colorPressed="@color/hub_help_darker"
+        app:fab_colorRipple="@color/ripple"
+        app:fab_showShadow="true"
+        app:fab_shadowColor="#66000000"
+        app:fab_shadowRadius="4dp"
+        app:fab_shadowXOffset="1dp"
+        app:fab_shadowYOffset="3dp"
+        app:fab_size="normal"
+        app:fab_showAnimation="@anim/fab_scale_up"
+        app:fab_hideAnimation="@anim/fab_scale_down"
+        app:fab_label="" />
 </RelativeLayout>
