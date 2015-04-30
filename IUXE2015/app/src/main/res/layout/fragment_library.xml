@@ -15,7 +15,7 @@
         tools:context=".LibraryActivity$PlaceholderFragment">
 
         <ListView
-            android:id="@+id/listview"
+            android:id="@+id/library_rated_songs_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
         </ListView>

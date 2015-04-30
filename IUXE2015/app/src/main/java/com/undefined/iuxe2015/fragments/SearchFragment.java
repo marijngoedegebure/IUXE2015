@@ -36,9 +36,7 @@ public class SearchFragment extends MumoFragment {
     private Button searchBtn;
 
     private ListView searchList;
-    public static SongSearchAdapter adapter;
-
-    public static int currentPosition;
+    public SongSearchAdapter adapter;
 
     public SearchFragment() {
     }
@@ -66,7 +64,7 @@ public class SearchFragment extends MumoFragment {
             // On text change the app does a search query.
             @Override
             public void onTextChanged(final CharSequence s, int start, int before, int count) {
-                ConnectionTool.getSongsForQuery(getActivity(), s.toString(), new ConnectionTool.ConnectionListener() {
+                ConnectionTool.getSongsForQuery(getActivity(), s.toString(), new ConnectionTool.ConnectionQueryResultListener() {
                     @Override
                     public void onConnectionSuccess(QueryResult result) {
                         //TODO stop loading UI, if visible
@@ -106,10 +104,9 @@ public class SearchFragment extends MumoFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view,
                                     int position, long id) {
-                currentPosition = position;
                 final Song item = adapter.getItem(position);
-                Intent intent = new Intent(parent.getContext(), SongDetailActivity.class);
-                startActivity(intent);
+
+                startActivity(SongDetailActivity.getStartIntent(getActivity(), item));
             }
 
         });
@@ -118,7 +115,7 @@ public class SearchFragment extends MumoFragment {
             @Override
             public void onClick(View v) {
                 //TODO, only if query is different and non-empty?
-                ConnectionTool.getSongsForQuery(getActivity(), input.getText().toString(), new ConnectionTool.ConnectionListener() {
+                ConnectionTool.getSongsForQuery(getActivity(), input.getText().toString(), new ConnectionTool.ConnectionQueryResultListener() {
                     @Override
                     public void onConnectionSuccess(QueryResult result) {
                         //TODO stop loading UI, if visible

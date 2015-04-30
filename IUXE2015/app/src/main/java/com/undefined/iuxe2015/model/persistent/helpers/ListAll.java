@@ -75,6 +75,32 @@ public class ListAll {
         return songs;
     }
 
+    public static Song getSong(SQLiteDatabase database, int songId) {
+        if (database.isOpen()) {
+            Cursor cursor = database.query(MumoDbHelper.TABLE_SONGS, MumoDbHelper.allSongColumns,
+                    MumoDbHelper.SONGS_COLUMN_ID + " = " + songId,
+                    null, null, null, null);
+
+            cursor.moveToFirst();
+            if (!cursor.isAfterLast())
+                return CursorTo.song(cursor, true);
+        }
+        return null;
+    }
+
+    public static Song getSongById(SQLiteDatabase database, String id) {
+        if (database.isOpen()) {
+            Cursor cursor = database.query(MumoDbHelper.TABLE_SONGS, MumoDbHelper.allSongColumns,
+                    MumoDbHelper.SONGS_COLUMN_ID_SONG + " ='" + id + "'",
+                    null, null, null, null);
+
+            cursor.moveToFirst();
+            if (!cursor.isAfterLast())
+                return CursorTo.song(cursor, true);
+        }
+        return null;
+    }
+
     public static ArrayList<Artist> artistsForSong(SQLiteDatabase database, Song song) {
         ArrayList<Artist> artists = new ArrayList<>();
         if (database.isOpen()) {
