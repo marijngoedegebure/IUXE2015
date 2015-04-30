@@ -13,21 +13,6 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context=".HubActivity$PlaceholderFragment">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Test Button" />
-        </LinearLayout>
-
-
         <Button
             android:id="@+id/hub_btn_library"
             android:layout_width="match_parent"
@@ -59,6 +44,7 @@
             android:textStyle="bold" />
 
         <Button
+            android:visibility="gone"
             android:id="@+id/hub_btn_help"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -73,28 +59,19 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <com.github.clans.fab.FloatingActionButton
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.melnykov.fab.FloatingActionButton xmlns:fab="http://schemas.android.com/apk/res-auto"
         android:id="@+id/fab"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp"
-        android:src="@mipmap/ic_launcher"
-        app:fab_colorNormal="@color/hub_help"
-        app:fab_colorPressed="@color/hub_help_darker"
-        app:fab_colorRipple="@color/ripple"
-        app:fab_showShadow="true"
-        app:fab_shadowColor="#66000000"
-        app:fab_shadowRadius="4dp"
-        app:fab_shadowXOffset="1dp"
-        app:fab_shadowYOffset="3dp"
-        app:fab_size="normal"
-        app:fab_showAnimation="@anim/fab_scale_up"
-        app:fab_hideAnimation="@anim/fab_scale_down"
-        app:fab_label="" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_fab_help"
+        android:tint="@color/hub_help_darker"
+        fab:fab_colorNormal="@color/hub_help"
+        fab:fab_colorPressed="@color/hub_help_pressed"
+        fab:fab_colorRipple="@color/ripple" />
+
 </RelativeLayout>
