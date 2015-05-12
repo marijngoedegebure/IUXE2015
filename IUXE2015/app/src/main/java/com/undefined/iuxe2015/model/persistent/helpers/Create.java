@@ -18,7 +18,7 @@ import com.undefined.iuxe2015.model.types.ScaleType;
  */
 public class Create {
 
-    public static Rating rating(SQLiteDatabase database, int stakeholderId, String songId, int rating, String note) {
+    public static Rating rating(SQLiteDatabase database, int stakeholderId, int songId, int rating, String note) {
         ContentValues values = new ContentValues();
         values.put(MumoDbHelper.RATINGS_COLUMN_ID_STAKEHOLDER, stakeholderId);
         values.put(MumoDbHelper.RATINGS_COLUMN_ID_SONG, songId);

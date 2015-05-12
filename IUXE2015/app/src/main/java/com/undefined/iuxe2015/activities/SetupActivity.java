@@ -13,6 +13,7 @@ import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 import com.spotify.sdk.android.player.Spotify;
 import com.undefined.iuxe2015.MumoActivity;
+import com.undefined.iuxe2015.MumoApplication;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.fragments.SetupFragment;
 import com.undefined.iuxe2015.model.Stakeholder;
@@ -20,8 +21,7 @@ import com.undefined.iuxe2015.model.types.ScaleType;
 import com.undefined.iuxe2015.tools.PreferenceTool;
 import com.undefined.iuxe2015.tools.SpotifyTool;
 
-public class SetupActivity extends MumoActivity implements
-        PlayerNotificationCallback {
+public class SetupActivity extends MumoActivity {
 
     // Request code that will be used to verify if the result comes from correct activity
     // Can be any integer
@@ -83,7 +83,7 @@ public class SetupActivity extends MumoActivity implements
                         @Override
                         public void onInitialized(Player player) {
                             mPlayer.addConnectionStateCallback(fragment);
-                            mPlayer.addPlayerNotificationCallback(SetupActivity.this);
+                            mPlayer.addPlayerNotificationCallback((MumoApplication)getApplication());
                             //mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
                             Log.d("SetupActivity", "initialized player");
                         }
@@ -107,16 +107,6 @@ public class SetupActivity extends MumoActivity implements
                     // Handle other cases
             }
         }
-    }
-
-    @Override
-    public void onPlaybackEvent(EventType eventType, PlayerState playerState) {
-        Log.d("SetupActivity", "Playback event received: " + eventType.name());
-    }
-
-    @Override
-    public void onPlaybackError(ErrorType errorType, String errorDetails) {
-        Log.d("SetupActivity", "Playback error received: " + errorType.name());
     }
 
     @Override

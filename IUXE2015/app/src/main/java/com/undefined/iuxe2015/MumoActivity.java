@@ -6,6 +6,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.undefined.iuxe2015.activities.SetupActivity;
+import com.undefined.iuxe2015.dialogs.MusicFinishedDialog;
+import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.model.persistent.MumoDataSource;
 import com.undefined.iuxe2015.model.types.RatingType;
@@ -44,5 +46,16 @@ public abstract class MumoActivity extends AppCompatActivity {
             else
                 super.setTheme(s.getScaleType().getTheme());
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ((MumoApplication) getApplication()).setCurrentActivity(this);
+    }
+
+    public void showRatingDialog(Song song) {
+        MusicFinishedDialog newFragment = MusicFinishedDialog.getInstance(song.getId());
+        newFragment.show(getSupportFragmentManager(), MusicFinishedDialog.TAG);
     }
 }

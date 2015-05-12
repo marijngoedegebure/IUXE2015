@@ -5,16 +5,23 @@ import android.util.Log;
 
 import com.spotify.sdk.android.player.Config;
 import com.spotify.sdk.android.player.Player;
+import com.spotify.sdk.android.player.PlayerNotificationCallback;
+import com.spotify.sdk.android.player.PlayerState;
 import com.spotify.sdk.android.player.Spotify;
+import com.undefined.iuxe2015.dialogs.MusicFinishedDialog;
+import com.undefined.iuxe2015.dialogs.StakeholderDialog;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.persistent.MumoDataSource;
 
 /**
  * Created by Jan-Willem on 8-4-2015.
  */
-public class MumoApplication extends Application {
+public class MumoApplication extends Application implements
+        PlayerNotificationCallback {
 
     private MumoDataSource data;
+
+    private MumoActivity currentActivity;
 
     public static Song currentlyPlayedSong;
 
@@ -60,5 +67,25 @@ public class MumoApplication extends Application {
             data.open();
         }
         return data;
+    }
+
+    public void setCurrentActivity(MumoActivity currentActivity) {
+        this.currentActivity = currentActivity;
+    }
+
+    @Override
+    public void onPlaybackEvent(EventType eventType, PlayerState playerState) {
+        Log.d("SetupActivity", "Playback event received: " + eventType.name());
+        if(eventType == EventType.TRACK_CHANGED) {
+            currentActivity.showRatingDialog(currentlyPlayedSong);
+        }
+        else if(eventType == EventType.TRACK_START) {
+            currentActivity.showRatingDialog(currentlyPlayedSong);
+        }
+    }
+
+    @Override
+    public void onPlaybackError(ErrorType errorType, String errorDetails) {
+        Log.d("SetupActivity", "Playback error received: " + errorType.name());
     }
 }

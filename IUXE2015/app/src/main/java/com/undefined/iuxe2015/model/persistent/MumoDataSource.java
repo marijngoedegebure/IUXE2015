@@ -41,7 +41,7 @@ public class MumoDataSource {
         return ListAll.ratingsForSong(database, song);
     }
 
-    public Rating addRating(int stakeholderId, String songId, int rating, String note) {
+    public Rating addRating(int stakeholderId, int songId, int rating, String note) {
         return Create.rating(database, stakeholderId, songId, rating, note);
     }
 
@@ -56,9 +56,10 @@ public class MumoDataSource {
 
     public ArrayList<Song> getRatedSongs() {
         ArrayList<Song> songs = new ArrayList<>();
-
-        for(Rating r : getRatings()) {
-            songs.add(getSong(r.get_id_song()));
+        ArrayList<Rating> ratings = getRatings();
+        for(Rating r : ratings) {
+            Song song = getSong(r.get_id_song());
+            songs.add(song);
         }
         return songs;
     }
@@ -69,6 +70,10 @@ public class MumoDataSource {
 
     public Song getSongById(String id) {
         return ListAll.getSongById(database, id);
+    }
+
+    public Song addSong(int stakeholderId, Song song) {
+        return Create.song(database, stakeholderId, song);
     }
 
     public ArrayList<Stakeholder> getStakeholders() {
