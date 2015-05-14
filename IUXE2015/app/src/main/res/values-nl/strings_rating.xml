@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="rating_rate">Beoordeel dit nummer</string>
+    <string name="rating_song_name">Titel:</string>
+    <string name="rating_song_artist">Artiest:</string>
+    <string name="rating_song_album">Album:</string>
+    <string name="rating_rating">Beoordeling:</string>
+    <string name="rating_song_value1">Slecht</string>
+    <string name="rating_song_value2">Matig</string>
+    <string name="rating_song_value3">Neutraal</string>
+    <string name="rating_song_value4">Goed</string>
+    <string name="rating_song_value5">Geweldig</string>
+</resources>

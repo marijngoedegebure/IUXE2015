@@ -1,5 +1,5 @@
 <resources>
     <string name="title_activity_search">Muziek zoeken</string>
-    <string name="edit_message">Zoeken</string>
+    <string name="edit_message">Vul hier uw zoekterm in</string>
     <string name="button_send">Zoek</string>
 </resources>

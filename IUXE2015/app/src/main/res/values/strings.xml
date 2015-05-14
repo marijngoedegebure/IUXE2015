@@ -10,42 +10,4 @@
     <string name="Now_playing">Now playing</string>
     <string name="title_activity_song_detail">SongDetailActivity</string>
     <string name="action_settings">Settings</string>
-
-    <string name="help_click_overlay_to_hide">Tik op het scherm om de helpfunctie af te sluiten</string>
-
-    <string name="help_hub_title">Hoofdmenu</string>
-    <string name="help_hub_text">
-        Dit is het hoofdmenu. U kunt hier kiezen uit verschillende opties.
-        \n\nTik op gebeurtenissen om een lijst van uw levensgebeurtenissen te zien en bijbehorende muziek te luisteren.
-        \n\nTik op muziek om opgeslagen muziek te luisteren, gebaseerd op eerdere ervaringen.
-        \n\nTik op zoeken om naar nieuwe muziek te zoeken.
-    </string>
-    <string name="help_events_title">Gebeurtenissen</string>
-    <string name="help_events_text">
-        Hier ziet u een lijst van gebeurtenissen met de bijbehorende muziek.
-        \n\nDe lijst is gesorteerd op de datum van de gebeurtenis.
-        \n\nTik op één van de gebeurtenissen om details ervan te zien of om het nummer af te spelen.
-    </string>
-    <string name="help_library_title">Muziekbibliotheek</string>
-    <string name="help_library_text">
-        Hier ziet u een lijst van alle nummers die u beoordeeld heeft.
-        \n\nDe lijst is gesorteerd op de beoordeling en de naam van het nummer.
-        \n\nTik op één van de nummers om details ervan te zien of om het nummer af te spelen.
-    </string>
-    <string name="help_search_title">Muziek zoeken</string>
-    <string name="help_search_text">
-        Hier kunt u zoeken naar nieuwe nummers.
-        \n\nGebruik het tekstvak om zoektermen in te vullen, en tik vervolgens op de \'zoek\'-knop.
-        \n\nZoektermen kunnen zijn:
-        \n-Naam van het nummer
-        \n-Naam van de artiest
-        \n-Naam van een album
-        \n\nDe gevonden nummers zullen onder het tekstvak verschijnen.
-        \n\nTik op één van de nummers om details ervan te zien of om het nummer af te spelen.
-    </string>
-    <string name="help_songdetail_title">Nummerdetails</string>
-    <string name="help_songdetail_text">
-        Hier worden de details van het nummer weergegeven.
-        \n\nTik op de speelknop om het nummer af te spelen.
-    </string>
 </resources>

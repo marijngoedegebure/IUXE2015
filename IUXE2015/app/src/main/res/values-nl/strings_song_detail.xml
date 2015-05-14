@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="song_detail_play">Speel dit nummer</string>
+    <string name="song_detail_song_name">Naam:</string>
+    <string name="song_detail_song_artist">Artiest:</string>
+    <string name="song_detail_song_album">Album:</string>
+</resources>

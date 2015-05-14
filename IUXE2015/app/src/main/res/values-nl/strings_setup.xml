@@ -1,2 +1,9 @@
 <resources>
+    <string name="setup_header">Welkom bij Mumo</string>
+    <string name="setup_message">Mumo is een applicatie ontworpen op de TUDelft voor het vak \'Intelligent User Experience Engineering\' en heeft als doel mensen met dementie te helpen.</string>
+    <string name="setup_message_loading">De applicatie wordt momenteel geinitialiseerd.</string>
+    <string name="setup_message_error">Whoops!\nDe app is momenteel niet goed ingesteld.\nGeef het apparaat a.u.b. even aan één van de makers.</string>
+    <string name="setup_help_continue">Start Mumo door op de knop met de fijnste lettergrootte te tikken.</string>
+    <string name="setup_btn_continue">Start</string>
+
 </resources>

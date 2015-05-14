@@ -20,19 +20,5 @@
             android:layout_height="wrap_content" >
         </ListView>
 
-        <Button
-            android:id="@+id/library_btn_help"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:onClick="onButtonClick"
-            android:background="@drawable/bg_hub_help"
-            android:text="@string/hub_help"
-            android:textAllCaps="true"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/hub_help_darker"
-            android:textSize="32sp"
-            android:textStyle="bold" />
-
     </LinearLayout>
 </RelativeLayout>
