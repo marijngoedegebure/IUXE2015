@@ -12,27 +12,32 @@
         <item name="colorAccent">@color/accent</item>
     </style>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat">
+
+        <item name="android:windowBackground">@color/theme3</item>
         <!-- Main theme colors -->
         <!--   your app branding color for the app bar -->
-        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimary">@color/theme2</item>
         <!--   darker variant for the status bar and contextual app bars -->
-        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorPrimaryDark">@color/theme2</item>
         <!--   theme UI controls like checkboxes and text fields -->
         <item name="colorAccent">@color/accent</item>
     </style>
 
     <style name="AppTheme.Normal" parent="AppTheme">
         <item name="android:buttonStyle">@style/ButtonNormal</item>
+        <item name="android:editTextStyle">@style/EditTextNormal</item>
     </style>
     <style name="AppTheme.Large" parent="AppTheme">
         <item name="android:buttonStyle">@style/ButtonLarge</item>
+        <item name="android:editTextStyle">@style/EditTextLarge</item>
     </style>
     <style name="AppTheme.Huge" parent="AppTheme">
         <item name="android:buttonStyle">@style/ButtonHuge</item>
+        <item name="android:editTextStyle">@style/EditTextHuge</item>
     </style>
 
-    <style name="ButtonNormal" parent="android:Widget.Holo.Button">
+    <style name="ButtonNormal" parent="android:style/Widget.Holo.Button">
         <item name="android:textAllCaps">true</item>
         <item name="android:padding">0dp</item>
         <item name="android:minWidth">88dp</item>
@@ -41,18 +46,27 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="ButtonLarge" parent="android:Widget.Holo.Button">
+    <style name="ButtonLarge" parent="android:style/Widget.Holo.Button">
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">24sp</item>
         <item name="android:padding">16dp</item>
     </style>
 
-    <style name="ButtonHuge" parent="android:Widget.Holo.Button">
+    <style name="ButtonHuge" parent="android:style/Widget.Holo.Button">
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">32sp</item>
         <item name="android:padding">24dp</item>
     </style>
 
+    <style name="EditTextNormal" parent="@android:style/Widget.Holo.EditText">
+        <item name="android:textSize">16sp</item>
+    </style>
 
+    <style name="EditTextLarge" parent="@android:style/Widget.Holo.EditText">
+        <item name="android:textSize">24sp</item>
+    </style>
 
+    <style name="EditTextHuge" parent="@android:style/Widget.Holo.EditText">
+        <item name="android:textSize">32sp</item>
+    </style>
 </resources>
