@@ -14,6 +14,18 @@
         tools:context=".HubActivity$PlaceholderFragment">
 
         <Button
+            android:id="@+id/hub_btn_events"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_weight="1"
+            android:background="@drawable/bg_hub_help"
+            android:onClick="onButtonClick"
+            android:text="@string/hub_events"
+            android:textColor="@color/hub_help_darker"
+            android:textStyle="bold" />
+
+        <Button
             android:id="@+id/hub_btn_library"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -36,20 +48,6 @@
             android:textColor="@color/hub_search_darker"
             android:textStyle="bold" />
 
-        <Button
-            android:visibility="gone"
-            android:id="@+id/hub_btn_help"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_hub_help"
-            android:onClick="onButtonClick"
-            android:text="@string/hub_help"
-            android:textAllCaps="true"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/hub_help_darker"
-            android:textSize="32sp"
-            android:textStyle="bold" />
     </LinearLayout>
 
     <com.melnykov.fab.FloatingActionButton xmlns:fab="http://schemas.android.com/apk/res-auto"

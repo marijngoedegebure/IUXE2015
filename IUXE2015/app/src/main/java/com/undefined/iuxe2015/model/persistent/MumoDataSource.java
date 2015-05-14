@@ -53,7 +53,7 @@ public class MumoDataSource {
     public boolean removeRating(Rating rating) {
         return Delete.rating(database, rating) > 0;
     }
-    
+
     public ArrayList<Song> getRatedSongs() {
         ArrayList<Song> songs = new ArrayList<>();
         ArrayList<Rating> ratings = getRatings();

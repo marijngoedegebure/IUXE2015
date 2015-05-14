@@ -137,8 +137,6 @@ public class SearchFragment extends MumoFragment {
             }
         });
 
-        searchList.setAdapter(adapter);
-
         return rootView;
     }
 

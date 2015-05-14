@@ -1,4 +1,5 @@
 <resources>
+    <string name="hub_events">Gebeurtenissen</string>
     <string name="hub_library">Muziek</string>
     <string name="hub_search">Zoeken</string>
     <string name="hub_help">Help</string>

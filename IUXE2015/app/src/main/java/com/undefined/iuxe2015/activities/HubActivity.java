@@ -31,6 +31,10 @@ public class HubActivity extends MumoActivity {
     public void onButtonClick(View button) {
         Intent intent;
         switch (button.getId()) {
+            case R.id.hub_btn_events:
+                intent = new Intent(this, EventsActivity.class);
+                startActivity(intent);
+                break;
             case R.id.hub_btn_library:
                 intent = new Intent(this, LibraryActivity.class);
                 startActivity(intent);
