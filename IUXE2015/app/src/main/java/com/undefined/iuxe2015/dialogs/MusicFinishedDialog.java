@@ -19,6 +19,7 @@ import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.SetupActivity;
 import com.undefined.iuxe2015.activities.SongDetailActivity;
 import com.undefined.iuxe2015.fragments.SetupFragment;
+import com.undefined.iuxe2015.model.Event;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.tools.ConnectionTool;
@@ -40,6 +41,7 @@ public class MusicFinishedDialog extends MumoDialog {
     RadioButton rating_rate_value3;
     RadioButton rating_rate_value4;
     RadioButton rating_rate_value5;
+    EditText event;
     Button rateSong;
 
     private Song song;
@@ -104,6 +106,7 @@ public class MusicFinishedDialog extends MumoDialog {
         rating_rate_value3 = (RadioButton) v.findViewById(R.id.rating_rate_value3);
         rating_rate_value4 = (RadioButton) v.findViewById(R.id.rating_rate_value4);
         rating_rate_value5 = (RadioButton) v.findViewById(R.id.rating_rate_value5);
+        event = (EditText) v.findViewById(R.id.rating_event_name);
         rateSong = (Button) v.findViewById(R.id.rating_rate);
         setDetails();
         builder.setView(v);
@@ -126,6 +129,7 @@ public class MusicFinishedDialog extends MumoDialog {
             } else {
                 artist.setText("No artists found");
             }
+            event.setText(song.getEvent().toString());
 
             rateSong.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -153,6 +157,7 @@ public class MusicFinishedDialog extends MumoDialog {
 
     private void rate(int stakeHolderId, Song song, int rate) {
         Log.d("MusicFinishedDialog", "Add rating: " + stakeHolderId + ", " + song.getId() + ", " + rate + ", " + "");
+        song.setEvent(new Event(event.getText().toString()));
         song = getData().addSong(stakeHolderId, song);
         getData().addRating(stakeHolderId, song.get_id(), rate, "");
     }

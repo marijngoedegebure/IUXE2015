@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="rating_rate">Rate this song</string>
+    <string name="rating_rate">Save this song</string>
     <string name="rating_song_name">Name:</string>
     <string name="rating_song_artist">Artist:</string>
     <string name="rating_song_album">Album:</string>
@@ -10,4 +10,5 @@
     <string name="rating_song_value3">Value 3</string>
     <string name="rating_song_value4">Value 4</string>
     <string name="rating_song_value5">Value 5</string>
+    <string name="rating_event">Event:</string>
 </resources>

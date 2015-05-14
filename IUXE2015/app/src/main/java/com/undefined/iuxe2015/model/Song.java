@@ -31,6 +31,9 @@ public class Song {
     @SerializedName("artists")
     private ArrayList<Artist> artists;
 
+    @SerializedName("event")
+    private Event event;
+
     public int get_id() {
         return _id;
     }
@@ -108,6 +111,10 @@ public class Song {
     public void setArtists(ArrayList<Artist> artists) {
         this.artists = artists;
     }
+
+    public Event getEvent() { return event; }
+
+    public void setEvent(Event event) { this.event = event; }
 
     public long getDuration_ms() { return duration_ms; }
 }
