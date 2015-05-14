@@ -24,18 +24,31 @@
         <item name="colorAccent">@color/accent</item>
     </style>
 
+    <!-- AppThemes -->
+
     <style name="AppTheme.Normal" parent="AppTheme">
         <item name="android:buttonStyle">@style/ButtonNormal</item>
         <item name="android:editTextStyle">@style/EditTextNormal</item>
+        <item name="android:textAppearanceSmall">@style/TextSmallNormal</item>
+        <item name="android:textAppearanceMedium">@style/TextMediumNormal</item>
+        <item name="android:textAppearanceLarge">@style/TextLargeNormal</item>
     </style>
     <style name="AppTheme.Large" parent="AppTheme">
         <item name="android:buttonStyle">@style/ButtonLarge</item>
         <item name="android:editTextStyle">@style/EditTextLarge</item>
+        <item name="android:textAppearanceSmall">@style/TextSmallLarge</item>
+        <item name="android:textAppearanceMedium">@style/TextMediumLarge</item>
+        <item name="android:textAppearanceLarge">@style/TextLargeLarge</item>
     </style>
     <style name="AppTheme.Huge" parent="AppTheme">
         <item name="android:buttonStyle">@style/ButtonHuge</item>
         <item name="android:editTextStyle">@style/EditTextHuge</item>
+        <item name="android:textAppearanceSmall">@style/TextSmallHuge</item>
+        <item name="android:textAppearanceMedium">@style/TextMediumHuge</item>
+        <item name="android:textAppearanceLarge">@style/TextLargeHuge</item>
     </style>
+
+    <!-- Button Themes -->
 
     <style name="ButtonNormal" parent="android:style/Widget.Holo.Button">
         <item name="android:textAllCaps">true</item>
@@ -58,6 +71,8 @@
         <item name="android:padding">24dp</item>
     </style>
 
+    <!-- EditText Themes -->
+
     <style name="EditTextNormal" parent="@android:style/Widget.Holo.EditText">
         <item name="android:textSize">16sp</item>
     </style>
@@ -68,5 +83,41 @@
 
     <style name="EditTextHuge" parent="@android:style/Widget.Holo.EditText">
         <item name="android:textSize">32sp</item>
+    </style>
+
+    <!-- TextSmall -->
+
+    <style name="TextSmallNormal" parent="@android:style/TextAppearance.Holo.Small">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="TextSmallLarge" parent="@android:style/TextAppearance.Holo.Small">
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="TextSmallHuge" parent="@android:style/TextAppearance.Holo.Small">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <!-- TextMedium -->
+
+    <style name="TextMediumNormal" parent="@android:style/TextAppearance.Holo.Medium">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="TextMediumLarge" parent="@android:style/TextAppearance.Holo.Medium">
+        <item name="android:textSize">27sp</item>
+    </style>
+    <style name="TextMediumHuge" parent="@android:style/TextAppearance.Holo.Medium">
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <!-- TextLarge -->
+
+    <style name="TextLargeNormal" parent="@android:style/TextAppearance.Holo.Large">
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="TextLargeLarge" parent="@android:style/TextAppearance.Holo.Large">
+        <item name="android:textSize">33sp</item>
+    </style>
+    <style name="TextLargeHuge" parent="@android:style/TextAppearance.Holo.Large">
+        <item name="android:textSize">44sp</item>
     </style>
 </resources>

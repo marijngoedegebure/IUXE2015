@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Button Themes -->
+
     <style name="ButtonNormal" parent="android:style/Widget.Material.Button">
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingStart">8dp</item>
@@ -30,6 +32,8 @@
         <item name="android:textSize">34sp</item>
     </style>
 
+    <!-- EditText themes -->
+
     <style name="EditTextNormal" parent="@android:style/Widget.Material.EditText">
         <item name="android:textSize">16sp</item>
     </style>
@@ -42,4 +46,39 @@
         <item name="android:textSize">32sp</item>
     </style>
 
+    <!-- TextSmall -->
+
+    <style name="TextSmallNormal" parent="@android:style/TextAppearance.Material.Small">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="TextSmallLarge" parent="@android:style/TextAppearance.Material.Small">
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="TextSmallHuge" parent="@android:style/TextAppearance.Material.Small">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <!-- TextMedium -->
+
+    <style name="TextMediumNormal" parent="@android:style/TextAppearance.Material.Medium">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="TextMediumLarge" parent="@android:style/TextAppearance.Material.Medium">
+        <item name="android:textSize">27sp</item>
+    </style>
+    <style name="TextMediumHuge" parent="@android:style/TextAppearance.Material.Medium">
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <!-- TextLarge -->
+
+    <style name="TextLargeNormal" parent="@android:style/TextAppearance.Material.Large">
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="TextLargeLarge" parent="@android:style/TextAppearance.Material.Large">
+        <item name="android:textSize">33sp</item>
+    </style>
+    <style name="TextLargeHuge" parent="@android:style/TextAppearance.Material.Large">
+        <item name="android:textSize">44sp</item>
+    </style>
 </resources>
