@@ -6,6 +6,7 @@ import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Toast;
 
 import com.undefined.iuxe2015.activities.SetupActivity;
@@ -23,6 +24,7 @@ public abstract class MumoActivity extends AppCompatActivity {
 
     private Toast t;
 
+    private final int overlayFadeMs = 300;
     protected View helpOverlay;
 
     public MumoDataSource getData() {
@@ -72,15 +74,21 @@ public abstract class MumoActivity extends AppCompatActivity {
 
     public void showOverlay(View v) {
         if (helpOverlay != null) {
-            //TODO animate alpha
+            AlphaAnimation a = new AlphaAnimation(0,1);
+            a.setDuration(overlayFadeMs);
+            helpOverlay.setAnimation(a);
             helpOverlay.setVisibility(View.VISIBLE);
+            a.start();
             //TODO hide keyboard if visible
         }
     }
 
     public void hideOverlay(View v) {
         if (helpOverlay != null) {
-            //TODO animate alpha
+            AlphaAnimation a = new AlphaAnimation(1,0);
+            a.setDuration(overlayFadeMs);
+            helpOverlay.setAnimation(a);
+            a.start();
             helpOverlay.setVisibility(View.GONE);
         }
     }
