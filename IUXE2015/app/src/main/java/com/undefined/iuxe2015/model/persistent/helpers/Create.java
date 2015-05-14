@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.undefined.iuxe2015.model.Album;
 import com.undefined.iuxe2015.model.Artist;
+import com.undefined.iuxe2015.model.Event;
 import com.undefined.iuxe2015.model.Image;
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
@@ -18,10 +19,11 @@ import com.undefined.iuxe2015.model.types.ScaleType;
  */
 public class Create {
 
-    public static Rating rating(SQLiteDatabase database, int stakeholderId, int songId, int rating, String note) {
+    public static Rating rating(SQLiteDatabase database, int stakeholderId, int songId, int eventId,int rating, String note) {
         ContentValues values = new ContentValues();
         values.put(MumoDbHelper.RATINGS_COLUMN_ID_STAKEHOLDER, stakeholderId);
         values.put(MumoDbHelper.RATINGS_COLUMN_ID_SONG, songId);
+        values.put(MumoDbHelper.RATINGS_COLUMN_ID_EVENT, eventId);
         values.put(MumoDbHelper.RATINGS_COLUMN_RATING, rating);
         values.put(MumoDbHelper.RATINGS_COLUMN_NOTE, note);
         values.put(MumoDbHelper.RATINGS_COLUMN_TIMESTAMP, System.currentTimeMillis());
@@ -108,5 +110,18 @@ public class Create {
                 null, null, null, null);
         cursor.moveToFirst();
         return CursorTo.stakeholder(cursor, true);
+    }
+
+    public static Event event(SQLiteDatabase database, String name, long date) {
+        ContentValues values = new ContentValues();
+        values.put(MumoDbHelper.EVENTS_COLUMN_NAME, name);
+        values.put(MumoDbHelper.EVENTS_COLUMN_DATE, date);
+        long insertId = database.insert(MumoDbHelper.TABLE_EVENTS, null, values);
+
+        Cursor cursor = database.query(MumoDbHelper.TABLE_EVENTS,
+                MumoDbHelper.allEventColumns, MumoDbHelper.EVENTS_COLUMN_ID + " = " + insertId,
+                null, null, null, null);
+        cursor.moveToFirst();
+        return CursorTo.event(cursor, true);
     }
 }

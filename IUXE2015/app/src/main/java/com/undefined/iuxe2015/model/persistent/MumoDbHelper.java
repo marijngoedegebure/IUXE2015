@@ -11,12 +11,13 @@ import android.util.Log;
 public class MumoDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "mumo.db";
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 8;
 
     public static final String TABLE_RATINGS = "ratings";
     public static final String RATINGS_COLUMN_ID = "_id";
     public static final String RATINGS_COLUMN_ID_STAKEHOLDER = "_id_stakeholder";
     public static final String RATINGS_COLUMN_ID_SONG = "_id_song";
+    public static final String RATINGS_COLUMN_ID_EVENT = "_id_event";
     public static final String RATINGS_COLUMN_RATING = "rating";
     public static final String RATINGS_COLUMN_NOTE = "note";
     public static final String RATINGS_COLUMN_TIMESTAMP = "timestamp";
@@ -24,6 +25,7 @@ public class MumoDbHelper extends SQLiteOpenHelper {
             MumoDbHelper.RATINGS_COLUMN_ID,
             MumoDbHelper.RATINGS_COLUMN_ID_STAKEHOLDER,
             MumoDbHelper.RATINGS_COLUMN_ID_SONG,
+            MumoDbHelper.RATINGS_COLUMN_ID_EVENT,
             MumoDbHelper.RATINGS_COLUMN_RATING,
             MumoDbHelper.RATINGS_COLUMN_NOTE,
             MumoDbHelper.RATINGS_COLUMN_TIMESTAMP};
@@ -95,12 +97,22 @@ public class MumoDbHelper extends SQLiteOpenHelper {
             MumoDbHelper.STAKEHOLDERS_COLUMN_AGE,
             MumoDbHelper.STAKEHOLDERS_COLUMN_UI_SCALE};
 
+    public static final String TABLE_EVENTS = "events";
+    public static final String EVENTS_COLUMN_ID = "_id";
+    public static final String EVENTS_COLUMN_NAME = "name";
+    public static final String EVENTS_COLUMN_DATE = "date";
+    public static final String[] allEventColumns = {
+            MumoDbHelper.EVENTS_COLUMN_ID,
+            MumoDbHelper.EVENTS_COLUMN_NAME,
+            MumoDbHelper.EVENTS_COLUMN_DATE};
+
     // Database creation sql statement
     private static final String DATABASE_CREATE_RATINGS = "create table "
             + TABLE_RATINGS + "( "
             + RATINGS_COLUMN_ID + " integer primary key autoincrement, "
             + RATINGS_COLUMN_ID_STAKEHOLDER + " integer, "
             + RATINGS_COLUMN_ID_SONG + " integer, "
+            + RATINGS_COLUMN_ID_EVENT + " integer, "
             + RATINGS_COLUMN_RATING + " integer, "
             + RATINGS_COLUMN_NOTE + " text not null, "
             + RATINGS_COLUMN_TIMESTAMP + " integer);";
@@ -146,6 +158,12 @@ public class MumoDbHelper extends SQLiteOpenHelper {
             + STAKEHOLDERS_COLUMN_AGE + " integer, "
             + STAKEHOLDERS_COLUMN_UI_SCALE + " text not null);";
 
+    private static final String DATABASE_CREATE_EVENTS = "create table "
+            + TABLE_EVENTS + "( "
+            + EVENTS_COLUMN_ID + " integer primary key autoincrement, "
+            + EVENTS_COLUMN_NAME + " text not null, "
+            + EVENTS_COLUMN_DATE + " integer);";
+
     public MumoDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -158,6 +176,7 @@ public class MumoDbHelper extends SQLiteOpenHelper {
         database.execSQL(DATABASE_CREATE_ALBUMS);
         database.execSQL(DATABASE_CREATE_IMAGES);
         database.execSQL(DATABASE_CREATE_STAKEHOLDERS);
+        database.execSQL(DATABASE_CREATE_EVENTS);
     }
 
     public void clear(SQLiteDatabase db) {
@@ -167,6 +186,7 @@ public class MumoDbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ALBUMS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_IMAGES);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_STAKEHOLDERS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENTS);
         onCreate(db);
     }
 

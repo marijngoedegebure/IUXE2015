@@ -2,6 +2,7 @@ package com.undefined.iuxe2015.model.persistent.helpers;
 
 import android.database.Cursor;
 
+import com.undefined.iuxe2015.model.Event;
 import com.undefined.iuxe2015.model.Image;
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
@@ -19,9 +20,10 @@ public class CursorTo {
         stamp.set_id(cursor.getInt(0));
         stamp.set_id_stakeholder(cursor.getInt(1));
         stamp.set_id_song(cursor.getInt(2));
-        stamp.setRating(cursor.getInt(3));
-        stamp.setNote(cursor.getString(4));
-        stamp.setTimestamp(cursor.getLong(5));
+        stamp.set_id_event(cursor.getInt(3));
+        stamp.setRating(cursor.getInt(4));
+        stamp.setNote(cursor.getString(5));
+        stamp.setTimestamp(cursor.getLong(6));
 
         if(closeCursor)
             cursor.close();
@@ -98,5 +100,17 @@ public class CursorTo {
             cursor.close();
 
         return stakeholder;
+    }
+
+    public static Event event(Cursor cursor, boolean closeCursor) {
+        Event event = new Event();
+        event.set_id(cursor.getInt(0));
+        event.setName(cursor.getString(1));
+        event.setDate(cursor.getLong(2));
+
+        if(closeCursor)
+            cursor.close();
+
+        return event;
     }
 }

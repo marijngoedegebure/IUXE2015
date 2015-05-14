@@ -3,6 +3,7 @@ package com.undefined.iuxe2015.model.persistent.helpers;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.undefined.iuxe2015.model.Event;
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.model.persistent.MumoDbHelper;
@@ -15,6 +16,7 @@ public class Update {
         ContentValues values = new ContentValues();
         values.put(MumoDbHelper.RATINGS_COLUMN_ID_STAKEHOLDER, stakeholderId);
         values.put(MumoDbHelper.RATINGS_COLUMN_ID_SONG, rating.get_id_song());
+        values.put(MumoDbHelper.RATINGS_COLUMN_ID_EVENT, rating.get_id_event());
         values.put(MumoDbHelper.RATINGS_COLUMN_RATING, rating.getRating());
         values.put(MumoDbHelper.RATINGS_COLUMN_NOTE, rating.getNote());
         values.put(MumoDbHelper.RATINGS_COLUMN_TIMESTAMP, System.currentTimeMillis());
@@ -37,5 +39,17 @@ public class Update {
                 null);
 
         return stakeholder;
+    }
+
+    public static Event event(SQLiteDatabase database, Event event) {
+        ContentValues values = new ContentValues();
+        values.put(MumoDbHelper.EVENTS_COLUMN_NAME, event.getName());
+        values.put(MumoDbHelper.EVENTS_COLUMN_DATE, event.getDate());
+
+        database.update(MumoDbHelper.TABLE_EVENTS, values,
+                MumoDbHelper.EVENTS_COLUMN_ID + " = " + event.get_id(),
+                null);
+
+        return event;
     }
 }

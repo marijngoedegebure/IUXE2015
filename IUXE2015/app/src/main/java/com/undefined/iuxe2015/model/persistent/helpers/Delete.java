@@ -2,6 +2,7 @@ package com.undefined.iuxe2015.model.persistent.helpers;
 
 import android.database.sqlite.SQLiteDatabase;
 
+import com.undefined.iuxe2015.model.Event;
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.Stakeholder;
@@ -91,5 +92,18 @@ public class Delete {
                 MumoDbHelper.IMAGES_COLUMN_ID_STAKEHOLDER, stakeholder.get_id());
     }
 
+    /**
+     * EVENT
+     */
 
+    public static int event(SQLiteDatabase database, Event event) {
+        Delete.ratingsOfEvent(database, event);
+        return delete(database, MumoDbHelper.TABLE_STAKEHOLDERS,
+                MumoDbHelper.STAKEHOLDERS_COLUMN_ID, event.get_id());
+    }
+
+    public static int ratingsOfEvent(SQLiteDatabase database, Event event) {
+        return delete(database, MumoDbHelper.TABLE_RATINGS,
+                MumoDbHelper.RATINGS_COLUMN_ID_EVENT, event.get_id());
+    }
 }

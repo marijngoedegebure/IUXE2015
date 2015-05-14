@@ -7,6 +7,7 @@ public class Rating {
     private int _id;
     private int _id_stakeholder;
     private int _id_song;
+    private int _id_event;
     private int rating;
     private String note;
     private long timestamp;
@@ -33,6 +34,14 @@ public class Rating {
 
     public void set_id_song(int songId) {
         this._id_song = songId;
+    }
+
+    public int get_id_event() {
+        return _id_event;
+    }
+
+    public void set_id_event(int eventId) {
+        this._id_event = eventId;
     }
 
     public int getRating() {

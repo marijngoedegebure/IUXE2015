@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.undefined.iuxe2015.model.Event;
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.Stakeholder;
@@ -41,8 +42,8 @@ public class MumoDataSource {
         return ListAll.ratingsForSong(database, song);
     }
 
-    public Rating addRating(int stakeholderId, int songId, int rating, String note) {
-        return Create.rating(database, stakeholderId, songId, rating, note);
+    public Rating addRating(int stakeholderId, int songId, int eventId, int rating, String note) {
+        return Create.rating(database, stakeholderId, songId, eventId, rating, note);
     }
 
     public void updateRating(int stakeholderId, Rating rating) {
@@ -52,8 +53,7 @@ public class MumoDataSource {
     public boolean removeRating(Rating rating) {
         return Delete.rating(database, rating) > 0;
     }
-
-
+    
     public ArrayList<Song> getRatedSongs() {
         ArrayList<Song> songs = new ArrayList<>();
         ArrayList<Rating> ratings = getRatings();
@@ -95,5 +95,26 @@ public class MumoDataSource {
 
     public int deleteStakeholder(Stakeholder stakeholder) {
         return Delete.stakeholder(database, stakeholder);
+    }
+
+    public ArrayList<Event> getEvents() {
+        return ListAll.events(database);
+    }
+
+
+    public Event getEventWithId(int eventId) {
+        return ListAll.event(database, eventId);
+    }
+
+    public Event updateEvent(Event event) {
+        return Update.event(database, event);
+    }
+
+    public Event newStakeholder(String name, long date) {
+        return Create.event(database, name, date);
+    }
+
+    public int deleteEvent(Event event) {
+        return Delete.event(database, event);
     }
 }

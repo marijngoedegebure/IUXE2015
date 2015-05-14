@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.undefined.iuxe2015.model.Album;
 import com.undefined.iuxe2015.model.Artist;
+import com.undefined.iuxe2015.model.Event;
 import com.undefined.iuxe2015.model.Image;
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
@@ -179,6 +180,36 @@ public class ListAll {
             cursor.moveToFirst();
             if (!cursor.isAfterLast())
                 return CursorTo.stakeholder(cursor, true);
+        }
+        return null;
+    }
+
+    public static ArrayList<Event> events(SQLiteDatabase database) {
+        ArrayList<Event> events = new ArrayList<>();
+        if (database.isOpen()) {
+            Cursor cursor = database.query(MumoDbHelper.TABLE_EVENTS, MumoDbHelper.allEventColumns,
+                    null, null, null, null, null);
+
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                events.add(CursorTo.event(cursor, false));
+                cursor.moveToNext();
+            }
+            // make sure to close the cursor
+            cursor.close();
+        }
+        return events;
+    }
+
+    public static Event event(SQLiteDatabase database, int eventId) {
+        if (database.isOpen()) {
+            Cursor cursor = database.query(MumoDbHelper.TABLE_EVENTS, MumoDbHelper.allEventColumns,
+                    MumoDbHelper.EVENTS_COLUMN_ID + " = " + eventId,
+                    null, null, null, null);
+
+            cursor.moveToFirst();
+            if (!cursor.isAfterLast())
+                return CursorTo.event(cursor, true);
         }
         return null;
     }
