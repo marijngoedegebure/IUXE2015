@@ -36,9 +36,9 @@
             android:name=".activities.SearchActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_search" />
-
         <activity
             android:name=".activities.SongDetailActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_song_detail" />
         <!-- Needed for LoginActivity for Spotify to work-->
         <activity
