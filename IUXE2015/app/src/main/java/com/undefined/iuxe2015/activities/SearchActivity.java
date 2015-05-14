@@ -3,6 +3,7 @@ package com.undefined.iuxe2015.activities;
 import android.os.Bundle;
 import android.util.Log;
 import android.content.Intent;
+import android.view.MenuItem;
 
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
@@ -25,9 +26,20 @@ public class SearchActivity extends MumoActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .commit();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
     }
 }

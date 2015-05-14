@@ -2,6 +2,7 @@ package com.undefined.iuxe2015.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -16,6 +17,8 @@ public class LibraryActivity extends MumoActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new LibraryFragment())
@@ -30,6 +33,16 @@ public class LibraryActivity extends MumoActivity {
                 //TODO start Help Overlay
                 break;
         }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
     }
 }
 
