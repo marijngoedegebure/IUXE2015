@@ -1,4 +1,24 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    tools:context="com.undefined.iuxe2015.activities.SearchActivity" tools:ignore="MergeRootFrame" />
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.undefined.iuxe2015.activities.SearchActivity"
+    tools:ignore="MergeRootFrame">
+
+    <fragment android:name="com.undefined.iuxe2015.fragments.SearchFragment"
+        android:id="@+id/search"
+        android:layout_weight="4.00"
+        tools:layout="@layout/fragment_setup"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <fragment android:name="com.undefined.iuxe2015.fragments.MusicControllerFragment"
+        android:id="@+id/music_controller"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_setup"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+</LinearLayout>

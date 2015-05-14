@@ -40,7 +40,7 @@ public class SongDetailActivity extends MumoActivity {
             args.putString(EXTRA_SONGID, songId);
             f.setArguments(args);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, f)
+                    .replace(R.id.song_detail_container, f, SongDetailFragment.TAG)
                     .commit();
         }
     }

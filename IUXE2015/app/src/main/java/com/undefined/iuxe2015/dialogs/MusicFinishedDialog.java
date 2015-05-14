@@ -155,5 +155,6 @@ public class MusicFinishedDialog extends MumoDialog {
         Log.d("MusicFinishedDialog", "Add rating: " + stakeHolderId + ", " + song.getId() + ", " + rate + ", " + "");
         song = getData().addSong(stakeHolderId, song);
         getData().addRating(stakeHolderId, song.get_id(), rate, "");
+        dismiss();
     }
 }

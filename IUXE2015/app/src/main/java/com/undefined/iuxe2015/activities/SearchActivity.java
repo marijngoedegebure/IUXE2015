@@ -15,6 +15,7 @@ import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.R;
+import com.undefined.iuxe2015.fragments.MusicControllerFragment;
 import com.undefined.iuxe2015.fragments.SearchFragment;
 
 
@@ -26,7 +27,6 @@ public class SearchActivity extends MumoActivity{
         setContentView(R.layout.activity_search);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new SearchFragment())
                     .commit();
         }
     }

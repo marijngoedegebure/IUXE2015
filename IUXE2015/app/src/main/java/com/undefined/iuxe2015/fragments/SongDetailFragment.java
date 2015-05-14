@@ -26,6 +26,7 @@ import com.undefined.iuxe2015.tools.ConnectionTool;
  */
 public class SongDetailFragment extends MumoFragment {
 
+    public static final String TAG = "SongDetailFragment";
     Song song;
 
     TextView name;
@@ -105,6 +106,7 @@ public class SongDetailFragment extends MumoFragment {
                 public void onClick(View v) {
                     SetupActivity.mPlayer.play(song.getUri());
                     MumoApplication.currentlyPlayedSong = song;
+                    MusicControllerFragment.startMusic();
                 }
             });
         }
