@@ -140,25 +140,25 @@ public class MusicFinishedDialog extends MumoDialog {
                 @Override
                 public void onClick(View v) {
                     int stakeHolderId = PreferenceTool.getCurrentStakeholderId(getActivity());
-                    if(ratingButton1.isEnabled()) {
+                    if(!ratingButton1.isEnabled()) {
                         rate(stakeHolderId, song, 1);
                     }
-                    else if(ratingButton2.isEnabled()) {
+                    else if(!ratingButton2.isEnabled()) {
                         rate(stakeHolderId, song, 2);
                     }
-                    else if(ratingButton3.isEnabled()) {
+                    else if(!ratingButton3.isEnabled()) {
                         rate(stakeHolderId, song, 3);
                     }
-                    else if(ratingButton4.isEnabled()) {
+                    else if(!ratingButton4.isEnabled()) {
                         rate(stakeHolderId, song, 4);
                     }
-                    else if(ratingButton5.isEnabled()) {
+                    else if(!ratingButton5.isEnabled()) {
                         rate(stakeHolderId, song, 5);
                     }
-                    else if(ratingButton6.isEnabled()) {
+                    else if(!ratingButton6.isEnabled()) {
                         rate(stakeHolderId, song, 6);
                     }
-                    else {
+                    else if(!ratingButton7.isEnabled()) {
                         rate(stakeHolderId, song, 7);
                     }
                 }
