@@ -43,10 +43,6 @@ public class HubActivity extends MumoActivity {
                 intent = new Intent(this, SearchActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.hub_btn_help:
-                toast("TODO: Start Help Overlay");
-                //TODO start Help Overlay
-                break;
         }
     }
 

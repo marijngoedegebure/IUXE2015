@@ -64,7 +64,7 @@ public class Song {
     }
 
     public String getName() {
-        if(name == null)
+        if (name == null)
             name = "";
         return name;
     }
@@ -74,7 +74,7 @@ public class Song {
     }
 
     public String getUri() {
-        if(uri == null)
+        if (uri == null)
             uri = "";
         return uri;
     }
@@ -100,7 +100,7 @@ public class Song {
     }
 
     public ArrayList<Artist> getArtists() {
-        if(artists == null)
+        if (artists == null)
             artists = new ArrayList<>();
         return artists;
     }
@@ -109,5 +109,11 @@ public class Song {
         this.artists = artists;
     }
 
-    public long getDuration_ms() { return duration_ms; }
+    public long getDuration_ms() {
+        return duration_ms;
+    }
+
+    public boolean hasArtists() {
+        return artists != null && artists.size() > 0;
+    }
 }

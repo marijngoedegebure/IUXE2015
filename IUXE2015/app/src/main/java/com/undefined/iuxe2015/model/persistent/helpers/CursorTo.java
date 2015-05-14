@@ -105,8 +105,9 @@ public class CursorTo {
     public static Event event(Cursor cursor, boolean closeCursor) {
         Event event = new Event();
         event.set_id(cursor.getInt(0));
-        event.setName(cursor.getString(1));
-        event.setDate(cursor.getLong(2));
+        event.set_id_stakeholder(cursor.getInt(1));
+        event.setName(cursor.getString(2));
+        event.setDate(cursor.getLong(3));
 
         if(closeCursor)
             cursor.close();

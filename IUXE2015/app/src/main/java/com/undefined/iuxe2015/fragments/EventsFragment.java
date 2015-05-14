@@ -22,6 +22,7 @@ import com.undefined.iuxe2015.tools.ConnectionTool;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 /**
  * Created by Jan-Willem on 1-4-2015.
@@ -29,7 +30,7 @@ import butterknife.InjectView;
 public class EventsFragment extends MumoFragment {
 
     @InjectView(R.id.events_list)
-    private ListView eventsList;
+    public StickyListHeadersListView eventsList;
    // public SongSearchAdapter adapter;
 
     public EventsFragment() {

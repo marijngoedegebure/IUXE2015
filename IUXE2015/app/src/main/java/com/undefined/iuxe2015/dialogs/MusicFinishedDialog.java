@@ -61,7 +61,7 @@ public class MusicFinishedDialog extends MumoDialog {
             getActivity().finish();
         }else{
 
-            song = getData().getSongById(songId);
+            song = getData().getSongById(getActivity(), songId);
             if(song == null){
                 Log.e("MusicFinishedDialog", "NO SONG FOR ID " + songId + " !!!!!!");
 
@@ -154,7 +154,8 @@ public class MusicFinishedDialog extends MumoDialog {
     private void rate(int stakeHolderId, Song song, int rate) {
         Log.d("MusicFinishedDialog", "Add rating: " + stakeHolderId + ", " + song.getId() + ", " + rate + ", " + "");
         song = getData().addSong(stakeHolderId, song);
-        getData().addRating(stakeHolderId, song.get_id(), rate, "");
+        //TODO add eventId
+        getData().addRating(stakeHolderId, song.get_id(), 0, rate, "");
         dismiss();
     }
 }

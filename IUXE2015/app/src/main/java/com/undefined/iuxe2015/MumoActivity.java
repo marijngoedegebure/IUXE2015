@@ -20,7 +20,7 @@ public abstract class MumoActivity extends AppCompatActivity {
 
     private Toast t;
 
-    protected MumoDataSource getData() {
+    public MumoDataSource getData() {
         return ((MumoApplication) getApplication()).getData();
     }
 

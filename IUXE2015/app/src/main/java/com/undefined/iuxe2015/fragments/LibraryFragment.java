@@ -45,7 +45,7 @@ public class LibraryFragment extends MumoFragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_library, container, false);
 
-        ArrayList<Song> songs = getData().getRatedSongs();
+        ArrayList<Song> songs = getData().getRatedSongs(getActivity());
 
         listView = (ListView) rootView.findViewById(R.id.library_rated_songs_listview);
 

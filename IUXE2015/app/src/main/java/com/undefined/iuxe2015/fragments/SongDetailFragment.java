@@ -44,7 +44,7 @@ public class SongDetailFragment extends MumoFragment {
             getActivity().finish();
         }else{
 
-            song = getData().getSongById(songId);
+            song = getData().getSongById(getActivity(), songId);
             if(song == null){
                 Log.e("SONGDETAILFRAGMENT", "NO SONG FOR ID " + songId + " !!!!!!");
 

@@ -112,8 +112,9 @@ public class Create {
         return CursorTo.stakeholder(cursor, true);
     }
 
-    public static Event event(SQLiteDatabase database, String name, long date) {
+    public static Event event(SQLiteDatabase database, int stakeholderId, String name, long date) {
         ContentValues values = new ContentValues();
+        values.put(MumoDbHelper.RATINGS_COLUMN_ID_STAKEHOLDER, stakeholderId);
         values.put(MumoDbHelper.EVENTS_COLUMN_NAME, name);
         values.put(MumoDbHelper.EVENTS_COLUMN_DATE, date);
         long insertId = database.insert(MumoDbHelper.TABLE_EVENTS, null, values);

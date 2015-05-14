@@ -41,8 +41,9 @@ public class Update {
         return stakeholder;
     }
 
-    public static Event event(SQLiteDatabase database, Event event) {
+    public static Event event(SQLiteDatabase database, int stakeholderId, Event event) {
         ContentValues values = new ContentValues();
+        values.put(MumoDbHelper.EVENTS_COLUMN_ID_STAKEHOLDER, stakeholderId);
         values.put(MumoDbHelper.EVENTS_COLUMN_NAME, event.getName());
         values.put(MumoDbHelper.EVENTS_COLUMN_DATE, event.getDate());
 

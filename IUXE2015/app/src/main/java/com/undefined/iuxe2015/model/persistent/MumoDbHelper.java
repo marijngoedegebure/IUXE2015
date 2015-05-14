@@ -99,10 +99,12 @@ public class MumoDbHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_EVENTS = "events";
     public static final String EVENTS_COLUMN_ID = "_id";
+    public static final String EVENTS_COLUMN_ID_STAKEHOLDER = "_id_stakeholder";
     public static final String EVENTS_COLUMN_NAME = "name";
     public static final String EVENTS_COLUMN_DATE = "date";
     public static final String[] allEventColumns = {
             MumoDbHelper.EVENTS_COLUMN_ID,
+            MumoDbHelper.EVENTS_COLUMN_ID_STAKEHOLDER,
             MumoDbHelper.EVENTS_COLUMN_NAME,
             MumoDbHelper.EVENTS_COLUMN_DATE};
 
@@ -161,6 +163,7 @@ public class MumoDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE_EVENTS = "create table "
             + TABLE_EVENTS + "( "
             + EVENTS_COLUMN_ID + " integer primary key autoincrement, "
+            + IMAGES_COLUMN_ID_STAKEHOLDER + " integer, "
             + EVENTS_COLUMN_NAME + " text not null, "
             + EVENTS_COLUMN_DATE + " integer);";
 

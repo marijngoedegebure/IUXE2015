@@ -19,20 +19,21 @@ public class PreferenceTool {
 
     public static final int DEFAULT_STAKEHOLDER_ID = -1;
 
-    private static SharedPreferences getPrefs(Activity a) {
-        return a.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+
+    private static SharedPreferences getPrefs(Context c) {
+        return c.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
     }
 
-    private static SharedPreferences.Editor getEditor(Activity a) {
-        return getPrefs(a).edit();
+    private static SharedPreferences.Editor getEditor(Context c) {
+        return getPrefs(c).edit();
     }
 
     public static void setRatingType(Activity a, RatingType r) {
         getEditor(a).putString(KEY_TYPE_RATING, r.name()).apply();
     }
 
-    public static RatingType getRatingType(Activity a) {
-        String ratingName = getPrefs(a).getString(KEY_TYPE_RATING, RatingType.getDefault().name());
+    public static RatingType getRatingType(Context c) {
+        String ratingName = getPrefs(c).getString(KEY_TYPE_RATING, RatingType.getDefault().name());
         try {
             return RatingType.valueOf(ratingName);
         } catch (IllegalArgumentException e) {
@@ -41,12 +42,12 @@ public class PreferenceTool {
         }
     }
 
-    public static void setCurrentStakeholderId(Activity a, int stakeholderId) {
+    public static void setCurrentStakeholderId(Context c, int stakeholderId) {
         Log.d("PreferenceTool", "setCurrentStakeholderId: " + stakeholderId);
-        getEditor(a).putInt(KEY_CURRENT_STAKEHOLDER_ID, stakeholderId).apply();
+        getEditor(c).putInt(KEY_CURRENT_STAKEHOLDER_ID, stakeholderId).apply();
     }
 
-    public static int getCurrentStakeholderId(Activity a) {
-        return getPrefs(a).getInt(KEY_CURRENT_STAKEHOLDER_ID, DEFAULT_STAKEHOLDER_ID);
+    public static int getCurrentStakeholderId(Context c) {
+        return getPrefs(c).getInt(KEY_CURRENT_STAKEHOLDER_ID, DEFAULT_STAKEHOLDER_ID);
     }
 }
