@@ -5,27 +5,28 @@
     tools:context="com.undefined.iuxe2015.activities.SearchActivity"
     tools:ignore="MergeRootFrame">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <fragment
-            android:id="@+id/search"
-            android:name="com.undefined.iuxe2015.fragments.SearchFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4.00"
-            tools:layout="@layout/fragment_setup" />
-
-        <fragment
             android:id="@+id/music_controller"
             android:name="com.undefined.iuxe2015.fragments.MusicControllerFragment"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             tools:layout="@layout/fragment_setup" />
-    </LinearLayout>
+
+        <fragment
+            android:id="@+id/search"
+            android:name="com.undefined.iuxe2015.fragments.SearchFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/music_controller"
+            tools:layout="@layout/fragment_setup" />
+
+    </RelativeLayout>
 
     <com.melnykov.fab.FloatingActionButton xmlns:fab="http://schemas.android.com/apk/res-auto"
         android:id="@+id/fab"
@@ -46,11 +47,11 @@
     <RelativeLayout
         android:id="@+id/search_help"
         android:layout_width="match_parent"
-        android:clickable="true"
-        android:onClick="hideOverlay"
-        android:elevation="8dp"
         android:layout_height="match_parent"
-        android:background="@color/overlay_bg">
+        android:background="@color/overlay_bg"
+        android:clickable="true"
+        android:elevation="8dp"
+        android:onClick="hideOverlay">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,8 +69,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/help_search_title"
-                android:textSize="50sp"
-                android:textColor="@color/overlay_title"/>
+                android:textColor="@color/overlay_title"
+                android:textSize="50sp" />
 
             <TextView
                 android:id="@+id/help_text"
@@ -78,7 +79,7 @@
                 android:layout_weight="3"
                 android:text="@string/help_search_text"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/overlay_text"/>
+                android:textColor="@color/overlay_text" />
 
             <TextView
                 android:id="@+id/help_remove_overlay_text"
@@ -87,8 +88,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/help_click_overlay_to_hide"
-                android:textSize="30sp"
-                android:textColor="@color/overlay_text" />
+                android:textColor="@color/overlay_text"
+                android:textSize="30sp" />
         </LinearLayout>
 
     </RelativeLayout>

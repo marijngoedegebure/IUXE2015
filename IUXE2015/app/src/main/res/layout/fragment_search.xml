@@ -31,12 +31,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:animateLayoutChanges="true"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
 
         <TextView
             android:id="@+id/search_list_empty"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
@@ -44,6 +44,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <LinearLayout
+            android:id="@+id/search_list_results"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:animateLayoutChanges="true"

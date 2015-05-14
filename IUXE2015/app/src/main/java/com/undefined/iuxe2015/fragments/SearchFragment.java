@@ -46,6 +46,8 @@ public class SearchFragment extends MumoFragment {
     TextView searchEmpty;
     @InjectView(R.id.search_list)
     public ListView searchList;
+    @InjectView(R.id.search_list_results)
+    View searchResults;
     public SongSearchAdapter adapter;
 
     public SearchFragment() {
@@ -64,7 +66,7 @@ public class SearchFragment extends MumoFragment {
         ButterKnife.inject(this, rootView);
         searchEmpty.setVisibility(View.VISIBLE);
         searchEmpty.setText(R.string.search_no_input);
-        searchHeader.setVisibility(View.INVISIBLE);
+        searchResults.setVisibility(View.INVISIBLE);
 
         input.addTextChangedListener(new TextWatcher() {
             @Override
@@ -79,9 +81,9 @@ public class SearchFragment extends MumoFragment {
                     public void onConnectionSuccess(QueryResult result) {
                         //TODO stop loading UI, if visible
                         if(result.hasTracks()){
-                            searchEmpty.setVisibility(View.GONE);
-                            searchHeader.setVisibility(View.VISIBLE);
+                            searchEmpty.setVisibility(View.INVISIBLE);
                             searchHeader.setText(getResources().getQuantityText(R.plurals.search_results_label, result.getNumTracks()));
+                            searchResults.setVisibility(View.VISIBLE);
                             Log.d("SearchFragment", "onConnectionSuccess:" + result.tracks.items.size());
                             adapter.refresh(result.tracks.items);
                         }else{
@@ -92,7 +94,7 @@ public class SearchFragment extends MumoFragment {
                                 searchEmpty.setText(R.string.search_no_results);
                             }
                             searchEmpty.setVisibility(View.VISIBLE);
-                            searchHeader.setVisibility(View.INVISIBLE);
+                            searchResults.setVisibility(View.INVISIBLE);
 
                             adapter.refresh(null);
                         }
