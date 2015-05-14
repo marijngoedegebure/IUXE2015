@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -19,10 +20,13 @@ import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.SetupActivity;
 import com.undefined.iuxe2015.activities.SongDetailActivity;
 import com.undefined.iuxe2015.fragments.SetupFragment;
+import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.tools.ConnectionTool;
 import com.undefined.iuxe2015.tools.PreferenceTool;
+
+import java.util.ArrayList;
 
 /**
  * Created by marijngoedegebure on 30-04-15.
@@ -35,11 +39,13 @@ public class MusicFinishedDialog extends MumoDialog {
     TextView name;
     TextView album;
     TextView artist;
-    RadioButton rating_rate_value1;
-    RadioButton rating_rate_value2;
-    RadioButton rating_rate_value3;
-    RadioButton rating_rate_value4;
-    RadioButton rating_rate_value5;
+    ImageButton ratingButton1;
+    ImageButton ratingButton2;
+    ImageButton ratingButton3;
+    ImageButton ratingButton4;
+    ImageButton ratingButton5;
+    ImageButton ratingButton6;
+    ImageButton ratingButton7;
     Button rateSong;
 
     private Song song;
@@ -60,8 +66,6 @@ public class MusicFinishedDialog extends MumoDialog {
             Log.e("MusicFinishedDialog", "NO SONGID!!!!!!");
             getActivity().finish();
         }else{
-
-            song = getData().getSongById(getActivity(), songId);
             if(song == null){
                 Log.e("MusicFinishedDialog", "NO SONG FOR ID " + songId + " !!!!!!");
 
@@ -99,11 +103,16 @@ public class MusicFinishedDialog extends MumoDialog {
         name = (TextView) v.findViewById(R.id.rating_name);
         album = (TextView) v.findViewById(R.id.rating_album);
         artist = (TextView) v.findViewById(R.id.rating_artist);
-        rating_rate_value1 = (RadioButton) v.findViewById(R.id.rating_rate_value1);
-        rating_rate_value2 = (RadioButton) v.findViewById(R.id.rating_rate_value2);
-        rating_rate_value3 = (RadioButton) v.findViewById(R.id.rating_rate_value3);
-        rating_rate_value4 = (RadioButton) v.findViewById(R.id.rating_rate_value4);
-        rating_rate_value5 = (RadioButton) v.findViewById(R.id.rating_rate_value5);
+        ratingButton1 = (ImageButton) v.findViewById(R.id.ratingButton1);
+        ratingButton2 = (ImageButton) v.findViewById(R.id.ratingButton2);
+        ratingButton3 = (ImageButton) v.findViewById(R.id.ratingButton3);
+        ratingButton4 = (ImageButton) v.findViewById(R.id.ratingButton4);
+        ratingButton5 = (ImageButton) v.findViewById(R.id.ratingButton5);
+        ratingButton6 = (ImageButton) v.findViewById(R.id.ratingButton6);
+        ratingButton7 = (ImageButton) v.findViewById(R.id.ratingButton7);
+
+        setOnClickListenerButtons();
+
         rateSong = (Button) v.findViewById(R.id.rating_rate);
         setDetails();
         builder.setView(v);
@@ -131,20 +140,26 @@ public class MusicFinishedDialog extends MumoDialog {
                 @Override
                 public void onClick(View v) {
                     int stakeHolderId = PreferenceTool.getCurrentStakeholderId(getActivity());
-                    if(rating_rate_value1.isChecked()) {
+                    if(ratingButton1.isEnabled()) {
                         rate(stakeHolderId, song, 1);
                     }
-                    else if(rating_rate_value2.isChecked()) {
+                    else if(ratingButton2.isEnabled()) {
                         rate(stakeHolderId, song, 2);
                     }
-                    else if(rating_rate_value3.isChecked()) {
+                    else if(ratingButton3.isEnabled()) {
                         rate(stakeHolderId, song, 3);
                     }
-                    else if(rating_rate_value4.isChecked()) {
+                    else if(ratingButton4.isEnabled()) {
                         rate(stakeHolderId, song, 4);
                     }
-                    else if(rating_rate_value5.isChecked()) {
+                    else if(ratingButton5.isEnabled()) {
                         rate(stakeHolderId, song, 5);
+                    }
+                    else if(ratingButton6.isEnabled()) {
+                        rate(stakeHolderId, song, 6);
+                    }
+                    else {
+                        rate(stakeHolderId, song, 7);
                     }
                 }
             });
@@ -154,8 +169,115 @@ public class MusicFinishedDialog extends MumoDialog {
     private void rate(int stakeHolderId, Song song, int rate) {
         Log.d("MusicFinishedDialog", "Add rating: " + stakeHolderId + ", " + song.getId() + ", " + rate + ", " + "");
         song = getData().addSong(stakeHolderId, song);
-        //TODO add eventId
-        getData().addRating(stakeHolderId, song.get_id(), 0, rate, "");
+
+        song = getData().getSongById(getActivity(), song.getId());
+        if(song == null) {
+            song = getData().addSong(stakeHolderId, song);
+        }
+        Rating rating = getData().getRatingsForSong(getActivity(), song);
+        if(rating == null) {
+            //TODO add eventId
+            getData().addRating(stakeHolderId, song.get_id(), 0, rate, "");
+        }
+        else {
+            rating.setRating(rate);
+            getData().updateRating(stakeHolderId, rating);
+        }
         dismiss();
+    }
+
+    private void setOnClickListenerButtons() {
+
+        ratingButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetupActivity.mPlayer.pause();
+                ratingButton1.setEnabled(false);
+                ratingButton2.setEnabled(true);
+                ratingButton3.setEnabled(true);
+                ratingButton4.setEnabled(true);
+                ratingButton5.setEnabled(true);
+                ratingButton6.setEnabled(true);
+                ratingButton7.setEnabled(true);
+            }
+        });
+        ratingButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetupActivity.mPlayer.pause();
+                ratingButton1.setEnabled(true);
+                ratingButton2.setEnabled(false);
+                ratingButton3.setEnabled(true);
+                ratingButton4.setEnabled(true);
+                ratingButton5.setEnabled(true);
+                ratingButton6.setEnabled(true);
+                ratingButton7.setEnabled(true);
+            }
+        });
+        ratingButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetupActivity.mPlayer.pause();
+                ratingButton1.setEnabled(true);
+                ratingButton2.setEnabled(true);
+                ratingButton3.setEnabled(false);
+                ratingButton4.setEnabled(true);
+                ratingButton5.setEnabled(true);
+                ratingButton6.setEnabled(true);
+                ratingButton7.setEnabled(true);
+            }
+        });
+        ratingButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetupActivity.mPlayer.pause();
+                ratingButton1.setEnabled(true);
+                ratingButton2.setEnabled(true);
+                ratingButton3.setEnabled(true);
+                ratingButton4.setEnabled(false);
+                ratingButton5.setEnabled(true);
+                ratingButton6.setEnabled(true);
+                ratingButton7.setEnabled(true);
+            }
+        });
+        ratingButton5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetupActivity.mPlayer.pause();
+                ratingButton1.setEnabled(true);
+                ratingButton2.setEnabled(true);
+                ratingButton3.setEnabled(true);
+                ratingButton4.setEnabled(true);
+                ratingButton5.setEnabled(false);
+                ratingButton6.setEnabled(true);
+                ratingButton7.setEnabled(true);
+            }
+        });
+        ratingButton6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetupActivity.mPlayer.pause();
+                ratingButton1.setEnabled(true);
+                ratingButton2.setEnabled(true);
+                ratingButton3.setEnabled(true);
+                ratingButton4.setEnabled(true);
+                ratingButton5.setEnabled(true);
+                ratingButton6.setEnabled(false);
+                ratingButton7.setEnabled(true);
+            }
+        });
+        ratingButton7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetupActivity.mPlayer.pause();
+                ratingButton1.setEnabled(true);
+                ratingButton2.setEnabled(true);
+                ratingButton3.setEnabled(true);
+                ratingButton4.setEnabled(true);
+                ratingButton5.setEnabled(true);
+                ratingButton6.setEnabled(true);
+                ratingButton7.setEnabled(false);
+            }
+        });
     }
 }

@@ -35,23 +35,19 @@ public class ListAll {
         return ratings;
     }
 
-    public static ArrayList<Rating> ratingsForSong(SQLiteDatabase database, int stakeholderId, Song song) {
-        ArrayList<Rating> ratings = new ArrayList<>();
+    public static Rating ratingsForSong(SQLiteDatabase database, int stakeholderId, Song song) {
         if (database.isOpen()) {
             Cursor cursor = database.query(MumoDbHelper.TABLE_RATINGS, MumoDbHelper.allRatingColumns,
-                    MumoDbHelper.RATINGS_COLUMN_ID_SONG + " = " + song.getId() + " AND " +
+                    MumoDbHelper.RATINGS_COLUMN_ID_SONG + " = " + song.get_id() + " AND " +
                             MumoDbHelper.RATINGS_COLUMN_ID_STAKEHOLDER + " = " + stakeholderId,
                     null, null, null, null);
-
             cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                ratings.add(CursorTo.rating(cursor, false));
-                cursor.moveToNext();
-            }
+            if (!cursor.isAfterLast())
+                return CursorTo.rating(cursor, true);
             // make sure to close the cursor
             cursor.close();
         }
-        return ratings;
+        return null;
     }
 
     public static ArrayList<Song> songs(SQLiteDatabase database, int stakeholderId) {

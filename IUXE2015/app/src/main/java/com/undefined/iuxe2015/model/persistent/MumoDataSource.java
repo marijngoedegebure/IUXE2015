@@ -40,7 +40,7 @@ public class MumoDataSource {
         return ListAll.ratings(database, PreferenceTool.getCurrentStakeholderId(c));
     }
 
-    public ArrayList<Rating> getRatingsForSong(Context c, Song song) {
+    public Rating getRatingsForSong(Context c, Song song) {
         return ListAll.ratingsForSong(database, PreferenceTool.getCurrentStakeholderId(c), song);
     }
 
