@@ -24,8 +24,10 @@
         <activity
             android:name=".activities.HubActivity"
             android:screenOrientation="portrait"
-            android:label="@string/app_name" >
-        </activity>
+            android:label="@string/app_name" />
+        <activity
+            android:name=".activities.EventsActivity"
+            android:label="@string/title_activity_events" />
         <activity
             android:name=".activities.LibraryActivity"
             android:screenOrientation="portrait"
@@ -35,19 +37,14 @@
             android:screenOrientation="portrait"
             android:label="@string/title_activity_search" />
 
+        <activity
+            android:name=".activities.SongDetailActivity"
+            android:label="@string/title_activity_song_detail" />
         <!-- Needed for LoginActivity for Spotify to work-->
         <activity
             android:name="com.spotify.sdk.android.authentication.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity
-            android:name=".activities.MusicControllerActivity"
-            android:label="@string/title_activity_music_controller" >
-        </activity>
-        <activity
-            android:name=".activities.SongDetailActivity"
-            android:label="@string/title_activity_song_detail" >
-        </activity>
     </application>
 
 </manifest>
