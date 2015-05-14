@@ -3,13 +3,8 @@ package com.undefined.iuxe2015;
 import android.app.Application;
 import android.util.Log;
 
-import com.spotify.sdk.android.player.Config;
-import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
-import com.spotify.sdk.android.player.Spotify;
-import com.undefined.iuxe2015.dialogs.MusicFinishedDialog;
-import com.undefined.iuxe2015.dialogs.StakeholderDialog;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.persistent.MumoDataSource;
 

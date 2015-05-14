@@ -2,7 +2,6 @@ package com.undefined.iuxe2015;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -11,7 +10,7 @@ import android.view.animation.AlphaAnimation;
 import android.widget.Toast;
 
 import com.undefined.iuxe2015.activities.SetupActivity;
-import com.undefined.iuxe2015.dialogs.MusicFinishedDialog;
+import com.undefined.iuxe2015.dialogs.RateSongDialog;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.model.persistent.MumoDataSource;
@@ -86,8 +85,8 @@ public abstract class MumoActivity extends AppCompatActivity {
     }
 
     public void showRatingDialog(Song song) {
-        MusicFinishedDialog newFragment = MusicFinishedDialog.getInstance(song.getId());
-        newFragment.show(getSupportFragmentManager(), MusicFinishedDialog.TAG);
+        RateSongDialog newFragment = RateSongDialog.getInstance(song.getId());
+        newFragment.show(getSupportFragmentManager(), RateSongDialog.TAG);
     }
 
     protected void setHelpOverlayId(@IdRes int overlayViewId) {

@@ -2,31 +2,21 @@ package com.undefined.iuxe2015.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.undefined.iuxe2015.MumoApplication;
 import com.undefined.iuxe2015.MumoDialog;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.SetupActivity;
-import com.undefined.iuxe2015.activities.SongDetailActivity;
-import com.undefined.iuxe2015.fragments.SetupFragment;
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
-import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.tools.ConnectionTool;
 import com.undefined.iuxe2015.tools.PreferenceTool;
-
-import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -34,9 +24,9 @@ import butterknife.InjectView;
 /**
  * Created by marijngoedegebure on 30-04-15.
  */
-public class MusicFinishedDialog extends MumoDialog {
+public class RateSongDialog extends MumoDialog {
 
-    public static final String TAG = "MusicFinishedDialog";
+    public static final String TAG = "RateSongDialog";
     public static final String ARG_SONG_ID = "song_id";
 
     @InjectView(R.id.rating_name)
@@ -64,8 +54,8 @@ public class MusicFinishedDialog extends MumoDialog {
 
     private Song song;
 
-    public static MusicFinishedDialog getInstance(String songId) {
-        MusicFinishedDialog d = new MusicFinishedDialog();
+    public static RateSongDialog getInstance(String songId) {
+        RateSongDialog d = new RateSongDialog();
         Bundle args = new Bundle();
         args.putString(ARG_SONG_ID, songId);
         d.setArguments(args);
@@ -77,29 +67,29 @@ public class MusicFinishedDialog extends MumoDialog {
         super.onCreate(savedInstanceState);
         String songId = getArguments().getString(ARG_SONG_ID);
         if(songId == ""){
-            Log.e("MusicFinishedDialog", "NO SONGID!!!!!!");
+            Log.e("RateSongDialog", "NO SONGID!!!!!!");
             getActivity().finish();
         }else{
             if(song == null){
-                Log.e("MusicFinishedDialog", "NO SONG FOR ID " + songId + " !!!!!!");
+                Log.e("RateSongDialog", "NO SONG FOR ID " + songId + " !!!!!!");
 
                 ConnectionTool.getSong(getActivity(), songId, new ConnectionTool.ConnectionSongListener() {
                     @Override
                     public void onConnectionSuccess(Song result) {
                         //TODO stop loading UI, if visible
                         if (result != null) {
-                            Log.d("MusicFinishedDialog", "onConnectionSuccess:" + result);
+                            Log.d("RateSongDialog", "onConnectionSuccess:" + result);
                             song = result;
                             setDetails();
                         } else {
-                            Log.d("MusicFinishedDialog", "onConnectionSuccess: but no results");
+                            Log.d("RateSongDialog", "onConnectionSuccess: but no results");
                         }
                     }
 
                     @Override
                     public void onConnectionFailed(Exception e) {
                         //TODO give ui feedback about what went wrong
-                        Log.d("MusicFinishedDialog", "onConnectionFailed");
+                        Log.d("RateSongDialog", "onConnectionFailed");
                     }
                 });
             }
@@ -112,7 +102,7 @@ public class MusicFinishedDialog extends MumoDialog {
 
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        View v = getActivity().getLayoutInflater().inflate(R.layout.dialog_music_finished, null, false);
+        View v = getActivity().getLayoutInflater().inflate(R.layout.dialog_rate_song, null, false);
         ButterKnife.inject(this, v);
 
         ratingButton1.setOnClickListener(new View.OnClickListener() {
@@ -158,7 +148,7 @@ public class MusicFinishedDialog extends MumoDialog {
             }
         });
 
-        rateSong = (Button) v.findViewById(R.id.rating_rate);
+        rateSong = (Button) v.findViewById(R.id.rating_btn_rate);
         setDetails();
         builder.setView(v);
         final AlertDialog d = builder.create();
@@ -205,7 +195,7 @@ public class MusicFinishedDialog extends MumoDialog {
     }
 
     private void rate(int stakeHolderId, Song song, int rate) {
-        Log.d("MusicFinishedDialog", "Add rating: " + stakeHolderId + ", " + song.getId() + ", " + rate + ", " + "");
+        Log.d("RateSongDialog", "Add rating: " + stakeHolderId + ", " + song.getId() + ", " + rate + ", " + "");
         song = getData().addSong(stakeHolderId, song);
 
         song = getData().getSongById(getActivity(), song.getId());
