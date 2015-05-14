@@ -2,9 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/theme3"
     android:orientation="vertical"
-    tools:context="com.undefined.iuxe2015.fragments.SetupFragment"
+    tools:context="com.undefined.iuxe2015.activities.SetupActivity"
     tools:showIn="@layout/activity_setup">
 
     <LinearLayout

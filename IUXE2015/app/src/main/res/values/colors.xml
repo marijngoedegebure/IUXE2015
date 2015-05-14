@@ -5,13 +5,17 @@
     <color name="primary_dark">#212121</color>
     <color name="accent">#9E9E9E</color>
 
+    <color name="hub_events">#f51bb7</color>
+    <color name="hub_events_pressed">#d918a2</color>
+    <color name="hub_events_darker">#8f1069</color>
+
     <color name="hub_library">#ff9800</color>
     <color name="hub_library_pressed">#F57C00</color>
     <color name="hub_library_darker">#804d00</color>
 
-    <color name="hub_search">#03A9F4</color>
-    <color name="hub_search_pressed">#0288D1</color>
-    <color name="hub_search_darker">#00455c</color>
+    <color name="hub_search">#2eb30c</color>
+    <color name="hub_search_pressed">#27990b</color>
+    <color name="hub_search_darker">#1a6607</color>
 
     <color name="hub_help">#EEEEEE</color>
     <color name="hub_help_pressed">#BDBDBD</color>
@@ -19,7 +23,6 @@
 
     <color name="ripple">#99ffffff</color>
 
-    
     <color name="theme1">#d718a2</color>
     <color name="theme2">#20578e</color>
     <color name="theme3">#2885bf</color>
