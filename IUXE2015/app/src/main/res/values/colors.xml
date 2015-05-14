@@ -8,14 +8,17 @@
     <color name="hub_events">#f51bb7</color>
     <color name="hub_events_pressed">#d918a2</color>
     <color name="hub_events_darker">#8f1069</color>
+    <color name="hub_events_ripple">#338f1069</color>
 
     <color name="hub_library">#ff9800</color>
     <color name="hub_library_pressed">#F57C00</color>
     <color name="hub_library_darker">#804d00</color>
+    <color name="hub_library_ripple">#33804d00</color>
 
     <color name="hub_search">#2eb30c</color>
     <color name="hub_search_pressed">#27990b</color>
     <color name="hub_search_darker">#1a6607</color>
+    <color name="hub_search_ripple">#331a6607</color>
 
     <color name="hub_help">#EEEEEE</color>
     <color name="hub_help_pressed">#BDBDBD</color>

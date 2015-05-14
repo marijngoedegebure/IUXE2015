@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.spotify.sdk.android.player.Spotify;
 import com.undefined.iuxe2015.MumoFragment;
@@ -27,15 +28,24 @@ import com.undefined.iuxe2015.tools.ConnectionTool;
 
 import java.util.ArrayList;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 /**
  * Created by Jan-Willem on 1-4-2015.
  */
 public class SearchFragment extends MumoFragment {
 
-    private EditText input;
-    private Button searchBtn;
-
-    private ListView searchList;
+    @InjectView(R.id.search_input)
+    public EditText input;
+    @InjectView(R.id.search_btn)
+    public Button searchBtn;
+    @InjectView(R.id.search_list_header)
+    TextView searchHeader;
+    @InjectView(R.id.search_list_empty)
+    TextView searchEmpty;
+    @InjectView(R.id.search_list)
+    public ListView searchList;
     public SongSearchAdapter adapter;
 
     public SearchFragment() {
@@ -51,10 +61,10 @@ public class SearchFragment extends MumoFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
-
-        input = (EditText) rootView.findViewById(R.id.search_input);
-        searchBtn = (Button) rootView.findViewById(R.id.search_btn);
-        searchList = (ListView) rootView.findViewById(R.id.search_list);
+        ButterKnife.inject(this, rootView);
+        searchEmpty.setVisibility(View.VISIBLE);
+        searchEmpty.setText(R.string.search_no_input);
+        searchHeader.setVisibility(View.INVISIBLE);
 
         input.addTextChangedListener(new TextWatcher() {
             @Override
@@ -69,15 +79,20 @@ public class SearchFragment extends MumoFragment {
                     public void onConnectionSuccess(QueryResult result) {
                         //TODO stop loading UI, if visible
                         if(result.hasTracks()){
+                            searchEmpty.setVisibility(View.GONE);
+                            searchHeader.setVisibility(View.VISIBLE);
+                            searchHeader.setText(getResources().getQuantityText(R.plurals.search_results_label, result.getNumTracks()));
                             Log.d("SearchFragment", "onConnectionSuccess:" + result.tracks.items.size());
                             adapter.refresh(result.tracks.items);
                         }else{
                             Log.d("SearchFragment", "onConnectionSuccess: but no results");
                             if(s.length() == 0){
-                                //TODO ui back to init.
+                                searchEmpty.setText(R.string.search_no_input);
                             }else{
-                                //TODO let user know
+                                searchEmpty.setText(R.string.search_no_results);
                             }
+                            searchEmpty.setVisibility(View.VISIBLE);
+                            searchHeader.setVisibility(View.INVISIBLE);
 
                             adapter.refresh(null);
                         }

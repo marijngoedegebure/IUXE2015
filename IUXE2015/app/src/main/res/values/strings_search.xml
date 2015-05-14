@@ -1,5 +1,13 @@
 <resources>
     <string name="title_activity_search">Search music</string>
-    <string name="edit_message">Search</string>
+    <string name="edit_message">Put your search term here</string>
+    <plurals name="search_results_label">
+        <item quantity="one">Result</item>
+        <item quantity="other">Results</item>
+    </plurals>
     <string name="button_send">Search</string>
+    <string name="search_unknown_artists">Unknown artist(s)</string>
+    <string name="search_no_results">There are not results for this search term</string>
+    <string name="search_no_input">Fill in a search term to see results</string>
+
 </resources>

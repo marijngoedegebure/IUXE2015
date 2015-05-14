@@ -1,6 +1,9 @@
 package com.undefined.iuxe2015.model;
 
+import android.content.Context;
+
 import com.google.gson.annotations.SerializedName;
+import com.undefined.iuxe2015.R;
 
 import java.util.ArrayList;
 
@@ -115,5 +118,17 @@ public class Song {
 
     public boolean hasArtists() {
         return artists != null && artists.size() > 0;
+    }
+
+    public String getArtistsString(Context c) {
+        if(artists == null || artists.size() == 0)
+            return c.getString(R.string.search_unknown_artists);
+        else{
+            String res = artists.get(0).getName();
+            for(int i = 1; i < artists.size();i++){
+                res += ", " + artists.get(i).getName();
+            }
+            return res;
+        }
     }
 }

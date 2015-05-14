@@ -2,70 +2,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/theme2"
     android:orientation="vertical"
-    android:paddingBottom="0dp"
-    android:paddingLeft="0dp"
-    android:paddingRight="0dp"
-    android:paddingTop="0dp"
+    android:padding="8dp"
     tools:context="com.undefined.iuxe2015.fragments.MusicControllerFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="0dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:paddingTop="0dp"
-        tools:context=".HubActivity$PlaceholderFragment">
+        android:gravity="center"
+        android:orientation="horizontal">
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="0dp"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
-            android:paddingTop="0dp"
-            tools:context=".HubActivity$PlaceholderFragment"
-            android:gravity="center">
+            android:text="@string/Now_playing"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Now_playing"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="eyoo" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            tools:context=".fragments.MusicControllerFragment"
-            android:gravity="center">
+            android:text="eyoo" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="4dp">
 
-            <ImageButton
-                android:id="@+id/imageButton1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_media_play" />
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginStart="12dp"
+            android:src="@android:drawable/ic_media_pause" />
 
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginStart="24dp"
-                android:src="@android:drawable/ic_media_pause" />
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginStart="12dp"
+            android:src="@android:drawable/ic_media_play" />
     </LinearLayout>
 </LinearLayout>

@@ -13,4 +13,8 @@ public class QueryResult {
     public boolean hasTracks(){
         return tracks !=null && tracks.hasSongs();
     }
+
+    public int getNumTracks() {
+        return tracks == null?0:tracks.getNumTracks();
+    }
 }

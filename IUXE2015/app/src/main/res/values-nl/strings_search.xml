@@ -1,5 +1,12 @@
 <resources>
     <string name="title_activity_search">Muziek zoeken</string>
     <string name="edit_message">Vul hier uw zoekterm in</string>
+    <plurals name="search_results_label">
+        <item quantity="one">Resultaat</item>
+        <item quantity="other">Resultaten</item>
+    </plurals>
     <string name="button_send">Zoek</string>
+    <string name="search_unknown_artists">Onbekende artiest(en)</string>
+    <string name="search_no_results">Er zijn geen resultaten voor deze zoekterm</string>
+    <string name="search_no_input">Vul een zoekterm in om de resultaten te zien</string>
 </resources>

@@ -15,6 +15,10 @@ public class Tracks {
     public ArrayList<Song> items;
 
     public boolean hasSongs() {
-        return items != null && items.size() > 0;
+        return getNumTracks() > 0;
+    }
+
+    public int getNumTracks() {
+        return items == null ? 0 : items.size();
     }
 }

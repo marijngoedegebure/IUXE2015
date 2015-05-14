@@ -18,6 +18,7 @@ import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.fragments.SetupFragment;
 import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.model.types.ScaleType;
+import com.undefined.iuxe2015.tools.Convert;
 import com.undefined.iuxe2015.tools.PreferenceTool;
 import com.undefined.iuxe2015.tools.SpotifyTool;
 
