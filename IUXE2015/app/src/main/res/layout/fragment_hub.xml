@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:context="com.undefined.iuxe2015.activities.HubActivity"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.undefined.iuxe2015.activities.HubActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,8 +44,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/hub_events"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/hub_events_darker"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -81,8 +81,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/hub_library"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/hub_library_darker"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -118,8 +118,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/hub_search"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/hub_search_darker"
                     android:textStyle="bold" />
             </LinearLayout>
