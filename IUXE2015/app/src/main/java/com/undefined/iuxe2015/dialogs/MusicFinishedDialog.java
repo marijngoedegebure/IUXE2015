@@ -28,24 +28,38 @@ import com.undefined.iuxe2015.tools.PreferenceTool;
 
 import java.util.ArrayList;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 /**
  * Created by marijngoedegebure on 30-04-15.
  */
 public class MusicFinishedDialog extends MumoDialog {
 
     public static final String TAG = "MusicFinishedDialog";
-    public static final String SONG_ID = "song_id";
+    public static final String ARG_SONG_ID = "song_id";
 
+    @InjectView(R.id.rating_name)
     TextView name;
+    @InjectView(R.id.rating_album)
     TextView album;
+    @InjectView(R.id.rating_artist)
     TextView artist;
+    @InjectView(R.id.rating_scale_likert_1)
     ImageButton ratingButton1;
+    @InjectView(R.id.rating_scale_likert_2)
     ImageButton ratingButton2;
+    @InjectView(R.id.rating_scale_likert_3)
     ImageButton ratingButton3;
+    @InjectView(R.id.rating_scale_likert_4)
     ImageButton ratingButton4;
+    @InjectView(R.id.rating_scale_likert_5)
     ImageButton ratingButton5;
+    @InjectView(R.id.rating_scale_likert_6)
     ImageButton ratingButton6;
+    @InjectView(R.id.rating_scale_likert_7)
     ImageButton ratingButton7;
+    @InjectView(R.id.rating_btn_rate)
     Button rateSong;
 
     private Song song;
@@ -53,7 +67,7 @@ public class MusicFinishedDialog extends MumoDialog {
     public static MusicFinishedDialog getInstance(String songId) {
         MusicFinishedDialog d = new MusicFinishedDialog();
         Bundle args = new Bundle();
-        args.putString(SONG_ID, songId);
+        args.putString(ARG_SONG_ID, songId);
         d.setArguments(args);
         return d;
     }
@@ -61,7 +75,7 @@ public class MusicFinishedDialog extends MumoDialog {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String songId = getArguments().getString(SONG_ID);
+        String songId = getArguments().getString(ARG_SONG_ID);
         if(songId == ""){
             Log.e("MusicFinishedDialog", "NO SONGID!!!!!!");
             getActivity().finish();
@@ -99,19 +113,50 @@ public class MusicFinishedDialog extends MumoDialog {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View v = getActivity().getLayoutInflater().inflate(R.layout.dialog_music_finished, null, false);
+        ButterKnife.inject(this, v);
 
-        name = (TextView) v.findViewById(R.id.rating_name);
-        album = (TextView) v.findViewById(R.id.rating_album);
-        artist = (TextView) v.findViewById(R.id.rating_artist);
-        ratingButton1 = (ImageButton) v.findViewById(R.id.ratingButton1);
-        ratingButton2 = (ImageButton) v.findViewById(R.id.ratingButton2);
-        ratingButton3 = (ImageButton) v.findViewById(R.id.ratingButton3);
-        ratingButton4 = (ImageButton) v.findViewById(R.id.ratingButton4);
-        ratingButton5 = (ImageButton) v.findViewById(R.id.ratingButton5);
-        ratingButton6 = (ImageButton) v.findViewById(R.id.ratingButton6);
-        ratingButton7 = (ImageButton) v.findViewById(R.id.ratingButton7);
-
-        setOnClickListenerButtons();
+        ratingButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRatingSelection(1);
+            }
+        });
+        ratingButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRatingSelection(2);
+            }
+        });
+        ratingButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRatingSelection(3);
+            }
+        });
+        ratingButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRatingSelection(4);
+            }
+        });
+        ratingButton5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRatingSelection(5);
+            }
+        });
+        ratingButton6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRatingSelection(6);
+            }
+        });
+        ratingButton7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRatingSelection(7);
+            }
+        });
 
         rateSong = (Button) v.findViewById(R.id.rating_rate);
         setDetails();
@@ -140,27 +185,20 @@ public class MusicFinishedDialog extends MumoDialog {
                 @Override
                 public void onClick(View v) {
                     int stakeHolderId = PreferenceTool.getCurrentStakeholderId(getActivity());
-                    if(!ratingButton1.isEnabled()) {
+                    if (!ratingButton1.isEnabled())
                         rate(stakeHolderId, song, 1);
-                    }
-                    else if(!ratingButton2.isEnabled()) {
+                    else if (!ratingButton2.isEnabled())
                         rate(stakeHolderId, song, 2);
-                    }
-                    else if(!ratingButton3.isEnabled()) {
+                    else if (!ratingButton3.isEnabled())
                         rate(stakeHolderId, song, 3);
-                    }
-                    else if(!ratingButton4.isEnabled()) {
+                    else if (!ratingButton4.isEnabled())
                         rate(stakeHolderId, song, 4);
-                    }
-                    else if(!ratingButton5.isEnabled()) {
+                    else if (!ratingButton5.isEnabled())
                         rate(stakeHolderId, song, 5);
-                    }
-                    else if(!ratingButton6.isEnabled()) {
+                    else if (!ratingButton6.isEnabled())
                         rate(stakeHolderId, song, 6);
-                    }
-                    else if(!ratingButton7.isEnabled()) {
+                    else if (!ratingButton7.isEnabled())
                         rate(stakeHolderId, song, 7);
-                    }
                 }
             });
         }
@@ -186,98 +224,14 @@ public class MusicFinishedDialog extends MumoDialog {
         dismiss();
     }
 
-    private void setOnClickListenerButtons() {
-
-        ratingButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SetupActivity.mPlayer.pause();
-                ratingButton1.setEnabled(false);
-                ratingButton2.setEnabled(true);
-                ratingButton3.setEnabled(true);
-                ratingButton4.setEnabled(true);
-                ratingButton5.setEnabled(true);
-                ratingButton6.setEnabled(true);
-                ratingButton7.setEnabled(true);
-            }
-        });
-        ratingButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SetupActivity.mPlayer.pause();
-                ratingButton1.setEnabled(true);
-                ratingButton2.setEnabled(false);
-                ratingButton3.setEnabled(true);
-                ratingButton4.setEnabled(true);
-                ratingButton5.setEnabled(true);
-                ratingButton6.setEnabled(true);
-                ratingButton7.setEnabled(true);
-            }
-        });
-        ratingButton3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SetupActivity.mPlayer.pause();
-                ratingButton1.setEnabled(true);
-                ratingButton2.setEnabled(true);
-                ratingButton3.setEnabled(false);
-                ratingButton4.setEnabled(true);
-                ratingButton5.setEnabled(true);
-                ratingButton6.setEnabled(true);
-                ratingButton7.setEnabled(true);
-            }
-        });
-        ratingButton4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SetupActivity.mPlayer.pause();
-                ratingButton1.setEnabled(true);
-                ratingButton2.setEnabled(true);
-                ratingButton3.setEnabled(true);
-                ratingButton4.setEnabled(false);
-                ratingButton5.setEnabled(true);
-                ratingButton6.setEnabled(true);
-                ratingButton7.setEnabled(true);
-            }
-        });
-        ratingButton5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SetupActivity.mPlayer.pause();
-                ratingButton1.setEnabled(true);
-                ratingButton2.setEnabled(true);
-                ratingButton3.setEnabled(true);
-                ratingButton4.setEnabled(true);
-                ratingButton5.setEnabled(false);
-                ratingButton6.setEnabled(true);
-                ratingButton7.setEnabled(true);
-            }
-        });
-        ratingButton6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SetupActivity.mPlayer.pause();
-                ratingButton1.setEnabled(true);
-                ratingButton2.setEnabled(true);
-                ratingButton3.setEnabled(true);
-                ratingButton4.setEnabled(true);
-                ratingButton5.setEnabled(true);
-                ratingButton6.setEnabled(false);
-                ratingButton7.setEnabled(true);
-            }
-        });
-        ratingButton7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SetupActivity.mPlayer.pause();
-                ratingButton1.setEnabled(true);
-                ratingButton2.setEnabled(true);
-                ratingButton3.setEnabled(true);
-                ratingButton4.setEnabled(true);
-                ratingButton5.setEnabled(true);
-                ratingButton6.setEnabled(true);
-                ratingButton7.setEnabled(false);
-            }
-        });
+    private void setRatingSelection(int selection){
+        SetupActivity.mPlayer.pause();
+        ratingButton1.setEnabled(selection == 1);
+        ratingButton2.setEnabled(selection == 2);
+        ratingButton3.setEnabled(selection == 3);
+        ratingButton4.setEnabled(selection == 4);
+        ratingButton5.setEnabled(selection == 5);
+        ratingButton6.setEnabled(selection == 6);
+        ratingButton7.setEnabled(selection == 7);
     }
 }
