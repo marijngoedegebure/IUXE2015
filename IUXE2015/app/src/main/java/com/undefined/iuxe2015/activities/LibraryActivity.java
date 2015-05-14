@@ -26,6 +26,12 @@ public class LibraryActivity extends MumoActivity {
         }
     }
 
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        setHelpOverlayId(R.id.library_help);
+    }
+
     public void onButtonClick(View button) {
         switch (button.getId()) {
             case R.id.song_artist:

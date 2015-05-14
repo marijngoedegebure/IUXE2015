@@ -1,8 +1,11 @@
 package com.undefined.iuxe2015;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.undefined.iuxe2015.activities.SetupActivity;
@@ -19,6 +22,8 @@ import com.undefined.iuxe2015.tools.PreferenceTool;
 public abstract class MumoActivity extends AppCompatActivity {
 
     private Toast t;
+
+    protected View helpOverlay;
 
     public MumoDataSource getData() {
         return ((MumoApplication) getApplication()).getData();
@@ -57,5 +62,26 @@ public abstract class MumoActivity extends AppCompatActivity {
     public void showRatingDialog(Song song) {
         MusicFinishedDialog newFragment = MusicFinishedDialog.getInstance(song.getId());
         newFragment.show(getSupportFragmentManager(), MusicFinishedDialog.TAG);
+    }
+
+    protected void setHelpOverlayId(@IdRes int overlayViewId) {
+        this.helpOverlay = findViewById(overlayViewId);
+        //Make sure its hidden on start
+        hideOverlay(null);
+    }
+
+    public void showOverlay(View v) {
+        if (helpOverlay != null) {
+            //TODO animate alpha
+            helpOverlay.setVisibility(View.VISIBLE);
+            //TODO hide keyboard if visible
+        }
+    }
+
+    public void hideOverlay(View v) {
+        if (helpOverlay != null) {
+            //TODO animate alpha
+            helpOverlay.setVisibility(View.GONE);
+        }
     }
 }

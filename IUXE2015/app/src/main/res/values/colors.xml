@@ -25,4 +25,6 @@
     <color name="theme3">#2885bf</color>
     <color name="theme4">#f3ca03</color>
     <color name="theme5">#edbd00</color>
+
+    <color name="overlay_bg">#cc000000</color>
 </resources>

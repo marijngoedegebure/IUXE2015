@@ -60,8 +60,12 @@ public class SetupActivity extends MumoActivity {
         int stakeholderId = PreferenceTool.getCurrentStakeholderId(this);
         Log.i("SetupActivity", "stakeholderid " + stakeholderId);
         Stakeholder s = getData().getStakeholderWithId(stakeholderId);
-        s.setScaleType(scale);
-        getData().updateStakeholder(s);
+        if(s!=null) {
+            s.setScaleType(scale);
+            getData().updateStakeholder(s);
+        }else{
+
+        }
 
         startActivity(new Intent(this, HubActivity.class));
     }

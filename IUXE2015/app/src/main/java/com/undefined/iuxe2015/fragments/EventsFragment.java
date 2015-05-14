@@ -49,17 +49,13 @@ public class EventsFragment extends MumoFragment {
         ButterKnife.inject(this, rootView);
 
 //        eventsList.setAdapter(adapter);
-//
 //        eventsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, final View view,
 //                                    int position, long id) {
 //                final Song item = adapter.getItem(position);
-//
 //                startActivity(SongDetailActivity.getStartIntent(getActivity(), item));
 //            }
-//
 //        });
 
         return rootView;
