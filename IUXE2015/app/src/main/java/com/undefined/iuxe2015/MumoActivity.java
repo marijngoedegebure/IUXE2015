@@ -5,6 +5,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.Toast;
@@ -61,6 +62,29 @@ public abstract class MumoActivity extends AppCompatActivity {
         ((MumoApplication) getApplication()).setCurrentActivity(this);
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            if (helpOverlay != null && helpOverlay.getVisibility() == View.VISIBLE) {
+                hideOverlay(null);
+            } else {
+                finish();
+            }
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (helpOverlay != null && helpOverlay.getVisibility() == View.VISIBLE) {
+            hideOverlay(null);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     public void showRatingDialog(Song song) {
         MusicFinishedDialog newFragment = MusicFinishedDialog.getInstance(song.getId());
         newFragment.show(getSupportFragmentManager(), MusicFinishedDialog.TAG);
@@ -74,7 +98,7 @@ public abstract class MumoActivity extends AppCompatActivity {
 
     public void showOverlay(View v) {
         if (helpOverlay != null) {
-            AlphaAnimation a = new AlphaAnimation(0,1);
+            AlphaAnimation a = new AlphaAnimation(0, 1);
             a.setDuration(overlayFadeMs);
             helpOverlay.setAnimation(a);
             helpOverlay.setVisibility(View.VISIBLE);
@@ -85,7 +109,7 @@ public abstract class MumoActivity extends AppCompatActivity {
 
     public void hideOverlay(View v) {
         if (helpOverlay != null) {
-            AlphaAnimation a = new AlphaAnimation(1,0);
+            AlphaAnimation a = new AlphaAnimation(1, 0);
             a.setDuration(overlayFadeMs);
             helpOverlay.setAnimation(a);
             a.start();

@@ -39,13 +39,4 @@ public class SearchActivity extends MumoActivity{
         super.onPostCreate(savedInstanceState);
         setHelpOverlayId(R.id.search_help);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        } else
-            return super.onOptionsItemSelected(item);
-    }
 }

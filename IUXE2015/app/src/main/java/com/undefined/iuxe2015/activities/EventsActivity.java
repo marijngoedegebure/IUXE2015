@@ -30,12 +30,4 @@ public class EventsActivity extends MumoActivity {
         setHelpOverlayId(R.id.events_help);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        } else
-            return super.onOptionsItemSelected(item);
-    }
 }

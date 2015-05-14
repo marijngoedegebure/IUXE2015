@@ -53,15 +53,6 @@ public class SongDetailActivity extends MumoActivity {
         setHelpOverlayId(R.id.song_detail_help);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        } else
-            return super.onOptionsItemSelected(item);
-    }
-
     /**
      * A placeholder fragment containing a simple view.
      */
