@@ -9,4 +9,6 @@
     <string name="search_unknown_artists">Onbekende artiest(en)</string>
     <string name="search_no_results">Er zijn geen resultaten voor deze zoekterm</string>
     <string name="search_no_input">Vul een zoekterm in om de resultaten te zien</string>
+
+    <string name="search_connection_failed">De applicatie werkt niet zoals het zou moeten. Geef het apparaat a.u.b. even aan één van de makers.</string>
 </resources>

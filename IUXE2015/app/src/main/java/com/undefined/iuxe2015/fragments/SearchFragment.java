@@ -102,6 +102,9 @@ public class SearchFragment extends MumoFragment {
                     public void onConnectionFailed(Exception e) {
                         //TODO give ui feedback about what went wrong
                         Log.d("SearchFragment", "onConnectionFailed");
+                        searchEmpty.setVisibility(View.VISIBLE);
+                        searchHeader.setVisibility(View.INVISIBLE);
+                        searchEmpty.setText(R.string.search_connection_failed);
                     }
                 });
             }

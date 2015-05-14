@@ -10,4 +10,6 @@
     <string name="search_no_results">There are not results for this search term</string>
     <string name="search_no_input">Fill in a search term to see results</string>
 
+    <string name="search_connection_failed">The app does not work as intended. Please hand the device to one of the creators.</string>
+
 </resources>
