@@ -39,11 +39,11 @@ public class SongDetailFragment extends MumoFragment {
         super.onCreate(savedInstanceState);
 
         String songId = getArguments().getString(SongDetailActivity.EXTRA_SONGID);
-        if(songId == ""){
+        if (songId == "") {
             Log.e("SONGDETAILFRAGMENT", "NO SONGID!!!!!!");
             getActivity().finish();
-        }else{
-            if(song == null){
+        } else {
+            if (song == null) {
                 Log.e("SONGDETAILFRAGMENT", "NO SONG FOR ID " + songId + " !!!!!!");
 
                 ConnectionTool.getSong(getActivity(), songId, new ConnectionTool.ConnectionSongListener() {
@@ -86,7 +86,7 @@ public class SongDetailFragment extends MumoFragment {
     }
 
     private void setDetails() {
-        if(song != null) {
+        if (song != null) {
             name.setText(song.getName());
             album.setText(song.getAlbum().getName());
             if (song.getArtists().size() > 0) {
@@ -104,7 +104,7 @@ public class SongDetailFragment extends MumoFragment {
                 public void onClick(View v) {
                     SetupActivity.mPlayer.play(song.getUri());
                     MumoApplication.currentlyPlayedSong = song;
-                    MusicControllerFragment.startMusic();
+                    ((MusicControllerFragment) getActivity().getSupportFragmentManager().findFragmentByTag(MusicControllerFragment.TAG)).startMusic();
                 }
             });
         }

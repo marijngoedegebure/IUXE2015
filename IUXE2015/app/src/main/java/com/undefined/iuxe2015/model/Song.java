@@ -112,10 +112,6 @@ public class Song {
         this.artists = artists;
     }
 
-    public long getDuration_ms() {
-        return duration_ms;
-    }
-
     public boolean hasArtists() {
         return artists != null && artists.size() > 0;
     }

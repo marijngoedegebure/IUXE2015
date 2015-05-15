@@ -85,7 +85,7 @@ public class SongSearchAdapter extends BaseAdapter {
         ViewHolder h = (ViewHolder) convertView.getTag();
         Song s = getItem(position);
         h.name.setText(s.getName());
-        h.duration.setText(Convert.durationToString(s.getDuration_ms()));
+        h.duration.setText(Convert.durationToString(s.getDurationMs()));
         h.artists.setText(s.getArtistsString(c));
 
         return convertView;
