@@ -2,6 +2,9 @@ package com.undefined.iuxe2015.model;
 
 import com.undefined.iuxe2015.model.types.ScaleType;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by Jan-Willem on 1-4-2015.
  */
@@ -40,6 +43,12 @@ public class Event {
 
     public long getDate() {
         return date;
+    }
+
+    public String getDateString() {
+        Date d = new Date(date);
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yy");
+        return df.format(d);
     }
 
     public void setDate(long date) {

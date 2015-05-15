@@ -87,6 +87,27 @@ public class ListAll {
         return null;
     }
 
+    public static ArrayList<Song> getSongsByEvent(SQLiteDatabase database, int stakeholderId, int eventId) {
+        ArrayList<Song> songs = new ArrayList<>();
+        if (database.isOpen()) {
+            Cursor cursor = database.query(MumoDbHelper.TABLE_RATINGS, MumoDbHelper.allRatingColumns,
+                    MumoDbHelper.RATINGS_COLUMN_ID_EVENT + " = " + eventId + " AND " +
+                            MumoDbHelper.RATINGS_COLUMN_ID_STAKEHOLDER + " = " + stakeholderId,
+                    null, null, null, null);
+
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                Rating r = CursorTo.rating(cursor, false);
+                songs.add(ListAll.getSong(database, stakeholderId, r.get_id_song()));
+                cursor.moveToNext();
+            }
+            // make sure to close the cursor
+            cursor.close();
+        }
+
+        return songs;
+    }
+
     public static Song getSongById(SQLiteDatabase database, int stakeholderId, String id) {
         if (database.isOpen()) {
             Cursor cursor = database.query(MumoDbHelper.TABLE_SONGS, MumoDbHelper.allSongColumns,

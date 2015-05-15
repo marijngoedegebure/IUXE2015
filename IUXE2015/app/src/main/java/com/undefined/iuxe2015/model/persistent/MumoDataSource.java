@@ -74,6 +74,10 @@ public class MumoDataSource {
         return ListAll.getSongById(database, PreferenceTool.getCurrentStakeholderId(c), id);
     }
 
+    public ArrayList<Song> getSongsByEvent(Context c, int eventId) {
+        return ListAll.getSongsByEvent(database, PreferenceTool.getCurrentStakeholderId(c), eventId);
+    }
+
     public Song addSong(int stakeholderId, Song song) {
         return Create.song(database, stakeholderId, song);
     }
@@ -112,7 +116,7 @@ public class MumoDataSource {
         return Update.event(database, PreferenceTool.getCurrentStakeholderId(c), event);
     }
 
-    public Event newStakeholder(Context c, String name, long date) {
+    public Event newEvent(Context c, String name, long date) {
         return Create.event(database, PreferenceTool.getCurrentStakeholderId(c), name, date);
     }
 

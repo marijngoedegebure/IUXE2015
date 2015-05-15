@@ -12,10 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.SongDetailActivity;
+import com.undefined.iuxe2015.adapters.EventAdapter;
 import com.undefined.iuxe2015.adapters.SongSearchAdapter;
+import com.undefined.iuxe2015.dialogs.EventDialog;
 import com.undefined.iuxe2015.model.QueryResult;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.tools.ConnectionTool;
@@ -30,8 +33,8 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 public class EventsFragment extends MumoFragment {
 
     @InjectView(R.id.events_list)
-    public StickyListHeadersListView eventsList;
-   // public SongSearchAdapter adapter;
+    public ListView eventsList;
+    public EventAdapter adapter;
 
     public EventsFragment() {
     }
@@ -39,7 +42,7 @@ public class EventsFragment extends MumoFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //adapter = new SongSearchAdapter(getActivity(), null);
+        adapter = new EventAdapter((MumoActivity) getActivity());
     }
 
     @Override
@@ -48,17 +51,29 @@ public class EventsFragment extends MumoFragment {
         View rootView = inflater.inflate(R.layout.fragment_events, container, false);
         ButterKnife.inject(this, rootView);
 
-//        eventsList.setAdapter(adapter);
-//        eventsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, final View view,
-//                                    int position, long id) {
-//                final Song item = adapter.getItem(position);
-//                startActivity(SongDetailActivity.getStartIntent(getActivity(), item));
-//            }
-//        });
+        Button btn_new = (Button) rootView.findViewById(R.id.event_btn_new);
+        btn_new.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showEventDialog("");
+            }
+        });
+
+        eventsList.setAdapter(adapter);
+        eventsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view,
+                                    int position, long id) {
+                showEventDialog(adapter.getItem(position).get_id() + "");
+            }
+        });
 
         return rootView;
+    }
+
+    private void showEventDialog(String eventId) {
+        EventDialog newFragment = EventDialog.getInstance(eventId);
+        newFragment.show(getActivity().getSupportFragmentManager(), EventDialog.TAG);
     }
 
 }
