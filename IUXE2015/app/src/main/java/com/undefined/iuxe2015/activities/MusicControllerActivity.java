@@ -17,7 +17,6 @@ import com.undefined.iuxe2015.fragments.SearchFragment;
 public class MusicControllerActivity extends MumoActivity {
 
     public TextView songName;
-    private Player player = SetupActivity.mPlayer;
     private ImageButton playButton,pauseButton;
     public static int oneTimeOnly = 0;
     @Override
@@ -35,7 +34,7 @@ public class MusicControllerActivity extends MumoActivity {
 
     public void play(View view){
         toast("Playing sound");
-        player.resume();
+        MumoApplication.mPlayer.resume();
         if(oneTimeOnly == 0){
             oneTimeOnly = 1;
         }
@@ -46,7 +45,7 @@ public class MusicControllerActivity extends MumoActivity {
 
     public void pause(View view){
         toast("Pausing sound");
-        player.pause();
+        MumoApplication.mPlayer.pause();
         pauseButton.setEnabled(false);
         playButton.setEnabled(true);
     }

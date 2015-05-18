@@ -39,17 +39,22 @@ public class EventAdapter extends BaseAdapter implements ListAdapter {
         c = activity;
         inflater = LayoutInflater.from(activity);
         data = activity.getData();
+        refresh();
+    }
+
+    public void refresh() {
         events = data.getEvents(c);
         Collections.sort(events, new Comparator<Event>() {
             @Override
             public int compare(Event lhs, Event rhs) {
-                if(lhs.getDate() > rhs.getDate()) {
+                if (lhs.getDate() > rhs.getDate()) {
                     return 1;
                 } else {
                     return -1;
                 }
             }
         });
+        notifyDataSetChanged();
     }
 
     @Override

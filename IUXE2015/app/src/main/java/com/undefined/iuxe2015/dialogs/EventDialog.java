@@ -1,5 +1,6 @@
 package com.undefined.iuxe2015.dialogs;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
@@ -46,6 +47,18 @@ public class EventDialog extends MumoDialog {
 
     private Event event;
 
+    private eventDialogListener defaultListener = new eventDialogListener() {
+        @Override
+        public void onEventDialogClosed() {
+        }
+    };
+    private eventDialogListener listener;
+
+    public interface eventDialogListener {
+        public void onEventDialogClosed();
+    }
+
+
     public static EventDialog getInstance(String eventId) {
         EventDialog d = new EventDialog();
         Bundle args = new Bundle();
@@ -55,18 +68,31 @@ public class EventDialog extends MumoDialog {
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            listener = (eventDialogListener) activity;
+        } catch (Exception e) {
+            Log.e(TAG, "The parent activity should implement eventDialogListener!");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = defaultListener;
+    }
+
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String eventId = getArguments().getString(ARG_EVENT_ID);
-        if(eventId == ""){
+        if (eventId == null || eventId.length() == 0) {
             Log.i("EventDialog", "Creating new Event");
-        } else {
-            if(event == null){
-                Log.i("EventDialog", "Searching event: "+eventId);
-                event = getData().getEventWithId(getActivity(), Integer.parseInt(eventId));
-            }
+        } else if (event == null) {
+            Log.i("EventDialog", "Searching event: " + eventId);
+            event = getData().getEventWithId(getActivity(), Integer.parseInt(eventId));
         }
-
     }
 
     @Override
@@ -76,7 +102,7 @@ public class EventDialog extends MumoDialog {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         View v = null;
-        if(event != null) {
+        if (event != null) {
             v = getActivity().getLayoutInflater().inflate(R.layout.dialog_event, null, false);
             ButterKnife.inject(this, v);
 
@@ -88,7 +114,7 @@ public class EventDialog extends MumoDialog {
 
             ArrayList<Song> songs = getData().getSongsByEvent(getActivity(), event.get_id());
 
-            if(!songs.isEmpty()) {
+            if (!songs.isEmpty()) {
                 final LibraryAdapter songsAdapter = new LibraryAdapter(getActivity(), null);
                 ListView songsList = (ListView) v.findViewById(R.id.library_rated_songs_listview);
                 songsList.setAdapter(songsAdapter);
@@ -127,7 +153,7 @@ public class EventDialog extends MumoDialog {
                     SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
                     Date d = new Date();
                     try {
-                        d = f.parse(date.getDayOfMonth()+"-"+(date.getMonth()+1)+"-"+date.getYear());
+                        d = f.parse(date.getDayOfMonth() + "-" + (date.getMonth() + 1) + "-" + date.getYear());
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
@@ -144,13 +170,13 @@ public class EventDialog extends MumoDialog {
     }
 
     private void save(int stakeHolderId, Event event, String name, long date) {
-        if(event == null) {
+        if (event == null) {
             event = getData().newEvent(getActivity(), name, date);
         } else {
             getData().updateEvent(getActivity(), event);
         }
         Log.d("EventDialog", "Save: " + stakeHolderId + ", " + event.get_id());
-
+        listener.onEventDialogClosed();
         dismiss();
     }
 }

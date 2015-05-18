@@ -29,7 +29,7 @@ public class SetupActivity extends MumoActivity {
     public static final int REQUEST_CODE = 1337;
 
     //TODO remove
-    public static Player mPlayer;
+    //public static Player mPlayer;
 
     private SetupFragment fragment;
 
@@ -84,11 +84,11 @@ public class SetupActivity extends MumoActivity {
                 case TOKEN:
                     String accessToken = response.getAccessToken();
                     Config playerConfig = new Config(this, accessToken, getString(R.string.client_id));
-                    mPlayer = Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
+                    MumoApplication.mPlayer = Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
                         @Override
                         public void onInitialized(Player player) {
-                            mPlayer.addConnectionStateCallback(fragment);
-                            mPlayer.addPlayerNotificationCallback((MumoApplication)getApplication());
+                            MumoApplication.mPlayer.addConnectionStateCallback(fragment);
+                            MumoApplication.mPlayer.addPlayerNotificationCallback((MumoApplication)getApplication());
                             //mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
                             Log.d("SetupActivity", "initialized player");
                         }

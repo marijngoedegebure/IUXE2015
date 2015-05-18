@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.undefined.iuxe2015.MumoApplication;
 import com.undefined.iuxe2015.MumoDialog;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.SetupActivity;
@@ -215,7 +216,7 @@ public class RateSongDialog extends MumoDialog {
     }
 
     private void setRatingSelection(int selection){
-        SetupActivity.mPlayer.pause();
+        MumoApplication.mPlayer.pause();
         ratingButton1.setEnabled(selection == 1);
         ratingButton2.setEnabled(selection == 2);
         ratingButton3.setEnabled(selection == 3);

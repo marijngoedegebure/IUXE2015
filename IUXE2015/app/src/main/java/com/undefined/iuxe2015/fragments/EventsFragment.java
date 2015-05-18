@@ -32,6 +32,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
  */
 public class EventsFragment extends MumoFragment {
 
+    public static final String TAG = "EventsFragment";
     @InjectView(R.id.events_list)
     public ListView eventsList;
     public EventAdapter adapter;
@@ -76,4 +77,9 @@ public class EventsFragment extends MumoFragment {
         newFragment.show(getActivity().getSupportFragmentManager(), EventDialog.TAG);
     }
 
+    public void onEventDialogClose() {
+        Log.d(TAG, "onEventDialogClose");
+        if (adapter != null)
+            adapter.refresh();
+    }
 }
