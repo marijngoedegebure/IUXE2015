@@ -144,6 +144,7 @@ public class EventDialog extends MumoDialog {
             ButterKnife.inject(this, v);
             final EditText name = (EditText) v.findViewById(R.id.event_name);
             final DatePicker date = (DatePicker) v.findViewById(R.id.event_date);
+            date.setMaxDate(new Date().getTime());
             Button saveEvent = (Button) v.findViewById(R.id.event_btn_save);
             saveEvent.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -171,6 +172,10 @@ public class EventDialog extends MumoDialog {
 
     private void save(int stakeHolderId, Event event, String name, long date) {
         if (event == null) {
+            if (name == null || name.length() == 0) {
+                toast("Event name can not be empty");
+                return;
+            }
             event = getData().newEvent(getActivity(), name, date);
         } else {
             getData().updateEvent(getActivity(), event);
