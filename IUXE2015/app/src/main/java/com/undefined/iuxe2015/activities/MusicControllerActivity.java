@@ -29,7 +29,6 @@ public class MusicControllerActivity extends MumoActivity {
         pauseButton.setEnabled(true);
         playButton.setEnabled(false);
         songName.setText(MumoApplication.currentlyPlayedSong.getName());
-
     }
 
     public void play(View view){

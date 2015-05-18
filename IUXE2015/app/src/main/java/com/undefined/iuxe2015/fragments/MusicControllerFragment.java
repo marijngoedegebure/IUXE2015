@@ -32,18 +32,13 @@ public class MusicControllerFragment extends MumoFragment {
     @InjectView(R.id.controller_progress)
     public ProgressBar progress;
 
+    @InjectView(R.id.controller_no_song)
+    public View noSong;
+    @InjectView(R.id.controller_songInfo)
+    public View content;
+
     public MusicControllerFragment() {
         // Required empty public constructor
-    }
-
-    public void startMusic() {
-        setSongTexts();
-        setPlayPause(true);
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -65,7 +60,7 @@ public class MusicControllerFragment extends MumoFragment {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(MumoApplication.mPlayer == null) {
+                if (MumoApplication.mPlayer == null) {
                     toast("No player to start");
                 } else {
                     MumoApplication.mPlayer.resume();
@@ -77,10 +72,15 @@ public class MusicControllerFragment extends MumoFragment {
             setSongTexts();
             setPlayPause(true);
         } else {
-            //TODO go to  'No song playing UI'
+            //TODO go to  'No song playing UI's
             setPlayPause(false);
         }
         return rootView;
+    }
+
+    public void startMusic() {
+        setSongTexts();
+        setPlayPause(true);
     }
 
     private void setSongTexts() {
@@ -90,6 +90,11 @@ public class MusicControllerFragment extends MumoFragment {
             songName.setText(s.getName());
             songArtist.setText(s.getArtistsString(getActivity()));
             progress.setMax((int) s.getDurationMs());
+            noSong.setVisibility(View.GONE);
+            content.setVisibility(View.VISIBLE);
+        }else{
+            noSong.setVisibility(View.VISIBLE);
+            content.setVisibility(View.GONE);
         }
     }
 

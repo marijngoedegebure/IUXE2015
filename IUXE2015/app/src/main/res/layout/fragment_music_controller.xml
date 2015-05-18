@@ -2,21 +2,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
     android:background="@color/theme2"
+    android:orientation="vertical"
     android:padding="8dp"
     tools:context="com.undefined.iuxe2015.fragments.MusicControllerFragment">
 
     <LinearLayout
+        android:id="@+id/controller_no_song"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Now_playing"
+            android:gravity="center"
+            android:minHeight="64dp"
+            android:text="@string/controller_no_song"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/controller_songInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_now_playing"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <LinearLayout

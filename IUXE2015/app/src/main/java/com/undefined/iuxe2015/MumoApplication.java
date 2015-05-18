@@ -1,6 +1,7 @@
 package com.undefined.iuxe2015;
 
 import android.app.Application;
+import android.os.Handler;
 import android.util.Log;
 
 import com.spotify.sdk.android.player.Player;
@@ -8,6 +9,7 @@ import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.persistent.MumoDataSource;
+
 
 /**
  * Created by Jan-Willem on 8-4-2015.
@@ -71,14 +73,19 @@ public class MumoApplication extends Application implements
     }
 
     @Override
-    public void onPlaybackEvent(EventType eventType, PlayerState playerState) {
+    public void onPlaybackEvent(final EventType eventType, PlayerState playerState) {
         Log.d("SetupActivity", "Playback event received: " + eventType.name());
-        if(eventType == EventType.TRACK_CHANGED) {
-            currentActivity.showRatingDialog(currentlyPlayedSong);
-        }
-        else if(eventType == EventType.TRACK_START) {
-            currentActivity.showRatingDialog(currentlyPlayedSong);
-        }
+        //TODO stop delay
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (eventType == EventType.TRACK_CHANGED) {
+                    currentActivity.showRatingDialog(currentlyPlayedSong);
+                } else if (eventType == EventType.TRACK_START) {
+                    currentActivity.showRatingDialog(currentlyPlayedSong);
+                }
+            }
+        }, 1000);
     }
 
     @Override
