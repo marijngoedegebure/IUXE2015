@@ -45,16 +45,16 @@
                 android:layout_height="wrap_content"
                 android:text="@string/event_date"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <DatePicker
-                android:id="@+id/event_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:calendarViewShown="false"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
 
     </TableLayout>
+
+    <DatePicker
+        android:id="@+id/event_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
         android:id="@+id/event_btn_save"
