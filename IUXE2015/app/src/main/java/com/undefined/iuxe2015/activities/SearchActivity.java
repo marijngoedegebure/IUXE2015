@@ -15,12 +15,15 @@ import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 import com.undefined.iuxe2015.MumoActivity;
+import com.undefined.iuxe2015.MumoApplication;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.fragments.MusicControllerFragment;
 import com.undefined.iuxe2015.fragments.SearchFragment;
 
 
 public class SearchActivity extends MumoActivity{
+
+    public static final int REQUEST_CODE = 1028;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,5 +41,12 @@ public class SearchActivity extends MumoActivity{
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         setHelpOverlayId(R.id.search_help);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (MumoApplication.currentlyPlayedSong != null && requestCode == REQUEST_CODE)
+            ((MusicControllerFragment) getSupportFragmentManager().findFragmentById(R.id.music_controller)).refresh();
     }
 }

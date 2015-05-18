@@ -96,7 +96,7 @@ public class MusicControllerFragment extends MumoFragment {
             syncer.cancel(true);
     }
 
-    public void startMusic() {
+    public void refresh() {
         setSongTexts();
         setPlayPause(true);
 

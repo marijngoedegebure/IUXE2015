@@ -1,13 +1,16 @@
 package com.undefined.iuxe2015.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
 import com.undefined.iuxe2015.MumoActivity;
+import com.undefined.iuxe2015.MumoApplication;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.dialogs.EventDialog;
 import com.undefined.iuxe2015.fragments.EventsFragment;
+import com.undefined.iuxe2015.fragments.MusicControllerFragment;
 import com.undefined.iuxe2015.fragments.SearchFragment;
 
 
@@ -36,11 +39,18 @@ public class EventsActivity extends MumoActivity implements EventDialog.eventDia
 
     @Override
     public void onEventDialogClosed() {
-        EventsFragment e = (EventsFragment)getSupportFragmentManager().findFragmentByTag(EventsFragment.TAG);
-        if(e!=null){
+        EventsFragment e = (EventsFragment) getSupportFragmentManager().findFragmentByTag(EventsFragment.TAG);
+        if (e != null) {
             e.onEventDialogClose();
-        }else{
+        } else {
             //TODO handle
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (MumoApplication.currentlyPlayedSong != null)
+            ((MusicControllerFragment) getSupportFragmentManager().findFragmentById(R.id.music_controller)).refresh();
     }
 }

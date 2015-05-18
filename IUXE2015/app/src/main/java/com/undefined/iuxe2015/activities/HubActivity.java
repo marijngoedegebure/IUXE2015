@@ -10,12 +10,16 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.undefined.iuxe2015.MumoActivity;
+import com.undefined.iuxe2015.MumoApplication;
 import com.undefined.iuxe2015.R;
+import com.undefined.iuxe2015.fragments.MusicControllerFragment;
 import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.tools.PreferenceTool;
 
 
 public class HubActivity extends MumoActivity {
+
+    private static final int REQUEST_CODE = 1028;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +43,15 @@ public class HubActivity extends MumoActivity {
         switch (button.getId()) {
             case R.id.hub_btn_events:
                 intent = new Intent(this, EventsActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE);
                 break;
             case R.id.hub_btn_library:
                 intent = new Intent(this, LibraryActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE);
                 break;
             case R.id.hub_btn_search:
                 intent = new Intent(this, SearchActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE);
                 break;
         }
     }
@@ -65,6 +69,16 @@ public class HubActivity extends MumoActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_hub, container, false);
             return rootView;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (MumoApplication.currentlyPlayedSong != null && requestCode == REQUEST_CODE) {
+            MusicControllerFragment f = ((MusicControllerFragment) getSupportFragmentManager().findFragmentById(R.id.music_controller));
+            if (f != null)
+                f.refresh();
         }
     }
 }

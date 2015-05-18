@@ -80,17 +80,17 @@ public class SearchFragment extends MumoFragment {
                     @Override
                     public void onConnectionSuccess(QueryResult result) {
                         //TODO stop loading UI, if visible
-                        if(result.hasTracks()){
+                        if (result.hasTracks()) {
                             searchEmpty.setVisibility(View.INVISIBLE);
                             searchHeader.setText(getResources().getQuantityText(R.plurals.search_results_label, result.getNumTracks()));
                             searchResults.setVisibility(View.VISIBLE);
                             Log.d("SearchFragment", "onConnectionSuccess:" + result.tracks.items.size());
                             adapter.refresh(result.tracks.items);
-                        }else{
+                        } else {
                             Log.d("SearchFragment", "onConnectionSuccess: but no results");
-                            if(s.length() == 0){
+                            if (s.length() == 0) {
                                 searchEmpty.setText(R.string.search_no_input);
-                            }else{
+                            } else {
                                 searchEmpty.setText(R.string.search_no_results);
                             }
                             searchEmpty.setVisibility(View.VISIBLE);
@@ -126,7 +126,7 @@ public class SearchFragment extends MumoFragment {
                                     int position, long id) {
                 final Song item = adapter.getItem(position);
 
-                startActivity(SongDetailActivity.getStartIntent(getActivity(), item));
+                getActivity().startActivityForResult(SongDetailActivity.getStartIntent(getActivity(), item), SearchActivity.REQUEST_CODE);
             }
 
         });
@@ -139,10 +139,10 @@ public class SearchFragment extends MumoFragment {
                     @Override
                     public void onConnectionSuccess(QueryResult result) {
                         //TODO stop loading UI, if visible
-                        if(result.hasTracks()){
+                        if (result.hasTracks()) {
                             Log.d("SearchFragment", "onConnectionSuccess:" + result.tracks.items.size());
                             adapter.refresh(result.tracks.items);
-                        }else{
+                        } else {
                             Log.d("SearchFragment", "onConnectionSuccess: but no results");
                         }
                     }
