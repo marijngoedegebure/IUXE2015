@@ -104,7 +104,7 @@ public class SongDetailFragment extends MumoFragment {
                 public void onClick(View v) {
                     SetupActivity.mPlayer.play(song.getUri());
                     MumoApplication.currentlyPlayedSong = song;
-                    ((MusicControllerFragment) getActivity().getSupportFragmentManager().findFragmentByTag(MusicControllerFragment.TAG)).startMusic();
+                    ((MusicControllerFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.music_controller)).startMusic();
                 }
             });
         }
