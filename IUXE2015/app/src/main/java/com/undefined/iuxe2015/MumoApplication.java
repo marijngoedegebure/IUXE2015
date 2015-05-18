@@ -82,6 +82,7 @@ public class MumoApplication extends Application implements
                 if (eventType == EventType.TRACK_CHANGED) {
                     currentActivity.showRatingDialog(currentlyPlayedSong);
                 } else if (eventType == EventType.TRACK_START) {
+                    //TODO change to track_end
                     currentActivity.showRatingDialog(currentlyPlayedSong);
                 }
             }

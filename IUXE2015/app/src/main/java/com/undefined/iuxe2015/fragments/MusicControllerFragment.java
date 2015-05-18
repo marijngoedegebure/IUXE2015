@@ -1,6 +1,8 @@
 package com.undefined.iuxe2015.fragments;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.spotify.sdk.android.player.Player;
+import com.spotify.sdk.android.player.PlayerState;
+import com.spotify.sdk.android.player.PlayerStateCallback;
 import com.undefined.iuxe2015.MumoApplication;
 import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
@@ -37,6 +41,8 @@ public class MusicControllerFragment extends MumoFragment {
     @InjectView(R.id.controller_songInfo)
     public View content;
 
+    ProgressSyncer syncer;
+
     public MusicControllerFragment() {
         // Required empty public constructor
     }
@@ -49,7 +55,7 @@ public class MusicControllerFragment extends MumoFragment {
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(MumoApplication.mPlayer == null) {
+                if (MumoApplication.mPlayer == null) {
                     toast("No player to pause");
                 } else {
                     MumoApplication.mPlayer.pause();
@@ -78,21 +84,31 @@ public class MusicControllerFragment extends MumoFragment {
         return rootView;
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
     public void startMusic() {
         setSongTexts();
         setPlayPause(true);
+
+        if (syncer != null)
+            syncer.cancel(true);
+        syncer = new ProgressSyncer();
+        syncer.execute();
     }
 
     private void setSongTexts() {
         Song s = MumoApplication.currentlyPlayedSong;
-        Player p =  MumoApplication.mPlayer;
+        Player p = MumoApplication.mPlayer;
         if (s != null && p != null) {
             songName.setText(s.getName());
             songArtist.setText(s.getArtistsString(getActivity()));
             progress.setMax((int) s.getDurationMs());
             noSong.setVisibility(View.GONE);
             content.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             noSong.setVisibility(View.VISIBLE);
             content.setVisibility(View.GONE);
         }
@@ -101,7 +117,34 @@ public class MusicControllerFragment extends MumoFragment {
     private void setPlayPause(boolean isPlaying) {
         pauseButton.setVisibility(isPlaying ? View.VISIBLE : View.GONE);
         playButton.setVisibility(isPlaying ? View.GONE : View.VISIBLE);
-//        playButton.setEnabled(!isPlaying);
-//        pauseButton.setEnabled(isPlaying);
+    }
+
+    private class ProgressSyncer extends AsyncTask<Void, Integer, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            while (!isCancelled()) {
+                MumoApplication.mPlayer.getPlayerState(new PlayerStateCallback() {
+                    @Override
+                    public void onPlayerState(PlayerState playerState) {
+                        publishProgress(playerState.positionInMs);
+                    }
+                });
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+            if (progress != null) {
+                progress.setProgress(values[0]);
+            }
+        }
     }
 }
