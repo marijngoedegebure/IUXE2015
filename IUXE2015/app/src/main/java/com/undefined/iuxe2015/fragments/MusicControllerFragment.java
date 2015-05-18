@@ -54,15 +54,23 @@ public class MusicControllerFragment extends MumoFragment {
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SetupActivity.mPlayer.pause();
-                setPlayPause(false);
+                if(SetupActivity.mPlayer == null) {
+                    toast("No player to start");
+                } else {
+                    SetupActivity.mPlayer.pause();
+                    setPlayPause(false);
+                }
             }
         });
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SetupActivity.mPlayer.resume();
-                setPlayPause(true);
+                if(SetupActivity.mPlayer == null) {
+                    toast("No player to start");
+                } else {
+                    SetupActivity.mPlayer.resume();
+                    setPlayPause(true);
+                }
             }
         });
         if (MumoApplication.currentlyPlayedSong != null) {

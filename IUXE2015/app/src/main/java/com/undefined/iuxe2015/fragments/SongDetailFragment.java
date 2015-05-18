@@ -102,9 +102,13 @@ public class SongDetailFragment extends MumoFragment {
             playSong.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                if(SetupActivity.mPlayer == null) {
+                    toast("No player to start");
+                } else {
                     SetupActivity.mPlayer.play(song.getUri());
                     MumoApplication.currentlyPlayedSong = song;
                     ((MusicControllerFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.music_controller)).startMusic();
+                }
                 }
             });
         }
