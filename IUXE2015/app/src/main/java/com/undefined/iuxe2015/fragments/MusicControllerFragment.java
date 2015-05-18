@@ -89,6 +89,13 @@ public class MusicControllerFragment extends MumoFragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (syncer != null)
+            syncer.cancel(true);
+    }
+
     public void startMusic() {
         setSongTexts();
         setPlayPause(true);
