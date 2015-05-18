@@ -26,14 +26,17 @@
 
             <EditText
                 android:id="@+id/event_name"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:inputType="text"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:padding="8dp">
 
             <TextView
@@ -45,8 +48,9 @@
 
             <DatePicker
                 android:id="@+id/event_date"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:calendarViewShown="false"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
 
