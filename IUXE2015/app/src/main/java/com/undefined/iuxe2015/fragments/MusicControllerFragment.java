@@ -18,6 +18,7 @@ import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.SetupActivity;
 import com.undefined.iuxe2015.model.Song;
+import com.undefined.iuxe2015.tools.Convert;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -33,6 +34,8 @@ public class MusicControllerFragment extends MumoFragment {
     public TextView songName;
     @InjectView(R.id.controller_song_artists)
     public TextView songArtist;
+    @InjectView(R.id.controller_song_progress_text)
+    public TextView progressText;
     @InjectView(R.id.controller_progress)
     public ProgressBar progress;
 
@@ -97,13 +100,18 @@ public class MusicControllerFragment extends MumoFragment {
     }
 
     public void refresh() {
-        setSongTexts();
-        setPlayPause(true);
-
         if (syncer != null)
-            syncer.cancel(true);
+            syncer.cancel(false);
         syncer = new ProgressSyncer();
         syncer.execute();
+        setSongTexts();
+
+        MumoApplication.mPlayer.getPlayerState(new PlayerStateCallback() {
+            @Override
+            public void onPlayerState(PlayerState playerState) {
+                setPlayPause(playerState.playing);
+            }
+        });
     }
 
     private void setSongTexts() {
@@ -137,12 +145,14 @@ public class MusicControllerFragment extends MumoFragment {
                         publishProgress(playerState.positionInMs);
                     }
                 });
+
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
+
             return null;
         }
 
@@ -151,6 +161,7 @@ public class MusicControllerFragment extends MumoFragment {
             super.onProgressUpdate(values);
             if (progress != null) {
                 progress.setProgress(values[0]);
+                progressText.setText(Convert.durationToString(progress.getProgress()) + " / " + Convert.durationToString(progress.getMax()));
             }
         }
     }
