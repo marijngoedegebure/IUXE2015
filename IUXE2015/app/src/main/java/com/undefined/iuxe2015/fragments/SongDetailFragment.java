@@ -21,68 +21,72 @@ import com.undefined.iuxe2015.model.QueryResult;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.tools.ConnectionTool;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 /**
  * Created by marijngoedegebure on 23-04-15.
  */
 public class SongDetailFragment extends MumoFragment {
 
     public static final String TAG = "SongDetailFragment";
-    Song song;
 
+    @InjectView(R.id.song_detail_name)
     TextView name;
+    @InjectView(R.id.song_detail_album)
     TextView album;
+    @InjectView(R.id.song_detail_artist)
     TextView artist;
+    @InjectView(R.id.song_detail_play_btn)
     Button playSong;
+
+    Song song;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         String songId = getArguments().getString(SongDetailActivity.EXTRA_SONGID);
-        if (songId == "") {
-            Log.e("SONGDETAILFRAGMENT", "NO SONGID!!!!!!");
+        if (songId == null || songId.length() == 0) {
+            Log.e(TAG, "NO SONGID!!!!!!");
             getActivity().finish();
-        } else {
-            if (song == null) {
-                Log.e("SONGDETAILFRAGMENT", "NO SONG FOR ID " + songId + " !!!!!!");
+        } else if (song == null) {
+            Log.e(TAG, "NO SONG FOR ID " + songId + " !!!!!!");
 
-                ConnectionTool.getSong(getActivity(), songId, new ConnectionTool.ConnectionSongListener() {
-                    @Override
-                    public void onConnectionSuccess(Song result) {
-                        //TODO stop loading UI, if visible
-                        if (result != null) {
-                            Log.d("SongDetailFragment", "onConnectionSuccess:" + result);
-                            song = result;
-                            setDetails();
-                        } else {
-                            Log.d("SongDetailFragment", "onConnectionSuccess: but no results");
-                        }
+            ConnectionTool.getSong(getActivity(), songId, new ConnectionTool.ConnectionSongListener() {
+                @Override
+                public void onConnectionSuccess(Song result) {
+                    //TODO stop loading UI, if visible
+                    if (result != null) {
+                        Log.d("SongDetailFragment", "onConnectionSuccess:" + result);
+                        song = result;
+                        setDetails();
+                    } else {
+                        Log.d("SongDetailFragment", "onConnectionSuccess: but no results");
                     }
+                }
 
-                    @Override
-                    public void onConnectionFailed(Exception e) {
-                        //TODO give ui feedback about what went wrong
-                        Log.d("SongDetailFragment", "onConnectionFailed");
-                    }
-                });
-            }
+                @Override
+                public void onConnectionFailed(Exception e) {
+                    //TODO give ui feedback about what went wrong
+                    Log.d("SongDetailFragment", "onConnectionFailed");
+                }
+            });
         }
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_song_detail, container, false);
-
-        name = (TextView) rootView.findViewById(R.id.song_detail_name);
-        album = (TextView) rootView.findViewById(R.id.song_detail_album);
-        artist = (TextView) rootView.findViewById(R.id.song_detail_artist);
-        playSong = (Button) rootView.findViewById(R.id.song_detail_play_btn);
-
-        setDetails();
-
+        ButterKnife.inject(this, rootView);
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setDetails();
     }
 
     private void setDetails() {
@@ -102,13 +106,13 @@ public class SongDetailFragment extends MumoFragment {
             playSong.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                if(SetupActivity.mPlayer == null) {
-                    toast("No player to start");
-                } else {
-                    SetupActivity.mPlayer.play(song.getUri());
-                    MumoApplication.currentlyPlayedSong = song;
-                    ((MusicControllerFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.music_controller)).startMusic();
-                }
+                    if (SetupActivity.mPlayer == null) {
+                        toast("No player to start");
+                    } else {
+                        SetupActivity.mPlayer.play(song.getUri());
+                        MumoApplication.currentlyPlayedSong = song;
+                        ((MusicControllerFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.music_controller)).startMusic();
+                    }
                 }
             });
         }
