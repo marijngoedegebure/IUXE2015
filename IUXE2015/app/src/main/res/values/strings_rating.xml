@@ -4,6 +4,7 @@
     <string name="rating_song_name">Name:</string>
     <string name="rating_song_artist">Artist:</string>
     <string name="rating_song_album">Album:</string>
+    <string name="rating_song_event">Event:</string>
     <string name="rating_rating">Rating:</string>
     <string name="rating_song_value1">Value 1</string>
     <string name="rating_song_value2">Value 2</string>

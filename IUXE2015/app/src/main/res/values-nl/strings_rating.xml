@@ -4,6 +4,7 @@
     <string name="rating_song_name">Titel:</string>
     <string name="rating_song_artist">Artiest:</string>
     <string name="rating_song_album">Album:</string>
+    <string name="rating_song_event">Gebeurtenis:</string>
     <string name="rating_rating">Beoordeling:</string>
     <string name="rating_song_value1">Slecht</string>
     <string name="rating_song_value2">Matig</string>
