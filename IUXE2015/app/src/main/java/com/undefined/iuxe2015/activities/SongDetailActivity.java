@@ -44,7 +44,7 @@ public class SongDetailActivity extends MumoActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setHelpOverlayIds(R.id.song_detail_help);
+        setHelpOverlayIds(R.id.songdetail_help_1);
     }
 
     /**

@@ -34,8 +34,7 @@
         Gevonden nummers zullen in deze lijst verschijnen.
         \n\nTik op een nummer om de details te bekijken of om deze af te spelen.
     </string>
-    <string name="help_songdetail_title">Nummerdetails</string>
-    <string name="help_songdetail_text">
+    <string name="help_songdetail_text_1">
         Hier worden de details van het nummer weergegeven.
         \n\nTik op de speelknop om het nummer af te spelen.
     </string>
