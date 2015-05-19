@@ -3,11 +3,9 @@ package com.undefined.iuxe2015.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.MumoApplication;
@@ -35,7 +33,7 @@ public class HubActivity extends MumoActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setHelpOverlayId(R.id.hub_help);
+        setHelpOverlayIds(new int[]{R.id.hub_help1, R.id.hub_help2, R.id.hub_help3});
     }
 
     public void onButtonClick(View button) {

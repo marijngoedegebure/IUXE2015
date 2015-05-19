@@ -1,10 +1,7 @@
 package com.undefined.iuxe2015.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.R;
@@ -29,7 +26,7 @@ public class LibraryActivity extends MumoActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setHelpOverlayId(R.id.library_help);
+        setHelpOverlayIds(R.id.library_help);
     }
 
     public void onButtonClick(View button) {

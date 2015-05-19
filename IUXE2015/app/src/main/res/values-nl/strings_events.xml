@@ -4,4 +4,5 @@
     <string name="event_date">Datum:</string>
     <string name="event_save">Opslaan</string>
     <string name="event_new">Nieuwe gebeurtenis</string>
+    <string name="event_close">Sluiten</string>
 </resources>

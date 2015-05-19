@@ -17,15 +17,19 @@ import com.undefined.iuxe2015.model.persistent.MumoDataSource;
 import com.undefined.iuxe2015.model.types.RatingType;
 import com.undefined.iuxe2015.tools.PreferenceTool;
 
+import java.util.ArrayList;
+
 /**
  * Created by Jan-Willem on 8-4-2015.
  */
 public abstract class MumoActivity extends AppCompatActivity {
 
+    private static final String TAG = "MumoActivity";
     private Toast t;
 
     private final int overlayFadeMs = 300;
-    protected View helpOverlay;
+    protected ArrayList<View> helpOverlays;
+    protected int helpIndex = 0;
 
     public MumoDataSource getData() {
         return ((MumoApplication) getApplication()).getData();
@@ -65,8 +69,8 @@ public abstract class MumoActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            if (helpOverlay != null && helpOverlay.getVisibility() == View.VISIBLE) {
-                hideOverlay(null);
+            if (helpOverlays != null && helpOverlays.get(helpIndex) != null && helpOverlays.get(helpIndex).getVisibility() == View.VISIBLE) {
+                previousOverlay(null);
             } else {
                 finish();
             }
@@ -77,8 +81,8 @@ public abstract class MumoActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (helpOverlay != null && helpOverlay.getVisibility() == View.VISIBLE) {
-            hideOverlay(null);
+        if (helpOverlays != null && helpOverlays.get(helpIndex) != null && helpOverlays.get(helpIndex).getVisibility() == View.VISIBLE) {
+            hideOverlays(null);
         } else {
             super.onBackPressed();
         }
@@ -89,25 +93,68 @@ public abstract class MumoActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), RateSongDialog.TAG);
     }
 
-    protected void setHelpOverlayId(@IdRes int overlayViewId) {
-        this.helpOverlay = findViewById(overlayViewId);
+    protected void setHelpOverlayIds(@IdRes int overlayViewId) {
+        setHelpOverlayIds(new int[]{overlayViewId});
+    }
+
+    protected void setHelpOverlayIds(@IdRes int[] overlayViewIds) {
+        helpOverlays = new ArrayList<View>();
+        for(int overlayViewId : overlayViewIds) {
+            this.helpOverlays.add(findViewById(overlayViewId));
+        }
         //Make sure its hidden on start
-        hideOverlay(null);
+        hideOverlays(null);
     }
 
     public void showOverlay(View v) {
-        if (helpOverlay != null) {
+        Log.d(TAG, "showOverlay(View v)");
+        showOverlay(0, -1);
+    }
+
+    public void showOverlay(int index, int previous) {
+        Log.d(TAG, "showOverlay(index, previous)");
+        if (helpOverlays == null) {
+            return;
+        }
+
+        if (previous >= 0 && helpOverlays.get(previous) != null) {
+            hideOverlay(previous);
+        }
+
+        if (index < helpOverlays.size() && helpOverlays.get(index) != null) {
+            helpIndex = index;
+            View helpOverlay = helpOverlays.get(index);
             AlphaAnimation a = new AlphaAnimation(0, 1);
             a.setDuration(overlayFadeMs);
             helpOverlay.setAnimation(a);
             helpOverlay.setVisibility(View.VISIBLE);
             a.start();
             //TODO hide keyboard if visible
+        } else {
+            hideOverlays(null);
         }
     }
 
-    public void hideOverlay(View v) {
-        if (helpOverlay != null) {
+    public void previousOverlay(View v) {
+        showOverlay(helpIndex-1,helpIndex);
+    }
+
+    public void nextOverlay(View v) {
+        showOverlay(helpIndex+1,helpIndex);
+    }
+
+    public void hideOverlays(View v) {
+        Log.d(TAG, "hideOverlays(View v)");
+        for(int i = 0; i < helpOverlays.size(); i++) {
+            hideOverlay(i);
+        }
+        helpIndex = 0;
+    }
+
+    public void hideOverlay(int index) {
+        Log.d(TAG, "hideOverlay(index)");
+        if (helpOverlays != null && helpOverlays.get(index) != null) {
+            View helpOverlay = helpOverlays.get(index);
             AlphaAnimation a = new AlphaAnimation(1, 0);
             a.setDuration(overlayFadeMs);
             helpOverlay.setAnimation(a);

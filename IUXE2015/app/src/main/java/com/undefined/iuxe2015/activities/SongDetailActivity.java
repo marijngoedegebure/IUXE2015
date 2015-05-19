@@ -2,17 +2,11 @@ package com.undefined.iuxe2015.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
-import android.widget.AdapterView;
 
 import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.R;
@@ -50,7 +44,7 @@ public class SongDetailActivity extends MumoActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setHelpOverlayId(R.id.song_detail_help);
+        setHelpOverlayIds(R.id.song_detail_help);
     }
 
     /**

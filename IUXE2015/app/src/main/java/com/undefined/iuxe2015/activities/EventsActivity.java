@@ -2,8 +2,6 @@ package com.undefined.iuxe2015.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 
 import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.MumoApplication;
@@ -34,7 +32,7 @@ public class EventsActivity extends MumoActivity implements EventDialog.eventDia
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setHelpOverlayId(R.id.events_help);
+        setHelpOverlayIds(R.id.events_help);
     }
 
     @Override

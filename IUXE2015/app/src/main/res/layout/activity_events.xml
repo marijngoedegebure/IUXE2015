@@ -41,7 +41,7 @@
         android:layout_height="match_parent"
         android:clickable="true"
         android:elevation="8dp"
-        android:onClick="hideOverlay"
+        android:onClick="nextOverlay"
         android:background="@color/overlay_bg">
 
         <LinearLayout
