@@ -12,11 +12,11 @@ import com.undefined.iuxe2015.model.persistent.MumoDbHelper;
  * Created by Jan-Willem on 22-2-2015.
  */
 public class Update {
-    public static Rating rating(SQLiteDatabase database, int stakeholderId, Rating rating) {
+    public static Rating rating(SQLiteDatabase database, int stakeholderId, int eventId, Rating rating) {
         ContentValues values = new ContentValues();
         values.put(MumoDbHelper.RATINGS_COLUMN_ID_STAKEHOLDER, stakeholderId);
         values.put(MumoDbHelper.RATINGS_COLUMN_ID_SONG, rating.get_id_song());
-        values.put(MumoDbHelper.RATINGS_COLUMN_ID_EVENT, rating.get_id_event());
+        values.put(MumoDbHelper.RATINGS_COLUMN_ID_EVENT, eventId);
         values.put(MumoDbHelper.RATINGS_COLUMN_RATING, rating.getRating());
         values.put(MumoDbHelper.RATINGS_COLUMN_NOTE, rating.getNote());
         values.put(MumoDbHelper.RATINGS_COLUMN_TIMESTAMP, System.currentTimeMillis());

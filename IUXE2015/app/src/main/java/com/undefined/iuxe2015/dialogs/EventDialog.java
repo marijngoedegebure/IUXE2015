@@ -21,6 +21,7 @@ import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.SetupActivity;
 import com.undefined.iuxe2015.activities.SongDetailActivity;
 import com.undefined.iuxe2015.adapters.LibraryAdapter;
+import com.undefined.iuxe2015.fragments.SetupFragment;
 import com.undefined.iuxe2015.model.Event;
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
@@ -49,13 +50,13 @@ public class EventDialog extends MumoDialog {
 
     private eventDialogListener defaultListener = new eventDialogListener() {
         @Override
-        public void onEventDialogClosed() {
+        public void onEventDialogClosed(int event_id) {
         }
     };
     private eventDialogListener listener;
 
     public interface eventDialogListener {
-        public void onEventDialogClosed();
+        public void onEventDialogClosed(int event_id);
     }
 
 
@@ -113,24 +114,24 @@ public class EventDialog extends MumoDialog {
 
 
             ArrayList<Song> songs = getData().getSongsByEvent(getActivity(), event.get_id());
-
-            if (!songs.isEmpty()) {
-                final LibraryAdapter songsAdapter = new LibraryAdapter(getActivity(), null);
-                ListView songsList = (ListView) v.findViewById(R.id.library_rated_songs_listview);
-                songsList.setAdapter(songsAdapter);
-                songsAdapter.refresh(songs);
-
-                songsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, final View view,
-                                            int position, long id) {
-                        final Song item = songsAdapter.getItem(position);
-                        Intent intent = SongDetailActivity.getStartIntent(getActivity(), item);
-                        startActivity(intent);
-                    }
-                });
-            }
+// TODO need working code to display songs in the dialog event
+//            if (!songs.isEmpty()) {
+//                final LibraryAdapter songsAdapter = new LibraryAdapter(getActivity(), null);
+//                ListView songsList = (ListView) v.findViewById(R.id.library_rated_songs_listview);
+//                songsList.setAdapter(songsAdapter);
+//                songsAdapter.refresh(songs);
+//
+//                songsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//                    @Override
+//                    public void onItemClick(AdapterView<?> parent, final View view,
+//                                            int position, long id) {
+//                        final Song item = songsAdapter.getItem(position);
+//                        Intent intent = SongDetailActivity.getStartIntent(getActivity(), item);
+//                        startActivity(intent);
+//                    }
+//                });
+//            }
 
             Button close = (Button) v.findViewById(R.id.event_btn_close);
             close.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +161,7 @@ public class EventDialog extends MumoDialog {
                     }
                     long milliseconds = d.getTime();
                     save(stakeHolderId, event, name.getText().toString(), milliseconds);
+
                 }
             });
         }
@@ -181,7 +183,7 @@ public class EventDialog extends MumoDialog {
             getData().updateEvent(getActivity(), event);
         }
         Log.d("EventDialog", "Save: " + stakeHolderId + ", " + event.get_id());
-        listener.onEventDialogClosed();
+        listener.onEventDialogClosed(event.get_id());
         dismiss();
     }
 }

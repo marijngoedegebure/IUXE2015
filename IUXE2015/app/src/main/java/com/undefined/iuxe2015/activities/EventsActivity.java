@@ -7,6 +7,7 @@ import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.MumoApplication;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.dialogs.EventDialog;
+import com.undefined.iuxe2015.dialogs.RateSongDialog;
 import com.undefined.iuxe2015.fragments.EventsFragment;
 import com.undefined.iuxe2015.fragments.MusicControllerFragment;
 import com.undefined.iuxe2015.fragments.SearchFragment;
@@ -36,12 +37,19 @@ public class EventsActivity extends MumoActivity implements EventDialog.eventDia
     }
 
     @Override
-    public void onEventDialogClosed() {
+    public void onEventDialogClosed(int event_id) {
         EventsFragment e = (EventsFragment) getSupportFragmentManager().findFragmentByTag(EventsFragment.TAG);
+        RateSongDialog r = (RateSongDialog) getSupportFragmentManager().findFragmentByTag(RateSongDialog.TAG);
         if (e != null) {
             e.onEventDialogClose();
         } else {
             //TODO handle
+        }
+        if (r != null) {
+            r.onEventDialogClose(event_id);
+        }
+        else {
+            // TODO handle
         }
     }
 

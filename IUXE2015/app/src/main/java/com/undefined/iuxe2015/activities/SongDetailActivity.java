@@ -10,10 +10,12 @@ import android.view.ViewGroup;
 
 import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.R;
+import com.undefined.iuxe2015.dialogs.EventDialog;
+import com.undefined.iuxe2015.fragments.EventsFragment;
 import com.undefined.iuxe2015.fragments.SongDetailFragment;
 import com.undefined.iuxe2015.model.Song;
 
-public class SongDetailActivity extends MumoActivity {
+public class SongDetailActivity extends MumoActivity implements EventDialog.eventDialogListener {
 
     public static final String EXTRA_SONGID = "songId";
 

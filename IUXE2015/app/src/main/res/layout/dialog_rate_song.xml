@@ -87,6 +87,25 @@
                 android:layout_height="wrap_content"/>
         </TableRow>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/rating_add_event"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/plus" />
+
+            <com.undefined.iuxe2015.views.MumoSpinner
+                android:id="@+id/rating_event_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/rating_add_event"
+                android:layout_toRightOf="@id/rating_add_event" />
+        </RelativeLayout>
+
     </TableLayout>
 
     <LinearLayout

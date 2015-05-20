@@ -48,8 +48,8 @@ public class MumoDataSource {
         return Create.rating(database, stakeholderId, songId, eventId, rating, note);
     }
 
-    public void updateRating(int stakeholderId, Rating rating) {
-        Update.rating(database, stakeholderId, rating);
+    public void updateRating(int stakeholderId, int eventId, Rating rating) {
+        Update.rating(database, stakeholderId, eventId, rating);
     }
 
     public boolean removeRating(Rating rating) {

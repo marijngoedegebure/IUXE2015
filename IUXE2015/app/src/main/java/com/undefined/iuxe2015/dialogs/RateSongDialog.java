@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -14,10 +15,15 @@ import com.undefined.iuxe2015.MumoApplication;
 import com.undefined.iuxe2015.MumoDialog;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.SetupActivity;
+import com.undefined.iuxe2015.adapters.EventAdapter;
+import com.undefined.iuxe2015.adapters.EventSpinnerAdapter;
+import com.undefined.iuxe2015.adapters.StakeholderAdapter;
+import com.undefined.iuxe2015.model.Event;
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.tools.ConnectionTool;
 import com.undefined.iuxe2015.tools.PreferenceTool;
+import com.undefined.iuxe2015.views.MumoSpinner;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -52,8 +58,14 @@ public class RateSongDialog extends MumoDialog {
     ImageButton ratingButton7;
     @InjectView(R.id.rating_btn_rate)
     Button rateSong;
+    @InjectView(R.id.rating_add_event)
+    Button addEventBtn;
+    @InjectView(R.id.rating_event_spinner)
+    MumoSpinner eventSpinner;
 
     private Song song;
+
+    private EventSpinnerAdapter adapter;
 
     public static RateSongDialog getInstance(String songId) {
         RateSongDialog d = new RateSongDialog();
@@ -149,6 +161,29 @@ public class RateSongDialog extends MumoDialog {
             }
         });
 
+        adapter = new EventSpinnerAdapter(getActivity(), getData());
+        eventSpinner.setAdapter(adapter);
+        eventSpinner.setSelection(0, false);
+        eventSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                EventDialog newFragment = EventDialog.getInstance(adapter.getIntegerId(position) + "");
+                newFragment.show(getActivity().getSupportFragmentManager(), EventDialog.TAG);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        addEventBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventDialog newFragment = EventDialog.getInstance("");
+                newFragment.show(getActivity().getSupportFragmentManager(), EventDialog.TAG);
+            }
+        });
+
         rateSong = (Button) v.findViewById(R.id.rating_btn_rate);
         setDetails();
         builder.setView(v);
@@ -177,26 +212,26 @@ public class RateSongDialog extends MumoDialog {
                 public void onClick(View v) {
                     int stakeHolderId = PreferenceTool.getCurrentStakeholderId(getActivity());
                     if (!ratingButton1.isEnabled())
-                        rate(stakeHolderId, song, 1);
+                        rate(stakeHolderId, song, 1, (Event) eventSpinner.getSelectedItem());
                     else if (!ratingButton2.isEnabled())
-                        rate(stakeHolderId, song, 2);
+                        rate(stakeHolderId, song, 2, (Event) eventSpinner.getSelectedItem());
                     else if (!ratingButton3.isEnabled())
-                        rate(stakeHolderId, song, 3);
+                        rate(stakeHolderId, song, 3, (Event) eventSpinner.getSelectedItem());
                     else if (!ratingButton4.isEnabled())
-                        rate(stakeHolderId, song, 4);
+                        rate(stakeHolderId, song, 4, (Event) eventSpinner.getSelectedItem());
                     else if (!ratingButton5.isEnabled())
-                        rate(stakeHolderId, song, 5);
+                        rate(stakeHolderId, song, 5, (Event) eventSpinner.getSelectedItem());
                     else if (!ratingButton6.isEnabled())
-                        rate(stakeHolderId, song, 6);
+                        rate(stakeHolderId, song, 6, (Event) eventSpinner.getSelectedItem());
                     else if (!ratingButton7.isEnabled())
-                        rate(stakeHolderId, song, 7);
+                        rate(stakeHolderId, song, 7, (Event) eventSpinner.getSelectedItem());
                 }
             });
         }
     }
 
-    private void rate(int stakeHolderId, Song song, int rate) {
-        Log.d("RateSongDialog", "Add rating: " + stakeHolderId + ", " + song.getId() + ", " + rate + ", " + "");
+    private void rate(int stakeHolderId, Song song, int rate, Event event) {
+        Log.d("RateSongDialog", "Add rating: " + stakeHolderId + ", " + song.getId() + ", rate: " + rate + ", Event: " + event.getName());
         song = getData().addSong(stakeHolderId, song);
 
         song = getData().getSongById(getActivity(), song.getId());
@@ -205,24 +240,30 @@ public class RateSongDialog extends MumoDialog {
         }
         Rating rating = getData().getRatingsForSong(getActivity(), song);
         if(rating == null) {
-            //TODO add eventId
-            getData().addRating(stakeHolderId, song.get_id(), 0, rate, "");
+            getData().addRating(stakeHolderId, song.get_id(), event.get_id(), rate, "");
         }
         else {
             rating.setRating(rate);
-            getData().updateRating(stakeHolderId, rating);
+            getData().updateRating(stakeHolderId, event.get_id(), rating);
         }
         dismiss();
     }
 
     private void setRatingSelection(int selection){
-        MumoApplication.mPlayer.pause();
-        ratingButton1.setEnabled(selection == 1);
-        ratingButton2.setEnabled(selection == 2);
-        ratingButton3.setEnabled(selection == 3);
-        ratingButton4.setEnabled(selection == 4);
-        ratingButton5.setEnabled(selection == 5);
-        ratingButton6.setEnabled(selection == 6);
-        ratingButton7.setEnabled(selection == 7);
+        ratingButton1.setEnabled(selection != 1);
+        ratingButton2.setEnabled(selection != 2);
+        ratingButton3.setEnabled(selection != 3);
+        ratingButton4.setEnabled(selection != 4);
+        ratingButton5.setEnabled(selection != 5);
+        ratingButton6.setEnabled(selection != 6);
+        ratingButton7.setEnabled(selection != 7);
+    }
+
+    public void onEventDialogClose(int event_id) {
+        Log.d(TAG, "onEventDialogClose");
+        if (adapter != null) {
+            adapter.refresh();
+            eventSpinner.setSelection(adapter.getIndex(event_id), true);
+        }
     }
 }

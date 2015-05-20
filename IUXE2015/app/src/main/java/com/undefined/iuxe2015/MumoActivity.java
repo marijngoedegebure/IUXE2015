@@ -10,7 +10,9 @@ import android.view.animation.AlphaAnimation;
 import android.widget.Toast;
 
 import com.undefined.iuxe2015.activities.SetupActivity;
+import com.undefined.iuxe2015.dialogs.EventDialog;
 import com.undefined.iuxe2015.dialogs.RateSongDialog;
+import com.undefined.iuxe2015.fragments.EventsFragment;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.Stakeholder;
 import com.undefined.iuxe2015.model.persistent.MumoDataSource;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 /**
  * Created by Jan-Willem on 8-4-2015.
  */
-public abstract class MumoActivity extends AppCompatActivity {
+public abstract class MumoActivity extends AppCompatActivity  implements EventDialog.eventDialogListener {
 
     private static final String TAG = "MumoActivity";
     private Toast t;
@@ -160,6 +162,16 @@ public abstract class MumoActivity extends AppCompatActivity {
             helpOverlay.setAnimation(a);
             a.start();
             helpOverlay.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void onEventDialogClosed(int event_id) {
+        RateSongDialog e = (RateSongDialog) getSupportFragmentManager().findFragmentByTag(RateSongDialog.TAG);
+        if (e != null) {
+            e.onEventDialogClose(event_id);
+        } else {
+            //TODO handle
         }
     }
 }
