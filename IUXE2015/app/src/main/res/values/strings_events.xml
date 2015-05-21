@@ -5,4 +5,7 @@
     <string name="event_save">Save</string>
     <string name="event_new">New event</string>
     <string name="event_close">Close</string>
+    <string name="event_title">Life Event Details</string>
+    <string name="event_title_new">New Life Event</string>
+
 </resources>

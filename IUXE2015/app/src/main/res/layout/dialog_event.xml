@@ -10,8 +10,8 @@
     <Button
         android:id="@+id/event_btn_close"
         android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:background="@drawable/bg_hub_library"
         android:onClick="onButtonClick"
@@ -23,10 +23,20 @@
         android:textStyle="bold" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_above="@id/event_btn_close"
         android:layout_height="wrap_content"
+        android:layout_above="@id/event_btn_close"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/event_title"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -73,7 +83,7 @@
             <ListView
                 android:id="@+id/event_rated_songs_listview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </TableLayout>
 

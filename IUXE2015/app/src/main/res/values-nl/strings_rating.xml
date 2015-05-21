@@ -12,4 +12,5 @@
     <string name="rating_song_value4">Goed</string>
     <string name="rating_song_value5">Geweldig</string>
     <string name="rating_btn_save">Beoordeling opslaan</string>
+    <string name="rate_song_title">Het nummer dat net speelde is afgelopen. Beoordeel dit nummer alstublieft.</string>
 </resources>

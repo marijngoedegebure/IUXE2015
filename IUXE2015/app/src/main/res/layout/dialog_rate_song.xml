@@ -8,6 +8,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:padding="8dp"
+        android:text="@string/rate_song_title"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

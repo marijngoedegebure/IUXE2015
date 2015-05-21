@@ -5,4 +5,6 @@
     <string name="event_save">Opslaan</string>
     <string name="event_new">Nieuwe gebeurtenis</string>
     <string name="event_close">Sluiten</string>
+    <string name="event_title">Gebeurtenis Details</string>
+    <string name="event_title_new">Niewe Gebeurtenis</string>
 </resources>
