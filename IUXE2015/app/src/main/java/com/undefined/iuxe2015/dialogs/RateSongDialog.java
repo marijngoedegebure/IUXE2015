@@ -64,6 +64,7 @@ public class RateSongDialog extends MumoDialog {
     MumoSpinner eventSpinner;
 
     private Song song;
+    private int currentRatingSelection;
 
     private EventSpinnerAdapter adapter;
 
@@ -79,11 +80,11 @@ public class RateSongDialog extends MumoDialog {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String songId = getArguments().getString(ARG_SONG_ID);
-        if(songId == ""){
+        if (songId == "") {
             Log.e("RateSongDialog", "NO SONGID!!!!!!");
             getActivity().finish();
-        }else{
-            if(song == null){
+        } else {
+            if (song == null) {
                 Log.e("RateSongDialog", "NO SONG FOR ID " + songId + " !!!!!!");
 
                 ConnectionTool.getSong(getActivity(), songId, new ConnectionTool.ConnectionSongListener() {
@@ -93,6 +94,8 @@ public class RateSongDialog extends MumoDialog {
                         if (result != null) {
                             Log.d("RateSongDialog", "onConnectionSuccess:" + result);
                             song = result;
+                            Rating r = getData().getRatingsForSong(getActivity(), song);
+                            setRatingSelection(r == null ? 4 : r.getRating());
                             setDetails();
                         } else {
                             Log.d("RateSongDialog", "onConnectionSuccess: but no results");
@@ -194,7 +197,7 @@ public class RateSongDialog extends MumoDialog {
     }
 
     private void setDetails() {
-        if(song != null) {
+        if (song != null) {
             name.setText(song.getName());
             album.setText(song.getAlbum().getName());
             if (song.getArtists().size() > 0) {
@@ -211,23 +214,21 @@ public class RateSongDialog extends MumoDialog {
                 @Override
                 public void onClick(View v) {
                     int stakeHolderId = PreferenceTool.getCurrentStakeholderId(getActivity());
-                    if (!ratingButton1.isEnabled())
-                        rate(stakeHolderId, song, 1, (Event) eventSpinner.getSelectedItem());
-                    else if (!ratingButton2.isEnabled())
-                        rate(stakeHolderId, song, 2, (Event) eventSpinner.getSelectedItem());
-                    else if (!ratingButton3.isEnabled())
-                        rate(stakeHolderId, song, 3, (Event) eventSpinner.getSelectedItem());
-                    else if (!ratingButton4.isEnabled())
-                        rate(stakeHolderId, song, 4, (Event) eventSpinner.getSelectedItem());
-                    else if (!ratingButton5.isEnabled())
-                        rate(stakeHolderId, song, 5, (Event) eventSpinner.getSelectedItem());
-                    else if (!ratingButton6.isEnabled())
-                        rate(stakeHolderId, song, 6, (Event) eventSpinner.getSelectedItem());
-                    else if (!ratingButton7.isEnabled())
-                        rate(stakeHolderId, song, 7, (Event) eventSpinner.getSelectedItem());
+                    rate(stakeHolderId, song, currentRatingSelection, (Event) eventSpinner.getSelectedItem());
                 }
             });
         }
+    }
+
+    private void setRatingSelection(int selection) {
+        currentRatingSelection = selection;
+        ratingButton1.setImageResource(selection == 1 ? R.drawable.ic_likert1_selected : R.drawable.ic_likert1);
+        ratingButton2.setImageResource(selection == 2 ? R.drawable.ic_likert2_selected : R.drawable.ic_likert2);
+        ratingButton3.setImageResource(selection == 3 ? R.drawable.ic_likert3_selected : R.drawable.ic_likert3);
+        ratingButton4.setImageResource(selection == 4 ? R.drawable.ic_likert4_selected : R.drawable.ic_likert4);
+        ratingButton5.setImageResource(selection == 5 ? R.drawable.ic_likert5_selected : R.drawable.ic_likert5);
+        ratingButton6.setImageResource(selection == 6 ? R.drawable.ic_likert6_selected : R.drawable.ic_likert6);
+        ratingButton7.setImageResource(selection == 7 ? R.drawable.ic_likert7_selected : R.drawable.ic_likert7);
     }
 
     private void rate(int stakeHolderId, Song song, int rate, Event event) {
@@ -235,28 +236,17 @@ public class RateSongDialog extends MumoDialog {
         song = getData().addSong(stakeHolderId, song);
 
         song = getData().getSongById(getActivity(), song.getId());
-        if(song == null) {
+        if (song == null)
             song = getData().addSong(stakeHolderId, song);
-        }
+
         Rating rating = getData().getRatingsForSong(getActivity(), song);
-        if(rating == null) {
+        if (rating == null) {
             getData().addRating(stakeHolderId, song.get_id(), event.get_id(), rate, "");
-        }
-        else {
+        } else {
             rating.setRating(rate);
             getData().updateRating(stakeHolderId, event.get_id(), rating);
         }
         dismiss();
-    }
-
-    private void setRatingSelection(int selection){
-        ratingButton1.setEnabled(selection != 1);
-        ratingButton2.setEnabled(selection != 2);
-        ratingButton3.setEnabled(selection != 3);
-        ratingButton4.setEnabled(selection != 4);
-        ratingButton5.setEnabled(selection != 5);
-        ratingButton6.setEnabled(selection != 6);
-        ratingButton7.setEnabled(selection != 7);
     }
 
     public void onEventDialogClose(int event_id) {

@@ -19,8 +19,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_weight="1"
             android:layout_marginRight="8dp"
+            android:layout_weight="1"
             android:text="@string/rating_song_name"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -43,8 +43,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_weight="1"
             android:layout_marginRight="8dp"
+            android:layout_weight="1"
             android:text="@string/rating_song_artist"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -66,17 +66,17 @@
             android:id="@+id/rating_album_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:layout_weight="1"
             android:text="@string/rating_song_album"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/rating_album"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
@@ -85,20 +85,21 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp">
+
         <TextView
             android:id="@+id/rating_event_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_weight="1"
             android:layout_marginRight="8dp"
+            android:layout_weight="1"
             android:text="@string/rating_song_event"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <RelativeLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
             <Button
                 android:id="@+id/rating_add_event"
@@ -143,68 +144,75 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@android:color/transparent"
                 android:minHeight="56dp"
-                android:src="@drawable/ic_likert_1" />
+                android:src="@drawable/ic_likert1" />
 
             <ImageButton
                 android:id="@+id/rating_scale_likert_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_weight="1"
+                android:background="@android:color/transparent"
                 android:minHeight="56dp"
-                android:src="@drawable/ic_likert_2" />
+                android:src="@drawable/ic_likert2" />
 
             <ImageButton
                 android:id="@+id/rating_scale_likert_3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:minHeight="56dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_likert_3" />
+                android:background="@android:color/transparent"
+                android:minHeight="56dp"
+                android:src="@drawable/ic_likert3" />
 
             <ImageButton
                 android:id="@+id/rating_scale_likert_4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:minHeight="56dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_likert_4" />
+                android:background="@android:color/transparent"
+                android:minHeight="56dp"
+                android:src="@drawable/ic_likert4" />
 
             <ImageButton
                 android:id="@+id/rating_scale_likert_5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:minHeight="56dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_likert_5" />
+                android:background="@android:color/transparent"
+                android:minHeight="56dp"
+                android:src="@drawable/ic_likert5" />
 
             <ImageButton
                 android:id="@+id/rating_scale_likert_6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:minHeight="56dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_likert_6" />
+                android:background="@android:color/transparent"
+                android:minHeight="56dp"
+                android:src="@drawable/ic_likert6" />
 
             <ImageButton
                 android:id="@+id/rating_scale_likert_7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:minHeight="56dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_likert_7" />
+                android:background="@android:color/transparent"
+                android:minHeight="56dp"
+                android:src="@drawable/ic_likert7" />
 
         </LinearLayout>
 
@@ -212,9 +220,9 @@
 
     <Button
         android:id="@+id/rating_btn_rate"
+        style="@style/ButtonLarge"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        style="@style/ButtonLarge"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_weight="1"
         android:background="@drawable/bg_hub_library"
