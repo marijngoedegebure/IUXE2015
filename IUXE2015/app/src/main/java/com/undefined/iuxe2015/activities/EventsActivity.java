@@ -16,6 +16,7 @@ import com.undefined.iuxe2015.fragments.SearchFragment;
 public class EventsActivity extends MumoActivity implements EventDialog.eventDialogListener {
 
     private static final String TAG = "EventsActivity";
+    public static final int REQUEST_CODE = 506;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

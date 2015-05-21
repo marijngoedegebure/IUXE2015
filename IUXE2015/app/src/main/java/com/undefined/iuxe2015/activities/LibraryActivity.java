@@ -1,14 +1,19 @@
 package com.undefined.iuxe2015.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.undefined.iuxe2015.MumoActivity;
+import com.undefined.iuxe2015.MumoApplication;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.fragments.LibraryFragment;
+import com.undefined.iuxe2015.fragments.MusicControllerFragment;
 
 
 public class LibraryActivity extends MumoActivity {
+
+    public static final int REQUEST_CODE = 3350;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,13 @@ public class LibraryActivity extends MumoActivity {
                 //TODO start Help Overlay
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (MumoApplication.currentlyPlayedSong != null && requestCode == REQUEST_CODE)
+            ((MusicControllerFragment) getSupportFragmentManager().findFragmentById(R.id.music_controller)).refresh();
     }
 }
 

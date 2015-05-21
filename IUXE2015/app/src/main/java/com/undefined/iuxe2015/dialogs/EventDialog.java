@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.undefined.iuxe2015.MumoDialog;
 import com.undefined.iuxe2015.R;
+import com.undefined.iuxe2015.activities.EventsActivity;
+import com.undefined.iuxe2015.activities.SearchActivity;
 import com.undefined.iuxe2015.activities.SetupActivity;
 import com.undefined.iuxe2015.activities.SongDetailActivity;
 import com.undefined.iuxe2015.adapters.LibraryAdapter;
@@ -114,24 +116,21 @@ public class EventDialog extends MumoDialog {
 
 
             ArrayList<Song> songs = getData().getSongsByEvent(getActivity(), event.get_id());
-// TODO need working code to display songs in the dialog event
-//            if (!songs.isEmpty()) {
-//                final LibraryAdapter songsAdapter = new LibraryAdapter(getActivity(), null);
-//                ListView songsList = (ListView) v.findViewById(R.id.library_rated_songs_listview);
-//                songsList.setAdapter(songsAdapter);
-//                songsAdapter.refresh(songs);
-//
-//                songsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//                    @Override
-//                    public void onItemClick(AdapterView<?> parent, final View view,
-//                                            int position, long id) {
-//                        final Song item = songsAdapter.getItem(position);
-//                        Intent intent = SongDetailActivity.getStartIntent(getActivity(), item);
-//                        startActivity(intent);
-//                    }
-//                });
-//            }
+            if (!songs.isEmpty()) {
+                final LibraryAdapter songsAdapter = new LibraryAdapter(getActivity(), getData(), null);
+                ListView songsList = (ListView) v.findViewById(R.id.event_rated_songs_listview);
+                songsList.setAdapter(songsAdapter);
+                songsAdapter.refresh(songs);
+
+                songsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, final View view,
+                                            int position, long id) {
+                        final Song item = songsAdapter.getItem(position);
+                        getActivity().startActivityForResult(SongDetailActivity.getStartIntent(getActivity(), item), EventsActivity.REQUEST_CODE);
+                    }
+                });
+            }
 
             Button close = (Button) v.findViewById(R.id.event_btn_close);
             close.setOnClickListener(new View.OnClickListener() {

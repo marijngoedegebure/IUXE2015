@@ -25,7 +25,6 @@ public class HubActivity extends MumoActivity {
         setContentView(R.layout.activity_hub);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
     }
