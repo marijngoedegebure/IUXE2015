@@ -37,7 +37,7 @@ public class LibraryFragment extends MumoFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        adapter = new LibraryAdapter(getActivity(), null);
+        adapter = new LibraryAdapter(getActivity(), getData(), null);
     }
 
     @Override

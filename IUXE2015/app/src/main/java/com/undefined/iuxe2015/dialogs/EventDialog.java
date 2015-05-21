@@ -114,8 +114,15 @@ public class EventDialog extends MumoDialog {
 
 
             ArrayList<Song> songs = getData().getSongsByEvent(getActivity(), event.get_id());
+            if (!songs.isEmpty()) {
+                final LibraryAdapter songsAdapter = new LibraryAdapter(getActivity(), getData(), null);
+                ListView songsList = (ListView) v.findViewById(R.id.event_rated_songs_listview);
+                songsList.setAdapter(songsAdapter);
+                songsAdapter.refresh(songs);
+            }
+
 // TODO need working code to display songs in the dialog event
-//            if (!songs.isEmpty()) {
+
 //                final LibraryAdapter songsAdapter = new LibraryAdapter(getActivity(), null);
 //                ListView songsList = (ListView) v.findViewById(R.id.library_rated_songs_listview);
 //                songsList.setAdapter(songsAdapter);
