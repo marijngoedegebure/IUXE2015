@@ -8,87 +8,96 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <TableLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-        <TableRow
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/rating_name_header"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:layout_marginRight="8dp"
+            android:text="@string/rating_song_name"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/rating_name_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/rating_song_name"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <TextView
-                android:id="@+id/rating_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/rating_name"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/rating_artist_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/rating_song_artist"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-            <TextView
-                android:id="@+id/rating_artist"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/rating_artist_header"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:layout_marginRight="8dp"
+            android:text="@string/rating_song_artist"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/rating_album_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/rating_song_album"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <TextView
-                android:id="@+id/rating_album"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/rating_artist"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/rating_event_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/rating_song_event"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-            <Spinner
-                android:id="@+id/rating_event"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </TableRow>
+        <TextView
+            android:id="@+id/rating_album_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/rating_song_album"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/rating_album"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+        <TextView
+            android:id="@+id/rating_event_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:layout_marginRight="8dp"
+            android:text="@string/rating_song_event"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content">
 
             <Button
@@ -96,17 +105,19 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:text="@string/plus" />
 
             <com.undefined.iuxe2015.views.MumoSpinner
                 android:id="@+id/rating_event_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/rating_add_event"
-                android:layout_toRightOf="@id/rating_add_event" />
+                android:layout_toLeftOf="@id/rating_add_event"
+                android:layout_toStartOf="@id/rating_add_event" />
         </RelativeLayout>
 
-    </TableLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -132,6 +143,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:minHeight="56dp"
                 android:src="@drawable/ic_likert_1" />
 
             <ImageButton
@@ -141,6 +153,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
+                android:minHeight="56dp"
                 android:src="@drawable/ic_likert_2" />
 
             <ImageButton
@@ -148,6 +161,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:minHeight="56dp"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_likert_3" />
@@ -157,6 +171,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:minHeight="56dp"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_likert_4" />
@@ -167,6 +182,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:minHeight="56dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_likert_5" />
 
@@ -175,6 +191,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:minHeight="56dp"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_likert_6" />
@@ -183,6 +200,7 @@
                 android:id="@+id/rating_scale_likert_7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:minHeight="56dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
@@ -192,16 +210,16 @@
 
     </LinearLayout>
 
-
     <Button
         android:id="@+id/rating_btn_rate"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        style="@style/ButtonLarge"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_weight="1"
         android:background="@drawable/bg_hub_library"
         android:onClick="onButtonClick"
-        android:text="@string/rating_rate"
+        android:text="@string/rating_btn_save"
         android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/hub_library_darker"

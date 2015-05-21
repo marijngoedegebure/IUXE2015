@@ -11,4 +11,5 @@
     <string name="rating_song_value3">Value 3</string>
     <string name="rating_song_value4">Value 4</string>
     <string name="rating_song_value5">Value 5</string>
+    <string name="rating_btn_save">Save rating</string>
 </resources>
