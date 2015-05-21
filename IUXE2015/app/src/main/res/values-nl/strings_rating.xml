@@ -11,4 +11,5 @@
     <string name="rating_song_value3">Neutraal</string>
     <string name="rating_song_value4">Goed</string>
     <string name="rating_song_value5">Geweldig</string>
+    <string name="rating_btn_save">Beoordeling opslaan</string>
 </resources>
