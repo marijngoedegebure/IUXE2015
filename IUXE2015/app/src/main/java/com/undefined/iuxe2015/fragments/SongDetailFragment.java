@@ -18,6 +18,7 @@ import com.undefined.iuxe2015.activities.SongDetailActivity;
 import com.undefined.iuxe2015.adapters.SongSearchAdapter;
 import com.undefined.iuxe2015.model.Artist;
 import com.undefined.iuxe2015.model.QueryResult;
+import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.tools.ConnectionTool;
 
@@ -37,10 +38,13 @@ public class SongDetailFragment extends MumoFragment {
     TextView album;
     @InjectView(R.id.song_detail_artist)
     TextView artist;
+    @InjectView(R.id.song_detail_rating)
+    TextView rating;
     @InjectView(R.id.song_detail_play_btn)
     Button playSong;
 
     Song song;
+    Rating r;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,10 @@ public class SongDetailFragment extends MumoFragment {
                     if (result != null) {
                         Log.d("SongDetailFragment", "onConnectionSuccess:" + result);
                         song = result;
+                        Song tempSong = getData().getSongById(getActivity(), song.getId());
+                        if(tempSong != null) {
+                            r = getData().getRatingsForSong(getActivity(), tempSong);
+                        }
                         setDetails();
                     } else {
                         Log.d("SongDetailFragment", "onConnectionSuccess: but no results");
@@ -91,6 +99,12 @@ public class SongDetailFragment extends MumoFragment {
 
     private void setDetails() {
         if (song != null) {
+            if(r != null) {
+                rating.setText(r.getRating() + "");
+            }
+            else {
+                rating.setText(R.string.song_detail_song_rating_default_value);
+            }
             name.setText(song.getName());
             album.setText(song.getAlbum().getName());
             if (song.getArtists().size() > 0) {

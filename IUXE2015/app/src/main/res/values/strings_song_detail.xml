@@ -4,4 +4,6 @@
     <string name="song_detail_song_name">Name:</string>
     <string name="song_detail_song_artist">Artist:</string>
     <string name="song_detail_song_album">Album:</string>
+    <string name="song_detail_song_rating">Rating:</string>
+    <string name="song_detail_song_rating_default_value">No rating yet</string>
 </resources>
