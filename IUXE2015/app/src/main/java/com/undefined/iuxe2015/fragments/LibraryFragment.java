@@ -13,6 +13,8 @@ import android.widget.ListView;
 
 import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
+import com.undefined.iuxe2015.activities.LibraryActivity;
+import com.undefined.iuxe2015.activities.SearchActivity;
 import com.undefined.iuxe2015.activities.SongDetailActivity;
 import com.undefined.iuxe2015.adapters.LibraryAdapter;
 import com.undefined.iuxe2015.model.Song;
@@ -59,8 +61,7 @@ public class LibraryFragment extends MumoFragment {
             public void onItemClick(AdapterView<?> parent, final View view,
                                     int position, long id) {
                 final Song item = adapter.getItem(position);
-                Intent intent = new Intent(parent.getContext(), SongDetailActivity.class);
-                startActivity(intent);
+                getActivity().startActivityForResult(SongDetailActivity.getStartIntent(getActivity(), item), LibraryActivity.REQUEST_CODE);
             }
 
         });

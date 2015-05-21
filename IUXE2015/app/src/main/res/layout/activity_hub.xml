@@ -5,10 +5,28 @@
     tools:context="com.undefined.iuxe2015.activities.HubActivity"
     tools:ignore="MergeRootFrame">
 
-    <FrameLayout
-        android:id="@+id/container"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <fragment
+            android:id="@+id/music_controller"
+            android:name="com.undefined.iuxe2015.fragments.MusicControllerFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            tools:layout="@layout/fragment_setup" />
+
+        <fragment
+            android:id="@+id/container"
+            android:name="com.undefined.iuxe2015.activities.HubActivity$PlaceholderFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/music_controller"
+            tools:layout="@layout/fragment_setup" />
+
+    </RelativeLayout>
 
     <com.melnykov.fab.FloatingActionButton xmlns:fab="http://schemas.android.com/apk/res-auto"
         android:id="@+id/fab"
