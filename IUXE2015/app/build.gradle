@@ -36,4 +36,6 @@ dependencies {
     compile 'se.emilsjolander:stickylistheaders:2.6.0'
     // Autofit TextView
     compile 'me.grantland:autofittextview:0.2.1'
+    // Datepicker
+    compile 'com.prolificinteractive:material-calendarview:0.4.0'
 }
