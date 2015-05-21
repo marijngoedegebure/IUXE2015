@@ -167,17 +167,6 @@ public class RateSongDialog extends MumoDialog {
         adapter = new EventSpinnerAdapter(getActivity(), getData());
         eventSpinner.setAdapter(adapter);
         eventSpinner.setSelection(0, false);
-        eventSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                EventDialog newFragment = EventDialog.getInstance(adapter.getIntegerId(position) + "");
-                newFragment.show(getActivity().getSupportFragmentManager(), EventDialog.TAG);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
 
         addEventBtn.setOnClickListener(new View.OnClickListener() {
             @Override
