@@ -7,5 +7,7 @@
     <string name="event_close">Close</string>
     <string name="event_title">Life Event Details</string>
     <string name="event_title_new">New Life Event</string>
+    <string name="event_songs">Connected songs</string>
+    <string name="event_songs_empty">No connected songs</string>
 
 </resources>

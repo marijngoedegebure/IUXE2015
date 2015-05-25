@@ -38,8 +38,8 @@ public class RateSongDialog extends MumoDialog {
 
     @InjectView(R.id.rating_name)
     TextView name;
-    @InjectView(R.id.rating_album)
-    TextView album;
+    /*@InjectView(R.id.rating_album)
+    TextView album;*/
     @InjectView(R.id.rating_artist)
     TextView artist;
     @InjectView(R.id.rating_scale_likert_1)
@@ -188,7 +188,7 @@ public class RateSongDialog extends MumoDialog {
     private void setDetails() {
         if (song != null) {
             name.setText(song.getName());
-            album.setText(song.getAlbum().getName());
+            //album.setText(song.getAlbum().getName());
             if (song.getArtists().size() > 0) {
                 String artistText = song.getArtists().get(0).getName();
                 for (int i = 1; i < song.getArtists().size(); i++) {

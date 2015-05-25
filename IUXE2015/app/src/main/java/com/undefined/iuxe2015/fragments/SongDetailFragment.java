@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.undefined.iuxe2015.MumoApplication;
@@ -39,7 +40,9 @@ public class SongDetailFragment extends MumoFragment {
     @InjectView(R.id.song_detail_artist)
     TextView artist;
     @InjectView(R.id.song_detail_rating)
-    TextView rating;
+    ImageView rating;
+    @InjectView(R.id.song_detail_rating_text)
+    TextView ratingText;
     @InjectView(R.id.song_detail_play_btn)
     Button playSong;
 
@@ -100,10 +103,30 @@ public class SongDetailFragment extends MumoFragment {
     private void setDetails() {
         if (song != null) {
             if(r != null) {
-                rating.setText(r.getRating() + "");
+                int image;
+                switch (r.getRating()) {
+                    case 1:
+                        image = R.drawable.ic_likert1; break;
+                    case 2:
+                        image = R.drawable.ic_likert2; break;
+                    case 3:
+                        image = R.drawable.ic_likert3; break;
+                    case 4:
+                        image = R.drawable.ic_likert4; break;
+                    case 5:
+                        image = R.drawable.ic_likert5; break;
+                    case 6:
+                        image = R.drawable.ic_likert6; break;
+                    case 7:
+                        image = R.drawable.ic_likert7; break;
+                    default:
+                        image = R.drawable.ic_likert4;
+                }
+                rating.setImageResource(image);
+                ratingText.setText("");
             }
             else {
-                rating.setText(R.string.song_detail_song_rating_default_value);
+                ratingText.setText(R.string.song_detail_song_rating_default_value);
             }
             name.setText(song.getName());
             album.setText(song.getAlbum().getName());

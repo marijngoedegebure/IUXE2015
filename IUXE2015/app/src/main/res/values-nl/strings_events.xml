@@ -7,4 +7,6 @@
     <string name="event_close">Sluiten</string>
     <string name="event_title">Gebeurtenis Details</string>
     <string name="event_title_new">Nieuwe Gebeurtenis</string>
+    <string name="event_songs">Verbonden nummers</string>
+    <string name="event_songs_empty">Nog geen verbonden nummers</string>
 </resources>

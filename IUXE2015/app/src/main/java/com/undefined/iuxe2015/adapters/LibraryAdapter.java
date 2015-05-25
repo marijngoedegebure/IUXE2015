@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.undefined.iuxe2015.R;
@@ -58,7 +59,8 @@ public class LibraryAdapter extends BaseAdapter {
 
     class ViewHolder {
         TextView name;
-        TextView rating;
+        TextView artist;
+        ImageView rating;
     }
 
     @Override
@@ -67,7 +69,8 @@ public class LibraryAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.listitem_library, parent, false);
             ViewHolder h = new ViewHolder();
             h.name = (TextView) convertView.findViewById(R.id.library_song_name);
-            h.rating = (TextView) convertView.findViewById(R.id.library_song_rating);
+            h.artist = (TextView) convertView.findViewById(R.id.library_song_artist);
+            h.rating = (ImageView) convertView.findViewById(R.id.library_song_rating);
             convertView.setTag(h);
         }
 
@@ -75,7 +78,28 @@ public class LibraryAdapter extends BaseAdapter {
         Song s = getItem(position);
         Rating r = data.getRatingsForSong(c, s);
         h.name.setText(s.getName());
-        h.rating.setText("Rating: " + r.getRating());
+        h.artist.setText(s.getArtistsString(c));
+
+        int image;
+        switch (r.getRating()) {
+            case 1:
+                image = R.drawable.ic_likert1; break;
+            case 2:
+                image = R.drawable.ic_likert2; break;
+            case 3:
+                image = R.drawable.ic_likert3; break;
+            case 4:
+                image = R.drawable.ic_likert4; break;
+            case 5:
+                image = R.drawable.ic_likert5; break;
+            case 6:
+                image = R.drawable.ic_likert6; break;
+            case 7:
+                image = R.drawable.ic_likert7; break;
+            default:
+                image = R.drawable.ic_likert4;
+        }
+        h.rating.setImageResource(image);
 
         return convertView;
     }

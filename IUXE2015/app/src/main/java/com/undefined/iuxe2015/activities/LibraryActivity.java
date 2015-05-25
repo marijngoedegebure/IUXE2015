@@ -36,7 +36,7 @@ public class LibraryActivity extends MumoActivity {
 
     public void onButtonClick(View button) {
         switch (button.getId()) {
-            case R.id.song_artist:
+            case R.id.fab:
                 toast("TODO: Start Help Overlay");
                 //TODO start Help Overlay
                 break;

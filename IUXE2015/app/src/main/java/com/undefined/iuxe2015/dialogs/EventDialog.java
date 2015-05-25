@@ -120,6 +120,8 @@ public class EventDialog extends MumoDialog {
                 final LibraryAdapter songsAdapter = new LibraryAdapter(getActivity(), getData(), null);
                 ListView songsList = (ListView) v.findViewById(R.id.event_rated_songs_listview);
                 songsList.setAdapter(songsAdapter);
+                TextView empty = (TextView) v.findViewById(R.id.empty);
+                songsList.setEmptyView(empty);
                 songsAdapter.refresh(songs);
 
                 songsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
