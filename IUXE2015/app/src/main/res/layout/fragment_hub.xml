@@ -25,30 +25,27 @@
             android:onClick="onButtonClick"
             android:padding="8dp">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/hub_events_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/hub_events"
+                android:textAllCaps="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/hub_events_darker"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:layout_marginBottom="8dp"
-                    android:src="@drawable/ic_hub_events"
-                    android:tint="@color/hub_events_darker" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/hub_events"
-                    android:textAllCaps="true"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/hub_events_darker"
-                    android:textStyle="bold" />
-            </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/hub_events_label"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_hub_events"
+                android:tint="@color/hub_events_darker" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -62,30 +59,28 @@
             android:onClick="onButtonClick"
             android:padding="8dp">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/hub_library_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/hub_library"
+                android:textAllCaps="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/hub_library_darker"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:layout_marginBottom="8dp"
-                    android:src="@drawable/ic_hub_music"
-                    android:tint="@color/hub_library_darker" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/hub_library_label"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_hub_music"
+                android:tint="@color/hub_library_darker" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/hub_library"
-                    android:textAllCaps="true"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/hub_library_darker"
-                    android:textStyle="bold" />
-            </LinearLayout>
         </RelativeLayout>
 
         <RelativeLayout
@@ -99,30 +94,27 @@
             android:onClick="onButtonClick"
             android:padding="8dp">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/hub_search_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/hub_search"
+                android:textAllCaps="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/hub_search_darker"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:layout_marginBottom="8dp"
-                    android:src="@drawable/ic_hub_search"
-                    android:tint="@color/hub_search_darker" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/hub_search"
-                    android:textAllCaps="true"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/hub_search_darker"
-                    android:textStyle="bold" />
-            </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/hub_search_label"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_hub_search"
+                android:tint="@color/hub_search_darker" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>
