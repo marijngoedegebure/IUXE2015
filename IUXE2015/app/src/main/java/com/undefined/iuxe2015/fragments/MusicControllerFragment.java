@@ -106,6 +106,12 @@ public class MusicControllerFragment extends MumoFragment {
         syncer.execute();
         setSongTexts();
         setPlayPause(true);
+        MumoApplication.mPlayer.getPlayerState(new PlayerStateCallback() {
+            @Override
+            public void onPlayerState(PlayerState playerState) {
+                setPlayPause(playerState.playing);
+            }
+        });
     }
 
     private void setSongTexts() {
