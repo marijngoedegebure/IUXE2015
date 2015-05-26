@@ -1,68 +1,117 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/hub_help2"
     android:layout_width="match_parent"
-    android:clickable="true"
-    android:onClick="nextOverlay"
-    android:elevation="8dp"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@color/overlay_bg"
+    android:clickable="true"
+    android:elevation="8dp"
+    android:onClick="nextOverlay"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/overlay_bg">
+    tools:context="com.undefined.iuxe2015.activities.HubActivity"
+    tools:ignore="MergeRootFrame">
 
-    <TextView
-        android:id="@+id/help_text_2"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/help_hub_text_2"
-        android:textSize="24sp"
-        android:textColor="@color/overlay_text"/>
     <RelativeLayout
-        android:id="@+id/hub_btn_library"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_weight="1"
-        android:background="@drawable/bg_hub_library"
-        android:padding="8dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/controller"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/ic_hub_music"
-                android:tint="@color/hub_library_darker" />
+            android:layout_alignParentBottom="true">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/help_remove_overlay_text"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/hub_library"
-                android:textAllCaps="true"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/hub_library_darker"
-                android:textStyle="bold" />
+                android:text="@string/help_click_overlay_to_hide"
+                android:textColor="@color/overlay_text"
+                android:textSize="30sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible">
+
+                <include
+                    layout="@layout/fragment_music_controller"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/controller"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_weight="1">
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_weight="1"
+                android:background="@drawable/bg_hub_library_shape"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/hub_library_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center"
+                    android:text="@string/hub_library"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/hub_library_darker"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@id/hub_library_label"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_hub_music"
+                    android:tint="@color/hub_library_darker" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/help_text_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/help_hub_text_2"
+                    android:textColor="@color/overlay_text"
+                    android:textSize="24sp" />
+            </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
-    <TextView
-        android:id="@+id/help_remove_overlay_text2"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/help_click_overlay_to_hide"
-        android:textSize="30sp"
-        android:textColor="@color/overlay_text" />
-
-</LinearLayout>
+</RelativeLayout>

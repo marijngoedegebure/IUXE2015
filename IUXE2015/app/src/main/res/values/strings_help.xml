@@ -1,3 +1,41 @@
 <resources>
     <string name="help_click_overlay_to_hide">Tap the screen to continue</string>
+
+    <string name="help_hub_text_1">
+        Tik op gebeurtenissen om een lijst van uw levensgebeurtenissen te zien en bijbehorende muziek te luisteren.
+    </string>
+    <string name="help_hub_text_2">
+        Tik op muziek om opgeslagen muziek te luisteren, gebaseerd op eerdere ervaringen.
+    </string>
+    <string name="help_hub_text_3">
+        Tik op zoeken om naar nieuwe muziek te zoeken.
+    </string>
+    <string name="help_events_title">Gebeurtenissen</string>
+    <string name="help_events_text">
+        Hier ziet u een lijst van gebeurtenissen met de bijbehorende muziek.
+        \n\nDe lijst is gesorteerd op de datum van de gebeurtenis.
+        \n\nTik op één van de gebeurtenissen om details ervan te zien of om het nummer af te spelen.
+    </string>
+    <string name="help_library_title">Muziekbibliotheek</string>
+    <string name="help_library_text">
+        Hier ziet u een lijst van alle nummers die u beoordeeld heeft.
+        \n\nDe lijst is gesorteerd op de beoordeling en de naam van het nummer.
+        \n\nTik op één van de nummers om details ervan te zien of om het nummer af te spelen.
+    </string>
+
+    <string name="help_search_text_1">
+        Gebruik het tekstvak om zoektermen in te vullen, en tik vervolgens op de \'zoek\'-knop.
+        \n\nZoektermen kunnen zijn:
+        \n-Naam van het nummer
+        \n-Naam van de artiest
+        \n-Naam van een album
+    </string>
+    <string name="help_search_text_2">
+        Gevonden nummers zullen in deze lijst verschijnen.
+        \n\nTik op een nummer om de details te bekijken of om deze af te spelen.
+    </string>
+    <string name="help_songdetail_text_1">
+        Hier worden de details van het nummer weergegeven.
+        \n\nTik op de speelknop om het nummer af te spelen.
+    </string>
 </resources>

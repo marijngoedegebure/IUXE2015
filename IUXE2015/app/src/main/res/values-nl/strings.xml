@@ -1,10 +1,8 @@
 <resources>
-    <string name="app_name" translatable="false">Mumo</string>
-    <string name="plus" translatable="false">+</string>
-    <string name="create" translatable="false">Nieuw</string>
-    <string name="save" translatable="false">Opslaan</string>
-    <string name="cancel" translatable="false">Annuleren</string>
-    <string name="delete" translatable="false">Verwijder</string>
+    <string name="create">Nieuw</string>
+    <string name="save">Opslaan</string>
+    <string name="cancel">Annuleren</string>
+    <string name="delete">Verwijder</string>
 
     <string name="title_activity_music_controller">MusicControllerActivity</string>
     <string name="controller_now_playing">Nu aan het afspelen</string>

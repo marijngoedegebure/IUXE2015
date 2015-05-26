@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name" translatable="false">Mumo</string>
     <string name="plus" translatable="false">+</string>
-    <string name="create" translatable="false">Create</string>
-    <string name="save" translatable="false">Save</string>
-    <string name="cancel" translatable="false">Cancel</string>
-    <string name="delete" translatable="false">Delete</string>
+    <string name="create">Create</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
 
     <string name="title_activity_music_controller">MusicControllerActivity</string>
     <string name="controller_now_playing">Now playing</string>
