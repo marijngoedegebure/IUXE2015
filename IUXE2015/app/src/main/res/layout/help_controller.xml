@@ -6,7 +6,7 @@
     android:background="@color/overlay_bg"
     android:clickable="true"
     android:elevation="8dp"
-    android:onClick="nextOverlay"
+    android:onClick="hideOverlays"
     tools:context="com.undefined.iuxe2015.activities.HubActivity"
     tools:ignore="MergeRootFrame">
 

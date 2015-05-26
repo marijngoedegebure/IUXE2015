@@ -119,7 +119,7 @@ public abstract class MumoActivity extends AppCompatActivity  implements EventDi
             hideOverlay(previous);
         }
 
-        if (index < helpOverlays.size() && helpOverlays.get(index) != null) {
+        if (helpOverlays !=null && index < helpOverlays.size() && helpOverlays.get(index) != null) {
             helpIndex = index;
             View helpOverlay = helpOverlays.get(index);
             AlphaAnimation a = new AlphaAnimation(0, 1);
