@@ -25,6 +25,8 @@
             android:id="@+id/search_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/hub_search_darker"
+            android:background="@drawable/bg_hub_search"
             android:text="@string/button_send" />
 
     </LinearLayout>

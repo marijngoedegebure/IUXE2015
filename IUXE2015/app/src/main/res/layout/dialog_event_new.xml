@@ -46,26 +46,26 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/event_date"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <DatePicker
         android:id="@+id/event_date"
-        android:calendarViewShown="false"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false" />
 
     <Button
         android:id="@+id/event_btn_save"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="8dp"
         android:layout_weight="1"
-        android:background="@drawable/bg_hub_library"
+        android:background="@drawable/bg_hub_events"
         android:onClick="onButtonClick"
         android:text="@string/event_save"
         android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/hub_library_darker"
-        android:textSize="32sp"
+        android:textColor="@color/hub_events_darker"
         android:textStyle="bold" />
 </LinearLayout>

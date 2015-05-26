@@ -129,11 +129,11 @@
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_weight="1"
             android:onClick="onButtonClick"
-            android:background="@drawable/bg_hub_library"
+            android:background="@drawable/bg_hub_search"
             android:text="@string/song_detail_play"
             android:textAllCaps="true"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/hub_library_darker"
+            android:textColor="@color/hub_search_darker"
             android:textSize="32sp"
             android:textStyle="bold" />
     </LinearLayout>

@@ -16,6 +16,8 @@
         <Button
             android:id="@+id/event_btn_new"
             android:layout_width="match_parent"
+            android:background="@drawable/bg_hub_events"
+            android:textColor="@color/hub_events_darker"
             android:layout_height="wrap_content"
             android:text="@string/event_new"/>
 
