@@ -95,12 +95,8 @@ public abstract class MumoActivity extends AppCompatActivity  implements EventDi
         newFragment.show(getSupportFragmentManager(), RateSongDialog.TAG);
     }
 
-    protected void setHelpOverlayIds(@IdRes int overlayViewId) {
-        setHelpOverlayIds(new int[]{overlayViewId});
-    }
-
-    protected void setHelpOverlayIds(@IdRes int[] overlayViewIds) {
-        helpOverlays = new ArrayList<View>();
+    protected void setHelpOverlayIds(@IdRes int... overlayViewIds) {
+        helpOverlays = new ArrayList<>();
         for(int overlayViewId : overlayViewIds) {
             this.helpOverlays.add(findViewById(overlayViewId));
         }

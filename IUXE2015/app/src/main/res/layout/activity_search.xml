@@ -46,5 +46,6 @@
 
     <include layout="@layout/help_search_1"/>
     <include layout="@layout/help_search_2"/>
+    <include layout="@layout/help_controller"/>
 
 </RelativeLayout>

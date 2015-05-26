@@ -28,7 +28,7 @@ public class SearchActivity extends MumoActivity{
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setHelpOverlayIds(new int[]{R.id.search_help_1, R.id.search_help_2});
+        setHelpOverlayIds(R.id.search_help_1, R.id.search_help_2, R.id.help_controller);
     }
 
     @Override

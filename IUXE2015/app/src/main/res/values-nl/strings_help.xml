@@ -29,15 +29,15 @@
     </string>
 
     <string name="help_search_text_1">
-        Gebruik het tekstvak om zoektermen in te vullen, en tik vervolgens op de \'zoek\'-knop.
+        Gebruik het tekstvak om zoektermen in te vullen, en tik vervolgens op de groene ZOEK knop.
         \n\nZoektermen kunnen zijn:
-        \n-Naam van het nummer
-        \n-Naam van de artiest
-        \n-Naam van een album
+        \n&#8226; Naam van het nummer
+        \n&#8226; Naam van de artiest
+        \n&#8226; Naam van een album
     </string>
     <string name="help_search_text_2">
-        Gevonden nummers zullen in deze lijst verschijnen.
-        \n\nTik op een nummer om de details te bekijken of om deze af te spelen.
+        Gevonden nummers zullen in de lijst onder de zoekbalk verschijnen.
+        \n\nTik op een nummer om de details hiervan te bekijken of om deze af te spelen.
     </string>
     <string name="help_songdetail_text_1">
         Hier worden de details van het nummer weergegeven.

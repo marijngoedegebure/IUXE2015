@@ -32,7 +32,7 @@ public class HubActivity extends MumoActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setHelpOverlayIds(new int[]{R.id.hub_help1, R.id.hub_help2, R.id.hub_help3, R.id.help_controller});
+        setHelpOverlayIds(R.id.hub_help1, R.id.hub_help2, R.id.hub_help3, R.id.help_controller);
     }
 
     public void onButtonClick(View button) {
