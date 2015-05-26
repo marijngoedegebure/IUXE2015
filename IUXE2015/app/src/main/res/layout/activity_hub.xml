@@ -44,8 +44,9 @@
         fab:fab_colorPressed="@color/hub_help_pressed"
         fab:fab_colorRipple="@color/ripple" />
 
-    <include layout="@layout/help_hub_1"/>
-    <include layout="@layout/help_hub_2"/>
-    <include layout="@layout/help_hub_3"/>
+        <include layout="@layout/help_hub_1" />
+        <include layout="@layout/help_hub_2" />
+        <include layout="@layout/help_hub_3" />
+        <include layout="@layout/help_controller" />
 
 </RelativeLayout>

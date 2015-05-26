@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/hub_help3"
+    android:id="@+id/help_controller"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/overlay_bg"
@@ -19,6 +19,7 @@
             android:id="@+id/controller"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/theme2"
             android:layout_alignParentBottom="true">
 
             <TextView
@@ -46,73 +47,34 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/controller"
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
+            android:layout_above="@id/controller"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_weight="1">
-
-
-            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:padding="8dp"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_weight="1">
+                android:layout_weight="3">
 
                 <TextView
-                    android:id="@+id/help_text_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="16dp"
-                    android:gravity="center"
-                    android:text="@string/help_hub_text_3"
-                    android:textColor="@color/overlay_text" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_hub_search_shape"
-                android:padding="8dp">
-
-                <TextView
-                    android:id="@+id/hub_search_label"
+                    android:id="@+id/help_text_controller"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="4dp"
-                    android:gravity="center"
-                    android:text="@string/hub_search"
-                    android:textAllCaps="true"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/hub_search_darker"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_above="@id/hub_search_label"
                     android:layout_marginBottom="16dp"
-                    android:layout_marginTop="16dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_hub_search"
-                    android:tint="@color/hub_search_darker" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:gravity="center"
+                    android:text="@string/help_text_controller"
+                    android:textColor="@color/overlay_text"/>
             </RelativeLayout>
+
+
 
 
         </LinearLayout>
