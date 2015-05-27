@@ -117,12 +117,14 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:text="@string/plus" />
 
             <com.undefined.iuxe2015.views.MumoSpinner
                 android:id="@+id/rating_event_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/rating_add_event"
                 android:layout_toStartOf="@id/rating_add_event" />
         </RelativeLayout>
