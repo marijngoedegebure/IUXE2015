@@ -1,5 +1,6 @@
 package com.undefined.iuxe2015.dialogs;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -35,6 +36,33 @@ public class RateSongDialog extends MumoDialog {
 
     public static final String TAG = "RateSongDialog";
     public static final String ARG_SONG_ID = "song_id";
+
+    private rateSongDialogListener defaultListener = new rateSongDialogListener() {
+        @Override
+        public void onRateSongDialogClosed(int song_id) {
+        }
+    };
+    private rateSongDialogListener listener;
+
+    public interface rateSongDialogListener {
+        public void onRateSongDialogClosed(int song_id);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            listener = (rateSongDialogListener) activity;
+        } catch (Exception e) {
+            Log.e(TAG, "The parent activity should implement rateSongDialogListener!");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = defaultListener;
+    }
 
     @InjectView(R.id.rating_name)
     TextView name;
@@ -235,6 +263,7 @@ public class RateSongDialog extends MumoDialog {
             rating.setRating(rate);
             getData().updateRating(stakeHolderId, event.get_id(), rating);
         }
+        listener.onRateSongDialogClosed(song.get_id());
         dismiss();
     }
 

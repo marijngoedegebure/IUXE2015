@@ -100,6 +100,12 @@ public class SongDetailFragment extends MumoFragment {
         setDetails();
     }
 
+    public void refresh() {
+        Song tempSong = getData().getSongById(getActivity(), song.getId());
+        r = getData().getRatingsForSong(getActivity(), tempSong);
+        setDetails();
+    }
+
     private void setDetails() {
         if (song != null) {
             if(r != null) {
