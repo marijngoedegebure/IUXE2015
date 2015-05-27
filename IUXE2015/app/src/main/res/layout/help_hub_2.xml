@@ -58,7 +58,13 @@
                 android:layout_height="0dp"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:layout_weight="1">
-
+                <ImageView
+                    android:id="@+id/help_text_2_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_finger_down"/>
 
             </RelativeLayout>
 

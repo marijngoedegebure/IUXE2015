@@ -1,25 +1,26 @@
 <resources>
-    <string name="help_click_overlay_to_hide">Tap the screen to continue</string>
+    <string name="help_click_overlay_to_hide">Tik op het scherm om door te gaan</string>
 
     <string name="help_hub_text_1">
-        Tik op gebeurtenissen om een lijst van uw levensgebeurtenissen te zien en bijbehorende muziek te luisteren.
+        U kunt in het hoofdscherm op de paarse GEBEURTENISSEN knop tikken om een lijst van uw levensgebeurtenissen te zien en bijbehorende muziek te luisteren.
     </string>
     <string name="help_hub_text_2">
-        Tik op muziek om opgeslagen muziek te luisteren, gebaseerd op eerdere ervaringen.
+        Als u in het hoofdscherm op de oranje MUZIEK knop tikt, kunt u opgeslagen muziek luisteren, gebaseerd op eerdere ervaringen.
     </string>
     <string name="help_hub_text_3">
-        Tik op zoeken om naar nieuwe muziek te zoeken.
+        Tikken op de groene ZOEKEN knop brengt u naar een scherm waar u naar nieuwe muziek kunt zoeken.
     </string>
 
     <string name="help_text_controller">
-        Als er een nummer afgespeeld wordt, zal hier onderin het scherm de informatie van getoond worden. Het nummer kan hier dan ook gepauzeerd en hervat worden.
+         Als er een nummer afgespeeld wordt, zal hier onderin het scherm de informatie van getoond worden. Het nummer kan hier dan ook gepauzeerd en hervat worden.
     </string>
 
-    <string name="help_events_title">Gebeurtenissen</string>
-    <string name="help_events_text">
-        Hier ziet u een lijst van gebeurtenissen met de bijbehorende muziek.
-        \n\nDe lijst is gesorteerd op de datum van de gebeurtenis.
-        \n\nTik op één van de gebeurtenissen om details ervan te zien of om het nummer af te spelen.
+    <string name="help_events_text_1">
+        Tik op de paarse NIEUWE GEBEURTENIS knop om een nieuwe gebeurtenis aan te maken, waar u dan daarna muziek mee kunt verbinden.
+    </string>
+    <string name="help_events_text_2">
+        Gebeurtenissen die u eerder toegevoegd hebben zullen in een lijst onder de paarse knop verschijnen.
+        \n\nKlik op een gebeurtenis in de lijst om te kijken welke nummers er met deze gebeurtenis verbonden zijn.
     </string>
     <string name="help_library_title">Muziekbibliotheek</string>
     <string name="help_library_text">
@@ -29,15 +30,15 @@
     </string>
 
     <string name="help_search_text_1">
-        Gebruik het tekstvak om zoektermen in te vullen, en tik vervolgens op de \'zoek\'-knop.
+        Gebruik het tekstvak om zoektermen in te vullen, en tik vervolgens op de groene ZOEK knop.
         \n\nZoektermen kunnen zijn:
-        \n-Naam van het nummer
-        \n-Naam van de artiest
-        \n-Naam van een album
+        \n&#8226; Naam van het nummer
+        \n&#8226; Naam van de artiest
+        \n&#8226; Naam van een album
     </string>
     <string name="help_search_text_2">
-        Gevonden nummers zullen in deze lijst verschijnen.
-        \n\nTik op een nummer om de details te bekijken of om deze af te spelen.
+        Gevonden nummers zullen in de lijst onder de zoekbalk verschijnen.
+        \n\nTik op een nummer om de details hiervan te bekijken of om deze af te spelen.
     </string>
     <string name="help_songdetail_text_1">
         Hier worden de details van het nummer weergegeven.

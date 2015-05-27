@@ -34,7 +34,7 @@ public class EventsActivity extends MumoActivity implements EventDialog.eventDia
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setHelpOverlayIds(R.id.events_help);
+        setHelpOverlayIds(R.id.events_help_1, R.id.events_help_2, R.id.help_controller);
     }
 
     @Override
