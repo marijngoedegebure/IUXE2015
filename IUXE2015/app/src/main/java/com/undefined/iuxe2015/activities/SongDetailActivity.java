@@ -46,7 +46,7 @@ public class SongDetailActivity extends MumoActivity implements EventDialog.even
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setHelpOverlayIds(R.id.songdetail_help_1);
+        setHelpOverlayIds(R.id.songdetail_help_1, R.id.songdetail_help_2, R.id.help_controller);
     }
 
     /**

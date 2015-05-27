@@ -4,6 +4,7 @@
     <string name="song_detail_song_name">Naam:</string>
     <string name="song_detail_song_artist">Artiest:</string>
     <string name="song_detail_song_album">Album:</string>
+    <string name="song_detail_song_rating">Beoordeling:</string>
 
     <string name="song_detail_song_rating_default_value">Nog geen beoordeling</string>
 

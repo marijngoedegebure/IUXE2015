@@ -42,6 +42,10 @@
     </string>
     <string name="help_songdetail_text_1">
         Hier worden de details van het nummer weergegeven.
-        \n\nTik op de speelknop om het nummer af te spelen.
+        \nEronder wordt uw huidige beoordeling weergegeven, als dit nummer al beoordeeld is. Dit zal één van de getoonde gezichtjes zijn.
+    </string>
+
+    <string name="help_songdetail_text_2">
+        Met de oranje SPEEL DIT NUMMER knop kunt u dit nummer afspelen. Dit zal het nummer in de onderbalk vervangen, als hier al een nummer stond.
     </string>
 </resources>
