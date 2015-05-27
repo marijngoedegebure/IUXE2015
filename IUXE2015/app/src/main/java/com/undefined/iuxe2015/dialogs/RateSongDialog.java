@@ -241,7 +241,7 @@ public class RateSongDialog extends MumoDialog {
     public void onEventDialogClose(int event_id) {
         Log.d(TAG, "onEventDialogClose");
         if (adapter != null) {
-            adapter.refresh();
+            adapter =  new EventSpinnerAdapter(getActivity(), getData());
             eventSpinner.setAdapter(adapter);
             eventSpinner.setSelection(adapter.getIndex(event_id), true);
         }
