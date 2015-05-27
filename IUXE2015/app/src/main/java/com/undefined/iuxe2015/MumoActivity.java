@@ -24,7 +24,7 @@ import java.util.ArrayList;
 /**
  * Created by Jan-Willem on 8-4-2015.
  */
-public abstract class MumoActivity extends AppCompatActivity  implements EventDialog.eventDialogListener {
+public abstract class MumoActivity extends AppCompatActivity implements EventDialog.eventDialogListener {
 
     private static final String TAG = "MumoActivity";
     private Toast t;
@@ -84,7 +84,7 @@ public abstract class MumoActivity extends AppCompatActivity  implements EventDi
     @Override
     public void onBackPressed() {
         if (helpOverlays != null && helpOverlays.get(helpIndex) != null && helpOverlays.get(helpIndex).getVisibility() == View.VISIBLE) {
-            hideOverlays(null);
+            previousOverlay(null);
         } else {
             super.onBackPressed();
         }
@@ -97,7 +97,7 @@ public abstract class MumoActivity extends AppCompatActivity  implements EventDi
 
     protected void setHelpOverlayIds(@IdRes int... overlayViewIds) {
         helpOverlays = new ArrayList<>();
-        for(int overlayViewId : overlayViewIds) {
+        for (int overlayViewId : overlayViewIds) {
             this.helpOverlays.add(findViewById(overlayViewId));
         }
         //Make sure its hidden on start
@@ -110,7 +110,7 @@ public abstract class MumoActivity extends AppCompatActivity  implements EventDi
     }
 
     public void showOverlay(int index, int previous) {
-        Log.d(TAG, "showOverlay(index, previous)");
+        Log.d(TAG, "showOverlay("+index+", "+previous+")");
         if (helpOverlays == null) {
             return;
         }
@@ -119,14 +119,14 @@ public abstract class MumoActivity extends AppCompatActivity  implements EventDi
             hideOverlay(previous);
         }
 
-        if (helpOverlays !=null && index < helpOverlays.size() && helpOverlays.get(index) != null) {
+        if (helpOverlays != null && index > -1 && index < helpOverlays.size() && helpOverlays.get(index) != null) {
             helpIndex = index;
             View helpOverlay = helpOverlays.get(index);
-            AlphaAnimation a = new AlphaAnimation(0, 1);
-            a.setDuration(overlayFadeMs);
-            helpOverlay.setAnimation(a);
+            //AlphaAnimation a = new AlphaAnimation(0, 1);
+            //a.setDuration(overlayFadeMs);
+            //helpOverlay.setAnimation(a);
             helpOverlay.setVisibility(View.VISIBLE);
-            a.start();
+            //a.start();
             //TODO hide keyboard if visible
         } else {
             hideOverlays(null);
@@ -134,29 +134,29 @@ public abstract class MumoActivity extends AppCompatActivity  implements EventDi
     }
 
     public void previousOverlay(View v) {
-        showOverlay(helpIndex-1,helpIndex);
+        showOverlay(helpIndex - 1, helpIndex);
     }
 
     public void nextOverlay(View v) {
-        showOverlay(helpIndex+1,helpIndex);
+        showOverlay(helpIndex + 1, helpIndex);
     }
 
     public void hideOverlays(View v) {
         Log.d(TAG, "hideOverlays(View v)");
-        for(int i = 0; i < helpOverlays.size(); i++) {
+        for (int i = 0; i < helpOverlays.size(); i++) {
             hideOverlay(i);
         }
         helpIndex = 0;
     }
 
     public void hideOverlay(int index) {
-        Log.d(TAG, "hideOverlay(index)");
+        Log.d(TAG, "hideOverlay("+index+")");
         if (helpOverlays != null && helpOverlays.get(index) != null) {
             View helpOverlay = helpOverlays.get(index);
-            AlphaAnimation a = new AlphaAnimation(1, 0);
-            a.setDuration(overlayFadeMs);
-            helpOverlay.setAnimation(a);
-            a.start();
+            //AlphaAnimation a = new AlphaAnimation(1, 0);
+            //a.setDuration(overlayFadeMs);
+            //helpOverlay.setAnimation(a);
+            //a.start();
             helpOverlay.setVisibility(View.GONE);
         }
     }

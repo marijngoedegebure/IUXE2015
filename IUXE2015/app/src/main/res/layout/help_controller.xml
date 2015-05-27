@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
-    android:elevation="8dp"
     android:onClick="hideOverlays"
     tools:context="com.undefined.iuxe2015.activities.HubActivity"
     tools:ignore="MergeRootFrame">

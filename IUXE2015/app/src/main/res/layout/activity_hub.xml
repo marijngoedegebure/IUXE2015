@@ -47,12 +47,17 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
         android:background="@color/hub_help_background"
         android:elevation="8dp">
-            <include layout="@layout/help_hub_1" />
-            <include layout="@layout/help_hub_2" />
-            <include layout="@layout/help_hub_3" />
-            <include layout="@layout/help_controller" />
+
+        <include layout="@layout/help_hub_1" />
+
+        <include layout="@layout/help_hub_2" />
+
+        <include layout="@layout/help_hub_3" />
+
+        <include layout="@layout/help_controller" />
     </RelativeLayout>
 
 </RelativeLayout>

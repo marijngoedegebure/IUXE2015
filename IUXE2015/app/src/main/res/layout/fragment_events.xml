@@ -12,15 +12,29 @@
     <Button
         android:id="@+id/event_btn_new"
         android:layout_width="match_parent"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:background="@drawable/bg_hub_events"
         android:text="@string/event_new"
         android:textColor="@color/hub_events_darker" />
 
-    <ListView
-        android:id="@+id/events_list"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/listitem_event" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/events_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:text="@string/events_empty"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ListView
+            android:id="@+id/events_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/listitem_event" />
+    </RelativeLayout>
 </LinearLayout>

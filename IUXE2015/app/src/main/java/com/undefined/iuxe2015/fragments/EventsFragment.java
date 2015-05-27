@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.MumoFragment;
@@ -35,6 +36,8 @@ public class EventsFragment extends MumoFragment {
     public static final String TAG = "EventsFragment";
     @InjectView(R.id.events_list)
     public ListView eventsList;
+    @InjectView(R.id.events_empty)
+    public TextView empty;
     public EventAdapter adapter;
 
     public EventsFragment() {
@@ -61,6 +64,7 @@ public class EventsFragment extends MumoFragment {
         });
 
         eventsList.setAdapter(adapter);
+        empty.setVisibility(adapter.getCount() == 0 ? View.VISIBLE : View.GONE);
         eventsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view,

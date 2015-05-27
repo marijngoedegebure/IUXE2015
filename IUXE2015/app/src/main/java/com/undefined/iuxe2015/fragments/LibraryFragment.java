@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
@@ -24,6 +25,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 /**
  * Created by Jan-Willem on 1-4-2015.
  */
@@ -31,7 +35,10 @@ public class LibraryFragment extends MumoFragment {
 
     LibraryAdapter adapter;
 
+    @InjectView(R.id.library_rated_songs_listview)
     ListView listView;
+    @InjectView(R.id.library_empty)
+    TextView empty;
 
     public LibraryFragment() {
     }
@@ -48,12 +55,12 @@ public class LibraryFragment extends MumoFragment {
         View rootView = inflater.inflate(R.layout.fragment_library, container, false);
 
         ArrayList<Song> songs = getData().getRatedSongs(getActivity());
-
-        listView = (ListView) rootView.findViewById(R.id.library_rated_songs_listview);
+        ButterKnife.inject(this, rootView);
 
         listView.setAdapter(adapter);
-
         adapter.refresh(songs);
+
+        empty.setVisibility(songs == null || songs.size() == 0 ? View.VISIBLE : View.GONE);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

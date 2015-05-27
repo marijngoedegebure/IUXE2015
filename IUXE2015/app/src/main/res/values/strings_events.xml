@@ -10,4 +10,5 @@
     <string name="event_songs">Connected songs</string>
     <string name="event_songs_empty">No connected songs</string>
 
+    <string name="events_empty">Er zijn momenteel nog geen gebeurtenissen toegevoegd. Voeg deze eerst toe met de paarse NIEUWE GEBEURTENIS knop. Hierna kunt u in de lijst een gebeurtenis selecteren om de nummers te zien die hiermee verbonden zijn.</string>
 </resources>

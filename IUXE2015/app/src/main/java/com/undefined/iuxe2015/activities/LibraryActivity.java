@@ -31,7 +31,7 @@ public class LibraryActivity extends MumoActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setHelpOverlayIds(R.id.library_help);
+        setHelpOverlayIds(R.id.library_help_1, R.id.help_controller);
     }
 
     public void onButtonClick(View button) {
