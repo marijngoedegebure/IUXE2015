@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,12 @@ import android.view.ViewGroup;
 import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.dialogs.EventDialog;
+import com.undefined.iuxe2015.dialogs.RateSongDialog;
 import com.undefined.iuxe2015.fragments.EventsFragment;
 import com.undefined.iuxe2015.fragments.SongDetailFragment;
 import com.undefined.iuxe2015.model.Song;
 
-public class SongDetailActivity extends MumoActivity implements EventDialog.eventDialogListener {
+public class SongDetailActivity extends MumoActivity implements RateSongDialog.rateSongDialogListener {
 
     public static final String EXTRA_SONGID = "songId";
 
@@ -63,5 +65,12 @@ public class SongDetailActivity extends MumoActivity implements EventDialog.even
             View rootView = inflater.inflate(R.layout.fragment_song_detail, container, false);
             return rootView;
         }
+    }
+
+    @Override
+    public void onRateSongDialogClosed(int song_id) {
+        Log.d("SongDetailActivity", "onRateSongDialogClose");
+        SongDetailFragment songDetailFragment = (SongDetailFragment) getSupportFragmentManager().findFragmentByTag(SongDetailFragment.TAG);
+        songDetailFragment.refresh();
     }
 }

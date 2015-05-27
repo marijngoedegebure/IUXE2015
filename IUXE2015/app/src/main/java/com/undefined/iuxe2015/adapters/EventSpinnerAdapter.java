@@ -31,11 +31,13 @@ public class EventSpinnerAdapter extends BaseAdapter implements SpinnerAdapter {
     private MumoDataSource data;
     private LayoutInflater inflater;
     private Context c;
+    private ArrayList<Event> events;
 
     public EventSpinnerAdapter(Activity a, MumoDataSource data) {
         this.data = data;
         inflater = a.getLayoutInflater();
         c = a;
+        refresh();
     }
 
     @Override
@@ -68,13 +70,13 @@ public class EventSpinnerAdapter extends BaseAdapter implements SpinnerAdapter {
 
     @Override
     public int getCount() {
-        return data.getEvents(c).size();
+        return events.size();
     }
 
     @Override
     public Event getItem(int position) {
         try {
-            return data.getEvents(c).get(position);
+            return events.get(position);
         }catch(IndexOutOfBoundsException e){
             return null;
         }
@@ -100,7 +102,7 @@ public class EventSpinnerAdapter extends BaseAdapter implements SpinnerAdapter {
     }
 
     public void refresh() {
-        ArrayList<Event> events = data.getEvents(c);
+        events = data.getEvents(c);
         Collections.sort(events, new Comparator<Event>() {
             @Override
             public int compare(Event lhs, Event rhs) {
@@ -144,7 +146,8 @@ public class EventSpinnerAdapter extends BaseAdapter implements SpinnerAdapter {
 
     public int getIndex(int eventId) {
         for (int i = 0; i < getCount(); i++) {
-            if (getIntegerId(i) == eventId)
+            int requestInt = getIntegerId(i);
+            if (requestInt == eventId)
                 return i;
         }
         return -1;
