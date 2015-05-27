@@ -41,6 +41,15 @@
         fab:fab_colorPressed="@color/hub_help_pressed"
         fab:fab_colorRipple="@color/ripple" />
 
-    <include layout="@layout/help_songdetail_1"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/hub_help_background"
+        android:elevation="8dp"
+        android:animateLayoutChanges="true">
+
+        <include layout="@layout/help_songdetail_1"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

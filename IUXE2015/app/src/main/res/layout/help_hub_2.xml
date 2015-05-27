@@ -3,7 +3,6 @@
     android:id="@+id/hub_help2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/overlay_bg"
     android:clickable="true"
     android:elevation="8dp"
     android:onClick="nextOverlay"
