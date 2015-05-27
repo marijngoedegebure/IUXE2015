@@ -70,17 +70,52 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/help_text"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:gravity="center_horizontal"
-            android:padding="8dp"
-            android:text="@string/help_search_text_2"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/overlay_text" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@android:color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_up" />
+
+                <TextView
+                    android:id="@+id/help_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:gravity="center"
+                    android:text="@string/help_search_text_2"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/overlay_text" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_down" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/white" />
+        </RelativeLayout>
 
     </LinearLayout>
 </RelativeLayout>
