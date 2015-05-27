@@ -21,6 +21,7 @@
     <color name="hub_search_ripple">#331a6607</color>
 
     <color name="hub_help">#EEEEEE</color>
+    <color name="hub_help_background">#000000</color>
     <color name="hub_help_pressed">#BDBDBD</color>
     <color name="hub_help_darker">#5c5c5c</color>
 
