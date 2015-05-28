@@ -123,8 +123,11 @@ public class EventDialog extends MumoDialog {
                 ListView songsList = (ListView) v.findViewById(R.id.event_rated_songs_listview);
                 songsList.setAdapter(songsAdapter);
                 TextView empty = (TextView) v.findViewById(R.id.empty);
-                songsList.setEmptyView(empty);
+                //songsList.setEmptyView(empty);
                 songsAdapter.refresh(songs);
+
+                songsList.setVisibility(songs.isEmpty() ? View.GONE : View.VISIBLE);
+                empty.setVisibility(songs.isEmpty() ? View.VISIBLE : View.GONE);
 
                 songsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
