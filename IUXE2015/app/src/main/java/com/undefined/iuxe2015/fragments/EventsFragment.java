@@ -83,7 +83,9 @@ public class EventsFragment extends MumoFragment {
 
     public void onEventDialogClose() {
         Log.d(TAG, "onEventDialogClose");
-        if (adapter != null)
+        if (adapter != null) {
             adapter.refresh();
+            empty.setVisibility(adapter.getCount() == 0 ? View.VISIBLE : View.GONE);
+        }
     }
 }
