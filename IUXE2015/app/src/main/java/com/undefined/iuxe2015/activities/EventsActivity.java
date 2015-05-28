@@ -57,7 +57,9 @@ public class EventsActivity extends MumoActivity implements EventDialog.eventDia
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (MumoApplication.currentlyPlayedSong != null)
+        if (MumoApplication.currentlyPlayedSong != null) {
             ((MusicControllerFragment) getSupportFragmentManager().findFragmentById(R.id.music_controller)).refresh();
+            ((EventDialog) getSupportFragmentManager().findFragmentByTag(EventDialog.TAG)).update();
+        }
     }
 }
