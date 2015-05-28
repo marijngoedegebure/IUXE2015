@@ -50,6 +50,8 @@ public class EventDialog extends MumoDialog {
 
     private Event event;
 
+    private LibraryAdapter songsAdapter;
+
     private eventDialogListener defaultListener = new eventDialogListener() {
         @Override
         public void onEventDialogClosed(int event_id) {
@@ -117,7 +119,7 @@ public class EventDialog extends MumoDialog {
 
             ArrayList<Song> songs = getData().getSongsByEvent(getActivity(), event.get_id());
             if (!songs.isEmpty()) {
-                final LibraryAdapter songsAdapter = new LibraryAdapter(getActivity(), getData(), null);
+                songsAdapter = new LibraryAdapter(getActivity(), getData(), null);
                 ListView songsList = (ListView) v.findViewById(R.id.event_rated_songs_listview);
                 songsList.setAdapter(songsAdapter);
                 TextView empty = (TextView) v.findViewById(R.id.empty);
@@ -171,6 +173,11 @@ public class EventDialog extends MumoDialog {
 
         // Create the AlertDialog object and return it
         return d;
+    }
+
+    public void update() {
+        ArrayList<Song> songs = getData().getSongsByEvent(getActivity(), event.get_id());
+        songsAdapter.refresh(songs);
     }
 
     private void save(int stakeHolderId, Event event, String name, long date) {
