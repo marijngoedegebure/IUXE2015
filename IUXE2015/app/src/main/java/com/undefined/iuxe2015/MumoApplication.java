@@ -21,6 +21,7 @@ public class MumoApplication extends Application implements
 
     private MumoActivity currentActivity;
 
+    public static Song previouslyPlayedSong;
     public static Song currentlyPlayedSong;
     public static Player mPlayer;
 
@@ -80,10 +81,12 @@ public class MumoApplication extends Application implements
             @Override
             public void run() {
                 if (eventType == EventType.TRACK_CHANGED) {
-                    currentActivity.showRatingDialog(currentlyPlayedSong);
-                } else if (eventType == EventType.TRACK_START) {
-                    //TODO change to track_end
-                    currentActivity.showRatingDialog(currentlyPlayedSong);
+                    currentActivity.showRatingDialog(previouslyPlayedSong);
+                } else if (eventType == EventType.TRACK_END) {
+                    currentActivity.showRatingDialog(previouslyPlayedSong);
+                }
+                if (eventType == EventType.TRACK_START) {
+                    previouslyPlayedSong = currentlyPlayedSong;
                 }
             }
         }, 1000);

@@ -153,7 +153,14 @@ public class SongDetailFragment extends MumoFragment {
                         toast("No player to start");
                     } else {
                         MumoApplication.mPlayer.play(song.getUri());
-                        MumoApplication.currentlyPlayedSong = song;
+                        if(MumoApplication.currentlyPlayedSong == null) {
+                            MumoApplication.previouslyPlayedSong = null;
+                            MumoApplication.currentlyPlayedSong = song;
+                        }
+                        else {
+                            MumoApplication.previouslyPlayedSong = MumoApplication.currentlyPlayedSong;
+                            MumoApplication.currentlyPlayedSong = song;
+                        }
                         ((MusicControllerFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.music_controller)).refresh();
                     }
                 }
