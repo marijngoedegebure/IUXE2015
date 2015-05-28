@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.undefined.iuxe2015.model.Album;
+import com.undefined.iuxe2015.model.Artist;
 import com.undefined.iuxe2015.model.Event;
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
@@ -15,6 +17,7 @@ import com.undefined.iuxe2015.model.persistent.helpers.ListAll;
 import com.undefined.iuxe2015.model.persistent.helpers.Update;
 import com.undefined.iuxe2015.tools.PreferenceTool;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -67,19 +70,46 @@ public class MumoDataSource {
     }
 
     public Song getSong(Context c, int songId) {
-        return ListAll.getSong(database, PreferenceTool.getCurrentStakeholderId(c), songId);
+        Song song = ListAll.getSong(database, PreferenceTool.getCurrentStakeholderId(c), songId);
+        if (song != null) {
+            song.setAlbum(ListAll.albumForSong(database, PreferenceTool.getCurrentStakeholderId(c), song));
+            song.setArtists(ListAll.artistsForSong(database, PreferenceTool.getCurrentStakeholderId(c), song));
+        }
+        return song;
     }
 
     public Song getSongById(Context c, String id) {
-        return ListAll.getSongById(database, PreferenceTool.getCurrentStakeholderId(c), id);
+        Song song = ListAll.getSongById(database, PreferenceTool.getCurrentStakeholderId(c), id);
+        if (song != null) {
+            song.setAlbum(ListAll.albumForSong(database, PreferenceTool.getCurrentStakeholderId(c), song));
+            song.setArtists(ListAll.artistsForSong(database, PreferenceTool.getCurrentStakeholderId(c), song));
+        }
+        return song;
     }
 
     public ArrayList<Song> getSongsByEvent(Context c, int eventId) {
-        return ListAll.getSongsByEvent(database, PreferenceTool.getCurrentStakeholderId(c), eventId);
+        ArrayList<Song> songs = ListAll.getSongsByEvent(database, PreferenceTool.getCurrentStakeholderId(c), eventId);
+        for (Song song : songs) {
+            if (song != null) {
+                song.setAlbum(ListAll.albumForSong(database, PreferenceTool.getCurrentStakeholderId(c), song));
+                song.setArtists(ListAll.artistsForSong(database, PreferenceTool.getCurrentStakeholderId(c), song));
+            }
+        }
+        return songs;
     }
 
     public Song addSong(int stakeholderId, Song song) {
-        return Create.song(database, stakeholderId, song);
+        Album album = Create.album(database, stakeholderId, song.getAlbum());
+        song.set_id_album(album.get_id());
+        Song saved_song = Create.song(database, stakeholderId, song);
+        saved_song.setAlbum(album);
+        ArrayList<Artist> saved_artist = new ArrayList<>();
+        for(Artist artist : song.getArtists()) {
+            artist.set_id_song(saved_song.get_id());
+            saved_artist.add(Create.artist(database, stakeholderId, artist));
+        }
+        saved_song.setArtists(saved_artist);
+        return saved_song;
     }
 
     public ArrayList<Stakeholder> getStakeholders() {
