@@ -183,7 +183,7 @@ public class EventDialog extends MumoDialog {
     private void save(int stakeHolderId, Event event, String name, long date) {
         if (event == null) {
             if (name == null || name.length() == 0) {
-                toast("Event name can not be empty");
+                toast(getString(R.string.event_name_empty));
                 return;
             }
             event = getData().newEvent(getActivity(), name, date);
