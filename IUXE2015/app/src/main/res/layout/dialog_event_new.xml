@@ -62,18 +62,41 @@
             android:inputType="number"/>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/event_btn_save"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:background="@drawable/bg_hub_events"
-        android:onClick="onButtonClick"
-        android:text="@string/event_save"
-        android:textAllCaps="true"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/hub_events_darker"
-        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/event_btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_hub_events"
+            android:onClick="onButtonClick"
+            android:text="@string/event_save"
+            android:textAllCaps="true"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/hub_events_darker"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/event_btn_close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_hub_events"
+            android:onClick="onButtonClick"
+            android:text="@string/event_close"
+            android:textAllCaps="true"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/hub_events_darker"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
 </LinearLayout>

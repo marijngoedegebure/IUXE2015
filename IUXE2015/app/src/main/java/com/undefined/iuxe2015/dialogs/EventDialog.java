@@ -146,7 +146,13 @@ public class EventDialog extends MumoDialog {
                     int stakeHolderId = PreferenceTool.getCurrentStakeholderId(getActivity());
 
                     save(stakeHolderId, event, name.getText().toString(), Integer.parseInt(year.getText().toString()));
-
+                }
+            });
+            Button closeEvent = (Button) v.findViewById(R.id.event_btn_close);
+            closeEvent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
                 }
             });
         }
