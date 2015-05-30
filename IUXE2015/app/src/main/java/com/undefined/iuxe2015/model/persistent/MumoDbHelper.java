@@ -101,12 +101,12 @@ public class MumoDbHelper extends SQLiteOpenHelper {
     public static final String EVENTS_COLUMN_ID = "_id";
     public static final String EVENTS_COLUMN_ID_STAKEHOLDER = "_id_stakeholder";
     public static final String EVENTS_COLUMN_NAME = "name";
-    public static final String EVENTS_COLUMN_DATE = "date";
+    public static final String EVENTS_COLUMN_YEAR = "year";
     public static final String[] allEventColumns = {
             MumoDbHelper.EVENTS_COLUMN_ID,
             MumoDbHelper.EVENTS_COLUMN_ID_STAKEHOLDER,
             MumoDbHelper.EVENTS_COLUMN_NAME,
-            MumoDbHelper.EVENTS_COLUMN_DATE};
+            MumoDbHelper.EVENTS_COLUMN_YEAR};
 
     // Database creation sql statement
     private static final String DATABASE_CREATE_RATINGS = "create table "
@@ -165,7 +165,7 @@ public class MumoDbHelper extends SQLiteOpenHelper {
             + EVENTS_COLUMN_ID + " integer primary key autoincrement, "
             + IMAGES_COLUMN_ID_STAKEHOLDER + " integer, "
             + EVENTS_COLUMN_NAME + " text not null, "
-            + EVENTS_COLUMN_DATE + " integer);";
+            + EVENTS_COLUMN_YEAR + " integer);";
 
     public MumoDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

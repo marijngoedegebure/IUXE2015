@@ -1,7 +1,7 @@
 <resources>
     <string name="title_activity_events">Gebeurtenissen</string>
     <string name="event_name">Naam:</string>
-    <string name="event_date">Datum:</string>
+    <string name="event_date">Jaar:</string>
     <string name="event_save">Opslaan</string>
     <string name="event_new">Nieuwe gebeurtenis</string>
     <string name="event_close">Sluiten</string>

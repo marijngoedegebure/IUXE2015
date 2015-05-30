@@ -106,7 +106,7 @@ public class EventSpinnerAdapter extends BaseAdapter implements SpinnerAdapter {
         Collections.sort(events, new Comparator<Event>() {
             @Override
             public int compare(Event lhs, Event rhs) {
-                if (lhs.getDate() > rhs.getDate()) {
+                if (lhs.getYear() > rhs.getYear()) {
                     return 1;
                 } else {
                     return -1;

@@ -45,7 +45,7 @@ public class Update {
         ContentValues values = new ContentValues();
         values.put(MumoDbHelper.EVENTS_COLUMN_ID_STAKEHOLDER, stakeholderId);
         values.put(MumoDbHelper.EVENTS_COLUMN_NAME, event.getName());
-        values.put(MumoDbHelper.EVENTS_COLUMN_DATE, event.getDate());
+        values.put(MumoDbHelper.EVENTS_COLUMN_YEAR, event.getYear());
 
         database.update(MumoDbHelper.TABLE_EVENTS, values,
                 MumoDbHelper.EVENTS_COLUMN_ID + " = " + event.get_id(),

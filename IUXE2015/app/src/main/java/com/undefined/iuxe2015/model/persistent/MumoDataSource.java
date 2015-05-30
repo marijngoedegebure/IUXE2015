@@ -146,8 +146,8 @@ public class MumoDataSource {
         return Update.event(database, PreferenceTool.getCurrentStakeholderId(c), event);
     }
 
-    public Event newEvent(Context c, String name, long date) {
-        return Create.event(database, PreferenceTool.getCurrentStakeholderId(c), name, date);
+    public Event newEvent(Context c, String name, int year) {
+        return Create.event(database, PreferenceTool.getCurrentStakeholderId(c), name, year);
     }
 
     public int deleteEvent(Event event) {

@@ -12,7 +12,7 @@
     </string>
 
     <string name="help_text_controller">
-         Als er een nummer afgespeeld wordt, zal hier onderin het scherm de informatie van getoond worden. Het nummer kan hier dan ook gepauzeerd en hervat worden.
+         Als er een nummer afgespeeld wordt, zal dit onderin het scherm getoond worden. Het nummer kan hier dan ook gepauzeerd en hervat worden.
     </string>
 
     <string name="help_events_text_1">
@@ -42,7 +42,7 @@
     </string>
     <string name="help_songdetail_text_1">
         Hier worden de details van het nummer weergegeven.
-        \n\nEronder wordt uw huidige beoordeling weergegeven, als dit nummer al beoordeeld is. Dit zal één van de getoonde gezichtjes zijn.
+        \nEronder wordt uw huidige beoordeling weergegeven, als dit nummer al beoordeeld is. Dit zal één van de getoonde gezichtjes zijn.
     </string>
 
     <string name="help_songdetail_text_2">

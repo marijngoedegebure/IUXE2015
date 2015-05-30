@@ -3,42 +3,29 @@ package com.undefined.iuxe2015.dialogs;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.undefined.iuxe2015.MumoDialog;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.activities.EventsActivity;
-import com.undefined.iuxe2015.activities.SearchActivity;
-import com.undefined.iuxe2015.activities.SetupActivity;
 import com.undefined.iuxe2015.activities.SongDetailActivity;
 import com.undefined.iuxe2015.adapters.LibraryAdapter;
-import com.undefined.iuxe2015.fragments.SetupFragment;
 import com.undefined.iuxe2015.model.Event;
-import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
-import com.undefined.iuxe2015.tools.ConnectionTool;
 import com.undefined.iuxe2015.tools.PreferenceTool;
 
-import org.w3c.dom.Text;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by Ralf Nieuwenhuizen on 14-05-15.
@@ -112,9 +99,9 @@ public class EventDialog extends MumoDialog {
             ButterKnife.inject(this, v);
 
             TextView name = (TextView) v.findViewById(R.id.event_name);
-            TextView date = (TextView) v.findViewById(R.id.event_date);
+            TextView year = (TextView) v.findViewById(R.id.event_year);
             name.setText(event.getName());
-            date.setText(event.getDateString());
+            year.setText(event.getYear() + "");
 
 
             ArrayList<Song> songs = getData().getSongsByEvent(getActivity(), event.get_id());
@@ -150,23 +137,15 @@ public class EventDialog extends MumoDialog {
             v = getActivity().getLayoutInflater().inflate(R.layout.dialog_event_new, null, false);
             ButterKnife.inject(this, v);
             final EditText name = (EditText) v.findViewById(R.id.event_name);
-            final DatePicker date = (DatePicker) v.findViewById(R.id.event_date);
-            date.setMaxDate(new Date().getTime());
+            final EditText year = (EditText) v.findViewById(R.id.event_year);
+
             Button saveEvent = (Button) v.findViewById(R.id.event_btn_save);
             saveEvent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int stakeHolderId = PreferenceTool.getCurrentStakeholderId(getActivity());
 
-                    SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
-                    Date d = new Date();
-                    try {
-                        d = f.parse(date.getDayOfMonth() + "-" + (date.getMonth() + 1) + "-" + date.getYear());
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    long milliseconds = d.getTime();
-                    save(stakeHolderId, event, name.getText().toString(), milliseconds);
+                    save(stakeHolderId, event, name.getText().toString(), Integer.parseInt(year.getText().toString()));
 
                 }
             });
@@ -183,13 +162,13 @@ public class EventDialog extends MumoDialog {
         songsAdapter.refresh(songs);
     }
 
-    private void save(int stakeHolderId, Event event, String name, long date) {
+    private void save(int stakeHolderId, Event event, String name, int year) {
         if (event == null) {
             if (name == null || name.length() == 0) {
                 toast(getString(R.string.event_name_empty));
                 return;
             }
-            event = getData().newEvent(getActivity(), name, date);
+            event = getData().newEvent(getActivity(), name, year);
         } else {
             getData().updateEvent(getActivity(), event);
         }

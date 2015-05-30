@@ -11,19 +11,15 @@ import android.widget.TextView;
 import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.R;
 import com.undefined.iuxe2015.model.Event;
-import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.persistent.MumoDataSource;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 /**
  * Created by Jan-Willem on 14-5-2015.
@@ -47,7 +43,7 @@ public class EventAdapter extends BaseAdapter implements ListAdapter {
         Collections.sort(events, new Comparator<Event>() {
             @Override
             public int compare(Event lhs, Event rhs) {
-                if (lhs.getDate() > rhs.getDate()) {
+                if (lhs.getYear() > rhs.getYear()) {
                     return 1;
                 } else {
                     return -1;
@@ -86,7 +82,7 @@ public class EventAdapter extends BaseAdapter implements ListAdapter {
         Event e = getItem(position);
 
         holder.name.setText(e.getName());
-        holder.date.setText("Datum: " + e.getDateString());
+        holder.year.setText("Jaar: " + e.getYear());
         ArrayList<Song> songs = data.getSongsByEvent(c, e.get_id());
         holder.songs.setText(songs.size() + " verbonden nummers");
 
@@ -96,8 +92,8 @@ public class EventAdapter extends BaseAdapter implements ListAdapter {
     class ViewHolder {
         @InjectView(R.id.event_name)
         TextView name;
-        @InjectView(R.id.event_date)
-        TextView date;
+        @InjectView(R.id.event_year)
+        TextView year;
         @InjectView(R.id.event_songs)
         TextView songs;
 

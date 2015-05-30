@@ -107,7 +107,7 @@ public class CursorTo {
         event.set_id(cursor.getInt(0));
         event.set_id_stakeholder(cursor.getInt(1));
         event.setName(cursor.getString(2));
-        event.setDate(cursor.getLong(3));
+        event.setYear(cursor.getInt(3));
 
         if(closeCursor)
             cursor.close();

@@ -39,20 +39,28 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/event_date_header"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/event_date"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:orientation="horizontal">
 
-    <DatePicker
-        android:id="@+id/event_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:calendarViewShown="false" />
+        <TextView
+            android:id="@+id/event_date_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/event_date"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/event_year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="number"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/event_btn_save"
