@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -26,6 +27,8 @@ import com.undefined.iuxe2015.tools.PreferenceTool;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.Optional;
 
 /**
  * Created by Ralf Nieuwenhuizen on 14-05-15.
@@ -35,8 +38,36 @@ public class EventDialog extends MumoDialog {
     public static final String TAG = "EventDialog";
     public static final String ARG_EVENT_ID = "event_id";
 
-    private Event event;
+    @InjectView(R.id.event_btn_close)
+    ImageButton eventBtnClose;
 
+    @Optional
+    @InjectView(R.id.event_new_name_input)
+    EditText eventNewName;
+    @Optional
+    @InjectView(R.id.event_new_year_input)
+    EditText eventNewYear;
+    @Optional
+    @InjectView(R.id.event_new_btn_save)
+    Button eventNewBtnSave;
+
+    @Optional
+    @InjectView(R.id.event_name)
+    TextView eventName;
+    @Optional
+    @InjectView(R.id.event_year)
+    TextView eventYear;
+    @Optional
+    @InjectView(R.id.event_songs_header)
+    TextView eventSongsHeader;
+    @Optional
+    @InjectView(R.id.event_empty)
+    TextView eventEmpty;
+    @Optional
+    @InjectView(R.id.event_rated_songs_listview)
+    ListView eventSongList;
+
+    private Event event;
     private LibraryAdapter songsAdapter;
 
     private eventDialogListener defaultListener = new eventDialogListener() {
@@ -47,7 +78,7 @@ public class EventDialog extends MumoDialog {
     private eventDialogListener listener;
 
     public interface eventDialogListener {
-        public void onEventDialogClosed(int event_id);
+        void onEventDialogClosed(int event_id);
     }
 
 
@@ -93,69 +124,52 @@ public class EventDialog extends MumoDialog {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        View v = null;
+        View v;
         if (event != null) {
             v = getActivity().getLayoutInflater().inflate(R.layout.dialog_event, null, false);
             ButterKnife.inject(this, v);
 
-            TextView name = (TextView) v.findViewById(R.id.event_name);
-            TextView year = (TextView) v.findViewById(R.id.event_year);
-            name.setText(event.getName());
-            year.setText(event.getYear() + "");
-
+            eventName.setText(event.getName());
+            eventYear.setText(event.getYear() + "");
 
             ArrayList<Song> songs = getData().getSongsByEvent(getActivity(), event.get_id());
-            if (!songs.isEmpty()) {
-                songsAdapter = new LibraryAdapter(getActivity(), getData(), null);
-                ListView songsList = (ListView) v.findViewById(R.id.event_rated_songs_listview);
-                songsList.setAdapter(songsAdapter);
-                TextView empty = (TextView) v.findViewById(R.id.empty);
-                //songsList.setEmptyView(empty);
-                songsAdapter.refresh(songs);
+            songsAdapter = new LibraryAdapter(getActivity(), getData(), songs);
+            eventSongList.setAdapter(songsAdapter);
 
-                songsList.setVisibility(songs.isEmpty() ? View.GONE : View.VISIBLE);
-                empty.setVisibility(songs.isEmpty() ? View.VISIBLE : View.GONE);
+            Log.d(TAG, "Songs.isempty: " + songs.isEmpty());
+            eventEmpty.setVisibility(songs.isEmpty() ? View.VISIBLE : View.GONE);
+            eventSongList.setVisibility(songs.isEmpty() ? View.GONE : View.VISIBLE);
+            eventSongsHeader.setVisibility(songs.isEmpty() ? View.GONE : View.VISIBLE);
 
-                songsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, final View view,
-                                            int position, long id) {
-                        final Song item = songsAdapter.getItem(position);
-                        getActivity().startActivityForResult(SongDetailActivity.getStartIntent(getActivity(), item), EventsActivity.REQUEST_CODE);
-                    }
-                });
-            }
-
-            Button close = (Button) v.findViewById(R.id.event_btn_close);
-            close.setOnClickListener(new View.OnClickListener() {
+            eventSongList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onClick(View v) {
-                    dismiss();
+                public void onItemClick(AdapterView<?> parent, final View view,
+                                        int position, long id) {
+                    final Song item = songsAdapter.getItem(position);
+                    getActivity().startActivityForResult(SongDetailActivity.getStartIntent(getActivity(), item), EventsActivity.REQUEST_CODE);
                 }
             });
         } else {
             v = getActivity().getLayoutInflater().inflate(R.layout.dialog_event_new, null, false);
             ButterKnife.inject(this, v);
-            final EditText name = (EditText) v.findViewById(R.id.event_name);
-            final EditText year = (EditText) v.findViewById(R.id.event_year);
 
-            Button saveEvent = (Button) v.findViewById(R.id.event_btn_save);
-            saveEvent.setOnClickListener(new View.OnClickListener() {
+            eventNewBtnSave.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int stakeHolderId = PreferenceTool.getCurrentStakeholderId(getActivity());
 
-                    save(stakeHolderId, event, name.getText().toString(), Integer.parseInt(year.getText().toString()));
-                }
-            });
-            Button closeEvent = (Button) v.findViewById(R.id.event_btn_close);
-            closeEvent.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dismiss();
+                    save(stakeHolderId, event, eventNewName.getText().toString(), Integer.parseInt(eventNewYear.getText().toString()));
                 }
             });
         }
+
+        eventBtnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+
         builder.setView(v);
         final AlertDialog d = builder.create();
 

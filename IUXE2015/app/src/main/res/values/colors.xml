@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="up_arrow_pressed">#ccffffff</color>
+
     <color name="primary">#424242</color>
     <color name="primary_dark">#212121</color>
     <color name="accent">#9E9E9E</color>

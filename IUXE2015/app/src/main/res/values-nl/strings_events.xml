@@ -1,14 +1,14 @@
 <resources>
     <string name="title_activity_events">Gebeurtenissen</string>
-    <string name="event_name">Naam:</string>
-    <string name="event_date">Jaar:</string>
+    <string name="event_name">Naam</string>
+    <string name="event_date">Jaar</string>
     <string name="event_save">Opslaan</string>
     <string name="event_new">Nieuwe gebeurtenis</string>
     <string name="event_close">Sluiten</string>
     <string name="event_title">Gebeurtenis Details</string>
     <string name="event_title_new">Nieuwe Gebeurtenis</string>
     <string name="event_songs">Verbonden nummers</string>
-    <string name="event_songs_empty">Geen verbonden nummers</string>
+    <string name="event_songs_empty">Er zijn nog geen nummers met deze gebeurtenis verbonden. Zoek deze eerst op.</string>
     <string name="event_name_empty">De naam van een gebeurtenis mag niet leeg zijn</string>
 
     <string name="events_empty">Er zijn momenteel nog geen gebeurtenissen toegevoegd. Voeg deze eerst toe met de paarse NIEUWE GEBEURTENIS knop. Hierna kunt u in de lijst een gebeurtenis selecteren om de nummers te zien die hiermee verbonden zijn.</string>
