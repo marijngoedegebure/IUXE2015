@@ -34,7 +34,7 @@
     <color name="theme4">#f3ca03</color>
     <color name="theme5">#edbd00</color>
 
-    <color name="overlay_bg">#CC000000</color>
+    <color name="overlay_bg">#DD000000</color>
     <color name="overlay_title">#ffadd3e9</color>
     <color name="overlay_text">#fff5f5f5</color>
 </resources>
