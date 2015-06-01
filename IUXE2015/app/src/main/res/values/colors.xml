@@ -22,10 +22,9 @@
     <color name="hub_search_darker">#1a6607</color>
     <color name="hub_search_ripple">#331a6607</color>
 
-    <color name="hub_help">#EEEEEE</color>
-    <color name="hub_help_background">#000000</color>
-    <color name="hub_help_pressed">#BDBDBD</color>
-    <color name="hub_help_darker">#5c5c5c</color>
+    <color name="help_fab">#EEEEEE</color>
+    <color name="help_fab_pressed">#BDBDBD</color>
+    <color name="help_fab_darker">#5c5c5c</color>
 
     <color name="ripple">#99ffffff</color>
 
@@ -35,7 +34,7 @@
     <color name="theme4">#f3ca03</color>
     <color name="theme5">#edbd00</color>
 
-    <color name="overlay_bg">#DA000000</color>
+    <color name="overlay_bg">#CC000000</color>
     <color name="overlay_title">#ffadd3e9</color>
     <color name="overlay_text">#fff5f5f5</color>
 </resources>

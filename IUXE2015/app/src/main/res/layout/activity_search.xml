@@ -39,21 +39,23 @@
         android:layout_margin="16dp"
         android:onClick="showOverlay"
         android:src="@drawable/ic_fab_help"
-        android:tint="@color/hub_help_darker"
-        fab:fab_colorNormal="@color/hub_help"
-        fab:fab_colorPressed="@color/hub_help_pressed"
+        android:tint="@color/help_fab_darker"
+        fab:fab_colorNormal="@color/help_fab"
+        fab:fab_colorPressed="@color/help_fab_pressed"
         fab:fab_colorRipple="@color/ripple" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/hub_help_background"
-        android:elevation="8dp"
-        android:animateLayoutChanges="true">
+        android:animateLayoutChanges="true"
+        android:background="@color/overlay_bg"
+        android:elevation="8dp">
 
-        <include layout="@layout/help_search_1"/>
-        <include layout="@layout/help_search_2"/>
-        <include layout="@layout/help_controller"/>
+        <include layout="@layout/help_search_1" />
+
+        <include layout="@layout/help_search_2" />
+
+        <include layout="@layout/help_controller" />
     </RelativeLayout>
 
 </RelativeLayout>
