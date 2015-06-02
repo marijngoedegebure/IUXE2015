@@ -82,8 +82,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_height="200dp"
+        android:calendarViewShown="false">
 
         <Space
             android:layout_width="0dp"

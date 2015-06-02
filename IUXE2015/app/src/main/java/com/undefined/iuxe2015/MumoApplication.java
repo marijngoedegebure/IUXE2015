@@ -81,11 +81,11 @@ public class MumoApplication extends Application implements
             @Override
             public void run() {
                 if (eventType == EventType.TRACK_CHANGED) {
-                    currentActivity.showRatingDialog(previouslyPlayedSong);
+                    //currentActivity.showRatingDialog(previouslyPlayedSong);
                 } else if (eventType == EventType.TRACK_END) {
-                    currentActivity.showRatingDialog(previouslyPlayedSong);
+                    boolean track_ended = true;
                 }
-                if (eventType == EventType.TRACK_START) {
+                else if (eventType == EventType.TRACK_START) {
                     previouslyPlayedSong = currentlyPlayedSong;
                 }
             }

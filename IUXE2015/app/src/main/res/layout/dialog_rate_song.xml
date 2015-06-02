@@ -8,14 +8,30 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <TextView
-        android:id="@+id/textView2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:padding="8dp"
-        android:text="@string/rate_song_title"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/rating_btn_close"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/ripple"
+            android:src="@drawable/ic_up" />
+
+        <TextView
+            android:id="@+id/rating_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_vertical"
+            android:minHeight="56dp"
+            android:text="@string/rate_song_title"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

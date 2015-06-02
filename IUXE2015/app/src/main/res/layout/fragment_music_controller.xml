@@ -64,6 +64,17 @@
                 android:layout_marginRight="8dp"
                 android:src="@android:drawable/ic_media_play" />
 
+            <Button
+                android:id="@+id/controller_btn_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/bg_hub_library"
+                android:onClick="onButtonClick"
+                android:text="@string/controller_rate_song"
+                android:textColor="@color/hub_library_darker" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

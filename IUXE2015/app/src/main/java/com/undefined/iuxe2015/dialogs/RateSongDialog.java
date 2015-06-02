@@ -88,6 +88,8 @@ public class RateSongDialog extends MumoDialog {
     Button rateSong;
     @InjectView(R.id.rating_add_event)
     Button addEventBtn;
+    @InjectView(R.id.rating_btn_close)
+    ImageButton ratingBtnClose;
     @InjectView(R.id.rating_event_spinner)
     MumoSpinner eventSpinner;
 
@@ -201,6 +203,13 @@ public class RateSongDialog extends MumoDialog {
             public void onClick(View v) {
                 EventDialog newFragment = EventDialog.getInstance("");
                 newFragment.show(getActivity().getSupportFragmentManager(), EventDialog.TAG);
+            }
+        });
+
+        ratingBtnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
             }
         });
 

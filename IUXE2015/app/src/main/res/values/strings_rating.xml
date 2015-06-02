@@ -12,6 +12,7 @@
     <string name="rating_song_value4">Value 4</string>
     <string name="rating_song_value5">Value 5</string>
     <string name="rating_btn_save">Save rating</string>
+    <string name="rating_btn_cancel">Cancel</string>
     <string name="rate_song_title">The song that was playing has ended, please rate it.</string>
 
 </resources>

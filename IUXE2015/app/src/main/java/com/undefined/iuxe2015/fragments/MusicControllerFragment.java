@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerState;
 import com.spotify.sdk.android.player.PlayerStateCallback;
+import com.undefined.iuxe2015.MumoActivity;
 import com.undefined.iuxe2015.MumoApplication;
 import com.undefined.iuxe2015.MumoFragment;
 import com.undefined.iuxe2015.R;
@@ -22,6 +24,7 @@ import com.undefined.iuxe2015.tools.Convert;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.Optional;
 
 public class MusicControllerFragment extends MumoFragment {
 
@@ -38,6 +41,10 @@ public class MusicControllerFragment extends MumoFragment {
     public TextView progressText;
     @InjectView(R.id.controller_progress)
     public ProgressBar progress;
+
+    @Optional
+    @InjectView(R.id.controller_btn_rate)
+    Button rate;
 
     @InjectView(R.id.controller_no_song)
     public View noSong;
@@ -75,6 +82,13 @@ public class MusicControllerFragment extends MumoFragment {
                     MumoApplication.mPlayer.resume();
                     setPlayPause(true);
                 }
+            }
+        });
+
+        rate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MumoActivity) getActivity()).showRatingDialog(MumoApplication.currentlyPlayedSong);
             }
         });
         if (MumoApplication.currentlyPlayedSong != null) {

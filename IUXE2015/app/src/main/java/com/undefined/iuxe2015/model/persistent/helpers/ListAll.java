@@ -22,7 +22,7 @@ public class ListAll {
         ArrayList<Rating> ratings = new ArrayList<>();
         if (database.isOpen()) {
             Cursor cursor = database.query(MumoDbHelper.TABLE_RATINGS, MumoDbHelper.allRatingColumns,
-                    MumoDbHelper.RATINGS_COLUMN_ID_STAKEHOLDER + " = " + stakeholderId, null, null, null, null);
+                    MumoDbHelper.RATINGS_COLUMN_ID_STAKEHOLDER + " = " + stakeholderId, null, null, null, MumoDbHelper.RATINGS_COLUMN_RATING);
 
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {

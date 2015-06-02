@@ -9,6 +9,7 @@
     <string name="title_activity_music_controller">MusicControllerActivity</string>
     <string name="controller_now_playing">Now playing</string>
     <string name="controller_no_song">Select a song to start playing music</string>
+    <string name="controller_rate_song">Rate!</string>
     <string name="title_activity_song_detail">SongDetailActivity</string>
     <string name="action_settings">Settings</string>
 </resources>
