@@ -46,8 +46,10 @@ public class LibraryActivity extends MumoActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (MumoApplication.currentlyPlayedSong != null && requestCode == REQUEST_CODE)
+        if (MumoApplication.currentlyPlayedSong != null && requestCode == REQUEST_CODE) {
             ((MusicControllerFragment) getSupportFragmentManager().findFragmentById(R.id.music_controller)).refresh();
+            ((LibraryFragment) getSupportFragmentManager().findFragmentById(R.id.container)).update();
+        }
     }
 }
 

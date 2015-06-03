@@ -75,4 +75,9 @@ public class LibraryFragment extends MumoFragment {
 
         return rootView;
     }
+
+    public void update() {
+        ArrayList<Song> songs = getData().getRatedSongs(getActivity());
+        adapter.refresh(songs);
+    }
 }
