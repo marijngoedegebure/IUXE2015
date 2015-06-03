@@ -45,7 +45,7 @@ public class RateSongDialog extends MumoDialog {
     private rateSongDialogListener listener;
 
     public interface rateSongDialogListener {
-        public void onRateSongDialogClosed(int song_id);
+        void onRateSongDialogClosed(int song_id);
     }
 
     @Override

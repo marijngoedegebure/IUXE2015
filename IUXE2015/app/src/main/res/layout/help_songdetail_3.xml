@@ -1,5 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/songdetail_help_2"
+    android:id="@+id/songdetail_help_3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content">
 
                     <TableLayout
-                        android:id="@+id/table"
+                        android:id="@+id/song_detail_table"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="invisible">
@@ -176,24 +176,37 @@
                         </TableRow>
                     </TableLayout>
 
+                    <Button
+                        android:id="@+id/song_detail_play_btn"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/song_detail_table"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:background="@drawable/bg_hub_library"
+                        android:text="@string/song_detail_play"
+                        android:textAllCaps="true"
+                        android:visibility="invisible"
+                        android:textColor="@color/hub_library_darker"
+                        android:textStyle="bold" />
+
                     <ImageView
                         android:id="@+id/help_text_1_arrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/table"
+                        android:layout_alignBottom="@id/song_detail_play_btn"
                         android:layout_centerHorizontal="true"
                         android:src="@drawable/ic_finger_down" />
                 </RelativeLayout>
 
                 <Button
-                    android:id="@+id/song_detail_play_btn"
+                    android:id="@+id/song_detail_rate_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:background="@drawable/bg_hub_library_shape"
                     android:clickable="false"
-                    android:text="@string/song_detail_play"
+                    android:text="@string/song_detail_rate"
                     android:textAllCaps="true"
                     android:textColor="@color/hub_library_darker"
                     android:textStyle="bold" />
@@ -205,7 +218,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="@string/help_songdetail_text_2"
+                android:text="@string/help_songdetail_text_3"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/overlay_text" />
         </LinearLayout>

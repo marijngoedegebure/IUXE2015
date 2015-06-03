@@ -6,6 +6,7 @@
 
     <string name="title_activity_music_controller">MusicControllerActivity</string>
     <string name="controller_now_playing">Nu aan het afspelen</string>
+    <string name="controller_rate_song">Beoordeel</string>
     <string name="controller_no_song">Selecteer een nummer om muziek af te spelen</string>
     <string name="title_activity_song_detail">Nummerdetails</string>
     <string name="action_settings">Instellingen</string>

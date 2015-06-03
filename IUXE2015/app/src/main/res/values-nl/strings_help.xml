@@ -42,10 +42,14 @@
     </string>
     <string name="help_songdetail_text_1">
         Hier worden de details van het nummer weergegeven.
-        \nEronder wordt uw huidige beoordeling weergegeven, als dit nummer al beoordeeld is. Dit zal één van de getoonde gezichtjes zijn.
+        \nEronder wordt uw huidige beoordeling weergegeven, als dit nummer al beoordeeld is. Dit zal één van de getoonde gekleurde cirkels zijn.
     </string>
 
     <string name="help_songdetail_text_2">
         Met de oranje SPEEL DIT NUMMER knop kunt u dit nummer afspelen. Dit zal het nummer in de onderbalk vervangen, als hier al een nummer stond.
+    </string>
+
+    <string name="help_songdetail_text_3">
+        Met de oranje BEOORDEEL DIT NUMMER knop kunt u dit nummer beoordelen.
     </string>
 </resources>

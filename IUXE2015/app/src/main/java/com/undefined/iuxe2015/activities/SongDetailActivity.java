@@ -48,7 +48,7 @@ public class SongDetailActivity extends MumoActivity implements RateSongDialog.r
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setHelpOverlayIds(R.id.songdetail_help_1, R.id.songdetail_help_2, R.id.help_controller);
+        setHelpOverlayIds(R.id.songdetail_help_1, R.id.songdetail_help_2, R.id.songdetail_help_3, R.id.help_controller);
     }
 
     /**

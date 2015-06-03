@@ -45,6 +45,8 @@ public class SongDetailFragment extends MumoFragment {
     TextView ratingText;
     @InjectView(R.id.song_detail_play_btn)
     Button playSong;
+    @InjectView(R.id.song_detail_rate_btn)
+    Button rateSong;
 
     Song song;
     Rating r;
@@ -68,7 +70,7 @@ public class SongDetailFragment extends MumoFragment {
                         Log.d("SongDetailFragment", "onConnectionSuccess:" + result);
                         song = result;
                         Song tempSong = getData().getSongById(getActivity(), song.getId());
-                        if(tempSong != null) {
+                        if (tempSong != null) {
                             r = getData().getRatingsForSong(getActivity(), tempSong);
                         }
                         setDetails();
@@ -102,40 +104,46 @@ public class SongDetailFragment extends MumoFragment {
 
     public void refresh() {
         Song tempSong = getData().getSongById(getActivity(), song.getId());
-        if(tempSong !=null) {
+        if (tempSong != null) {
             r = getData().getRatingsForSong(getActivity(), tempSong);
             setDetails();
-        }else{
+        } else {
             Log.e(TAG, "TEMPSONG == NULL!!!");
         }
     }
 
     private void setDetails() {
         if (song != null) {
-            if(r != null) {
+            if (r != null) {
                 int image;
                 switch (r.getRating()) {
                     case 1:
-                        image = R.drawable.ic_likert1; break;
+                        image = R.drawable.ic_likert1;
+                        break;
                     case 2:
-                        image = R.drawable.ic_likert2; break;
+                        image = R.drawable.ic_likert2;
+                        break;
                     case 3:
-                        image = R.drawable.ic_likert3; break;
+                        image = R.drawable.ic_likert3;
+                        break;
                     case 4:
-                        image = R.drawable.ic_likert4; break;
+                        image = R.drawable.ic_likert4;
+                        break;
                     case 5:
-                        image = R.drawable.ic_likert5; break;
+                        image = R.drawable.ic_likert5;
+                        break;
                     case 6:
-                        image = R.drawable.ic_likert6; break;
+                        image = R.drawable.ic_likert6;
+                        break;
                     case 7:
-                        image = R.drawable.ic_likert7; break;
+                        image = R.drawable.ic_likert7;
+                        break;
                     default:
                         image = R.drawable.ic_likert4;
                 }
                 rating.setImageResource(image);
                 ratingText.setText("");
-            }
-            else {
+            } else {
                 ratingText.setText(R.string.song_detail_song_rating_default_value);
             }
             name.setText(song.getName());
@@ -160,6 +168,13 @@ public class SongDetailFragment extends MumoFragment {
                         MumoApplication.currentlyPlayedSong = song;
                         ((MusicControllerFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.music_controller)).refresh();
                     }
+                }
+            });
+
+            rateSong.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showRatingDialog(song);
                 }
             });
         }

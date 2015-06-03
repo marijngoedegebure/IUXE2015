@@ -91,8 +91,10 @@ public abstract class MumoActivity extends AppCompatActivity implements EventDia
     }
 
     public void showRatingDialog(Song song) {
-        RateSongDialog newFragment = RateSongDialog.getInstance(song.getId());
-        newFragment.show(getSupportFragmentManager(), RateSongDialog.TAG);
+        if (song != null) {
+            RateSongDialog newFragment = RateSongDialog.getInstance(song.getId());
+            newFragment.show(getSupportFragmentManager(), RateSongDialog.TAG);
+        }
     }
 
     protected void setHelpOverlayIds(@IdRes int... overlayViewIds) {

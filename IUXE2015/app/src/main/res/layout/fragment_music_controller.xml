@@ -42,44 +42,57 @@
             android:text="@string/controller_now_playing"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
-            <ImageButton
-                android:id="@+id/controller_pause"
+            <LinearLayout
+                android:id="@+id/controller_play_pause_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:visibility="gone"
-                android:src="@android:drawable/ic_media_pause" />
+                android:layout_marginRight="8dp">
 
-            <ImageButton
-                android:id="@+id/controller_play"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:visibility="gone"
-                android:src="@android:drawable/ic_media_play" />
+                <ImageButton
+                    android:id="@+id/controller_pause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_media_pause"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:id="@+id/controller_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_media_play"
+                    android:visibility="gone" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/controller_btn_rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_alignParentEnd="true"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:background="@drawable/bg_hub_library"
-                android:onClick="onButtonClick"
                 android:text="@string/controller_rate_song"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/hub_library_darker" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/controller_play_pause_box"
+                android:layout_toLeftOf="@id/controller_btn_rate"
+                android:layout_toRightOf="@id/controller_play_pause_box"
+                android:layout_toStartOf="@id/controller_btn_rate"
                 android:orientation="vertical">
 
                 <TextView
@@ -105,7 +118,7 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginStart="8dp"
                         android:animateLayoutChanges="true"
-                        android:text="0:30 / 4:50"
+                        android:text="0:00 / 0:00"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
@@ -130,6 +143,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

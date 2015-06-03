@@ -50,6 +50,7 @@
 
         <include layout="@layout/help_songdetail_1"/>
         <include layout="@layout/help_songdetail_2"/>
+        <include layout="@layout/help_songdetail_3"/>
         <include layout="@layout/help_controller"/>
 
     </RelativeLayout>

@@ -48,4 +48,8 @@
     <string name="help_songdetail_text_2">
         Met de oranje SPEEL DIT NUMMER knop kunt u dit nummer afspelen. Dit zal het nummer in de onderbalk vervangen, als hier al een nummer stond.
     </string>
+
+    <string name="help_songdetail_text_3">
+        Met de oranje BEOORDEEL DIT NUMMER knop kunt u dit nummer beoordelen.
+    </string>
 </resources>
