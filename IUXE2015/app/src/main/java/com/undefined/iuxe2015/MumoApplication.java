@@ -21,7 +21,6 @@ public class MumoApplication extends Application implements
 
     private MumoActivity currentActivity;
 
-    public static Song previouslyPlayedSong;
     public static Song currentlyPlayedSong;
     public static Player mPlayer;
 
@@ -83,10 +82,9 @@ public class MumoApplication extends Application implements
                 if (eventType == EventType.TRACK_CHANGED) {
                     //currentActivity.showRatingDialog(previouslyPlayedSong);
                 } else if (eventType == EventType.TRACK_END) {
-                    boolean track_ended = true;
+                    currentlyPlayedSong = null;
                 }
                 else if (eventType == EventType.TRACK_START) {
-                    previouslyPlayedSong = currentlyPlayedSong;
                 }
             }
         }, 1000);
