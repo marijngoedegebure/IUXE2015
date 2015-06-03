@@ -92,8 +92,7 @@ public class MusicControllerFragment extends MumoFragment {
             }
         });
         if (MumoApplication.currentlyPlayedSong != null) {
-            setSongTexts();
-            setPlayPause(true);
+            refresh();
         } else {
             //TODO go to  'No song playing UI's
             setPlayPause(false);
@@ -119,10 +118,15 @@ public class MusicControllerFragment extends MumoFragment {
         syncer = new ProgressSyncer();
         syncer.execute();
         setSongTexts();
-        setPlayPause(false);
+        setPlayPause(true);
         MumoApplication.mPlayer.getPlayerState(new PlayerStateCallback() {
             @Override
             public void onPlayerState(PlayerState playerState) {
+                if (!playerState.playing)
+                    if (MumoApplication.currentlyPlayedSong != null) {
+                        setPlayPause(true);
+                        return;
+                    }
                 setPlayPause(playerState.playing);
             }
         });
