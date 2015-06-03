@@ -21,7 +21,7 @@
     </plurals>
 
     <plurals name="events_label">
-        <item quantity="one">Gebeurtenis</item>
-        <item quantity="other">Gebeurtenissen</item>
+        <item quantity="one">Opgeslagen gebeurtenis:</item>
+        <item quantity="other">Opgeslagen gebeurtenissen:</item>
     </plurals>
 </resources>
