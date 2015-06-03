@@ -11,11 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.undefined.iuxe2015.R;
+import com.undefined.iuxe2015.model.Event;
 import com.undefined.iuxe2015.model.Rating;
 import com.undefined.iuxe2015.model.Song;
 import com.undefined.iuxe2015.model.persistent.MumoDataSource;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class LibraryAdapter extends BaseAdapter {
 
@@ -27,9 +30,9 @@ public class LibraryAdapter extends BaseAdapter {
     public LibraryAdapter(Activity a, MumoDataSource _data, ArrayList<Song> initSongs) {
         inflater = a.getLayoutInflater();
         songs = new ArrayList<>();
-        refresh(initSongs);
         c = a;
         data = _data;
+        refresh(initSongs);
     }
 
     public void refresh(ArrayList<Song> _songs) {
@@ -38,6 +41,18 @@ public class LibraryAdapter extends BaseAdapter {
 
         songs.clear();
         songs.addAll(_songs);
+        Collections.sort(songs, new Comparator<Song>() {
+            @Override
+            public int compare(Song lhs, Song rhs) {
+                Rating r1 = data.getRatingsForSong(c, lhs);
+                Rating r2 = data.getRatingsForSong(c, rhs);
+                if (r1.getRating() < r2.getRating()) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+        });
 
         notifyDataSetInvalidated();
     }
