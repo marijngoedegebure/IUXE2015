@@ -83,8 +83,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_height="200dp"
-        android:calendarViewShown="false">
+        android:layout_height="wrap_content">
 
         <Space
             android:layout_width="0dp"
@@ -95,12 +94,8 @@
             android:id="@+id/event_new_btn_save"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
             android:layout_weight="2"
             android:background="@drawable/bg_hub_events"
-            android:onClick="onButtonClick"
             android:text="@string/event_save"
             android:textAllCaps="true"
             android:textAppearance="?android:attr/textAppearanceLarge"

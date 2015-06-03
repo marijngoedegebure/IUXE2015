@@ -12,4 +12,11 @@
     <string name="event_name_empty">De naam van een gebeurtenis mag niet leeg zijn</string>
 
     <string name="events_empty">Er zijn momenteel nog geen gebeurtenissen toegevoegd. Voeg deze eerst toe met de paarse NIEUWE GEBEURTENIS knop. Hierna kunt u in de lijst een gebeurtenis selecteren om de nummers te zien die hiermee verbonden zijn.</string>
+
+    <string name="event_year">Jaar: %1$d</string>
+    <string name="no_attached_songs">Nog geen verbonden nummers</string>
+    <plurals name="attached_songs">
+        <item quantity="one">%1$d verbonden nummer</item>
+        <item quantity="other">%1$d verbonden nummers</item>
+    </plurals>
 </resources>

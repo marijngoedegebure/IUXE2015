@@ -130,6 +130,7 @@
                 android:id="@+id/rating_add_event"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
@@ -150,14 +151,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:padding="8dp">
 
         <TextView
             android:id="@+id/rating_rating_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:text="@string/rating_rating"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 

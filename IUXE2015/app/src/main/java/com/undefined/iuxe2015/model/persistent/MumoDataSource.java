@@ -19,6 +19,8 @@ import com.undefined.iuxe2015.tools.PreferenceTool;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by Jan-Willem on 8-4-2015.
@@ -113,7 +115,16 @@ public class MumoDataSource {
     }
 
     public ArrayList<Stakeholder> getStakeholders() {
-        return ListAll.stakeholders(database);
+        ArrayList<Stakeholder>  res =  ListAll.stakeholders(database);
+
+        Collections.sort(res, new Comparator<Stakeholder>() {
+            @Override
+            public int compare(Stakeholder lhs, Stakeholder rhs) {
+                return lhs.getName().compareToIgnoreCase(rhs.getName());
+            }
+        });
+
+        return res;
     }
 
 

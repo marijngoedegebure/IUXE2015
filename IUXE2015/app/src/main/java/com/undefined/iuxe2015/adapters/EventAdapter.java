@@ -82,9 +82,12 @@ public class EventAdapter extends BaseAdapter implements ListAdapter {
         Event e = getItem(position);
 
         holder.name.setText(e.getName());
-        holder.year.setText("Jaar: " + e.getYear());
+        holder.year.setText(c.getString(R.string.event_year, e.getYear()));
         ArrayList<Song> songs = data.getSongsByEvent(c, e.get_id());
-        holder.songs.setText(songs.size() + " verbonden nummers");
+        if (songs.isEmpty())
+            holder.songs.setText(R.string.no_attached_songs);
+        else
+            holder.songs.setText(c.getResources().getQuantityString(R.plurals.attached_songs, songs.size(), songs.size()));
 
         return convertView;
     }

@@ -18,7 +18,7 @@ import com.undefined.iuxe2015.tools.ConnectionTool;
 public class MumoDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "mumo.db";
-    private static final int DATABASE_VERSION = 10;
+    private static final int DATABASE_VERSION = 12;
     private Context context = null;
 
     public static final String TABLE_RATINGS = "ratings";
@@ -213,8 +213,6 @@ public class MumoDbHelper extends SQLiteOpenHelper {
     }
 
     private void insertTestData(SQLiteDatabase db) {
-        onCreate(db);
-
         // Stakeholder 1
         Stakeholder s1 = Create.stakeholder(db, "Stakeholder 1", 86);
         Event s1_e1 = Create.event(db, s1.get_id(), "Bevrijding van Nederland", 1945);
@@ -259,7 +257,7 @@ public class MumoDbHelper extends SQLiteOpenHelper {
         addRatingForSong(db, s4.get_id(), s4_e4.get_id(), "6bPeMkdmAvWXJARpy2X2UP", 6);
 
         // Stakeholder 5
-        Stakeholder s5 = Create.stakeholder(db, "Stakeholder 2", 86);
+        Stakeholder s5 = Create.stakeholder(db, "Stakeholder 5", 86);
         Event s5_e1 = Create.event(db, s5.get_id(), "Moldau", 0);
         addRatingForSong(db, s5.get_id(), s5_e1.get_id(), "3SRqUYfMhO2V7d8XJHrfP8", 5);
         Event s5_e2 = Create.event(db, s5.get_id(), "Opera", 0);
