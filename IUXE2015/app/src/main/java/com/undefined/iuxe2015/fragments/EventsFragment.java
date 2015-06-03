@@ -34,6 +34,9 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 public class EventsFragment extends MumoFragment {
 
     public static final String TAG = "EventsFragment";
+
+    @InjectView(R.id.events_list_header)
+    TextView eventsHeader;
     @InjectView(R.id.events_list)
     public ListView eventsList;
     @InjectView(R.id.events_empty)
@@ -65,6 +68,8 @@ public class EventsFragment extends MumoFragment {
 
         eventsList.setAdapter(adapter);
         empty.setVisibility(adapter.getCount() == 0 ? View.VISIBLE : View.GONE);
+        eventsHeader.setText(getResources().getQuantityText(R.plurals.events_label, adapter.getCount()));
+        eventsHeader.setVisibility(adapter.getCount() == 0 ? View.GONE : View.VISIBLE);
         eventsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view,

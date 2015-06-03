@@ -19,4 +19,9 @@
         <item quantity="one">%1$d verbonden nummer</item>
         <item quantity="other">%1$d verbonden nummers</item>
     </plurals>
+
+    <plurals name="events_label">
+        <item quantity="one">Gebeurtenis</item>
+        <item quantity="other">Gebeurtenissen</item>
+    </plurals>
 </resources>

@@ -21,6 +21,10 @@
     <ListView
         android:id="@+id/library_rated_songs_listview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:listSelector="@android:color/transparent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="0dp"
+        android:divider="@android:color/transparent"
+        tools:listitem="@layout/listitem_library" />
 
 </RelativeLayout>

@@ -12,15 +12,30 @@
     <color name="hub_events_darker">#8f1069</color>
     <color name="hub_events_ripple">#338f1069</color>
 
+    <color name="hub_events_small">#f854c9</color>
+    <color name="hub_events_small_pressed">#e352b9</color>
+    <color name="hub_events_small_darker">#ab4c8f</color>
+    <color name="hub_events_small_ripple">#33ab4c8f</color>
+
     <color name="hub_library">#ff9800</color>
     <color name="hub_library_pressed">#F57C00</color>
     <color name="hub_library_darker">#804d00</color>
     <color name="hub_library_ripple">#33804d00</color>
 
+    <color name="hub_library_small">#ffb240</color>
+    <color name="hub_library_small_pressed">#f89d40</color>
+    <color name="hub_library_small_darker">#a07a40</color>
+    <color name="hub_library_small_ripple">#33a07a40</color>
+
     <color name="hub_search">#2eb30c</color>
     <color name="hub_search_pressed">#27990b</color>
     <color name="hub_search_darker">#1a6607</color>
     <color name="hub_search_ripple">#331a6607</color>
+
+    <color name="hub_search_small">#62c649</color>
+    <color name="hub_search_small_pressed">#5db348</color>
+    <color name="hub_search_small_darker">#538c45</color>
+    <color name="hub_search_small_ripple">#33538c45</color>
 
     <color name="help_fab">#EEEEEE</color>
     <color name="help_fab_pressed">#BDBDBD</color>

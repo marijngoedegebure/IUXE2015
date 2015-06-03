@@ -56,15 +56,18 @@
                 android:id="@+id/search_list_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:text="@plurals/search_results_label"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <ListView
                 android:id="@+id/search_list"
+                android:listSelector="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:dividerHeight="0dp"
+                android:divider="@android:color/transparent"
                 tools:listitem="@layout/listitem_search" />
         </LinearLayout>
     </RelativeLayout>

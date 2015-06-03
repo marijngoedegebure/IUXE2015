@@ -1,49 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/bg_hub_library_small"
+        android:padding="8dp">
 
         <ImageView
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:id="@+id/library_song_icon"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_media_play"
-            android:layout_gravity="center" />
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:src="@android:drawable/ic_media_play" />
+
+        <ImageView
+            android:id="@+id/library_song_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_likert7"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/library_song_icon"
+            android:layout_toStartOf="@id/library_song_rating"
+            android:layout_toLeftOf="@id/library_song_rating"
+            android:layout_toRightOf="@id/library_song_icon"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/library_song_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
                 android:text="[SONG]"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
+
             <TextView
                 android:id="@+id/library_song_artist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="[ARTIST]"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/library_song_rating"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_likert7"
-            android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    </LinearLayout>
-</LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -18,6 +18,15 @@
         android:text="@string/event_new"
         android:textColor="@color/hub_events_darker" />
 
+    <TextView
+        android:id="@+id/events_list_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@plurals/events_label"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -35,6 +44,9 @@
             android:id="@+id/events_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:dividerHeight="0dp"
+            android:divider="@android:color/transparent"
+            android:listSelector="@android:color/transparent"
             tools:listitem="@layout/listitem_event" />
     </RelativeLayout>
 </LinearLayout>
